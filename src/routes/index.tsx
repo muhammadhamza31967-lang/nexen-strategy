@@ -161,7 +161,7 @@ function Home() {
           >
             NEXEN
           </span>
-          <div className="relative mx-auto max-w-[1400px] px-6 pt-28 pb-20 lg:px-12 lg:pt-44 lg:pb-28">
+          <div className="relative mx-auto max-w-[1400px] px-6 pt-16 pb-20 lg:px-12 lg:pt-28 lg:pb-28">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-2">
                 <p className="eyebrow text-azure">Introduction</p>
@@ -189,7 +189,7 @@ function Home() {
             </div>
 
             {/* editorial statistics */}
-            <div className="mt-20 border-t border-border lg:mt-28">
+            <div className="mt-28 border-t border-border lg:mt-48">
               <div className="grid sm:grid-cols-3">
                 {[
                   { k: "6", v: "Connected disciplines" },
@@ -198,7 +198,9 @@ function Home() {
                 ].map((s, i) => (
                   <Reveal key={s.v} delay={i * 90}>
                     <div className="border-b border-border py-10 sm:border-b-0 sm:border-l sm:py-14 sm:pl-10 sm:first:border-l-0 sm:first:pl-0">
-                      <p className="display text-[3.4rem] text-navy lg:text-[5.2rem]">{s.k}</p>
+                      <p className="display text-[2.6rem] text-navy sm:text-[3.2rem] lg:text-[4rem]">
+                        {s.k}
+                      </p>
                       <span
                         aria-hidden
                         className="mt-6 block h-px w-10 bg-gradient-to-r from-azure to-cyan"
