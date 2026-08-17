@@ -72,7 +72,7 @@ function Home() {
       <Header overHero />
       <main>
         {/* 01 HERO */}
-        <section className="relative h-svh min-h-[680px] w-full overflow-hidden bg-navy">
+        <section className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[104svh]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -103,8 +103,8 @@ function Home() {
           />
           <div aria-hidden className="grid-faint absolute inset-0 opacity-60" />
 
-          <div className="relative mx-auto flex h-full max-w-[1400px] flex-col px-6 lg:px-12">
-            <div className="h-[56%] min-h-[180px]" />
+          <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[1400px] flex-1 flex-col px-6 pb-14 lg:min-h-[104svh] lg:px-12 lg:pb-20">
+            <div className="h-[52vh] min-h-[200px] shrink-0" />
             <div>
               <Reveal>
                 <p className="eyebrow text-cyan">
@@ -142,7 +142,7 @@ function Home() {
                 </Reveal>
               </div>
             </div>
-            <div className="flex flex-1 items-end justify-center pb-8">
+            <div className="flex flex-1 items-end justify-center pt-24 pb-4 lg:pt-32">
               <span className="flex flex-col items-center gap-2 text-white/45">
                 <span className="text-[0.65rem] tracking-[0.3em] uppercase">Scroll</span>
                 <ArrowDown className="h-4 w-4 animate-bounce" />
@@ -151,26 +151,33 @@ function Home() {
           </div>
         </section>
 
-        {/* 02 INTRODUCTION — editorial three-column with oversized ghost type */}
+        {/* 02 INTRODUCTION — typography-led editorial section */}
         <section className="relative overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-navy/[0.05] to-transparent"
+          />
           <span
             aria-hidden
-            className="ghost-type absolute -left-6 top-10 text-[7rem] text-navy/[0.045] sm:text-[13rem] lg:text-[19rem]"
+            className="ghost-type absolute -left-6 top-24 text-[7rem] text-navy/[0.035] sm:text-[13rem] lg:text-[20rem]"
           >
             NEXEN
           </span>
-          <div className="relative mx-auto max-w-[1400px] px-6 pt-24 lg:px-12 lg:pt-40">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="relative mx-auto max-w-[1400px] px-6 pt-32 pb-28 lg:px-12 lg:pt-48 lg:pb-44">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-2">
                 <p className="eyebrow text-azure">Introduction</p>
-                <span aria-hidden className="mt-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan" />
+                <span
+                  aria-hidden
+                  className="mt-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
+                />
               </Reveal>
               <Reveal delay={80} className="lg:col-span-6">
-                <h2 className="display text-[2.1rem] text-navy sm:text-5xl lg:text-[3.5rem]">
+                <h2 className="display text-[2.3rem] text-navy sm:text-5xl lg:text-[4.1rem]">
                   A single partner for everything digital your business depends on.
                 </h2>
               </Reveal>
-              <Reveal delay={150} className="lg:col-span-4 lg:pt-3">
+              <Reveal delay={150} className="lg:col-span-4 lg:pt-4">
                 <p className="text-base leading-relaxed text-muted-foreground">
                   Businesses rarely struggle because of one missing capability. They struggle
                   because brand, technology, operations and marketing are being handled separately,
@@ -182,46 +189,26 @@ function Home() {
                 </p>
               </Reveal>
             </div>
-          </div>
 
-          {/* layered visual composition breaking the container */}
-          <div className="relative mt-16 lg:mt-24">
-            <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-              <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
-                <Reveal className="lg:col-span-8">
-                  <div className="overflow-hidden bg-navy">
-                    <img
-                      src={abstractIntro}
-                      alt="Abstract visual representing connected digital systems"
-                      width={1600}
-                      height={1200}
-                      loading="lazy"
-                      className="aspect-[16/10] w-full object-cover lg:aspect-[16/9]"
-                    />
-                  </div>
-                </Reveal>
-                <Reveal delay={120} className="lg:col-span-4 lg:-mt-20">
-                  <div className="overflow-hidden bg-navy shadow-[0_40px_90px_-50px_rgba(1,12,98,0.6)]">
-                    <img
-                      src={aboutImg}
-                      alt="Nexen Strategy studio environment"
-                      loading="lazy"
-                      className="aspect-[3/4] w-full object-cover"
-                    />
-                  </div>
-                  <div className="mt-10 grid grid-cols-3 gap-6">
-                    {[
-                      { k: "6", v: "Connected disciplines" },
-                      { k: "10+", v: "Industries served" },
-                      { k: "UK", v: "Based and accountable" },
-                    ].map((s) => (
-                      <div key={s.v}>
-                        <p className="display text-3xl text-navy lg:text-4xl">{s.k}</p>
-                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.v}</p>
-                      </div>
-                    ))}
-                  </div>
-                </Reveal>
+            {/* editorial statistics */}
+            <div className="mt-24 border-t border-border lg:mt-36">
+              <div className="grid sm:grid-cols-3">
+                {[
+                  { k: "6", v: "Connected disciplines" },
+                  { k: "10+", v: "Industries served" },
+                  { k: "UK", v: "Based and accountable" },
+                ].map((s, i) => (
+                  <Reveal key={s.v} delay={i * 90}>
+                    <div className="border-b border-border py-10 sm:border-b-0 sm:border-l sm:py-14 sm:pl-10 sm:first:border-l-0 sm:first:pl-0">
+                      <p className="display text-[3.4rem] text-navy lg:text-[5.2rem]">{s.k}</p>
+                      <span
+                        aria-hidden
+                        className="mt-6 block h-px w-10 bg-gradient-to-r from-azure to-cyan"
+                      />
+                      <p className="eyebrow mt-5 text-muted-foreground">{s.v}</p>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </div>
