@@ -10,8 +10,7 @@ import { IndustryShowcase } from "@/components/site/IndustryShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { partners } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import heroVideo from "@/assets/hero.mp4.asset.json";
-import heroPoster from "@/assets/hero-poster.jpg";
+import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -72,13 +71,12 @@ function Home() {
         {/* 01 HERO */}
         <section className="relative flex min-h-[88svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
           <video
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover [object-position:center]"
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
-            poster={heroPoster}
+            preload="auto"
             aria-hidden="true"
           >
             <source src={heroVideo.url} type="video/mp4" />
@@ -89,13 +87,13 @@ function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.10) 38%, rgba(1,12,98,0.86) 100%)",
+                "linear-gradient(180deg, rgba(1,12,98,0.45) 0%, rgba(1,12,98,0.08) 38%, rgba(1,12,98,0.78) 100%)",
             }}
           />
           <div
             aria-hidden
             className="absolute inset-0 mix-blend-multiply"
-            style={{ background: "linear-gradient(115deg, rgba(1,12,98,0.72) 0%, rgba(1,12,98,0.10) 65%)" }}
+            style={{ background: "linear-gradient(115deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.06) 65%)" }}
           />
           <div
             aria-hidden
