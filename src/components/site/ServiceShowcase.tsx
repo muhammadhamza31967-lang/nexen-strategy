@@ -88,10 +88,6 @@ export function ServiceShowcase() {
               <current.icon className="h-7 w-7 shrink-0 text-cyan/80" strokeWidth={1.4} />
             </div>
             </div>
-            {/* floating label */}
-            <span className="eyebrow absolute -left-6 top-10 -rotate-90 origin-top-left text-navy/30">
-              Services
-            </span>
           </div>
         </div>
       </div>

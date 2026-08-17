@@ -157,11 +157,11 @@ function Home() {
           />
           <span
             aria-hidden
-            className="ghost-type absolute -left-6 top-24 text-[7rem] text-navy/[0.035] sm:text-[13rem] lg:text-[20rem]"
+            className="ghost-type absolute -left-6 top-24 text-[7rem] text-navy/[0.025] sm:text-[13rem] lg:text-[18rem]"
           >
             NEXEN
           </span>
-          <div className="relative mx-auto max-w-[1400px] px-6 pt-32 pb-28 lg:px-12 lg:pt-48 lg:pb-44">
+          <div className="relative mx-auto max-w-[1400px] px-6 pt-28 pb-20 lg:px-12 lg:pt-44 lg:pb-28">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-2">
                 <p className="eyebrow text-azure">Introduction</p>
@@ -189,7 +189,7 @@ function Home() {
             </div>
 
             {/* editorial statistics */}
-            <div className="mt-24 border-t border-border lg:mt-36">
+            <div className="mt-20 border-t border-border lg:mt-28">
               <div className="grid sm:grid-cols-3">
                 {[
                   { k: "6", v: "Connected disciplines" },
@@ -214,7 +214,7 @@ function Home() {
 
         {/* 03 SERVICES */}
         <section id="services" className="scroll-mt-24">
-          <div className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-44">
+          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
             <div className="flex flex-wrap items-end justify-between gap-8">
               <Reveal>
                 <p className="eyebrow text-azure">What we do</p>
@@ -253,7 +253,7 @@ function Home() {
           />
           <span
             aria-hidden
-            className="ghost-type absolute -right-8 top-[38%] hidden text-white/[0.035] lg:block lg:text-[15rem]"
+            className="ghost-type absolute right-6 top-[34%] hidden text-right text-white/[0.018] lg:block lg:text-[9rem]"
           >
             ONE
             <br />
