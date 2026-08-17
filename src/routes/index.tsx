@@ -174,6 +174,26 @@ function Home() {
                 <h2 className="display text-[2.3rem] text-navy sm:text-5xl lg:text-[4.1rem]">
                   A single partner for everything digital your business depends on.
                 </h2>
+
+                {/* editorial statistics — inside left column */}
+                <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-10 lg:mt-16 lg:gap-8">
+                  {[
+                    { k: "6", v: "Connected disciplines" },
+                    { k: "10+", v: "Industries served" },
+                    { k: "UK", v: "Based and accountable" },
+                  ].map((s) => (
+                    <div key={s.v}>
+                      <p className="display text-[1.9rem] text-navy sm:text-[2.6rem] lg:text-[3.4rem]">
+                        {s.k}
+                      </p>
+                      <span
+                        aria-hidden
+                        className="mt-4 block h-px w-10 bg-gradient-to-r from-azure to-cyan"
+                      />
+                      <p className="eyebrow mt-4 text-[0.62rem] text-muted-foreground">{s.v}</p>
+                    </div>
+                  ))}
+                </div>
               </Reveal>
               <Reveal delay={150} className="lg:col-span-4 lg:pt-4">
                 <p className="text-base leading-relaxed text-muted-foreground">
@@ -186,30 +206,6 @@ function Home() {
                   standard, one point of accountability.
                 </p>
               </Reveal>
-            </div>
-
-            {/* editorial statistics */}
-            <div className="mt-28 border-t border-border lg:mt-48">
-              <div className="grid sm:grid-cols-3">
-                {[
-                  { k: "6", v: "Connected disciplines" },
-                  { k: "10+", v: "Industries served" },
-                  { k: "UK", v: "Based and accountable" },
-                ].map((s, i) => (
-                  <Reveal key={s.v} delay={i * 90}>
-                    <div className="border-b border-border py-10 sm:border-b-0 sm:border-l sm:py-14 sm:pl-10 sm:first:border-l-0 sm:first:pl-0">
-                      <p className="display text-[2.6rem] text-navy sm:text-[3.2rem] lg:text-[4rem]">
-                        {s.k}
-                      </p>
-                      <span
-                        aria-hidden
-                        className="mt-6 block h-px w-10 bg-gradient-to-r from-azure to-cyan"
-                      />
-                      <p className="eyebrow mt-5 text-muted-foreground">{s.v}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
             </div>
           </div>
         </section>
