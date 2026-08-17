@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/nexen-logo.png.asset.json";
+import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -41,13 +42,12 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
         <Link to="/" aria-label="Nexen Strategy home" className="shrink-0">
           <img
-            src={logo.url}
+            src={light ? logoWhite.url : logo.url}
             alt="Nexen Strategy"
             width={160}
             height={42}
             className={cn(
-              "h-8 w-auto transition-all duration-500 sm:h-9",
-              light && "brightness-0 invert",
+              "h-8 w-auto object-contain transition-all duration-500 sm:h-9",
             )}
           />
         </Link>
@@ -137,11 +137,11 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
       >
         <div className="flex items-center justify-between px-6 py-6">
           <img
-            src={logo.url}
+            src={logoWhite.url}
             alt="Nexen Strategy"
             width={160}
             height={42}
-            className="h-8 w-auto brightness-0 invert"
+            className="h-8 w-auto object-contain"
           />
           <button
             type="button"
