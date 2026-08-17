@@ -235,88 +235,132 @@ function Home() {
 
         {/* 04 WHY NEXEN */}
         <section className="relative overflow-hidden bg-navy">
-          <div aria-hidden className="grid-faint absolute inset-0" />
+          <div aria-hidden className="grid-faint absolute inset-0 opacity-70" />
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-40 top-0 h-[560px] w-[560px] rounded-full opacity-40 blur-[150px]"
+            className="pointer-events-none absolute -left-52 -top-32 h-[680px] w-[680px] rounded-full opacity-35 blur-[170px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-40 bottom-0 h-[520px] w-[520px] rounded-full opacity-[0.13] blur-[180px]"
+            style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
+          />
+          {/* fine technical rules */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block"
           />
           <span
             aria-hidden
-            className="ghost-type absolute -right-10 bottom-4 text-[7rem] text-white/[0.04] sm:text-[12rem] lg:text-[16rem]"
+            className="ghost-type absolute -right-8 top-[38%] hidden text-white/[0.035] lg:block lg:text-[15rem]"
           >
-            WHY NEXEN
+            ONE
+            <br />
+            CONNECTED
+            <br />
+            TEAM
           </span>
-          <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-44">
-            <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-              <div className="lg:col-span-5">
-                <Reveal>
-                  <p className="eyebrow text-cyan">Why Nexen</p>
-                </Reveal>
-                <Reveal delay={80}>
-                  <h2 className="display mt-7 text-[2.2rem] text-white sm:text-5xl lg:text-[3.6rem]">
-                    More Than a Digital Agency. A Partner for What&apos;s Next.
-                  </h2>
-                </Reveal>
-                <Reveal delay={150}>
-                  <p className="mt-8 max-w-md text-lg leading-relaxed text-white/65">
-                    We are chosen by organisations that need judgement as much as delivery. The work
-                    is grounded in your commercial reality and built to keep earning after launch.
-                  </p>
-                </Reveal>
-                <Reveal delay={220}>
-                  <div className="mt-12 hidden overflow-hidden lg:block">
-                    <img
-                      src={work3}
-                      alt="Detail from a Nexen Strategy engagement"
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover opacity-85"
-                    />
-                  </div>
-                </Reveal>
-              </div>
 
-              <div className="lg:col-span-7">
-                <div className="border-t border-white/12">
-                  {principles.map((p, i) => (
-                    <Reveal key={p.title} delay={i * 60}>
-                      <div
-                        onMouseEnter={() => setActivePrinciple(i)}
-                        onFocus={() => setActivePrinciple(i)}
-                        tabIndex={0}
-                        className="group border-b border-white/12 py-8 outline-none"
-                      >
-                        <div className="flex items-center justify-between gap-6">
-                          <h3
-                            className={cn(
-                              "text-2xl font-semibold tracking-tight transition-colors duration-500 lg:text-[2.1rem]",
-                              activePrinciple === i ? "text-white" : "text-white/40",
-                            )}
-                          >
-                            {p.title}
-                          </h3>
+          <div className="relative mx-auto max-w-[1400px] px-6 py-32 lg:px-12 lg:py-56">
+            {/* Editorial masthead */}
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+              <Reveal className="lg:col-span-3">
+                <p className="eyebrow text-cyan">Why Nexen</p>
+                <span
+                  aria-hidden
+                  className="mt-6 block h-px w-16 bg-gradient-to-r from-cyan to-transparent"
+                />
+              </Reveal>
+              <Reveal delay={90} className="lg:col-span-9">
+                <h2 className="display text-[2.6rem] text-white sm:text-6xl lg:text-[5.6rem]">
+                  More Than a Digital Agency. A Partner for What&apos;s Next.
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-3" />
+              <Reveal delay={140} className="lg:col-span-5">
+                <p className="text-lg leading-relaxed text-white/65 lg:text-xl">
+                  We are chosen by organisations that need judgement as much as delivery. The work
+                  is grounded in your commercial reality and built to keep earning after launch.
+                </p>
+              </Reveal>
+            </div>
+
+            {/* Interactive principles — offset to the right */}
+            <div className="mt-24 grid lg:mt-40 lg:grid-cols-12">
+              <div className="hidden lg:col-span-3 lg:block" />
+              <div
+                className="lg:col-span-9"
+                onMouseLeave={() => setActivePrinciple(0)}
+              >
+                <div className="border-t border-white/10">
+                  {principles.map((p, i) => {
+                    const isActive = activePrinciple === i;
+                    return (
+                      <Reveal key={p.title} delay={i * 60}>
+                        <div
+                          onMouseEnter={() => setActivePrinciple(i)}
+                          onFocus={() => setActivePrinciple(i)}
+                          tabIndex={0}
+                          className="group relative border-b border-white/10 py-9 outline-none lg:py-12"
+                        >
                           <span
+                            aria-hidden
                             className={cn(
-                              "h-px w-12 shrink-0 transition-all duration-500",
-                              activePrinciple === i ? "w-20 bg-cyan" : "bg-white/20",
+                              "absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-cyan via-azure to-transparent transition-transform duration-700",
+                              isActive ? "scale-x-100" : "scale-x-0",
                             )}
                           />
+                          <div className="flex items-start gap-6 lg:gap-10">
+                            <span
+                              className={cn(
+                                "mt-2 font-mono text-xs transition-colors duration-500",
+                                isActive ? "text-cyan" : "text-white/30",
+                              )}
+                            >
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <div className="min-w-0 flex-1">
+                              <h3
+                                className={cn(
+                                  "display text-[1.8rem] transition-all duration-500 sm:text-4xl lg:text-[3rem]",
+                                  isActive
+                                    ? "translate-x-1 text-white"
+                                    : "text-white/35 group-hover:text-white/55",
+                                )}
+                              >
+                                {p.title}
+                              </h3>
+                              <div
+                                className={cn(
+                                  "grid transition-all duration-500",
+                                  isActive
+                                    ? "mt-5 grid-rows-[1fr] opacity-100"
+                                    : "grid-rows-[0fr] opacity-0",
+                                )}
+                              >
+                                <p className="max-w-xl overflow-hidden text-base leading-relaxed text-white/60">
+                                  {p.text}
+                                </p>
+                              </div>
+                            </div>
+                            <ArrowUpRight
+                              className={cn(
+                                "mt-2 h-6 w-6 shrink-0 transition-all duration-500",
+                                isActive
+                                  ? "-translate-y-1 translate-x-1 text-cyan"
+                                  : "text-white/25",
+                              )}
+                              strokeWidth={1.5}
+                            />
+                          </div>
                         </div>
-                        <div
-                          className={cn(
-                            "grid transition-all duration-500",
-                            activePrinciple === i
-                              ? "mt-4 grid-rows-[1fr] opacity-100"
-                              : "grid-rows-[0fr] opacity-0",
-                          )}
-                        >
-                          <p className="overflow-hidden text-base leading-relaxed text-white/60">
-                            {p.text}
-                          </p>
-                        </div>
-                      </div>
-                    </Reveal>
-                  ))}
+                      </Reveal>
+                    );
+                  })}
                 </div>
               </div>
             </div>
