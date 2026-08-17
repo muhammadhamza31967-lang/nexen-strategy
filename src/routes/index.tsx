@@ -87,7 +87,10 @@ function Home() {
           <div
             aria-hidden
             className="absolute inset-0"
-            style={{ background: "linear-gradient(180deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.10) 38%, rgba(1,12,98,0.86) 100%)" }}
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.10) 38%, rgba(1,12,98,0.86) 100%)",
+            }}
           />
           <div
             aria-hidden
@@ -122,9 +125,8 @@ function Home() {
               <div className="mt-8 grid gap-7 lg:grid-cols-12 lg:items-end">
                 <Reveal delay={170} className="lg:col-span-6">
                   <p className="max-w-xl text-base leading-relaxed text-white/70">
-                    Nexen Strategy helps established businesses and growing organisations design,
-                    build and scale what comes next, across brand, digital platforms, software, AI,
-                    marketing and media.
+                    Nexen Strategy helps established businesses and growing organisations design, build and scale what
+                    comes next, across brand, digital platforms, software, AI, marketing and media.
                   </p>
                 </Reveal>
                 <Reveal delay={240} className="lg:col-span-6 lg:justify-self-end">
@@ -165,10 +167,7 @@ function Home() {
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
               <Reveal delay={80} className="lg:col-span-7">
                 <p className="eyebrow text-azure">Introduction</p>
-                <span
-                  aria-hidden
-                  className="mt-4 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
-                />
+                <span aria-hidden className="mt-4 block h-px w-14 bg-gradient-to-r from-azure to-cyan" />
                 <h2 className="display mt-6 text-[2.3rem] text-navy sm:text-5xl lg:text-[4.1rem]">
                   A single partner for everything digital your business depends on.
                 </h2>
@@ -181,27 +180,21 @@ function Home() {
                     { k: "UK", v: "Based and accountable" },
                   ].map((s) => (
                     <div key={s.v}>
-                      <p className="display text-[1.7rem] text-navy sm:text-[2.3rem] lg:text-[3rem]">
-                        {s.k}
-                      </p>
-                      <span
-                        aria-hidden
-                        className="mt-4 block h-px w-10 bg-gradient-to-r from-azure to-cyan"
-                      />
+                      <p className="display text-[1.7rem] text-navy sm:text-[2.3rem] lg:text-[3rem]">{s.k}</p>
+                      <span aria-hidden className="mt-4 block h-px w-10 bg-gradient-to-r from-azure to-cyan" />
                       <p className="eyebrow mt-4 text-[0.62rem] text-muted-foreground">{s.v}</p>
                     </div>
                   ))}
                 </div>
               </Reveal>
-              <Reveal delay={150} className="lg:col-span-4 lg:col-start-9 lg:pt-14">
+              <Reveal delay={150} className="lg:col-span-4 lg:col-start-9 lg:pt-22">
                 <p className="text-base leading-relaxed text-muted-foreground">
-                  Businesses rarely struggle because of one missing capability. They struggle
-                  because brand, technology, operations and marketing are being handled separately,
-                  by people who never speak to each other.
+                  Businesses rarely struggle because of one missing capability. They struggle because brand, technology,
+                  operations and marketing are being handled separately, by people who never speak to each other.
                 </p>
                 <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                  Nexen Strategy brings those disciplines into one connected team. One plan, one
-                  standard, one point of accountability.
+                  Nexen Strategy brings those disciplines into one connected team. One plan, one standard, one point of
+                  accountability.
                 </p>
               </Reveal>
             </div>
@@ -220,8 +213,7 @@ function Home() {
               </Reveal>
               <Reveal delay={100}>
                 <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
-                  Engage one capability or the whole team. The thinking, the craft and the
-                  accountability stay the same.
+                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
                 </p>
               </Reveal>
             </div>
@@ -263,10 +255,7 @@ function Home() {
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-3">
                 <p className="eyebrow text-cyan">Why Nexen</p>
-                <span
-                  aria-hidden
-                  className="mt-6 block h-px w-16 bg-gradient-to-r from-cyan to-transparent"
-                />
+                <span aria-hidden className="mt-6 block h-px w-16 bg-gradient-to-r from-cyan to-transparent" />
               </Reveal>
               <Reveal delay={90} className="lg:col-span-9">
                 <h2 className="display text-[2.6rem] text-white sm:text-6xl lg:text-[5.6rem]">
@@ -279,8 +268,8 @@ function Home() {
               <div className="lg:col-span-3" />
               <Reveal delay={140} className="lg:col-span-5">
                 <p className="text-lg leading-relaxed text-white/65 lg:text-xl">
-                  We are chosen by organisations that need judgement as much as delivery. The work
-                  is grounded in your commercial reality and built to keep earning after launch.
+                  We are chosen by organisations that need judgement as much as delivery. The work is grounded in your
+                  commercial reality and built to keep earning after launch.
                 </p>
               </Reveal>
             </div>
@@ -288,10 +277,7 @@ function Home() {
             {/* Interactive principles — offset to the right */}
             <div className="mt-24 grid lg:mt-40 lg:grid-cols-12">
               <div className="hidden lg:col-span-3 lg:block" />
-              <div
-                className="lg:col-span-9"
-                onMouseLeave={() => setActivePrinciple(0)}
-              >
+              <div className="lg:col-span-9" onMouseLeave={() => setActivePrinciple(0)}>
                 <div className="border-t border-white/10">
                   {principles.map((p, i) => {
                     const isActive = activePrinciple === i;
@@ -323,9 +309,7 @@ function Home() {
                               <h3
                                 className={cn(
                                   "display text-[1.8rem] transition-all duration-500 sm:text-4xl lg:text-[3rem]",
-                                  isActive
-                                    ? "translate-x-1 text-white"
-                                    : "text-white/35 group-hover:text-white/55",
+                                  isActive ? "translate-x-1 text-white" : "text-white/35 group-hover:text-white/55",
                                 )}
                               >
                                 {p.title}
@@ -333,9 +317,7 @@ function Home() {
                               <div
                                 className={cn(
                                   "grid transition-all duration-500",
-                                  isActive
-                                    ? "mt-5 grid-rows-[1fr] opacity-100"
-                                    : "grid-rows-[0fr] opacity-0",
+                                  isActive ? "mt-5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
                                 )}
                               >
                                 <p className="max-w-xl overflow-hidden text-base leading-relaxed text-white/60">
@@ -346,9 +328,7 @@ function Home() {
                             <ArrowUpRight
                               className={cn(
                                 "mt-2 h-6 w-6 shrink-0 transition-all duration-500",
-                                isActive
-                                  ? "-translate-y-1 translate-x-1 text-cyan"
-                                  : "text-white/25",
+                                isActive ? "-translate-y-1 translate-x-1 text-cyan" : "text-white/25",
                               )}
                               strokeWidth={1.5}
                             />
@@ -384,9 +364,7 @@ function Home() {
           <div className="grid gap-10 lg:grid-cols-12">
             <Reveal className="lg:col-span-4">
               <p className="eyebrow text-azure">Industries</p>
-              <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[2.8rem]">
-                Sectors we know well.
-              </h2>
+              <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[2.8rem]">Sectors we know well.</h2>
             </Reveal>
             <div className="lg:col-span-8">
               <IndustryShowcase />
@@ -405,10 +383,7 @@ function Home() {
                 </h2>
               </Reveal>
               <Reveal delay={90}>
-                <Link
-                  to="/portfolio"
-                  className="group inline-flex items-center gap-3 text-sm font-semibold text-navy"
-                >
+                <Link to="/portfolio" className="group inline-flex items-center gap-3 text-sm font-semibold text-navy">
                   View full portfolio
                   <ArrowRight className="h-4 w-4 text-amber transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -436,8 +411,7 @@ function Home() {
                       Halden &amp; Co.
                     </h3>
                     <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                      A considered commerce experience rebuilt around merchandising and repeat
-                      purchase.
+                      A considered commerce experience rebuilt around merchandising and repeat purchase.
                     </p>
                   </div>
                   <div className="flex items-start lg:col-span-2 lg:justify-end">
@@ -462,9 +436,7 @@ function Home() {
                       className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
                     />
                   </div>
-                  <p className="eyebrow mt-6 text-muted-foreground">
-                    Professional Services — Brand &amp; Design
-                  </p>
+                  <p className="eyebrow mt-6 text-muted-foreground">Professional Services — Brand &amp; Design</p>
                   <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
                     Northgate Group
                   </h3>
@@ -480,9 +452,7 @@ function Home() {
                       className="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
                     />
                   </div>
-                  <p className="eyebrow mt-6 text-muted-foreground">
-                    Industrial — AI &amp; Automation
-                  </p>
+                  <p className="eyebrow mt-6 text-muted-foreground">Industrial — AI &amp; Automation</p>
                   <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
                     Meridian Operations
                   </h3>
