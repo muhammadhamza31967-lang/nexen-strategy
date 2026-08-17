@@ -162,16 +162,14 @@ function Home() {
             NEXEN
           </span>
           <div className="relative mx-auto max-w-[1400px] px-6 pt-16 pb-20 lg:px-12 lg:pt-28 lg:pb-28">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <Reveal className="lg:col-span-2">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+              <Reveal delay={80} className="lg:col-span-7">
                 <p className="eyebrow text-azure">Introduction</p>
                 <span
                   aria-hidden
-                  className="mt-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
+                  className="mt-4 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
                 />
-              </Reveal>
-              <Reveal delay={80} className="lg:col-span-6">
-                <h2 className="display text-[2.3rem] text-navy sm:text-5xl lg:text-[4.1rem]">
+                <h2 className="display mt-6 text-[2.3rem] text-navy sm:text-5xl lg:text-[4.1rem]">
                   A single partner for everything digital your business depends on.
                 </h2>
 
@@ -195,7 +193,7 @@ function Home() {
                   ))}
                 </div>
               </Reveal>
-              <Reveal delay={150} className="lg:col-span-4 lg:pt-4">
+              <Reveal delay={150} className="lg:col-span-4 lg:col-start-9 lg:pt-4">
                 <p className="text-base leading-relaxed text-muted-foreground">
                   Businesses rarely struggle because of one missing capability. They struggle
                   because brand, technology, operations and marketing are being handled separately,
