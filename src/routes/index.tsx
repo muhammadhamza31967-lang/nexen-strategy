@@ -12,8 +12,6 @@ import { partners } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import heroVideo from "@/assets/hero.mp4.asset.json";
 import heroPoster from "@/assets/hero-poster.jpg";
-import abstractIntro from "@/assets/abstract-intro.jpg";
-import aboutImg from "@/assets/about.jpg";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
