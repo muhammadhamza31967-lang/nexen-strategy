@@ -214,6 +214,8 @@ function Home() {
               <Reveal delay={100}>
                 <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
                   Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
+                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
+                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
                 </p>
               </Reveal>
             </div>
