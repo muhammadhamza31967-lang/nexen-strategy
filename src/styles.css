@@ -269,6 +269,28 @@
   }
 }
 
+@utility grid-faint {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+@utility grid-faint-dark {
+  background-image:
+    linear-gradient(to right, rgba(1, 12, 98, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(1, 12, 98, 0.06) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+@utility ghost-type {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

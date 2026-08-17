@@ -56,7 +56,8 @@ function AboutPage() {
     <>
       <Header overHero />
       <main>
-        <section className="relative overflow-hidden bg-navy pt-40 pb-24 lg:pt-56 lg:pb-32">
+        <section className="relative overflow-hidden bg-navy pt-44 pb-28 lg:pt-60 lg:pb-40">
+          <div aria-hidden className="grid-faint absolute inset-0" />
           <div
             aria-hidden
             className="pointer-events-none absolute left-[-10%] bottom-[-30%] h-[600px] w-[600px] rounded-full opacity-30 blur-[140px]"
