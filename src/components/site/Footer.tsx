@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import logo from "@/assets/nexen-logo.png.asset.json";
+import logo from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
 
 export function Footer() {
@@ -15,7 +15,7 @@ export function Footer() {
               width={200}
               height={52}
               loading="lazy"
-              className="h-9 w-auto brightness-0 invert"
+              className="h-9 w-auto object-contain"
             />
             <p className="mt-7 max-w-sm text-[0.95rem] leading-relaxed text-white/65">
               A UK digital solutions partner helping established businesses build, transform and
