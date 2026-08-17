@@ -70,7 +70,7 @@ function Home() {
       <Header overHero />
       <main>
         {/* 01 HERO */}
-        <section className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[104svh]">
+        <section className="relative flex min-h-[88svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -101,8 +101,8 @@ function Home() {
           />
           <div aria-hidden className="grid-faint absolute inset-0 opacity-60" />
 
-          <div className="relative mx-auto flex min-h-[100svh] w-full max-w-[1400px] flex-1 flex-col px-6 pb-14 lg:min-h-[104svh] lg:px-12 lg:pb-20">
-            <div className="h-[52vh] min-h-[200px] shrink-0" />
+          <div className="relative mx-auto flex min-h-[88svh] w-full max-w-[1400px] flex-1 flex-col px-6 pb-8 lg:min-h-[83svh] lg:px-12 lg:pb-8">
+            <div className="h-[19vh] min-h-[110px] shrink-0 lg:h-[21vh]" />
             <div>
               <Reveal>
                 <p className="eyebrow text-cyan">
@@ -111,7 +111,7 @@ function Home() {
                 </p>
               </Reveal>
               <Reveal delay={90}>
-                <h1 className="display mt-8 max-w-5xl text-[3rem] text-white sm:text-7xl lg:text-[6.6rem]">
+                <h1 className="display mt-6 max-w-5xl text-[2.85rem] text-white sm:text-6xl lg:text-[6rem]">
                   Build Better.
                   <br />
                   Move Smarter.
@@ -119,7 +119,7 @@ function Home() {
                   Grow Further.
                 </h1>
               </Reveal>
-              <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
+              <div className="mt-8 grid gap-7 lg:grid-cols-12 lg:items-end">
                 <Reveal delay={170} className="lg:col-span-6">
                   <p className="max-w-xl text-base leading-relaxed text-white/70">
                     Nexen Strategy helps established businesses and growing organisations design,
@@ -140,7 +140,7 @@ function Home() {
                 </Reveal>
               </div>
             </div>
-            <div className="flex flex-1 items-end justify-center pt-24 pb-4 lg:pt-32">
+            <div className="flex flex-1 items-end justify-center pt-12 pb-1 lg:pt-14">
               <span className="flex flex-col items-center gap-2 text-white/45">
                 <span className="text-[0.65rem] tracking-[0.3em] uppercase">Scroll</span>
                 <ArrowDown className="h-4 w-4 animate-bounce" />
