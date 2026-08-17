@@ -212,7 +212,7 @@ function Home() {
                 </h2>
               </Reveal>
               <Reveal delay={100}>
-                <p className="max-w-sm text-base leading-relaxed text-muted-foreground">
+                <p className="max-w-auto text-base leading-relaxed text-muted-foreground">
                   Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
                   Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
                   Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
