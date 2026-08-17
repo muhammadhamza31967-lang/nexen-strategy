@@ -162,7 +162,7 @@ function Home() {
             NEXEN
           </span>
           <div className="relative mx-auto max-w-[1400px] px-6 pt-16 pb-20 lg:px-12 lg:pt-28 lg:pb-28">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
               <Reveal delay={80} className="lg:col-span-7">
                 <p className="eyebrow text-azure">Introduction</p>
                 <span
@@ -181,7 +181,7 @@ function Home() {
                     { k: "UK", v: "Based and accountable" },
                   ].map((s) => (
                     <div key={s.v}>
-                      <p className="display text-[1.9rem] text-navy sm:text-[2.6rem] lg:text-[3.4rem]">
+                      <p className="display text-[1.7rem] text-navy sm:text-[2.3rem] lg:text-[3rem]">
                         {s.k}
                       </p>
                       <span
@@ -193,7 +193,7 @@ function Home() {
                   ))}
                 </div>
               </Reveal>
-              <Reveal delay={150} className="lg:col-span-4 lg:col-start-9 lg:pt-4">
+              <Reveal delay={150} className="lg:col-span-4 lg:col-start-9 lg:pt-14">
                 <p className="text-base leading-relaxed text-muted-foreground">
                   Businesses rarely struggle because of one missing capability. They struggle
                   because brand, technology, operations and marketing are being handled separately,
