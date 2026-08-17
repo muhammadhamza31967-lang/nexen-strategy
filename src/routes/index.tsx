@@ -5,10 +5,15 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Reveal } from "@/components/site/Reveal";
-import { services, industries, partners } from "@/lib/site-data";
+import { ServiceShowcase } from "@/components/site/ServiceShowcase";
+import { IndustryShowcase } from "@/components/site/IndustryShowcase";
+import { ProcessTimeline } from "@/components/site/ProcessTimeline";
+import { partners } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import heroVideo from "@/assets/hero.mp4.asset.json";
 import heroPoster from "@/assets/hero-poster.jpg";
+import abstractIntro from "@/assets/abstract-intro.jpg";
+import aboutImg from "@/assets/about.jpg";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -59,24 +64,15 @@ const principles = [
   },
 ];
 
-const approach = [
-  { no: "01", name: "Discover", text: "We learn the business, the market and the constraints before proposing anything." },
-  { no: "02", name: "Define", text: "Objectives, scope and success measures agreed in plain language." },
-  { no: "03", name: "Create", text: "Design, engineering and production run together against one plan." },
-  { no: "04", name: "Launch", text: "Tested, measured and released with the team ready to run it." },
-  { no: "05", name: "Grow", text: "We stay involved, refining against real performance data." },
-];
-
 function Home() {
   const [activePrinciple, setActivePrinciple] = useState(0);
-  const [hoverService, setHoverService] = useState<string | null>(null);
 
   return (
     <>
       <Header overHero />
       <main>
         {/* 01 HERO */}
-        <section className="relative h-[92vh] min-h-[620px] w-full overflow-hidden bg-navy">
+        <section className="relative h-svh min-h-[680px] w-full overflow-hidden bg-navy">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -89,110 +85,155 @@ function Home() {
           >
             <source src={heroVideo.url} type="video/mp4" />
           </video>
+          {/* cinematic grade: blue wash + focused darkness behind copy */}
           <div
             aria-hidden
             className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(1,12,98,0.86) 0%, rgba(1,12,98,0.62) 45%, rgba(1,12,98,0.92) 100%)",
-            }}
+            style={{ background: "linear-gradient(180deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.10) 38%, rgba(1,12,98,0.86) 100%)" }}
           />
-          <div className="relative mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-24 lg:px-12 lg:pb-32">
-            <Reveal>
-              <p className="eyebrow text-cyan">UK Digital Solutions Partner</p>
-            </Reveal>
-            <Reveal delay={90}>
-              <h1 className="display mt-8 max-w-5xl text-[2.9rem] text-white sm:text-6xl lg:text-[6rem]">
-                Build Better.
-                <br />
-                Move Smarter.
-                <br />
-                Grow Further.
-              </h1>
-            </Reveal>
-            <Reveal delay={170}>
-              <p className="mt-9 max-w-2xl text-lg leading-relaxed text-white/75">
-                Nexen Strategy helps established businesses and growing organisations design,
-                build and scale what comes next, across brand, digital platforms, software, AI,
-                marketing and media.
-              </p>
-            </Reveal>
-            <Reveal delay={240}>
-              <div className="mt-11 flex flex-wrap gap-4">
-                <a href="#services" className="btn-primary group">
-                  Explore Our Services
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-                <Link to="/contact" className="btn-ghost-light">
-                  Start a Project
-                </Link>
+          <div
+            aria-hidden
+            className="absolute inset-0 mix-blend-multiply"
+            style={{ background: "linear-gradient(115deg, rgba(1,12,98,0.72) 0%, rgba(1,12,98,0.10) 65%)" }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{ boxShadow: "inset 0 0 220px 60px rgba(1,12,98,0.6)" }}
+          />
+          <div aria-hidden className="grid-faint absolute inset-0 opacity-60" />
+
+          <div className="relative mx-auto flex h-full max-w-[1400px] flex-col px-6 lg:px-12">
+            <div className="h-[56%] min-h-[180px]" />
+            <div>
+              <Reveal>
+                <p className="eyebrow text-cyan">
+                  Digital Solutions <span className="mx-2 text-cyan/50">•</span> Technology
+                  <span className="mx-2 text-cyan/50">•</span> Growth
+                </p>
+              </Reveal>
+              <Reveal delay={90}>
+                <h1 className="display mt-8 max-w-5xl text-[3rem] text-white sm:text-7xl lg:text-[6.6rem]">
+                  Build Better.
+                  <br />
+                  Move Smarter.
+                  <br />
+                  Grow Further.
+                </h1>
+              </Reveal>
+              <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
+                <Reveal delay={170} className="lg:col-span-6">
+                  <p className="max-w-xl text-base leading-relaxed text-white/70">
+                    Nexen Strategy helps established businesses and growing organisations design,
+                    build and scale what comes next, across brand, digital platforms, software, AI,
+                    marketing and media.
+                  </p>
+                </Reveal>
+                <Reveal delay={240} className="lg:col-span-6 lg:justify-self-end">
+                  <div className="flex flex-wrap gap-4">
+                    <a href="#services" className="btn-primary group">
+                      Explore Our Services
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                    <Link to="/contact" className="btn-ghost-light">
+                      Start a Project
+                    </Link>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
-          </div>
-          <div className="absolute inset-x-0 bottom-7 flex justify-center">
-            <span className="flex flex-col items-center gap-2 text-white/50">
-              <span className="text-[0.65rem] tracking-[0.3em] uppercase">Scroll</span>
-              <ArrowDown className="h-4 w-4 animate-bounce" />
-            </span>
+            </div>
+            <div className="flex flex-1 items-end justify-center pb-8">
+              <span className="flex flex-col items-center gap-2 text-white/45">
+                <span className="text-[0.65rem] tracking-[0.3em] uppercase">Scroll</span>
+                <ArrowDown className="h-4 w-4 animate-bounce" />
+              </span>
+            </div>
           </div>
         </section>
 
-        {/* 02 INTRODUCTION */}
-        <section className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-40">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-            <div className="lg:col-span-6">
-              <Reveal>
+        {/* 02 INTRODUCTION — editorial three-column with oversized ghost type */}
+        <section className="relative overflow-hidden">
+          <span
+            aria-hidden
+            className="ghost-type absolute -left-6 top-10 text-[7rem] text-navy/[0.045] sm:text-[13rem] lg:text-[19rem]"
+          >
+            NEXEN
+          </span>
+          <div className="relative mx-auto max-w-[1400px] px-6 pt-24 lg:px-12 lg:pt-40">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+              <Reveal className="lg:col-span-2">
                 <p className="eyebrow text-azure">Introduction</p>
+                <span aria-hidden className="mt-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan" />
               </Reveal>
-              <Reveal delay={80}>
-                <h2 className="display mt-7 text-[2.2rem] text-navy sm:text-5xl lg:text-[3.6rem]">
+              <Reveal delay={80} className="lg:col-span-6">
+                <h2 className="display text-[2.1rem] text-navy sm:text-5xl lg:text-[3.5rem]">
                   A single partner for everything digital your business depends on.
                 </h2>
               </Reveal>
-              <Reveal delay={150}>
-                <div className="mt-10 h-px w-full bg-gradient-to-r from-azure/70 via-cyan/40 to-transparent" />
-              </Reveal>
-            </div>
-            <div className="lg:col-span-6 lg:pt-16">
-              <Reveal delay={100}>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+              <Reveal delay={150} className="lg:col-span-4 lg:pt-3">
+                <p className="text-base leading-relaxed text-muted-foreground">
                   Businesses rarely struggle because of one missing capability. They struggle
                   because brand, technology, operations and marketing are being handled separately,
                   by people who never speak to each other.
                 </p>
-              </Reveal>
-              <Reveal delay={170}>
-                <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-                  Nexen Strategy brings those disciplines into one connected team. We define the
-                  direction, design the experience, build the technology and drive the growth, with
-                  one plan and one point of accountability.
+                <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                  Nexen Strategy brings those disciplines into one connected team. One plan, one
+                  standard, one point of accountability.
                 </p>
               </Reveal>
-              <Reveal delay={240}>
-                <div className="mt-12 grid grid-cols-2 gap-10 sm:grid-cols-3">
-                  {[
-                    { k: "6", v: "Connected disciplines" },
-                    { k: "10+", v: "Industries served" },
-                    { k: "UK", v: "Based and accountable" },
-                  ].map((s) => (
-                    <div key={s.v}>
-                      <p className="display text-4xl text-navy">{s.k}</p>
-                      <p className="mt-2 text-sm text-muted-foreground">{s.v}</p>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+            </div>
+          </div>
+
+          {/* layered visual composition breaking the container */}
+          <div className="relative mt-16 lg:mt-24">
+            <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+              <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+                <Reveal className="lg:col-span-8">
+                  <div className="overflow-hidden bg-navy">
+                    <img
+                      src={abstractIntro}
+                      alt="Abstract visual representing connected digital systems"
+                      width={1600}
+                      height={1200}
+                      loading="lazy"
+                      className="aspect-[16/10] w-full object-cover lg:aspect-[16/9]"
+                    />
+                  </div>
+                </Reveal>
+                <Reveal delay={120} className="lg:col-span-4 lg:-mt-20">
+                  <div className="overflow-hidden bg-navy shadow-[0_40px_90px_-50px_rgba(1,12,98,0.6)]">
+                    <img
+                      src={aboutImg}
+                      alt="Nexen Strategy studio environment"
+                      loading="lazy"
+                      className="aspect-[3/4] w-full object-cover"
+                    />
+                  </div>
+                  <div className="mt-10 grid grid-cols-3 gap-6">
+                    {[
+                      { k: "6", v: "Connected disciplines" },
+                      { k: "10+", v: "Industries served" },
+                      { k: "UK", v: "Based and accountable" },
+                    ].map((s) => (
+                      <div key={s.v}>
+                        <p className="display text-3xl text-navy lg:text-4xl">{s.k}</p>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.v}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </section>
 
         {/* 03 SERVICES */}
-        <section id="services" className="scroll-mt-24 border-t border-border bg-white">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
+        <section id="services" className="scroll-mt-24">
+          <div className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-44">
             <div className="flex flex-wrap items-end justify-between gap-8">
               <Reveal>
                 <p className="eyebrow text-azure">What we do</p>
-                <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl lg:text-[3.6rem]">
+                <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl lg:text-[3.5rem]">
                   Six disciplines. One standard.
                 </h2>
               </Reveal>
@@ -203,56 +244,32 @@ function Home() {
                 </p>
               </Reveal>
             </div>
-
-            <div className="mt-16 border-t border-border">
-              {services.map((s, i) => (
-                <Reveal key={s.slug} delay={i * 50}>
-                  <Link
-                    to="/services/$slug"
-                    params={{ slug: s.slug }}
-                    onMouseEnter={() => setHoverService(s.slug)}
-                    onMouseLeave={() => setHoverService(null)}
-                    className="group relative block border-b border-border py-8 transition-[padding] duration-500 hover:pl-4 lg:py-10"
-                  >
-                    <span
-                      aria-hidden
-                      className={cn(
-                        "absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-cyan to-azure transition-transform duration-700",
-                        hoverService === s.slug ? "scale-x-100" : "scale-x-0",
-                      )}
-                    />
-                    <div className="grid items-baseline gap-3 lg:grid-cols-12 lg:gap-8">
-                      <span className="font-mono text-xs text-muted-foreground lg:col-span-1">
-                        {s.no}
-                      </span>
-                      <h3 className="display text-3xl text-navy transition-colors duration-500 group-hover:text-azure lg:col-span-5 lg:text-[2.6rem]">
-                        {s.title}
-                      </h3>
-                      <p className="max-w-xl text-base leading-relaxed text-muted-foreground lg:col-span-5">
-                        {s.short}
-                      </p>
-                      <span className="flex items-center gap-2 text-sm font-semibold text-navy lg:col-span-1 lg:justify-end">
-                        <span className="lg:sr-only">Explore</span>
-                        <ArrowUpRight className="h-5 w-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
+            <ServiceShowcase />
           </div>
         </section>
 
         {/* 04 WHY NEXEN */}
-        <section className="bg-navy">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-40">
+        <section className="relative overflow-hidden bg-navy">
+          <div aria-hidden className="grid-faint absolute inset-0" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-40 top-0 h-[560px] w-[560px] rounded-full opacity-40 blur-[150px]"
+            style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
+          />
+          <span
+            aria-hidden
+            className="ghost-type absolute -right-10 bottom-4 text-[7rem] text-white/[0.04] sm:text-[12rem] lg:text-[16rem]"
+          >
+            WHY NEXEN
+          </span>
+          <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-44">
             <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
               <div className="lg:col-span-5">
                 <Reveal>
                   <p className="eyebrow text-cyan">Why Nexen</p>
                 </Reveal>
                 <Reveal delay={80}>
-                  <h2 className="display mt-7 text-[2.1rem] text-white sm:text-5xl">
+                  <h2 className="display mt-7 text-[2.2rem] text-white sm:text-5xl lg:text-[3.6rem]">
                     More Than a Digital Agency. A Partner for What&apos;s Next.
                   </h2>
                 </Reveal>
@@ -261,6 +278,16 @@ function Home() {
                     We are chosen by organisations that need judgement as much as delivery. The work
                     is grounded in your commercial reality and built to keep earning after launch.
                   </p>
+                </Reveal>
+                <Reveal delay={220}>
+                  <div className="mt-12 hidden overflow-hidden lg:block">
+                    <img
+                      src={work3}
+                      alt="Detail from a Nexen Strategy engagement"
+                      loading="lazy"
+                      className="aspect-[4/3] w-full object-cover opacity-85"
+                    />
+                  </div>
                 </Reveal>
               </div>
 
@@ -272,13 +299,13 @@ function Home() {
                         onMouseEnter={() => setActivePrinciple(i)}
                         onFocus={() => setActivePrinciple(i)}
                         tabIndex={0}
-                        className="group border-b border-white/12 py-7 outline-none"
+                        className="group border-b border-white/12 py-8 outline-none"
                       >
                         <div className="flex items-center justify-between gap-6">
                           <h3
                             className={cn(
-                              "text-2xl font-semibold tracking-tight transition-colors duration-500 lg:text-[2rem]",
-                              activePrinciple === i ? "text-white" : "text-white/45",
+                              "text-2xl font-semibold tracking-tight transition-colors duration-500 lg:text-[2.1rem]",
+                              activePrinciple === i ? "text-white" : "text-white/40",
                             )}
                           >
                             {p.title}
@@ -292,7 +319,7 @@ function Home() {
                         </div>
                         <div
                           className={cn(
-                            "grid transition-all duration-600",
+                            "grid transition-all duration-500",
                             activePrinciple === i
                               ? "mt-4 grid-rows-[1fr] opacity-100"
                               : "grid-rows-[0fr] opacity-0",
@@ -312,70 +339,43 @@ function Home() {
         </section>
 
         {/* 05 OUR APPROACH */}
-        <section className="border-b border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <Reveal>
-              <p className="eyebrow text-azure">Our approach</p>
-              <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl">
-                A process that keeps momentum without cutting corners.
-              </h2>
-            </Reveal>
-
-            <div className="relative mt-20">
-              <div
-                aria-hidden
-                className="absolute left-0 top-0 hidden h-px w-full bg-border lg:block"
-              />
-              <div
-                aria-hidden
-                className="absolute left-0 top-0 hidden h-px w-2/5 bg-gradient-to-r from-cyan to-azure lg:block"
-              />
-              <ol className="grid gap-12 lg:grid-cols-5 lg:gap-8">
-                {approach.map((a, i) => (
-                  <Reveal key={a.no} delay={i * 90} as="li" className="lg:pt-10">
-                    <div className="group relative">
-                      <span
-                        aria-hidden
-                        className="absolute -top-[42px] left-0 hidden h-2 w-2 rounded-full bg-azure opacity-0 transition-opacity duration-500 group-hover:opacity-100 lg:block"
-                      />
-                      <p className="font-mono text-xs text-azure">{a.no}</p>
-                      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-navy">
-                        {a.name}
-                      </h3>
-                      <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                        {a.text}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </ol>
+        <section className="relative overflow-hidden border-b border-border">
+          <div aria-hidden className="grid-faint-dark absolute inset-0" />
+          <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
+            <div className="flex flex-wrap items-end justify-between gap-8">
+              <Reveal>
+                <p className="eyebrow text-azure">Our approach</p>
+                <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl lg:text-[3.4rem]">
+                  A process that keeps momentum without cutting corners.
+                </h2>
+              </Reveal>
             </div>
+            <ProcessTimeline />
           </div>
         </section>
 
         {/* 06 INDUSTRIES */}
-        <section className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-          <Reveal>
-            <p className="eyebrow text-azure">Industries</p>
-          </Reveal>
-          <div className="mt-12 flex flex-wrap items-baseline gap-x-8 gap-y-3 lg:gap-x-12">
-            {industries.map((ind, i) => (
-              <Reveal key={ind} delay={i * 40}>
-                <span className="display cursor-default text-[1.7rem] text-navy/25 transition-colors duration-500 hover:text-navy sm:text-4xl lg:text-[3.2rem]">
-                  {ind}
-                </span>
-              </Reveal>
-            ))}
+        <section className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-4">
+              <p className="eyebrow text-azure">Industries</p>
+              <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[2.8rem]">
+                Sectors we know well.
+              </h2>
+            </Reveal>
+            <div className="lg:col-span-8">
+              <IndustryShowcase />
+            </div>
           </div>
         </section>
 
         {/* 07 PORTFOLIO PREVIEW */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
+        <section className="border-t border-border bg-secondary/30">
+          <div className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <Reveal>
                 <p className="eyebrow text-azure">Selected work</p>
-                <h2 className="display mt-6 text-[2.2rem] text-navy sm:text-5xl">
+                <h2 className="display mt-6 text-[2.2rem] text-navy sm:text-5xl lg:text-[3.4rem]">
                   Work made to do something.
                 </h2>
               </Reveal>
@@ -390,60 +390,82 @@ function Home() {
               </Reveal>
             </div>
 
-            <Reveal className="mt-16">
+            {/* Case study 01 — full bleed */}
+            <Reveal className="mt-20">
               <Link to="/portfolio" className="group block">
                 <div className="overflow-hidden bg-navy">
                   <img
                     src={work1}
                     alt="Halden & Co. commerce experience case study"
                     loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05] lg:aspect-[16/7]"
+                    className="aspect-[16/10] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05] lg:aspect-[21/9]"
                   />
                 </div>
-                <div className="mt-6 flex items-start justify-between gap-6">
-                  <div>
-                    <p className="eyebrow text-muted-foreground">Retail & E-commerce — Web & Apps</p>
-                    <h3 className="mt-3 text-3xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-4xl">
+                <div className="mt-8 grid gap-6 lg:grid-cols-12">
+                  <div className="lg:col-span-3">
+                    <p className="eyebrow text-muted-foreground">Retail &amp; E-commerce</p>
+                    <p className="mt-2 text-sm text-azure">Web &amp; Apps</p>
+                  </div>
+                  <div className="lg:col-span-7">
+                    <h3 className="display text-3xl text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-5xl">
                       Halden &amp; Co.
                     </h3>
+                    <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+                      A considered commerce experience rebuilt around merchandising and repeat
+                      purchase.
+                    </p>
                   </div>
-                  <ArrowUpRight className="mt-3 h-6 w-6 shrink-0 text-muted-foreground transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-azure" />
+                  <div className="flex items-start lg:col-span-2 lg:justify-end">
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-navy">
+                      View Case Study
+                      <ArrowUpRight className="h-5 w-5 text-amber transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             </Reveal>
 
-            <div className="mt-20 grid gap-14 lg:grid-cols-2">
-              {[
-                {
-                  img: work2,
-                  meta: "Professional Services — Brand & Design",
-                  title: "Northgate Group",
-                },
-                {
-                  img: work3,
-                  meta: "Industrial — AI & Automation",
-                  title: "Meridian Operations",
-                },
-              ].map((p, i) => (
-                <Reveal key={p.title} delay={i * 100} className={i === 1 ? "lg:mt-20" : ""}>
-                  <Link to="/portfolio" className="group block">
-                    <div className="overflow-hidden bg-navy">
-                      <img
-                        src={p.img}
-                        alt={`${p.title} case study`}
-                        loading="lazy"
-                        className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
-                      />
-                    </div>
-                    <p className="eyebrow mt-6 text-muted-foreground">{p.meta}</p>
-                    <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1">
-                      {p.title}
-                    </h3>
-                  </Link>
-                </Reveal>
-              ))}
+            {/* Case studies 02 / 03 — asymmetric */}
+            <div className="mt-24 grid gap-14 lg:grid-cols-12 lg:gap-12">
+              <Reveal className="lg:col-span-7">
+                <Link to="/portfolio" className="group block">
+                  <div className="overflow-hidden bg-navy">
+                    <img
+                      src={work2}
+                      alt="Northgate Group identity system case study"
+                      loading="lazy"
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                    />
+                  </div>
+                  <p className="eyebrow mt-6 text-muted-foreground">
+                    Professional Services — Brand &amp; Design
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
+                    Northgate Group
+                  </h3>
+                </Link>
+              </Reveal>
+              <Reveal delay={120} className="lg:col-span-5 lg:mt-28">
+                <Link to="/portfolio" className="group block">
+                  <div className="overflow-hidden bg-navy">
+                    <img
+                      src={work3}
+                      alt="Meridian Operations automation case study"
+                      loading="lazy"
+                      className="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                    />
+                  </div>
+                  <p className="eyebrow mt-6 text-muted-foreground">
+                    Industrial — AI &amp; Automation
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
+                    Meridian Operations
+                  </h3>
+                </Link>
+              </Reveal>
             </div>
 
+            {/* Case study 04 */}
             <Reveal className="mt-24">
               <Link to="/portfolio" className="group block">
                 <div className="overflow-hidden bg-navy">
@@ -454,7 +476,7 @@ function Home() {
                     className="aspect-[16/9] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05] lg:aspect-[21/9]"
                   />
                 </div>
-                <p className="eyebrow mt-6 text-muted-foreground">Energy & Marine — Media</p>
+                <p className="eyebrow mt-6 text-muted-foreground">Energy &amp; Marine — Media</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
                   Kestrel Brand Film
                 </h3>
@@ -464,21 +486,26 @@ function Home() {
         </section>
 
         {/* 08 PARTNERS */}
-        <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
-            <Reveal>
-              <p className="eyebrow text-center text-muted-foreground">
-                Trusted by teams across the UK
-              </p>
-            </Reveal>
-            <div className="mt-14 grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
-              {partners.slice(0, 10).map((p, i) => (
-                <Reveal key={p} delay={i * 40}>
-                  <span className="block text-center text-base font-semibold tracking-tight text-navy/35 transition-colors duration-500 hover:text-navy lg:text-lg">
-                    {p}
-                  </span>
-                </Reveal>
-              ))}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+              <Reveal className="lg:col-span-5">
+                <p className="eyebrow text-azure">Partners</p>
+                <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[3rem]">
+                  Technology and expertise, connected.
+                </h2>
+              </Reveal>
+              <div className="lg:col-span-7">
+                <div className="grid grid-cols-2 gap-x-12 gap-y-12 sm:grid-cols-3">
+                  {partners.slice(0, 9).map((p, i) => (
+                    <Reveal key={p} delay={i * 40}>
+                      <span className="block text-base font-semibold tracking-tight text-navy/30 transition-colors duration-500 hover:text-navy lg:text-lg">
+                        {p}
+                      </span>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>

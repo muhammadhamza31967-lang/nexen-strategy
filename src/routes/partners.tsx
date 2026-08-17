@@ -31,7 +31,8 @@ function PartnersPage() {
     <>
       <Header overHero />
       <main>
-        <section className="relative overflow-hidden bg-navy pt-40 pb-24 lg:pt-56 lg:pb-32">
+        <section className="relative overflow-hidden bg-navy pt-44 pb-28 lg:pt-60 lg:pb-40">
+          <div aria-hidden className="grid-faint absolute inset-0" />
           <div
             aria-hidden
             className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] rounded-full opacity-25 blur-[140px]"

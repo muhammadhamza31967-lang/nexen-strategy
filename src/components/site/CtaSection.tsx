@@ -13,6 +13,7 @@ export function CtaSection({
 }) {
   return (
     <section className="relative overflow-hidden bg-navy">
+      <div aria-hidden className="grid-faint absolute inset-0" />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full opacity-45 blur-[130px]"
@@ -23,7 +24,13 @@ export function CtaSection({
         className="pointer-events-none absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full opacity-40 blur-[120px]"
         style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
       />
-      <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
+      <span
+        aria-hidden
+        className="ghost-type absolute -right-8 -bottom-6 text-[6rem] text-white/[0.05] sm:text-[11rem] lg:text-[15rem]"
+      >
+        NEXEN
+      </span>
+      <div className="relative mx-auto max-w-[1400px] px-6 py-32 lg:px-12 lg:py-48">
         <div className="max-w-4xl">
           <Reveal>
             <p className="eyebrow text-cyan">{eyebrow}</p>
