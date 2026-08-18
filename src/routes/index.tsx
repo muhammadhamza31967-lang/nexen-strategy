@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { CtaSection } from "@/components/site/CtaSection";
+import { CtaSection, CtaFooterGap } from "@/components/site/CtaSection";
 import { WhyNexen } from "@/components/site/WhyNexen";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceShowcase } from "@/components/site/ServiceShowcase";
@@ -322,6 +322,7 @@ function Home() {
         {/* 09 CTA */}
         <CtaSection />
       </main>
+      <CtaFooterGap />
       {/* 10 FOOTER */}
       <Footer />
     </>
