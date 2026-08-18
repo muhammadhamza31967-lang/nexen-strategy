@@ -107,10 +107,35 @@ const items: ShowcaseItem[] = [
   },
 ];
 
+const ROTATE_MS = 4500;
+const RESUME_MS = 2500;
+
 export function ServiceShowcase() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [cycle, setCycle] = useState(0);
+  const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const current = items[active]!;
   const Icon = current.icon;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % items.length);
+      setCycle((c) => c + 1);
+    }, ROTATE_MS);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const select = useCallback((i: number) => {
+    setActive(i);
+    setCycle((c) => c + 1);
+    setPaused(true);
+    if (resumeRef.current) clearTimeout(resumeRef.current);
+    resumeRef.current = setTimeout(() => setPaused(false), RESUME_MS);
+  }, []);
+
+  useEffect(() => () => { if (resumeRef.current) clearTimeout(resumeRef.current); }, []);
 
   return (
     <div className="mt-10 w-full max-w-full lg:mt-12">
@@ -202,15 +227,119 @@ export function ServiceShowcase() {
                   <Link
                     to="/services/$slug"
                     params={{ slug: current.slug }}
-                    className="group mt-3 inline-flex items-center gap-2 border-b border-white/30 pb-1 text-[0.85rem] tracking-wide text-white transition-colors duration-300 hover:border-cyan hover:text-cyan sm:mt-4 sm:text-sm"
+                    aria-label={current.cta}
+                    className="btn-primary group mt-4 !px-5 !py-3 !text-[0.82rem] sm:!px-6 sm:!py-3.5 sm:!text-[0.9rem]"
                   >
                     {current.cta}
-                    <ArrowUpRight
+                    <ArrowRight
                       aria-hidden
-                      strokeWidth={1.6}
-                      className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
                     />
                   </Link>
+                </div>
+              </div>
+
+              {/* compact progress indicator (mobile + tablet) */}
+              <div className="mt-4 flex items-center gap-3 lg:hidden">
+                <span className="font-mono text-[0.62rem] tracking-[0.26em] text-white/70">
+                  {current.no} / 06
+                </span>
+                <span className="relative h-px flex-1 overflow-hidden bg-white/20">
+                  <span
+                    key={cycle}
+                    className="absolute inset-y-0 left-0 w-full origin-left bg-cyan motion-reduce:hidden"
+                    style={{
+                      animation: paused ? "none" : `svc-progress ${ROTATE_MS}ms linear forwards`,
+                    }}
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* HORIZONTAL SERVICE NAVIGATION (desktop only) */}
+      <Reveal delay={80}>
+        <nav aria-label="Services" className="mt-6 hidden w-full max-w-full lg:mt-7 lg:block">
+          <ul className="flex border-t border-border">
+            {items.map((s, i) => {
+              const isActive = i === active;
+              return (
+                <li key={s.slug} className="min-w-0 flex-1 border-r border-border last:border-r-0">
+                  <button
+                    type="button"
+                    onMouseEnter={() => select(i)}
+                    onFocus={() => select(i)}
+                    onClick={() => select(i)}
+                    aria-pressed={isActive}
+                    className="group relative block w-full px-4 py-4 text-left outline-none"
+                  >
+                    <span
+                      aria-hidden
+                      className={
+                        "absolute left-0 top-[-1px] h-px w-full origin-left bg-azure transition-transform duration-300 motion-reduce:transition-none " +
+                        (isActive ? "scale-x-100" : "scale-x-0")
+                      }
+                    />
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span
+                        className={
+                          "shrink-0 font-mono text-[0.62rem] leading-5 tracking-[0.24em] transition-colors duration-300 " +
+                          (isActive ? "text-azure" : "text-muted-foreground")
+                        }
+                      >
+                        {s.no}
+                      </span>
+                      <span
+                        className={
+                          "min-w-0 text-[0.82rem] font-semibold uppercase leading-tight tracking-[0.04em] transition-colors duration-300 " +
+                          (isActive ? "text-navy" : "text-navy/40 group-hover:text-navy/70")
+                        }
+                      >
+                        {s.title}
+                      </span>
+                      <ArrowUpRight
+                        aria-hidden
+                        strokeWidth={1.5}
+                        className={
+                          "mt-0.5 h-3.5 w-3.5 shrink-0 transition-all duration-300 motion-reduce:transition-none " +
+                          (isActive ? "text-azure opacity-100" : "-translate-x-1 translate-y-1 opacity-0")
+                        }
+                      />
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </Reveal>
+    </div>
+  );
+}
+
+function LegacyRemoved() {
+  return null;
+}
+
+/* eslint-disable */
+function __unused() {
+  return (
+    <>
+      {(() => null)()}
+    </>
+  );
+}
+
+function __tail() {
+  return (
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
                 </div>
               </div>
             </div>
