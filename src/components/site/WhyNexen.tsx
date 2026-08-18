@@ -107,7 +107,7 @@ export function WhyNexen({ principles }: { principles: Principle[] }) {
       {/* ghost depth type */}
       <span
         aria-hidden
-        className="ghost-type absolute -left-4 bottom-[6%] hidden text-white/[0.022] lg:block lg:text-[11rem]"
+        className="ghost-type absolute -left-4 bottom-[6%] hidden text-white/[0.014] lg:block lg:text-[11rem]"
       >
         ONE
         <br />
