@@ -178,25 +178,20 @@ function Home() {
         {/* 03 SERVICES */}
         <section id="services" className="scroll-mt-24">
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-            <div className="flex flex-wrap items-end justify-between gap-8">
-              <Reveal>
-                <p className="eyebrow text-azure">What we do</p>
-                <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl lg:text-[3.5rem]">
-                  Six disciplines. One standard.
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
+              <Reveal className="lg:col-span-7">
+                <p className="eyebrow text-azure">Services</p>
+                <h2 className="display mt-6 text-[2.2rem] leading-[1.05] text-navy sm:text-5xl lg:text-[3.75rem]">
+                  Everything You Need to Move Digital Forward.
                 </h2>
               </Reveal>
-              {/* <Reveal delay={100}>
-                <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
+              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9 lg:pt-20">
+                <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">
+                  Digital transformation doesn&rsquo;t happen through one service. It happens when technology,
+                  creativity and business objectives work together.
                 </p>
-              </Reveal> */}
-              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9">
-                <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
-                  Engage one capability or the whole team. The thinking, the craft and the accountability stay the same.
+                <p className="mt-6 text-[1.0625rem] leading-relaxed text-muted-foreground">
+                  At Nexen, we bring these capabilities together under one team.
                 </p>
               </Reveal>
             </div>
