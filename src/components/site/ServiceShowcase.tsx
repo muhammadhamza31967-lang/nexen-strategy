@@ -260,33 +260,29 @@ export function ServiceShowcase() {
         </div>
       </Reveal>
 
-      {/* PREV / NEXT NAVIGATION */}
+      {/* PREV / NEXT NAVIGATION — tablet + mobile only, icon-only */}
       <Reveal delay={60}>
-        <div className="mt-5 flex w-full max-w-full items-center justify-between gap-3 sm:mt-6">
+        <div className="mt-6 flex w-full max-w-full box-border items-center justify-between gap-3 lg:hidden">
           <button
             type="button"
             onClick={() => select((active - 1 + items.length) % items.length)}
             aria-label="Previous service"
-            className="btn-primary group !px-4 !py-2.5 !text-[0.78rem] active:translate-y-0 sm:!px-5 sm:!py-3 sm:!text-[0.85rem]"
+            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#4A73FF]/40 bg-[#010C62] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#4A73FF] hover:shadow-[0_8px_24px_-8px_rgba(255,110,63,0.55)] active:translate-y-0 sm:h-[52px] sm:w-[52px]"
           >
             <ArrowLeft
               aria-hidden
-              className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1 motion-reduce:transition-none"
+              className="h-5 w-5 text-[#FF8A3D] transition-transform duration-300 group-hover:-translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
             />
-            <span className="sm:hidden">Previous</span>
-            <span className="hidden sm:inline">Previous Service</span>
           </button>
           <button
             type="button"
             onClick={() => select((active + 1) % items.length)}
             aria-label="Next service"
-            className="btn-primary group !px-4 !py-2.5 !text-[0.78rem] active:translate-y-0 sm:!px-5 sm:!py-3 sm:!text-[0.85rem]"
+            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#4A73FF]/40 bg-[#010C62] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#4A73FF] hover:shadow-[0_8px_24px_-8px_rgba(255,110,63,0.55)] active:translate-y-0 sm:h-[52px] sm:w-[52px]"
           >
-            <span className="sm:hidden">Next</span>
-            <span className="hidden sm:inline">Next Service</span>
             <ArrowRight
               aria-hidden
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+              className="h-5 w-5 text-[#FF483F] transition-transform duration-300 group-hover:translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
             />
           </button>
         </div>
