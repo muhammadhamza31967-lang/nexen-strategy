@@ -6,7 +6,6 @@ import { CtaSection } from "@/components/site/CtaSection";
 import { WhyNexen } from "@/components/site/WhyNexen";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceShowcase } from "@/components/site/ServiceShowcase";
-import { IndustryShowcase } from "@/components/site/IndustryShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { partners } from "@/lib/site-data";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
