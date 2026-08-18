@@ -210,14 +210,15 @@ function Home() {
         <section className="relative overflow-hidden border-b border-border">
           <div aria-hidden className="grid-faint-dark absolute inset-0" />
           <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
-            <div className="flex flex-wrap items-end justify-between gap-8">
-              <Reveal>
-                <p className="eyebrow text-azure">Our approach</p>
-                <h2 className="display mt-6 max-w-2xl text-[2.2rem] text-navy sm:text-5xl lg:text-[3.4rem]">
-                  A process that keeps momentum without cutting corners.
-                </h2>
-              </Reveal>
-            </div>
+            <Reveal className="w-full">
+              <p className="eyebrow text-azure">Our approach</p>
+              <h2
+                className="display mt-7 w-full max-w-none text-navy"
+                style={{ fontSize: "clamp(2.2rem, 5.6vw, 5.5rem)", lineHeight: 1.04 }}
+              >
+                A process that keeps momentum without cutting corners.
+              </h2>
+            </Reveal>
             <ProcessTimeline />
           </div>
         </section>
