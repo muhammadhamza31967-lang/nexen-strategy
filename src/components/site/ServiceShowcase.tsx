@@ -221,7 +221,7 @@ export function ServiceShowcase() {
           </ul>
 
           {/* Active service story */}
-          <div key={current.slug} className="mt-9 animate-[fade-in_0.4s_ease-out]">
+          <div key={current.slug} className="mt-9">
             <div className="flex items-center gap-3">
               <Icon aria-hidden strokeWidth={1.4} className="h-5 w-5 text-azure" />
               <span className="eyebrow text-navy/60">{current.title}</span>
