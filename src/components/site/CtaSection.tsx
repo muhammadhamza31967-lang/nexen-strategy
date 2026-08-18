@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { useCallback, useRef } from "react";
 import { Reveal } from "./Reveal";
 
 export function CtaSection({
@@ -11,37 +12,78 @@ export function CtaSection({
   heading?: string;
   body?: string;
 }) {
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  const onMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = bannerRef.current;
+    if (!el) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    el.style.setProperty("--mx", `${x * 100}%`);
+    el.style.setProperty("--my", `${y * 100}%`);
+    el.style.setProperty("--px", `${(x - 0.5) * 18}px`);
+    el.style.setProperty("--py", `${(y - 0.5) * 14}px`);
+  }, []);
+
   return (
     <section className="relative bg-background pb-10 lg:pb-14">
       <style>{`
-        @keyframes cta-sweep{0%{transform:translate3d(-30%,0,0)}100%{transform:translate3d(130%,0,0)}}
-        @keyframes cta-glow{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5%,-4%,0) scale(1.12)}100%{transform:translate3d(0,0,0) scale(1)}}
-        @keyframes cta-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(0,-64px,0)}}
-        @keyframes cta-dash{to{stroke-dashoffset:-1200}}
-        @keyframes cta-node{0%,100%{opacity:.25;r:2.5}50%{opacity:.9;r:3.6}}
-        .cta-sweep{animation:cta-sweep 26s linear infinite}
-        .cta-glow{animation:cta-glow 24s ease-in-out infinite}
-        .cta-grid{animation:cta-grid 28s linear infinite}
-        .cta-dash{stroke-dasharray:180 1100;animation:cta-dash 24s linear infinite}
-        .cta-dash2{stroke-dasharray:120 1200;animation:cta-dash 30s linear infinite;animation-delay:-7s}
-        .cta-dash3{stroke-dasharray:90 1250;animation:cta-dash 20s linear infinite;animation-delay:-13s}
-        .cta-node{animation:cta-node 9s ease-in-out infinite}
-        @media (prefers-reduced-motion: reduce){.cta-sweep,.cta-glow,.cta-grid,.cta-dash,.cta-dash2,.cta-dash3,.cta-node{animation:none !important}}
+        @keyframes cta-grad{0%{transform:translate3d(-6%,-4%,0) scale(1.15)}50%{transform:translate3d(6%,4%,0) scale(1.25)}100%{transform:translate3d(-6%,-4%,0) scale(1.15)}}
+        @keyframes cta-wave{0%{transform:translate3d(-15%,0,0) scale(1.1)}100%{transform:translate3d(15%,0,0) scale(1.1)}}
+        @keyframes cta-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-64px,-64px,0)}}
+        @keyframes cta-dash{to{stroke-dashoffset:-2400}}
+        @keyframes cta-node{0%,100%{opacity:.25}50%{opacity:.95}}
+        @keyframes cta-orbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        @keyframes cta-drift{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(2.5%,-2%,0)}}
+        .cta-grad{animation:cta-grad 26s ease-in-out infinite}
+        .cta-wave{animation:cta-wave 22s ease-in-out infinite alternate}
+        .cta-wave2{animation:cta-wave 17s ease-in-out infinite alternate-reverse}
+        .cta-grid{animation:cta-grid 34s linear infinite}
+        .cta-dash{stroke-dasharray:200 1400;animation:cta-dash 22s linear infinite}
+        .cta-dash2{stroke-dasharray:140 1500;animation:cta-dash 19s linear infinite;animation-delay:-6s}
+        .cta-dash3{stroke-dasharray:110 1600;animation:cta-dash 25s linear infinite;animation-delay:-12s}
+        .cta-dash4{stroke-dasharray:80 1700;animation:cta-dash 18s linear infinite;animation-delay:-3s}
+        .cta-node{animation:cta-node 6s ease-in-out infinite}
+        .cta-orbit{animation:cta-orbit 90s linear infinite;transform-origin:center}
+        .cta-drift{animation:cta-drift 20s ease-in-out infinite}
+        @media (prefers-reduced-motion: reduce){.cta-grad,.cta-wave,.cta-wave2,.cta-grid,.cta-dash,.cta-dash2,.cta-dash3,.cta-dash4,.cta-node,.cta-orbit,.cta-drift{animation:none !important}}
       `}</style>
       <div className="relative mx-auto max-w-[1400px] px-6 pt-14 lg:px-12 lg:pt-20">
-        <div className="relative isolate overflow-hidden rounded-[28px] border border-cyan/20 bg-navy px-8 py-9 sm:px-10 sm:py-12 lg:px-16 lg:py-18"
-          style={{
-            backgroundImage:
-              "linear-gradient(140deg, rgba(74,115,255,0.22) 0%, rgba(1,12,98,0.35) 45%, rgba(1,12,98,0.85) 100%)",
-            boxShadow: "0 30px 90px -40px rgba(58,241,255,0.35)",
-          }}
+        <div
+          ref={bannerRef}
+          onMouseMove={onMove}
+          className="relative isolate flex min-h-[520px] flex-col justify-center overflow-hidden rounded-[24px] bg-navy px-7 py-10 sm:min-h-[540px] sm:px-12 lg:min-h-[560px] lg:px-20 lg:py-[80px]"
+          style={{ ["--mx" as string]: "50%", ["--my" as string]: "50%", ["--px" as string]: "0px", ["--py" as string]: "0px" }}
         >
+          {/* L5 gradient movement */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.5] [mask-image:radial-gradient(120%_100%_at_50%_40%,black,transparent_80%)]"
+            className="cta-grad pointer-events-none absolute inset-[-20%]"
+            style={{
+              background:
+                "radial-gradient(45% 60% at 20% 30%, rgba(74,115,255,0.45) 0%, transparent 65%), radial-gradient(40% 55% at 80% 70%, rgba(58,241,255,0.28) 0%, transparent 70%), linear-gradient(140deg, #041579 0%, #010C62 55%, #010A4E 100%)",
+            }}
+          />
+          {/* L4 light waves */}
+          <div
+            aria-hidden
+            className="cta-wave pointer-events-none absolute -left-1/4 top-[-30%] h-[160%] w-[90%] opacity-40 blur-[90px]"
+            style={{ background: "radial-gradient(ellipse at center, rgba(58,241,255,0.35) 0%, transparent 70%)" }}
+          />
+          <div
+            aria-hidden
+            className="cta-wave2 pointer-events-none absolute -right-1/4 bottom-[-40%] h-[150%] w-[80%] opacity-40 blur-[100px]"
+            style={{ background: "radial-gradient(ellipse at center, rgba(74,115,255,0.4) 0%, transparent 70%)" }}
+          />
+          {/* L3 grid */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.55] [mask-image:radial-gradient(130%_110%_at_60%_45%,black,transparent_80%)]"
           >
             <div
-              className="cta-grid absolute inset-x-0 -top-16 bottom-[-64px]"
+              className="cta-grid absolute inset-[-80px]"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
@@ -49,74 +91,69 @@ export function CtaSection({
               }}
             />
           </div>
-          <div
-            aria-hidden
-            className="cta-glow pointer-events-none absolute -left-24 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full opacity-40 blur-[120px]"
-            style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
-          />
-          <div
-            aria-hidden
-            className="cta-glow pointer-events-none absolute -right-20 bottom-0 h-[360px] w-[360px] rounded-full opacity-35 blur-[110px]"
-            style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)", animationDelay: "-8s" }}
-          />
-          <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div
-              className="cta-sweep absolute inset-y-0 w-1/3 opacity-40"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)" }}
-            />
-          </div>
-          {/* connected system network */}
+          {/* L2 large abstract forms + flowing paths + nodes */}
           <svg
             aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 1200 460"
+            className="cta-drift pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 1200 560"
             preserveAspectRatio="xMidYMid slice"
+            style={{ transform: "translate3d(var(--px), var(--py), 0)" }}
           >
-            <g fill="none" strokeWidth="1">
-              <path className="cta-dash" d="M-40 380 C 220 340, 380 200, 660 190 S 1080 120, 1260 90" stroke="#3AF1FF" strokeOpacity="0.30" />
-              <path className="cta-dash2" d="M-40 120 C 260 170, 520 360, 860 340 S 1160 280, 1260 250" stroke="#4A73FF" strokeOpacity="0.35" />
-              <path className="cta-dash3" d="M700 -40 C 760 120, 900 180, 1020 220 S 1180 320, 1240 430" stroke="#3AF1FF" strokeOpacity="0.22" />
-              <path d="M840 60 L960 130 L960 260 L840 330 L720 260 L720 130 Z" stroke="#4A73FF" strokeOpacity="0.14" />
-              <path d="M900 100 L1010 165 L1010 295" stroke="#3AF1FF" strokeOpacity="0.12" />
+            <g className="cta-orbit" fill="none" stroke="#4A73FF" strokeOpacity="0.10" strokeWidth="1">
+              <circle cx="960" cy="280" r="230" />
+              <circle cx="960" cy="280" r="160" strokeDasharray="6 14" />
+              <path d="M960 50 L1160 165 L1160 395 L960 510 L760 395 L760 165 Z" />
+            </g>
+            <g fill="none" strokeWidth="1.1">
+              <path className="cta-dash" d="M-60 470 C 240 430, 420 250, 700 235 S 1100 150, 1280 110" stroke="#3AF1FF" strokeOpacity="0.45" />
+              <path className="cta-dash2" d="M-60 140 C 280 200, 540 430, 880 410 S 1180 330, 1280 300" stroke="#4A73FF" strokeOpacity="0.5" />
+              <path className="cta-dash3" d="M700 -60 C 780 140, 920 210, 1050 260 S 1210 380, 1270 540" stroke="#3AF1FF" strokeOpacity="0.3" />
+              <path className="cta-dash4" d="M-60 300 C 200 300, 360 360, 560 330 S 900 200, 1280 220" stroke="#4A73FF" strokeOpacity="0.28" />
             </g>
             <g fill="#3AF1FF">
               {[
-                [660, 190], [860, 340], [960, 130], [1020, 220], [720, 260], [1120, 95], [820, 60],
+                [700, 235], [880, 410], [960, 130], [1050, 260], [760, 300], [1140, 120], [560, 330], [1160, 395],
               ].map(([cx, cy], i) => (
-                <circle key={`${cx}-${cy}`} className="cta-node" cx={cx} cy={cy} r="3" opacity="0.5" style={{ animationDelay: `${i * -1.4}s` }} />
+                <circle key={`${cx}-${cy}`} className="cta-node" cx={cx} cy={cy} r={i % 3 === 0 ? 3.6 : 2.6} opacity="0.5" style={{ animationDelay: `${i * -0.9}s` }} />
               ))}
             </g>
           </svg>
+          {/* cursor glow */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 hidden lg:block"
+            style={{ background: "radial-gradient(320px circle at var(--mx) var(--my), rgba(58,241,255,0.13), transparent 70%)" }}
+          />
+          {/* readability overlay */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(100deg, rgba(1,12,98,0.85) 0%, rgba(1,12,98,0.55) 45%, transparent 78%)" }}
+            style={{ background: "linear-gradient(100deg, rgba(1,12,98,0.92) 0%, rgba(1,12,98,0.62) 48%, rgba(1,12,98,0.15) 82%)" }}
           />
-          <div className="relative">
-          <div className="max-w-3xl">
-          <Reveal>
-            <p className="eyebrow text-cyan">{eyebrow}</p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2 className="display mt-6 text-[2.3rem] text-white sm:text-[3rem] lg:text-[4rem]">
-              {heading}
-            </h2>
-          </Reveal>
-          <Reveal delay={140}>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 lg:text-lg">{body}</p>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary group">
-                Start a Project
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link to="/portfolio" className="btn-ghost-light">
-                View Our Work
-              </Link>
-            </div>
-          </Reveal>
-          </div>
+
+          <div className="relative w-full">
+            <Reveal>
+              <p className="eyebrow text-cyan">{eyebrow}</p>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2 className="display mt-7 text-[2.4rem] leading-[1.03] text-white sm:text-[3.2rem] lg:max-w-[70%] lg:text-[4.5rem]">
+                {heading}
+              </h2>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="mt-7 max-w-full text-base leading-relaxed text-white/75 lg:max-w-[860px] lg:text-lg">{body}</p>
+            </Reveal>
+            <Reveal delay={200}>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link to="/contact" className="btn-primary group">
+                  Start a Project
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link to="/portfolio" className="btn-ghost-light">
+                  View Our Work
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
