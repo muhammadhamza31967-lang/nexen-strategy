@@ -30,7 +30,7 @@ export function CtaSection({
       >
         NEXEN
       </span>
-      <div className="relative mx-auto max-w-[1400px] px-6 py-32 lg:px-12 lg:py-48">
+      <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-30">
         <div className="max-w-4xl">
           <Reveal>
             <p className="eyebrow text-cyan">{eyebrow}</p>

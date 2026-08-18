@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
+import work4 from "@/assets/work-4.jpg";
 
 const projects = [
   {
@@ -28,6 +29,13 @@ const projects = [
     category: "AI & Automation",
     summary: "Automated workflows that removed thousands of manual admin hours a year.",
     image: work3,
+  },
+  {
+    title: "Aurora Health Portal",
+    sector: "Healthcare",
+    category: "Software",
+    summary: "A secure patient and practitioner portal replacing four disconnected systems.",
+    image: work4,
   },
 ];
 
@@ -226,16 +234,16 @@ export function PortfolioPreview() {
               </p>
               <h3 className="display mt-3 text-[2rem] text-white sm:text-[2.6rem] lg:text-[3rem]">{p.title}</h3>
               <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-white/65">{p.summary}</p>
-              <Link to="/portfolio" className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+              <Link to="/portfolio" className="btn-primary group mt-7">
                 View Case Study
-                <ArrowUpRight className="h-4 w-4 text-amber transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((proj, i) => {
             const on = i === active;
             return (
