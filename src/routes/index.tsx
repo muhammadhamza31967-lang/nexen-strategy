@@ -8,8 +8,16 @@ import { Reveal } from "@/components/site/Reveal";
 import { ServiceShowcase } from "@/components/site/ServiceShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { PortfolioPreview } from "@/components/site/PortfolioPreview";
-import { partners } from "@/lib/site-data";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
+import gatdLogo from "@/assets/gatd-logo.png.asset.json";
+import royaLogo from "@/assets/roya-ventures-logo.png.asset.json";
+import adanLogo from "@/assets/adan-graphics-logo.png.asset.json";
+
+const partnerLogos = [
+  { name: "GATD — Global Association for Training and Development", src: gatdLogo.url, cls: "max-h-14 lg:max-h-16" },
+  { name: "Roya Ventures", src: royaLogo.url, cls: "max-h-16 lg:max-h-20" },
+  { name: "Adan Graphics", src: adanLogo.url, cls: "max-h-20 lg:max-h-24" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -233,12 +241,15 @@ function Home() {
                 </h2>
               </Reveal>
               <div className="lg:col-span-7">
-                <div className="grid grid-cols-2 gap-x-12 gap-y-12 sm:grid-cols-3">
-                  {partners.slice(0, 9).map((p, i) => (
-                    <Reveal key={p} delay={i * 40}>
-                      <span className="block text-base font-semibold tracking-tight text-navy/30 transition-colors duration-500 hover:text-navy lg:text-lg">
-                        {p}
-                      </span>
+                <div className="grid grid-cols-1 items-center gap-y-12 sm:grid-cols-3 sm:gap-x-10 lg:gap-x-14">
+                  {partnerLogos.map((p, i) => (
+                    <Reveal key={p.name} delay={i * 60} className="flex items-center justify-center sm:justify-start">
+                      <img
+                        src={p.src}
+                        alt={`${p.name} logo`}
+                        loading="lazy"
+                        className={`h-auto w-auto max-w-[190px] object-contain opacity-70 transition-all duration-500 hover:scale-[1.02] hover:opacity-100 lg:max-w-[220px] ${p.cls}`}
+                      />
                     </Reveal>
                   ))}
                 </div>
