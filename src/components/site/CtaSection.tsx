@@ -83,5 +83,4 @@ export function CtaSection({
 
 export function CtaFooterGap() {
   return <div aria-hidden className="h-[44px] w-full bg-background lg:h-[64px]" />;
-  );
 }
