@@ -231,8 +231,44 @@ function Home() {
         <PortfolioPreview />
 
         {/* 08 PARTNERS */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
+        <section className="ptn relative overflow-hidden border-t border-border">
+          <style>{`
+            @keyframes ptn-a{0%{transform:translate3d(-4%,-3%,0) scale(1)}50%{transform:translate3d(6%,4%,0) scale(1.1)}100%{transform:translate3d(-4%,-3%,0) scale(1)}}
+            @keyframes ptn-b{0%{transform:translate3d(4%,4%,0) scale(1.06)}50%{transform:translate3d(-5%,-2%,0) scale(1)}100%{transform:translate3d(4%,4%,0) scale(1.06)}}
+            @keyframes ptn-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(0,-64px,0)}}
+            @keyframes ptn-dash{to{stroke-dashoffset:-1600}}
+            .ptn-a{animation:ptn-a 26s ease-in-out infinite}
+            .ptn-b{animation:ptn-b 30s ease-in-out infinite}
+            .ptn-grid{animation:ptn-grid 24s linear infinite}
+            .ptn-dash{stroke-dasharray:240 1400;animation:ptn-dash 28s linear infinite}
+            .ptn-dash2{stroke-dasharray:160 1500;animation:ptn-dash 40s linear infinite;animation-delay:-9s}
+            @media (prefers-reduced-motion: reduce){.ptn-a,.ptn-b,.ptn-grid,.ptn-dash,.ptn-dash2{animation:none !important}}
+          `}</style>
+          <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div
+              className="ptn-a absolute -left-32 -top-40 h-[560px] w-[560px] rounded-full opacity-[0.13] blur-[150px]"
+              style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
+            />
+            <div
+              className="ptn-b absolute -bottom-40 -right-24 h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[160px]"
+              style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
+            />
+            <div className="absolute inset-0 opacity-70 [mask-image:radial-gradient(120%_90%_at_50%_40%,black,transparent_80%)]">
+              <div
+                className="ptn-grid absolute inset-x-0 -top-16 bottom-[-64px]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, rgba(1,12,98,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(1,12,98,0.045) 1px, transparent 1px)",
+                  backgroundSize: "64px 64px",
+                }}
+              />
+            </div>
+            <svg className="absolute inset-0 hidden h-full w-full lg:block" preserveAspectRatio="none" viewBox="0 0 1440 500">
+              <path className="ptn-dash" d="M-100 380 C 340 340, 560 140, 900 130 S 1400 80, 1560 60" fill="none" stroke="#4A73FF" strokeOpacity="0.28" strokeWidth="1" />
+              <path className="ptn-dash2" d="M-100 140 C 360 200, 620 420, 1080 400 S 1440 340, 1560 320" fill="none" stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" />
+            </svg>
+          </div>
+          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
               <Reveal className="lg:col-span-5">
                 <p className="eyebrow text-azure">Partners</p>
@@ -240,7 +276,7 @@ function Home() {
                   Technology and expertise, connected.
                 </h2>
               </Reveal>
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-7 lg:pt-12">
                 <div className="grid grid-cols-1 items-center gap-y-12 sm:grid-cols-3 sm:gap-x-10 lg:gap-x-14">
                   {partnerLogos.map((p, i) => (
                     <Reveal key={p.name} delay={i * 60} className="flex items-center justify-center sm:justify-start">
