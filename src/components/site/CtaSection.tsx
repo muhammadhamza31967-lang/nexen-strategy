@@ -86,19 +86,12 @@ export function CtaSection({
           </Reveal>
           </div>
           <Reveal delay={240} className="lg:col-span-5">
-            <div className="group relative mx-auto flex h-[220px] w-full max-w-[420px] items-center justify-center overflow-hidden rounded-[22px] border border-white/10 sm:h-[280px] lg:h-[360px]"
-              style={{
-                background: "linear-gradient(150deg, rgba(74,115,255,0.18), rgba(1,12,98,0.35))",
-                boxShadow: "0 24px 70px -32px rgba(58,241,255,0.4)",
-              }}
-            >
-              <img
-                src={ctaMark.url}
-                alt="Nexen Strategy emblem"
-                loading="lazy"
-                className="h-full w-full object-contain p-8 transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </div>
+            <img
+              src={ctaMark.url}
+              alt="Nexen Strategy emblem"
+              loading="lazy"
+              className="mx-auto h-[220px] w-full max-w-[380px] object-contain transition-transform duration-500 hover:scale-[1.02] sm:h-[280px] lg:h-[340px]"
+            />
           </Reveal>
           </div>
         </div>
