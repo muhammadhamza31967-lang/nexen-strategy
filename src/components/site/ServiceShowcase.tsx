@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
   ArrowUpRight,
   Camera,
   Layers,
