@@ -177,6 +177,17 @@ export function WhyNexen() {
                         "radial-gradient(80% 100% at 0% 0%, rgba(74,115,255,0.16), transparent 70%)",
                     }}
                   />
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "pointer-events-none absolute -inset-x-6 -inset-y-6 transition-opacity duration-700 lg:-inset-x-10",
+                      isOn ? "opacity-100" : "opacity-0",
+                    )}
+                    style={{
+                      background:
+                        "radial-gradient(80% 100% at 100% 100%, rgba(74,115,255,0.16), transparent 70%)",
+                    }}
+                  />
                   <div className="relative">
                     <Icon
                       strokeWidth={1.35}
