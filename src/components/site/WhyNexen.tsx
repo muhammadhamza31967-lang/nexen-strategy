@@ -1,13 +1,32 @@
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 
-export type Principle = { title: string; text: string };
+const pillars = [
+  {
+    n: "01",
+    title: "Strategy",
+    text: "We understand your objectives before recommending the solution.",
+  },
+  {
+    n: "02",
+    title: "Technology",
+    text: "We use the right platforms and technologies to build scalable digital solutions.",
+  },
+  {
+    n: "03",
+    title: "Creativity",
+    text: "We make complex ideas clear, engaging and memorable.",
+  },
+  {
+    n: "04",
+    title: "Performance",
+    text: "We focus on outcomes that create genuine business value.",
+  },
+];
 
-export function WhyNexen({ principles }: { principles: Principle[] }) {
-  const [active, setActive] = useState(0);
-  const current = principles[active] ?? principles[0]!;
+export function WhyNexen() {
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <section className="wn relative overflow-hidden" style={{ backgroundColor: "#010C62" }}>
@@ -45,7 +64,6 @@ export function WhyNexen({ principles }: { principles: Principle[] }) {
           />
         </div>
 
-        {/* parallax fine grid */}
         <div className="absolute inset-0 opacity-60 [mask-image:radial-gradient(120%_90%_at_50%_20%,black,transparent_75%)]">
           <div
             className="wn-grid absolute inset-x-0 -top-[88px] bottom-[-88px]"
@@ -57,7 +75,6 @@ export function WhyNexen({ principles }: { principles: Principle[] }) {
           />
         </div>
 
-        {/* slow flowing luminous curves */}
         <svg
           className="absolute inset-0 hidden h-full w-full lg:block"
           viewBox="0 0 1440 900"
@@ -90,7 +107,6 @@ export function WhyNexen({ principles }: { principles: Principle[] }) {
           />
         </svg>
 
-        {/* occasional light passing through */}
         <div className="absolute inset-y-0 left-0 w-[38%]">
           <div
             className="wn-sweep h-full w-full"
@@ -101,130 +117,104 @@ export function WhyNexen({ principles }: { principles: Principle[] }) {
           />
         </div>
 
-        <div className="absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
+        {/* readability veil */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(1,12,98,0.55) 0%, rgba(1,12,98,0.35) 45%, rgba(1,12,98,0.6) 100%)",
+          }}
+        />
       </div>
 
-      {/* ghost depth type */}
-      <span
-        aria-hidden
-        className="ghost-type absolute -left-4 bottom-[6%] hidden text-white/[0.014] lg:block lg:text-[11rem]"
-      >
-        ONE
-        <br />
-        CONNECTED
-        <br />
-        TEAM
-      </span>
-
       <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-[140px]">
-        {/* Masthead */}
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-4">
+        {/* Intro */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-16">
+          <Reveal className="lg:col-span-7">
             <p className="eyebrow text-cyan">Why Nexen</p>
-            <span aria-hidden className="mt-6 block h-px w-16 bg-gradient-to-r from-cyan to-transparent" />
-          </Reveal>
-          <Reveal delay={90} className="lg:col-span-8">
-            <h2 className="display text-[2.2rem] text-white sm:text-[3rem] lg:text-[4.2rem]">
-              More Than a Digital Agency. A Partner for What&apos;s Next.
+            <span aria-hidden className="mt-5 block h-px w-20 bg-gradient-to-r from-cyan to-transparent" />
+            <h2 className="display mt-8 text-[2.4rem] text-white sm:text-[3.4rem] lg:text-[4.5rem]">
+              More Than a Digital Agency.
+              <br />A Partner for What&apos;s Next.
             </h2>
-            <p className="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-white/60 lg:text-[1.25rem]">
-              We are chosen by organisations that need judgement as much as delivery. The work is grounded in your
-              commercial reality and built to keep earning after launch.
+          </Reveal>
+
+          <Reveal delay={120} className="lg:col-span-4 lg:col-start-9 lg:pt-20">
+            <p className="text-[1.0625rem] leading-relaxed text-white/70 lg:text-[1.125rem]">
+              We don&apos;t believe in building technology for technology&apos;s sake.
+            </p>
+            <p className="mt-6 text-[1.0625rem] leading-relaxed text-white/55 lg:text-[1.125rem]">
+              Every website, application, campaign and automation we create starts with a simple question:
+            </p>
+            <p className="mt-6 text-[1.0625rem] leading-relaxed text-white lg:text-[1.25rem]">
+              What does this need to achieve for the business?
             </p>
           </Reveal>
         </div>
 
-        {/* Principles */}
-        <div className="mt-16 grid gap-12 lg:mt-28 lg:grid-cols-12 lg:gap-16">
-          {/* Active content area */}
-          <Reveal className="hidden lg:col-span-4 lg:block">
-            <div className="sticky top-32">
-              <span className="eyebrow text-white/35">{String(active + 1).padStart(2, "0")} / Principle</span>
-              <div key={current.title} className="mt-6 animate-[fade-in_0.5s_ease-out]">
-                <p className="eyebrow text-[0.7rem] text-cyan">{current.title}</p>
-                <p className="mt-5 max-w-sm text-[1.0625rem] leading-relaxed text-white/70">{current.text}</p>
-              </div>
-              <span
-                aria-hidden
-                className="mt-10 block h-px w-full bg-gradient-to-r from-azure/60 via-white/10 to-transparent"
-              />
-            </div>
-          </Reveal>
-
-          <div className="lg:col-span-8" onMouseLeave={() => setActive(0)}>
-            <div className="border-t border-white/10">
-              {principles.map((p, i) => {
-                const isActive = active === i;
-                return (
-                  <Reveal key={p.title} delay={i * 60}>
-                    <div
-                      onMouseEnter={() => setActive(i)}
-                      onFocus={() => setActive(i)}
-                      tabIndex={0}
-                      className="group relative border-b border-white/10 py-7 outline-none lg:py-9"
+        {/* Pillars */}
+        <div className="mt-20 grid gap-x-16 gap-y-14 sm:grid-cols-2 lg:mt-32 lg:gap-x-24 lg:gap-y-20">
+          {pillars.map((p, i) => {
+            const isOn = hovered === i;
+            return (
+              <Reveal key={p.title} delay={i * 80}>
+                <div
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  onFocus={() => setHovered(i)}
+                  onBlur={() => setHovered(null)}
+                  tabIndex={0}
+                  className="group relative outline-none"
+                >
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "pointer-events-none absolute -inset-x-6 -inset-y-6 transition-opacity duration-700 lg:-inset-x-10",
+                      isOn ? "opacity-100" : "opacity-0",
+                    )}
+                    style={{
+                      background:
+                        "radial-gradient(80% 100% at 0% 0%, rgba(74,115,255,0.16), transparent 70%)",
+                    }}
+                  />
+                  <div className="relative">
+                    <span
+                      className={cn(
+                        "font-mono text-xs transition-colors duration-500",
+                        isOn ? "text-cyan" : "text-white/30",
+                      )}
                     >
+                      {p.n}
+                    </span>
+                    <span aria-hidden className="mt-5 block h-px w-full bg-white/12">
                       <span
-                        aria-hidden
                         className={cn(
-                          "pointer-events-none absolute inset-0 -mx-6 transition-opacity duration-700 lg:-mx-10",
-                          isActive ? "opacity-100" : "opacity-0",
-                        )}
-                        style={{
-                          background:
-                            "linear-gradient(90deg, rgba(74,115,255,0.16), rgba(58,241,255,0.05) 45%, transparent 80%)",
-                        }}
-                      />
-                      <span
-                        aria-hidden
-                        className={cn(
-                          "absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-cyan via-azure to-transparent transition-transform duration-700",
-                          isActive ? "scale-x-100" : "scale-x-0",
+                          "block h-px origin-left bg-gradient-to-r from-cyan via-azure to-transparent transition-transform duration-700",
+                          isOn ? "scale-x-100" : "scale-x-0",
                         )}
                       />
-                      <div className="relative flex items-start gap-6 lg:gap-10">
-                        <span
-                          className={cn(
-                            "mt-3 font-mono text-xs transition-colors duration-500",
-                            isActive ? "text-cyan" : "text-white/25",
-                          )}
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <h3
-                            className={cn(
-                              "display text-[1.6rem] transition-all duration-500 sm:text-[1.9rem] lg:text-[2.1rem]",
-                              isActive ? "translate-x-2 text-white" : "text-white/40 group-hover:text-white/65",
-                            )}
-                          >
-                            {p.title}
-                          </h3>
-                          {/* mobile / tablet inline description */}
-                          <div
-                            className={cn(
-                              "grid transition-all duration-500 lg:hidden",
-                              isActive ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-                            )}
-                          >
-                            <p className="max-w-xl overflow-hidden text-[0.95rem] leading-relaxed text-white/60">
-                              {p.text}
-                            </p>
-                          </div>
-                        </div>
-                        <ArrowUpRight
-                          className={cn(
-                            "mt-2 h-6 w-6 shrink-0 transition-all duration-500",
-                            isActive ? "-translate-y-1 translate-x-1 text-cyan" : "text-white/20",
-                          )}
-                          strokeWidth={1.5}
-                        />
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
+                    </span>
+                    <h3
+                      className={cn(
+                        "display mt-7 text-[1.75rem] transition-colors duration-500 lg:text-[2.1rem]",
+                        isOn ? "text-white" : "text-white/75",
+                      )}
+                    >
+                      {p.title}
+                    </h3>
+                    <p
+                      className={cn(
+                        "mt-5 max-w-md text-[1rem] leading-relaxed transition-all duration-500 lg:text-[1.0625rem]",
+                        isOn ? "translate-x-1 text-white/75" : "text-white/50",
+                      )}
+                    >
+                      {p.text}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
