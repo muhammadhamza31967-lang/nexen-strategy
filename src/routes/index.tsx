@@ -177,15 +177,19 @@ function Home() {
 
         {/* 03 SERVICES */}
         <section id="services" className="scroll-mt-24 bg-white">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
+          <div className="mx-auto max-w-[1400px] px-6 py-[8.5rem] lg:px-12 lg:py-[10rem]">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-16">
               <Reveal className="lg:col-span-7">
                 <p className="eyebrow text-azure">Services</p>
-                <h2 className="display mt-6 text-[2.2rem] leading-[1.05] text-navy sm:text-5xl lg:text-[3.75rem]">
-                  Everything You Need to Move Digital Forward.
+                <h2
+                  className="display mt-7 text-navy"
+                  style={{ fontSize: "clamp(2.4rem, 6vw, 6rem)", lineHeight: 1.02 }}
+                >
+                  Everything You Need to
+                  <br className="hidden sm:block" /> Move Digital Forward.
                 </h2>
               </Reveal>
-              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9 lg:pt-20">
+              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9 lg:pt-28">
                 <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">
                   Digital transformation doesn&rsquo;t happen through one service. It happens when technology,
                   creativity and business objectives work together.
