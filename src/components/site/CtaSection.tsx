@@ -7,10 +7,12 @@ export function CtaSection({
   eyebrow = "Start a conversation",
   heading = "Let's Build What Comes Next.",
   body = "Whether you are launching something new, replacing what no longer works, or planning the next phase of growth, we would like to hear about it. Tell us where your business is heading and we will show you how we can help you get there.",
+  ctaLabel = "Start a Project",
 }: {
   eyebrow?: string;
   heading?: string;
   body?: string;
+  ctaLabel?: string;
 }) {
   const bannerRef = useRef<HTMLDivElement>(null);
 
@@ -146,7 +148,7 @@ export function CtaSection({
             <Reveal delay={200}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-primary group">
-                  Start a Project
+                  {ctaLabel}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link to="/portfolio" className="btn-ghost-light">

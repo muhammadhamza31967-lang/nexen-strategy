@@ -320,7 +320,12 @@ function Home() {
         </section>
 
         {/* 09 CTA */}
-        <CtaSection />
+        <CtaSection
+          eyebrow="Start a conversation"
+          heading="Have an Idea? Let's Build What's Next."
+          body="Whether you're launching a new digital product, modernising your website, automating your operations or looking to accelerate growth, we're ready to help."
+          ctaLabel="Start a Conversation"
+        />
       </main>
       <CtaFooterGap />
       {/* 10 FOOTER */}
