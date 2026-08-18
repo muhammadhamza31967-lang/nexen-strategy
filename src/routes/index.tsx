@@ -223,21 +223,8 @@ function Home() {
           </div>
         </section>
 
-        {/* 06 INDUSTRIES */}
-        <section className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow text-azure">Industries</p>
-              <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[2.8rem]">Sectors we know well.</h2>
-            </Reveal>
-            <div className="lg:col-span-8">
-              <IndustryShowcase />
-            </div>
-          </div>
-        </section>
-
-        {/* 07 PORTFOLIO PREVIEW */}
-        <section className="border-t border-border bg-secondary/30">
+        {/* 06 PORTFOLIO PREVIEW */}
+        <section className="bg-secondary/30">
           <div className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <Reveal>
