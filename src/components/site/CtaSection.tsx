@@ -136,7 +136,7 @@ export function CtaSection({
               <p className="eyebrow text-cyan">{eyebrow}</p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="display mt-7 max-w-[72%] text-[2.4rem] leading-[1.03] text-white sm:text-[3.2rem] lg:max-w-[70%] lg:text-[4.5rem]">
+              <h2 className="display mt-7 text-[2.4rem] leading-[1.03] text-white sm:text-[3.2rem] lg:max-w-[70%] lg:text-[4.5rem]">
                 {heading}
               </h2>
             </Reveal>
