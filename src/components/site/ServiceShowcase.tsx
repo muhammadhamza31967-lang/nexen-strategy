@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
+  ArrowLeft,
   Camera,
   Layers,
   MonitorSmartphone,
@@ -256,6 +257,38 @@ export function ServiceShowcase() {
               </div>
             </div>
           </div>
+        </div>
+      </Reveal>
+
+      {/* PREV / NEXT NAVIGATION */}
+      <Reveal delay={60}>
+        <div className="mt-5 flex w-full max-w-full items-center justify-between gap-3 sm:mt-6">
+          <button
+            type="button"
+            onClick={() => select((active - 1 + items.length) % items.length)}
+            aria-label="Previous service"
+            className="btn-primary group !px-4 !py-2.5 !text-[0.78rem] active:translate-y-0 sm:!px-5 sm:!py-3 sm:!text-[0.85rem]"
+          >
+            <ArrowLeft
+              aria-hidden
+              className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1 motion-reduce:transition-none"
+            />
+            <span className="sm:hidden">Previous</span>
+            <span className="hidden sm:inline">Previous Service</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => select((active + 1) % items.length)}
+            aria-label="Next service"
+            className="btn-primary group !px-4 !py-2.5 !text-[0.78rem] active:translate-y-0 sm:!px-5 sm:!py-3 sm:!text-[0.85rem]"
+          >
+            <span className="sm:hidden">Next</span>
+            <span className="hidden sm:inline">Next Service</span>
+            <ArrowRight
+              aria-hidden
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+            />
+          </button>
         </div>
       </Reveal>
 
