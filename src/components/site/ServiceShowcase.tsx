@@ -262,27 +262,27 @@ export function ServiceShowcase() {
 
       {/* PREV / NEXT NAVIGATION — tablet + mobile only, icon-only */}
       <Reveal delay={60}>
-        <div className="mt-6 flex w-full max-w-full box-border items-center justify-between gap-3 lg:hidden">
+        <div className="mt-6 flex w-full max-w-full box-border items-center justify-center gap-12 lg:hidden">
           <button
             type="button"
             onClick={() => select((active - 1 + items.length) % items.length)}
             aria-label="Previous service"
-            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#4A73FF]/40 bg-[#010C62] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#4A73FF] hover:shadow-[0_8px_24px_-8px_rgba(255,110,63,0.55)] active:translate-y-0 sm:h-[52px] sm:w-[52px]"
+            className="group inline-flex h-12 w-12 items-center justify-center bg-transparent"
           >
             <ArrowLeft
               aria-hidden
-              className="h-5 w-5 text-[#FF8A3D] transition-transform duration-300 group-hover:-translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
+              className="h-8 w-8 text-[#FF6E3F] transition-all duration-300 group-hover:-translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
             />
           </button>
           <button
             type="button"
             onClick={() => select((active + 1) % items.length)}
             aria-label="Next service"
-            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#4A73FF]/40 bg-[#010C62] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#4A73FF] hover:shadow-[0_8px_24px_-8px_rgba(255,110,63,0.55)] active:translate-y-0 sm:h-[52px] sm:w-[52px]"
+            className="group inline-flex h-12 w-12 items-center justify-center bg-transparent"
           >
             <ArrowRight
               aria-hidden
-              className="h-5 w-5 text-[#FF483F] transition-transform duration-300 group-hover:translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
+              className="h-8 w-8 text-[#FF483F] transition-all duration-300 group-hover:translate-x-[3px] group-hover:text-[#FFA53C] motion-reduce:transition-none"
             />
           </button>
         </div>
