@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import ctaMark from "@/assets/nexen-cta-mark.png.asset.json";
 
 export function CtaSection({
   eyebrow = "Start a conversation",
@@ -18,10 +17,16 @@ export function CtaSection({
         @keyframes cta-sweep{0%{transform:translate3d(-30%,0,0)}100%{transform:translate3d(130%,0,0)}}
         @keyframes cta-glow{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5%,-4%,0) scale(1.12)}100%{transform:translate3d(0,0,0) scale(1)}}
         @keyframes cta-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(0,-64px,0)}}
+        @keyframes cta-dash{to{stroke-dashoffset:-1200}}
+        @keyframes cta-node{0%,100%{opacity:.25;r:2.5}50%{opacity:.9;r:3.6}}
         .cta-sweep{animation:cta-sweep 26s linear infinite}
         .cta-glow{animation:cta-glow 24s ease-in-out infinite}
         .cta-grid{animation:cta-grid 28s linear infinite}
-        @media (prefers-reduced-motion: reduce){.cta-sweep,.cta-glow,.cta-grid{animation:none !important}}
+        .cta-dash{stroke-dasharray:180 1100;animation:cta-dash 24s linear infinite}
+        .cta-dash2{stroke-dasharray:120 1200;animation:cta-dash 30s linear infinite;animation-delay:-7s}
+        .cta-dash3{stroke-dasharray:90 1250;animation:cta-dash 20s linear infinite;animation-delay:-13s}
+        .cta-node{animation:cta-node 9s ease-in-out infinite}
+        @media (prefers-reduced-motion: reduce){.cta-sweep,.cta-glow,.cta-grid,.cta-dash,.cta-dash2,.cta-dash3,.cta-node{animation:none !important}}
       `}</style>
       <div className="relative mx-auto max-w-[1400px] px-6 pt-14 lg:px-12 lg:pt-20">
         <div className="relative isolate overflow-hidden rounded-[28px] border border-cyan/20 bg-navy px-8 py-9 sm:px-10 sm:py-12 lg:px-16 lg:py-18"
@@ -60,8 +65,35 @@ export function CtaSection({
               style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)" }}
             />
           </div>
-          <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-7">
+          {/* connected system network */}
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 1200 460"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            <g fill="none" strokeWidth="1">
+              <path className="cta-dash" d="M-40 380 C 220 340, 380 200, 660 190 S 1080 120, 1260 90" stroke="#3AF1FF" strokeOpacity="0.30" />
+              <path className="cta-dash2" d="M-40 120 C 260 170, 520 360, 860 340 S 1160 280, 1260 250" stroke="#4A73FF" strokeOpacity="0.35" />
+              <path className="cta-dash3" d="M700 -40 C 760 120, 900 180, 1020 220 S 1180 320, 1240 430" stroke="#3AF1FF" strokeOpacity="0.22" />
+              <path d="M840 60 L960 130 L960 260 L840 330 L720 260 L720 130 Z" stroke="#4A73FF" strokeOpacity="0.14" />
+              <path d="M900 100 L1010 165 L1010 295" stroke="#3AF1FF" strokeOpacity="0.12" />
+            </g>
+            <g fill="#3AF1FF">
+              {[
+                [660, 190], [860, 340], [960, 130], [1020, 220], [720, 260], [1120, 95], [820, 60],
+              ].map(([cx, cy], i) => (
+                <circle key={`${cx}-${cy}`} className="cta-node" cx={cx} cy={cy} r="3" opacity="0.5" style={{ animationDelay: `${i * -1.4}s` }} />
+              ))}
+            </g>
+          </svg>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{ background: "linear-gradient(100deg, rgba(1,12,98,0.85) 0%, rgba(1,12,98,0.55) 45%, transparent 78%)" }}
+          />
+          <div className="relative">
+          <div className="max-w-3xl">
           <Reveal>
             <p className="eyebrow text-cyan">{eyebrow}</p>
           </Reveal>
@@ -85,14 +117,6 @@ export function CtaSection({
             </div>
           </Reveal>
           </div>
-          <Reveal delay={240} className="lg:col-span-5">
-            <img
-              src={ctaMark.url}
-              alt="Nexen Strategy emblem"
-              loading="lazy"
-              className="mx-auto h-[220px] w-full max-w-[380px] object-contain transition-transform duration-500 hover:scale-[1.02] sm:h-[280px] lg:h-[340px]"
-            />
-          </Reveal>
           </div>
         </div>
       </div>
