@@ -1,25 +1,26 @@
 import { useState } from "react";
+import { Compass, Layers, Sparkles, TrendingUp, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 
-const pillars = [
+const pillars: { icon: LucideIcon; title: string; text: string }[] = [
   {
-    n: "01",
+    icon: Compass,
     title: "Strategy",
     text: "We understand your objectives before recommending the solution.",
   },
   {
-    n: "02",
+    icon: Layers,
     title: "Technology",
     text: "We use the right platforms and technologies to build scalable digital solutions.",
   },
   {
-    n: "03",
+    icon: Sparkles,
     title: "Creativity",
     text: "We make complex ideas clear, engaging and memorable.",
   },
   {
-    n: "04",
+    icon: TrendingUp,
     title: "Performance",
     text: "We focus on outcomes that create genuine business value.",
   },
