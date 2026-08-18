@@ -268,29 +268,54 @@ function Home() {
               <path className="ptn-dash2" d="M-100 140 C 360 200, 620 420, 1080 400 S 1440 340, 1560 320" fill="none" stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" />
             </svg>
           </div>
-          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
-              <Reveal className="lg:col-span-5">
-                <p className="eyebrow text-azure">Partners</p>
-                <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[3rem]">
-                  Technology and expertise, connected.
-                </h2>
-              </Reveal>
-              <div className="lg:col-span-7 lg:pt-12">
-                <div className="grid grid-cols-1 items-center gap-y-12 sm:grid-cols-3 sm:gap-x-10 lg:gap-x-14">
-                  {partnerLogos.map((p, i) => (
-                    <Reveal key={p.name} delay={i * 60} className="flex items-center justify-center sm:justify-start">
-                      <img
-                        src={p.src}
-                        alt={`${p.name} logo`}
-                        loading="lazy"
-                        className={`h-auto w-auto max-w-[190px] object-contain opacity-70 transition-all duration-500 hover:scale-[1.02] hover:opacity-100 lg:max-w-[220px] ${p.cls}`}
-                      />
-                    </Reveal>
-                  ))}
-                </div>
+          <span
+            aria-hidden
+            className="ghost-type pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[7rem] text-navy/[0.03] sm:text-[13rem] lg:text-[19rem]"
+          >
+            NEXEN
+          </span>
+          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <p className="eyebrow text-azure">Partners</p>
+              <span aria-hidden className="mx-auto mt-5 block h-px w-14 bg-gradient-to-r from-azure to-cyan" />
+              <h2 className="display mt-6 text-[2rem] text-navy sm:text-4xl lg:text-[2.9rem]">
+                Technology and expertise,
+                <br className="hidden sm:block" /> connected.
+              </h2>
+            </Reveal>
+
+            <Reveal delay={90} className="mt-16 lg:mt-20">
+              <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
+              <div className="grid grid-cols-1 divide-y divide-navy/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                {partnerLogos.map((p) => (
+                  <div
+                    key={p.name}
+                    className="group relative flex items-center justify-center px-6 py-12 lg:py-16"
+                  >
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 50% 50%, rgba(74,115,255,0.10) 0%, transparent 70%)",
+                      }}
+                    />
+                    <img
+                      src={p.src}
+                      alt={`${p.name} logo`}
+                      loading="lazy"
+                      className={`relative h-auto w-auto max-w-[180px] object-contain opacity-70 transition-all duration-500 group-hover:scale-[1.02] group-hover:opacity-100 group-hover:brightness-105 lg:max-w-[210px] ${p.cls}`}
+                    />
+                  </div>
+                ))}
               </div>
-            </div>
+              <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
+              <div className="mt-8 flex items-center justify-center gap-3">
+                <span aria-hidden className="h-px w-10 bg-navy/15" />
+                <span className="eyebrow text-[0.6rem] text-muted-foreground">A connected partner ecosystem</span>
+                <span aria-hidden className="h-px w-10 bg-navy/15" />
+              </div>
+            </Reveal>
           </div>
         </section>
 
