@@ -1,25 +1,26 @@
 import { useState } from "react";
+import { Compass, Layers, Sparkles, TrendingUp, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 
-const pillars = [
+const pillars: { icon: LucideIcon; title: string; text: string }[] = [
   {
-    n: "01",
+    icon: Compass,
     title: "Strategy",
     text: "We understand your objectives before recommending the solution.",
   },
   {
-    n: "02",
+    icon: Layers,
     title: "Technology",
     text: "We use the right platforms and technologies to build scalable digital solutions.",
   },
   {
-    n: "03",
+    icon: Sparkles,
     title: "Creativity",
     text: "We make complex ideas clear, engaging and memorable.",
   },
   {
-    n: "04",
+    icon: TrendingUp,
     title: "Performance",
     text: "We focus on outcomes that create genuine business value.",
   },
@@ -127,35 +128,34 @@ export function WhyNexen() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-[140px]">
+      <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-[130px]">
         {/* Intro */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-16">
-          <Reveal className="lg:col-span-7">
+        <div className="w-full">
+          <Reveal>
             <p className="eyebrow text-cyan">Why Nexen</p>
-            <span aria-hidden className="mt-5 block h-px w-20 bg-gradient-to-r from-cyan to-transparent" />
-            <h2 className="display mt-8 text-[2.4rem] text-white sm:text-[3.4rem] lg:text-[4.5rem]">
+            <span aria-hidden className="mt-4 block h-px w-20 bg-gradient-to-r from-cyan to-transparent" />
+            <h2 className="display mt-7 max-w-[22ch] text-[2.4rem] text-white sm:text-[3.6rem] lg:text-[5rem]">
               More Than a Digital Agency.
               <br />A Partner for What&apos;s Next.
             </h2>
           </Reveal>
 
-          <Reveal delay={120} className="lg:col-span-4 lg:col-start-9 lg:pt-20">
-            <p className="text-[1.0625rem] leading-relaxed text-white/70 lg:text-[1.125rem]">
-              We don&apos;t believe in building technology for technology&apos;s sake.
-            </p>
-            <p className="mt-6 text-[1.0625rem] leading-relaxed text-white/55 lg:text-[1.125rem]">
-              Every website, application, campaign and automation we create starts with a simple question:
-            </p>
-            <p className="mt-6 text-[1.0625rem] leading-relaxed text-white lg:text-[1.25rem]">
+          <Reveal delay={120} className="mt-9 lg:mt-11">
+            <p className="text-[0.78rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-white/85 sm:text-[0.85rem]">
               What does this need to achieve for the business?
             </p>
+            <span
+              aria-hidden
+              className="mt-4 block h-px w-40 bg-gradient-to-r from-cyan via-azure to-transparent"
+            />
           </Reveal>
         </div>
 
         {/* Pillars */}
-        <div className="mt-20 grid gap-x-16 gap-y-14 sm:grid-cols-2 lg:mt-32 lg:gap-x-24 lg:gap-y-20">
+        <div className="mt-20 grid gap-x-16 gap-y-14 sm:grid-cols-2 lg:mt-[90px] lg:gap-x-24 lg:gap-y-20">
           {pillars.map((p, i) => {
             const isOn = hovered === i;
+            const Icon = p.icon;
             return (
               <Reveal key={p.title} delay={i * 80}>
                 <div
@@ -178,14 +178,13 @@ export function WhyNexen() {
                     }}
                   />
                   <div className="relative">
-                    <span
+                    <Icon
+                      strokeWidth={1.35}
                       className={cn(
-                        "font-mono text-xs transition-colors duration-500",
-                        isOn ? "text-cyan" : "text-white/30",
+                        "h-7 w-7 transition-all duration-500",
+                        isOn ? "-translate-y-[3px] text-cyan" : "text-white/45",
                       )}
-                    >
-                      {p.n}
-                    </span>
+                    />
                     <span aria-hidden className="mt-5 block h-px w-full bg-white/12">
                       <span
                         className={cn(
