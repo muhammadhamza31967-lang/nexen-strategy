@@ -112,20 +112,20 @@ export function ServiceShowcase() {
   const Icon = current.icon;
 
   return (
-    <div className="mt-20 lg:mt-28">
+    <div className="mt-10 lg:mt-12">
       {/* LARGE VISUAL CANVAS */}
       <Reveal>
-        <div className="relative mx-auto w-full lg:w-[95%]">
+        <div className="relative mx-auto w-full">
           <span
             aria-hidden
-            className="pointer-events-none absolute -left-5 -top-5 hidden h-28 w-28 border-l border-t border-azure/35 lg:block"
+            className="pointer-events-none absolute -left-4 -top-4 hidden h-20 w-20 border-l border-t border-azure/35 lg:block"
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute -bottom-5 -right-5 hidden h-28 w-28 border-b border-r border-navy/15 lg:block"
+            className="pointer-events-none absolute -bottom-4 -right-4 hidden h-20 w-20 border-b border-r border-navy/15 lg:block"
           />
           <div
-            className="relative h-[380px] overflow-hidden bg-navy sm:h-[480px] lg:h-[620px]"
+            className="relative h-[300px] overflow-hidden border border-navy/10 bg-navy sm:h-[360px] lg:h-[420px]"
             style={{ boxShadow: "0 40px 90px -50px color-mix(in oklab, var(--color-navy) 60%, transparent)" }}
           >
             {items.map((s, i) => (
@@ -135,8 +135,8 @@ export function ServiceShowcase() {
                 alt={s.alt}
                 loading="lazy"
                 className={
-                  "absolute inset-0 h-full w-full object-cover transition-all duration-[600ms] ease-out motion-reduce:transition-none " +
-                  (i === active ? "scale-100 opacity-100 blur-0" : "scale-[1.06] opacity-0 blur-[2px]")
+                  "absolute inset-0 h-full w-full object-cover transition-all duration-[420ms] ease-out motion-reduce:transition-none " +
+                  (i === active ? "scale-100 opacity-100 blur-0" : "scale-[1.04] opacity-0 blur-[2px]")
                 }
               />
             ))}
@@ -145,7 +145,7 @@ export function ServiceShowcase() {
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, color-mix(in oklab, var(--color-navy) 42%, transparent) 0%, transparent 38%, color-mix(in oklab, var(--color-navy) 78%, transparent) 100%)",
+                  "linear-gradient(180deg, color-mix(in oklab, var(--color-navy) 55%, transparent) 0%, color-mix(in oklab, var(--color-navy) 22%, transparent) 40%, color-mix(in oklab, var(--color-navy) 84%, transparent) 100%)",
               }}
             />
             <span
@@ -154,14 +154,14 @@ export function ServiceShowcase() {
               style={{
                 backgroundImage:
                   "linear-gradient(to right, rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.5) 1px, transparent 1px)",
-                backgroundSize: "120px 120px",
+                backgroundSize: "100px 100px",
               }}
             />
 
             {/* top metadata */}
-            <div className="absolute left-6 right-6 top-6 flex items-center justify-between lg:left-10 lg:right-10 lg:top-9">
+            <div className="absolute left-6 right-6 top-5 flex items-center justify-between lg:left-9 lg:right-9 lg:top-6">
               <span className="font-mono text-[0.66rem] tracking-[0.3em] text-white/70">
-                NEXEN / DIGITAL CAPABILITY
+                NEXEN / DIGITAL CAPABILITY {current.no}
               </span>
               <span className="hidden items-center gap-3 sm:flex">
                 <Icon aria-hidden strokeWidth={1.3} className="h-4 w-4 text-cyan/80" />
@@ -170,19 +170,39 @@ export function ServiceShowcase() {
             </div>
 
             {/* overlay title block */}
-            <div className="absolute bottom-8 left-6 right-6 lg:bottom-12 lg:left-10 lg:right-10">
-              <div className="flex flex-wrap items-end justify-between gap-6">
-                <div key={current.slug} className="max-w-[22ch]">
-                  <span className="font-mono text-[0.66rem] tracking-[0.3em] text-cyan/80">
+            <div
+              key={current.slug}
+              className="absolute bottom-6 left-6 right-6 lg:bottom-8 lg:left-9 lg:right-9"
+            >
+              <div className="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-x-10">
+                <div className="lg:col-span-6">
+                  <span className="font-mono text-[0.62rem] tracking-[0.3em] text-cyan/80">
                     {current.no} / 06
                   </span>
-                  <h3 className="display mt-4 text-[2.2rem] leading-[1.02] text-white lg:text-[4.25rem]">
+                  <h3 className="display mt-2 text-[1.9rem] leading-[1.04] text-white lg:text-[3rem]">
                     {current.title}
                   </h3>
                 </div>
-                <p className="max-w-md text-[1.05rem] font-medium leading-snug text-white/85 lg:text-[1.25rem]">
-                  {current.headline}
-                </p>
+                <div className="lg:col-span-6">
+                  <p className="max-w-lg text-[1rem] font-medium leading-snug text-white/85 lg:text-[1.2rem]">
+                    {current.headline}
+                  </p>
+                  <p className="mt-2 hidden max-w-lg text-[0.86rem] leading-relaxed text-white/60 lg:block">
+                    {current.description}
+                  </p>
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: current.slug }}
+                    className="group mt-4 inline-flex items-center gap-2 border-b border-white/30 pb-1 text-sm tracking-wide text-white transition-colors duration-300 hover:border-cyan hover:text-cyan"
+                  >
+                    {current.cta}
+                    <ArrowUpRight
+                      aria-hidden
+                      strokeWidth={1.6}
+                      className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -190,10 +210,10 @@ export function ServiceShowcase() {
       </Reveal>
 
       {/* HORIZONTAL SERVICE NAVIGATION */}
-      <Reveal delay={100}>
+      <Reveal delay={80}>
         <nav
           aria-label="Services"
-          className="-mx-6 mt-10 overflow-x-auto px-6 lg:mx-auto lg:mt-12 lg:w-[95%] lg:overflow-visible lg:px-0"
+          className="-mx-6 mt-6 overflow-x-auto px-6 lg:mx-0 lg:mt-7 lg:overflow-visible lg:px-0"
         >
           <ul className="flex min-w-max border-t border-border lg:min-w-0">
             {items.map((s, i) => {
@@ -206,7 +226,7 @@ export function ServiceShowcase() {
                     onFocus={() => setActive(i)}
                     onClick={() => setActive(i)}
                     aria-pressed={isActive}
-                    className="group relative block w-full px-5 py-5 text-left outline-none lg:px-4 lg:py-6"
+                    className="group relative block w-full px-5 py-3.5 text-left outline-none lg:px-4 lg:py-4"
                   >
                     <span
                       aria-hidden
@@ -215,18 +235,18 @@ export function ServiceShowcase() {
                         (isActive ? "scale-x-100" : "scale-x-0")
                       }
                     />
-                    <span
-                      className={
-                        "font-mono text-[0.64rem] tracking-[0.28em] transition-colors duration-300 " +
-                        (isActive ? "text-azure" : "text-muted-foreground")
-                      }
-                    >
-                      {s.no}
-                    </span>
-                    <span className="mt-3 flex items-start gap-2">
+                    <span className="flex items-center gap-2">
                       <span
                         className={
-                          "text-[0.82rem] font-semibold uppercase leading-tight tracking-[0.06em] transition-colors duration-300 lg:text-[0.9rem] " +
+                          "font-mono text-[0.62rem] tracking-[0.24em] transition-colors duration-300 " +
+                          (isActive ? "text-azure" : "text-muted-foreground")
+                        }
+                      >
+                        {s.no}
+                      </span>
+                      <span
+                        className={
+                          "text-[0.78rem] font-semibold uppercase leading-tight tracking-[0.05em] transition-colors duration-300 lg:text-[0.82rem] " +
                           (isActive ? "text-navy" : "text-navy/40 group-hover:text-navy/70")
                         }
                       >
@@ -236,7 +256,7 @@ export function ServiceShowcase() {
                         aria-hidden
                         strokeWidth={1.5}
                         className={
-                          "mt-0.5 h-3.5 w-3.5 shrink-0 transition-all duration-300 motion-reduce:transition-none " +
+                          "h-3.5 w-3.5 shrink-0 transition-all duration-300 motion-reduce:transition-none " +
                           (isActive ? "text-azure opacity-100" : "-translate-x-1 translate-y-1 opacity-0")
                         }
                       />
@@ -249,34 +269,10 @@ export function ServiceShowcase() {
         </nav>
       </Reveal>
 
-      {/* ACTIVE SERVICE STORY */}
-      <Reveal delay={160}>
-        <div key={current.slug} className="mx-auto mt-14 grid gap-8 lg:mt-20 lg:w-[95%] lg:grid-cols-12 lg:gap-x-16">
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-10 bg-azure" />
-              <span className="eyebrow text-navy/60">{current.title}</span>
-            </div>
-          </div>
-          <div className="lg:col-span-8">
-            <p className="max-w-3xl text-[1.05rem] leading-[1.8] text-muted-foreground lg:text-[1.15rem]">
-              {current.description}
-            </p>
-            <Link
-              to="/services/$slug"
-              params={{ slug: current.slug }}
-              className="group mt-8 inline-flex items-center gap-2 border-b border-navy/20 pb-1 text-sm tracking-wide text-navy transition-colors duration-300 hover:border-azure hover:text-azure"
-            >
-              {current.cta}
-              <ArrowUpRight
-                aria-hidden
-                strokeWidth={1.6}
-                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
-              />
-            </Link>
-          </div>
-        </div>
-      </Reveal>
+      {/* MOBILE ACTIVE SERVICE INFO */}
+      <div key={current.slug} className="mt-6 lg:hidden">
+        <p className="text-[0.95rem] leading-relaxed text-muted-foreground">{current.description}</p>
+      </div>
     </div>
   );
 }
