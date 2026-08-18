@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -7,12 +7,9 @@ import { WhyNexen } from "@/components/site/WhyNexen";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceShowcase } from "@/components/site/ServiceShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
+import { PortfolioPreview } from "@/components/site/PortfolioPreview";
 import { partners } from "@/lib/site-data";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -223,112 +220,7 @@ function Home() {
         </section>
 
         {/* 06 PORTFOLIO PREVIEW */}
-        <section className="bg-secondary/30">
-          <div className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <Reveal>
-                <p className="eyebrow text-azure">Selected work</p>
-                <h2 className="display mt-6 text-[2.2rem] text-navy sm:text-5xl lg:text-[3.4rem]">
-                  Work made to do something.
-                </h2>
-              </Reveal>
-              <Reveal delay={90}>
-                <Link to="/portfolio" className="group inline-flex items-center gap-3 text-sm font-semibold text-navy">
-                  View full portfolio
-                  <ArrowRight className="h-4 w-4 text-amber transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Reveal>
-            </div>
-
-            {/* Case study 01 — full bleed */}
-            <Reveal className="mt-20">
-              <Link to="/portfolio" className="group block">
-                <div className="overflow-hidden bg-navy">
-                  <img
-                    src={work1}
-                    alt="Halden & Co. commerce experience case study"
-                    loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05] lg:aspect-[21/9]"
-                  />
-                </div>
-                <div className="mt-8 grid gap-6 lg:grid-cols-12">
-                  <div className="lg:col-span-3">
-                    <p className="eyebrow text-muted-foreground">Retail &amp; E-commerce</p>
-                    <p className="mt-2 text-sm text-azure">Web &amp; Apps</p>
-                  </div>
-                  <div className="lg:col-span-7">
-                    <h3 className="display text-3xl text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-5xl">
-                      Halden &amp; Co.
-                    </h3>
-                    <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                      A considered commerce experience rebuilt around merchandising and repeat purchase.
-                    </p>
-                  </div>
-                  <div className="flex items-start lg:col-span-2 lg:justify-end">
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-navy">
-                      View Case Study
-                      <ArrowUpRight className="h-5 w-5 text-amber transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </Reveal>
-
-            {/* Case studies 02 / 03 — asymmetric */}
-            <div className="mt-24 grid gap-14 lg:grid-cols-12 lg:gap-12">
-              <Reveal className="lg:col-span-7">
-                <Link to="/portfolio" className="group block">
-                  <div className="overflow-hidden bg-navy">
-                    <img
-                      src={work2}
-                      alt="Northgate Group identity system case study"
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
-                    />
-                  </div>
-                  <p className="eyebrow mt-6 text-muted-foreground">Professional Services — Brand &amp; Design</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
-                    Northgate Group
-                  </h3>
-                </Link>
-              </Reveal>
-              <Reveal delay={120} className="lg:col-span-5 lg:mt-28">
-                <Link to="/portfolio" className="group block">
-                  <div className="overflow-hidden bg-navy">
-                    <img
-                      src={work3}
-                      alt="Meridian Operations automation case study"
-                      loading="lazy"
-                      className="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
-                    />
-                  </div>
-                  <p className="eyebrow mt-6 text-muted-foreground">Industrial — AI &amp; Automation</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
-                    Meridian Operations
-                  </h3>
-                </Link>
-              </Reveal>
-            </div>
-
-            {/* Case study 04 */}
-            <Reveal className="mt-24">
-              <Link to="/portfolio" className="group block">
-                <div className="overflow-hidden bg-navy">
-                  <img
-                    src={work4}
-                    alt="Kestrel brand film production still"
-                    loading="lazy"
-                    className="aspect-[16/9] w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05] lg:aspect-[21/9]"
-                  />
-                </div>
-                <p className="eyebrow mt-6 text-muted-foreground">Energy &amp; Marine — Media</p>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy transition-transform duration-500 group-hover:translate-x-1 lg:text-3xl">
-                  Kestrel Brand Film
-                </h3>
-              </Link>
-            </Reveal>
-          </div>
-        </section>
+        <PortfolioPreview />
 
         {/* 08 PARTNERS */}
         <section className="border-t border-border">

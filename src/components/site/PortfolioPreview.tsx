@@ -113,7 +113,7 @@ export function PortfolioPreview() {
         {/* Secondary projects */}
         <div className="mt-14 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:mt-20 lg:gap-12">
           {secondary.map((p, i) => (
-            <Reveal key={p.title} delay={i * 110} className={i === 1 ? "sm:mt-16" : undefined}>
+            <Reveal key={p.title} delay={i * 110} className={i === 1 ? "sm:mt-16" : ""}>
               <Link to="/portfolio" className="group block">
                 <div className="relative overflow-hidden bg-navy">
                   <img
