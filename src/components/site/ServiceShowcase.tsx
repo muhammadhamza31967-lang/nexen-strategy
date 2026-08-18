@@ -1,176 +1,160 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
 import {
-  ArrowUpRight,
+  ArrowRight,
   Clapperboard,
   LayoutDashboard,
   MonitorSmartphone,
   PenTool,
+  Sparkles,
   TrendingUp,
-  Workflow,
   type LucideIcon,
 } from "lucide-react";
-import { services } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
+import type { ServiceKey } from "@/lib/site-data";
 import { Reveal } from "./Reveal";
-import svcBrand from "@/assets/svc-brand.jpg";
-import svcWeb from "@/assets/detail-web.jpg";
-import svcSoftware from "@/assets/detail-software.jpg";
-import svcAi from "@/assets/detail-ai.jpg";
-import svcMarketing from "@/assets/svc-marketing.jpg";
-import svcMedia from "@/assets/detail-media.jpg";
 
-const visuals: Record<string, { image: string; icon: LucideIcon }> = {
-  "brand-and-design": { image: svcBrand, icon: PenTool },
-  "web-and-app-development": { image: svcWeb, icon: MonitorSmartphone },
-  "software-solutions": { image: svcSoftware, icon: LayoutDashboard },
-  "ai-and-automation": { image: svcAi, icon: Workflow },
-  "marketing-and-growth": { image: svcMarketing, icon: TrendingUp },
-  "media-production": { image: svcMedia, icon: Clapperboard },
-};
+interface ShowcaseItem {
+  no: string;
+  slug: ServiceKey;
+  title: string;
+  headline: string;
+  description: string;
+  cta: string;
+  icon: LucideIcon;
+}
 
-const items = services.map((s) => ({
-  ...s,
-  image: visuals[s.slug]!.image,
-  icon: visuals[s.slug]!.icon,
-}));
+const items: ShowcaseItem[] = [
+  {
+    no: "01",
+    slug: "brand-and-design",
+    title: "Brand & Design",
+    headline: "Build a brand people recognise and remember.",
+    description:
+      "From logos and visual identities to UI/UX and digital design, we create brands and experiences that communicate clearly, look distinctive and remain consistent across every touchpoint.",
+    cta: "Explore Brand & Design",
+    icon: PenTool,
+  },
+  {
+    no: "02",
+    slug: "web-and-app-development",
+    title: "Web & App Development",
+    headline: "Digital experiences designed around your business and your customers.",
+    description:
+      "We create responsive websites, web applications, mobile apps and e-commerce experiences that combine strong design with reliable technology.",
+    cta: "Explore Web & App Development",
+    icon: MonitorSmartphone,
+  },
+  {
+    no: "03",
+    slug: "software-solutions",
+    title: "Software Solutions",
+    headline: "Technology built around the way your business works.",
+    description:
+      "From CRM and CMS platforms to custom software, dashboards and business portals, we develop solutions that simplify operations and connect your business.",
+    cta: "Explore Software Solutions",
+    icon: LayoutDashboard,
+  },
+  {
+    no: "04",
+    slug: "ai-and-automation",
+    title: "AI & Automation",
+    headline: "Make your business smarter, faster and more efficient.",
+    description:
+      "We develop AI-powered chatbots, assistants, agents and automated workflows that reduce repetitive work and create better customer and team experiences.",
+    cta: "Explore AI & Automation",
+    icon: Sparkles,
+  },
+  {
+    no: "05",
+    slug: "marketing-and-growth",
+    title: "Marketing & Growth",
+    headline: "Turn visibility into meaningful business opportunities.",
+    description:
+      "We help businesses build their digital presence, reach the right audiences and create marketing strategies that generate engagement, leads and growth.",
+    cta: "Explore Marketing & Growth",
+    icon: TrendingUp,
+  },
+  {
+    no: "06",
+    slug: "media-production",
+    title: "Media Production",
+    headline: "Bring your brand and ideas to life.",
+    description:
+      "From corporate videos and promotional content to professional photography, motion graphics and animation, we create visual content designed to capture attention and communicate with impact.",
+    cta: "Explore Media Production",
+    icon: Clapperboard,
+  },
+];
 
 export function ServiceShowcase() {
-  const [active, setActive] = useState(0);
-  const current = items[active]!;
-
   return (
-    <div className="mt-20 grid gap-14 lg:mt-28 lg:grid-cols-12 lg:gap-20">
-      {/* Visual panel */}
-      <div className="order-2 hidden lg:order-1 lg:col-span-5 lg:block">
-        <div className="sticky top-32">
-          <div className="relative">
-            {/* offset technical frame */}
-            <span
-              aria-hidden
-              className="absolute -left-5 -top-5 h-24 w-24 border-l border-t border-navy/15"
-            />
-            <span
-              aria-hidden
-              className="absolute -bottom-5 -right-5 h-24 w-24 border-b border-r border-navy/15"
-            />
-            <div className="relative aspect-[4/5] overflow-hidden bg-navy shadow-[0_50px_110px_-60px_rgba(1,12,98,0.75)] lg:-ml-6 lg:aspect-[3/4.1]">
-            {items.map((s, i) => (
-              <img
-                key={s.slug}
-                src={s.image}
-                alt={`${s.title} visual`}
-                loading="lazy"
-                className={cn(
-                  "absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out",
-                  active === i ? "scale-[1.02] opacity-100" : "scale-110 opacity-0",
-                )}
-              />
-            ))}
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(1,12,98,0.10) 0%, rgba(1,12,98,0.35) 45%, rgba(1,12,98,0.88) 100%)",
-              }}
-            />
-            {/* thin accent line */}
-            <span
-              aria-hidden
-              className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-cyan via-azure to-transparent"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-8">
-              <div>
-                <p className="eyebrow text-cyan">{current.no}</p>
-                <p className="display mt-3 text-[1.75rem] text-white">{current.title}</p>
-              </div>
-              <current.icon className="h-7 w-7 shrink-0 text-cyan/80" strokeWidth={1.4} />
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="mt-20 border-t border-border lg:mt-28">
+      <div className="grid md:grid-cols-2">
+        {items.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <Reveal
+              key={s.slug}
+              delay={i * 60}
+              className={
+                "group relative border-b border-border md:[&:nth-child(odd)]:border-r" +
+                (i === 0 ? "" : "")
+              }
+            >
+              <Link
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                aria-label={s.cta}
+                className="relative block h-full px-0 py-12 outline-none transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-azure/50 md:px-10 md:py-14 lg:px-14 lg:py-16"
+              >
+                {/* subtle glow */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none"
+                  style={{
+                    background:
+                      "radial-gradient(120% 90% at 15% 0%, color-mix(in oklab, var(--color-azure) 7%, transparent) 0%, transparent 65%)",
+                  }}
+                />
+                {/* accent line */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-azure via-cyan to-transparent transition-transform duration-300 group-hover:scale-x-100 motion-reduce:transition-none"
+                />
 
-      {/* Rows */}
-      <div className="order-1 lg:order-2 lg:col-span-7">
-        <div className="border-t border-border">
-          {items.map((s, i) => {
-            const Icon = s.icon;
-            const isActive = active === i;
-            return (
-              <Reveal key={s.slug} delay={i * 50}>
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  className="group relative block border-b border-border py-10 outline-none transition-[padding] duration-500 hover:pl-3 lg:py-14"
-                >
-                  <span
+                <div className="relative flex items-center gap-5">
+                  <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground">{s.no}</span>
+                  <span aria-hidden className="h-px w-8 bg-border" />
+                  <Icon
                     aria-hidden
-                    className={cn(
-                      "absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-cyan to-azure transition-transform duration-700",
-                      isActive ? "scale-x-100" : "scale-x-0",
-                    )}
+                    className="h-6 w-6 text-navy/40 transition-colors duration-300 group-hover:text-azure lg:h-7 lg:w-7"
+                    strokeWidth={1.4}
                   />
-                  <div className="flex items-start gap-6 lg:gap-8">
-                    <span
-                      className={cn(
-                        "mt-1 font-mono text-xs transition-colors duration-500",
-                        isActive ? "text-azure" : "text-muted-foreground",
-                      )}
-                    >
-                      {s.no}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-4">
-                        <Icon
-                          className={cn(
-                            "h-6 w-6 shrink-0 transition-all duration-500 lg:h-7 lg:w-7",
-                            isActive
-                              ? "scale-105 text-azure opacity-100"
-                              : "text-navy/35 opacity-80",
-                          )}
-                          strokeWidth={1.5}
-                        />
-                        <h3
-                          className={cn(
-                            "display text-[1.55rem] transition-colors duration-500 sm:text-[1.9rem] lg:text-[2.25rem]",
-                            isActive ? "text-azure" : "text-navy",
-                          )}
-                        >
-                          {s.title}
-                        </h3>
-                      </div>
-                      <p className="mt-4 max-w-lg text-[0.95rem] leading-relaxed text-muted-foreground">
-                        {s.short}
-                      </p>
-                      {/* mobile visual */}
-                      <div className="mt-6 overflow-hidden bg-navy lg:hidden">
-                        <img
-                          src={s.image}
-                          alt={`${s.title} visual`}
-                          loading="lazy"
-                          className="aspect-[16/10] w-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <ArrowUpRight
-                      className={cn(
-                        "mt-1 h-5 w-5 shrink-0 transition-all duration-500",
-                        isActive
-                          ? "-translate-y-1 translate-x-1 text-azure"
-                          : "text-muted-foreground/60",
-                      )}
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
+                </div>
+
+                <h3 className="display relative mt-7 text-[1.75rem] leading-[1.1] text-navy transition-colors duration-300 group-hover:text-azure lg:text-[2.15rem]">
+                  {s.title}
+                </h3>
+
+                <p className="relative mt-4 max-w-lg text-[1.0625rem] font-medium leading-snug text-navy/80">
+                  {s.headline}
+                </p>
+
+                <p className="relative mt-4 max-w-lg text-[1rem] leading-[1.75] text-muted-foreground">
+                  {s.description}
+                </p>
+
+                <span className="relative mt-8 inline-flex items-center gap-2 text-sm tracking-wide text-navy transition-colors duration-300 group-hover:text-azure">
+                  {s.cta}
+                  <ArrowRight
+                    aria-hidden
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+                    strokeWidth={1.6}
+                  />
+                </span>
+              </Link>
+            </Reveal>
+          );
+        })}
       </div>
     </div>
   );
