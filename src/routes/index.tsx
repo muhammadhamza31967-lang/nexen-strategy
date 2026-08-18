@@ -9,7 +9,6 @@ import { ServiceShowcase } from "@/components/site/ServiceShowcase";
 import { IndustryShowcase } from "@/components/site/IndustryShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { partners } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";

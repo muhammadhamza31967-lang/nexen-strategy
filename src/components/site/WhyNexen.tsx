@@ -7,7 +7,7 @@ export type Principle = { title: string; text: string };
 
 export function WhyNexen({ principles }: { principles: Principle[] }) {
   const [active, setActive] = useState(0);
-  const current = principles[active];
+  const current = principles[active] ?? principles[0]!;
 
   return (
     <section className="wn relative overflow-hidden" style={{ backgroundColor: "#010C62" }}>
