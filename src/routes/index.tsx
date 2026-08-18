@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -63,7 +62,6 @@ const principles = [
 ];
 
 function Home() {
-  const [activePrinciple, setActivePrinciple] = useState(0);
 
   return (
     <>
