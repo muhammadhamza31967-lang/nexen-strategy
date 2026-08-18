@@ -177,24 +177,24 @@ function Home() {
 
         {/* 03 SERVICES */}
         <section id="services" className="scroll-mt-24 bg-white">
-          <div className="mx-auto max-w-[1400px] px-6 py-[8.5rem] lg:px-12 lg:py-[10rem]">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-16">
+          <div className="mx-auto max-w-[1400px] px-6 py-[3.5rem] lg:px-12 lg:pb-[4.5rem] lg:pt-[4.5rem]">
+            <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-x-14">
               <Reveal className="lg:col-span-7">
                 <p className="eyebrow text-azure">Services</p>
                 <h2
-                  className="display mt-7 text-navy"
-                  style={{ fontSize: "clamp(2.4rem, 6vw, 6rem)", lineHeight: 1.02 }}
+                  className="display mt-4 text-navy"
+                  style={{ fontSize: "clamp(2.1rem, 4vw, 4.5rem)", lineHeight: 1.04 }}
                 >
                   Everything You Need to
                   <br className="hidden sm:block" /> Move Digital Forward.
                 </h2>
               </Reveal>
-              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9 lg:pt-28">
-                <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">
+              <Reveal delay={100} className="lg:col-span-4 lg:col-start-9">
+                <p className="text-[0.98rem] leading-relaxed text-muted-foreground">
                   Digital transformation doesn&rsquo;t happen through one service. It happens when technology,
                   creativity and business objectives work together.
                 </p>
-                <p className="mt-6 text-[1.0625rem] leading-relaxed text-muted-foreground">
+                <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground">
                   At Nexen, we bring these capabilities together under one team.
                 </p>
               </Reveal>
