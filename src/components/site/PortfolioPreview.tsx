@@ -64,7 +64,7 @@ export function PortfolioPreview() {
     el.style.setProperty("--pp-y", `${((e.clientY - r.top) / r.height) * 100}%`);
   };
 
-  const p = projects[active];
+  const p = projects[active]!;
 
   return (
     <section
