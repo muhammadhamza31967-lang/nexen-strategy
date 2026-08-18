@@ -176,7 +176,7 @@ function Home() {
         </section>
 
         {/* 03 SERVICES */}
-        <section id="services" className="scroll-mt-24">
+        <section id="services" className="scroll-mt-24 bg-white">
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
               <Reveal className="lg:col-span-7">
