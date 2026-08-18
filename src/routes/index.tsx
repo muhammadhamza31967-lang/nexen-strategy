@@ -37,28 +37,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const principles = [
-  {
-    title: "Business First",
-    text: "We start with the commercial objective. Every design, system and campaign is judged on what it does for the business, not how it looks in isolation.",
-  },
-  {
-    title: "Purposeful Technology",
-    text: "Technology is a means, not a statement. We choose what fits the problem, the budget and the team who will live with it.",
-  },
-  {
-    title: "Creative Thinking",
-    text: "Strategy without craft goes unnoticed. We hold ideas and execution to the same standard, across every discipline.",
-  },
-  {
-    title: "Built to Evolve",
-    text: "What we build is designed to be extended. Your business will change, and the work should be ready for it.",
-  },
-  {
-    title: "One Connected Team",
-    text: "Brand, product, software, AI, marketing and production sit together, so nothing is lost between disciplines.",
-  },
-];
 
 function Home() {
 
@@ -227,7 +205,7 @@ function Home() {
         </section>
 
         {/* 04 WHY NEXEN */}
-        <WhyNexen principles={principles} />
+        <WhyNexen />
 
         {/* 05 OUR APPROACH */}
         <section className="relative overflow-hidden border-b border-border">
