@@ -91,13 +91,22 @@ function AboutPage() {
         .ab-dash{stroke-dasharray:160 900;animation:ab-dash 20s linear infinite}
         .ab-dash2{stroke-dasharray:120 1000;animation:ab-dash 26s linear infinite;animation-delay:-8s}
         .ab-node{animation:ab-node 6s ease-in-out infinite}
+        @keyframes ab-orbit{to{transform:rotate(360deg)}}
+        @keyframes ab-orbit-r{to{transform:rotate(-360deg)}}
+        @keyframes ab-pulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
+        @keyframes ab-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-10px,0)}}
+        .ab-orbit{animation:ab-orbit 46s linear infinite;transform-origin:50% 50%}
+        .ab-orbit-r{animation:ab-orbit-r 68s linear infinite;transform-origin:50% 50%}
+        .ab-pulse{animation:ab-pulse 5s ease-in-out infinite}
+        .ab-float{animation:ab-float 9s ease-in-out infinite}
         @media (prefers-reduced-motion: reduce){.ab-drift,.ab-drift2,.ab-grid,.ab-dash,.ab-dash2,.ab-node{animation:none !important}}
+        @media (prefers-reduced-motion: reduce){.ab-orbit,.ab-orbit-r,.ab-pulse,.ab-float{animation:none !important}}
       `}</style>
 
       <Header />
       <main className="overflow-x-hidden">
         {/* 01 — HERO */}
-        <section className="relative overflow-hidden bg-background pt-36 pb-20 lg:pt-52 lg:pb-32">
+        <section className="relative overflow-hidden bg-background pt-32 pb-16 lg:pt-40 lg:pb-24">
           <div aria-hidden className="grid-faint-dark ab-grid absolute inset-[-80px] opacity-70" />
           <div
             aria-hidden
@@ -109,44 +118,110 @@ function AboutPage() {
             className="ab-drift2 pointer-events-none absolute left-[-14%] bottom-[-30%] h-[520px] w-[520px] rounded-full opacity-[0.14] blur-[120px]"
             style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
           />
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 1200 620"
-            preserveAspectRatio="xMidYMid slice"
-            fill="none"
-          >
-            <path className="ab-dash" d="M-60 520 C 260 470, 470 300, 760 270 S 1120 180, 1280 130" stroke="#4A73FF" strokeOpacity="0.4" strokeWidth="1" />
-            <path className="ab-dash2" d="M-60 200 C 300 250, 560 460, 900 430 S 1180 340, 1280 320" stroke="#3AF1FF" strokeOpacity="0.45" strokeWidth="1" />
-            <g fill="#4A73FF">
-              {[[760, 270], [900, 430], [1060, 205], [560, 350]].map(([cx, cy], i) => (
-                <circle key={`${cx}`} className="ab-node" cx={cx} cy={cy} r="3" opacity="0.4" style={{ animationDelay: `${i * -1.3}s` }} />
-              ))}
-            </g>
-          </svg>
-
           <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-            <div className="grid gap-10 lg:grid-cols-12">
-              <div className="lg:col-span-9">
+            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+              {/* content */}
+              <div className="lg:col-span-6">
                 <Reveal>
                   <p className="eyebrow text-azure">About Us</p>
                 </Reveal>
                 <Reveal delay={80}>
                   <h1
-                    className="display mt-8 text-navy"
-                    style={{ fontSize: "clamp(2.6rem, 6.6vw, 5.6rem)" }}
+                    className="display mt-7 max-w-[16ch] text-navy"
+                    style={{ fontSize: "clamp(2.4rem, 4.6vw, 4.1rem)" }}
                   >
                     We Build What Businesses Need Next.
                   </h1>
                 </Reveal>
-              </div>
-              <div className="lg:col-span-8 lg:col-start-5">
                 <Reveal delay={150}>
-                  <div className="mt-6 border-l-2 border-azure/60 pl-6 lg:mt-10">
-                    <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                  <div className="mt-8 border-l-2 border-azure/60 pl-6">
+                    <p className="max-w-[52ch] text-lg leading-relaxed text-muted-foreground">
                       Nexen Strategy brings together strategy, technology, creativity and marketing
                       to help businesses navigate an increasingly digital world.
                     </p>
+                  </div>
+                </Reveal>
+                <Reveal delay={220}>
+                  <div className="mt-10">
+                    <Link to="/" hash="services" className="btn-primary group">
+                      Explore Our Services
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* visual */}
+              <div className="lg:col-span-6">
+                <Reveal delay={180}>
+                  <div className="relative isolate overflow-hidden rounded-[26px] bg-navy p-6 sm:p-8">
+                    <div aria-hidden className="grid-faint ab-grid absolute inset-[-60px] opacity-60" />
+                    <div
+                      aria-hidden
+                      className="ab-drift pointer-events-none absolute inset-[-25%]"
+                      style={{
+                        background:
+                          "radial-gradient(45% 55% at 25% 25%, rgba(74,115,255,0.45) 0%, transparent 65%), radial-gradient(45% 55% at 80% 80%, rgba(58,241,255,0.25) 0%, transparent 70%)",
+                      }}
+                    />
+                    <svg
+                      aria-hidden
+                      className="relative block h-auto w-full"
+                      viewBox="0 0 520 460"
+                      fill="none"
+                    >
+                      <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.28" fill="none">
+                        <circle cx="260" cy="230" r="188" strokeDasharray="3 12" />
+                      </g>
+                      <g className="ab-orbit-r" stroke="#3AF1FF" strokeOpacity="0.22" fill="none">
+                        <circle cx="260" cy="230" r="132" strokeDasharray="2 16" />
+                      </g>
+                      <g stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" fill="none">
+                        <path className="ab-dash" d="M260 60 L104 160 L104 320 L260 410 L416 320 L416 160 Z" />
+                        <path className="ab-dash2" d="M104 160 L416 320 M416 160 L104 320 M260 60 L260 410" strokeOpacity="0.2" />
+                      </g>
+                      <g stroke="#4A73FF" strokeOpacity="0.5" strokeWidth="1" fill="none">
+                        <path d="M260 230 L260 60 M260 230 L104 160 M260 230 L416 160 M260 230 L104 320 M260 230 L416 320 M260 230 L260 410" strokeOpacity="0.28" />
+                      </g>
+                      <g className="ab-float">
+                        <rect x="212" y="182" width="96" height="96" rx="18" fill="none" stroke="#3AF1FF" strokeOpacity="0.55" />
+                        <rect x="230" y="200" width="60" height="60" rx="12" fill="none" stroke="#4A73FF" strokeOpacity="0.6" />
+                        <circle cx="260" cy="230" r="7" fill="#3AF1FF" />
+                      </g>
+                      <g fill="#3AF1FF">
+                        {[[260, 60], [104, 160], [416, 160], [104, 320], [416, 320], [260, 410]].map(
+                          ([cx, cy], i) => (
+                            <circle
+                              key={`${cx}-${cy}`}
+                              className="ab-pulse"
+                              cx={cx}
+                              cy={cy}
+                              r="4"
+                              style={{ animationDelay: `${i * -0.8}s` }}
+                            />
+                          ),
+                        )}
+                      </g>
+                    </svg>
+
+                    <div className="pointer-events-none absolute inset-0">
+                      {[
+                        { t: "Strategy", pos: "left-6 top-8" },
+                        { t: "Technology", pos: "right-6 top-8" },
+                        { t: "Creativity", pos: "left-6 bottom-8" },
+                        { t: "Growth", pos: "right-6 bottom-8" },
+                      ].map((l) => (
+                        <span
+                          key={l.t}
+                          className={cn(
+                            "absolute font-mono text-[0.6rem] uppercase tracking-[0.28em] text-white/45 sm:text-[0.68rem]",
+                            l.pos,
+                          )}
+                        >
+                          {l.t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </Reveal>
               </div>
