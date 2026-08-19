@@ -13,17 +13,18 @@ const clients = [
 
 export function ClientLogos() {
   const [paused, setPaused] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const STEP = 240;
+  const [delay, setDelay] = useState(0);
+  const DURATION = 26;
+  const PER_GROUP = clients.length * 2;
+  const STEP = DURATION / PER_GROUP;
 
   return (
     <section className="cll relative overflow-hidden border-t border-border bg-white">
       <style>{`
         @keyframes cll-marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
         @keyframes cll-glow{0%{transform:translate3d(-8%,0,0) scale(1)}50%{transform:translate3d(8%,0,0) scale(1.08)}100%{transform:translate3d(-8%,0,0) scale(1)}}
-        .cll-track{animation:cll-marquee 26s linear infinite;width:max-content}
+        .cll-track{animation:cll-marquee ${DURATION}s linear infinite;width:max-content}
         .cll-track[data-paused="true"]{animation-play-state:paused}
-        .cll-shift{transition:transform 600ms cubic-bezier(.22,1,.36,1)}
         .cll-glow{animation:cll-glow 26s ease-in-out infinite}
         @media (prefers-reduced-motion: reduce){.cll-track,.cll-glow{animation:none !important}}
       `}</style>
@@ -58,42 +59,47 @@ export function ClientLogos() {
             <button
               type="button"
               aria-label="Previous client logos"
-              onClick={() => setOffset((o) => o + STEP)}
-              className="absolute left-0 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-white shadow-[0_8px_24px_-8px_rgba(255,72,63,0.6)] transition-transform duration-300 hover:scale-110 sm:h-10 sm:w-10"
-              style={{ backgroundImage: "linear-gradient(135deg,#ffa53c,#ff483f)" }}
+              onClick={() => setDelay((d) => d + STEP)}
+              className="absolute left-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:-translate-x-0.5 hover:scale-110"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
             </button>
             <button
               type="button"
               aria-label="Next client logos"
-              onClick={() => setOffset((o) => o - STEP)}
-              className="absolute right-0 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-white shadow-[0_8px_24px_-8px_rgba(255,72,63,0.6)] transition-transform duration-300 hover:scale-110 sm:h-10 sm:w-10"
-              style={{ backgroundImage: "linear-gradient(135deg,#ffa53c,#ff483f)" }}
+              onClick={() => setDelay((d) => d - STEP)}
+              className="absolute right-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:translate-x-0.5 hover:scale-110"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
             </button>
 
             <div className="relative overflow-hidden px-12 py-10 sm:px-16 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div className="cll-shift" style={{ transform: `translate3d(${offset}px,0,0)` }}>
-            <div className="cll-track flex items-center" data-paused={paused}>
-              {[0, 1].map((dup) => (
-                <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
-                  {clients.map((c) => (
-                    <div key={c.name} className="flex items-center justify-center px-10 sm:px-14 lg:px-20">
-                      <img
-                        src={c.src}
-                        alt={`${c.name} logo`}
-                        loading="lazy"
-                        onMouseEnter={() => setPaused(true)}
-                        onMouseLeave={() => setPaused(false)}
-                        className={`w-auto max-w-[220px] object-contain lg:max-w-[280px] ${c.cls}`}
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+              <div
+                className="cll-track flex items-center"
+                data-paused={paused}
+                style={{ animationDelay: `${delay}s` }}
+              >
+                {[0, 1].map((dup) => (
+                  <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
+                    {[0, 1].map((rep) =>
+                      clients.map((c) => (
+                        <div
+                          key={`${rep}-${c.name}`}
+                          className="flex items-center justify-center px-10 sm:px-14 lg:px-20"
+                        >
+                          <img
+                            src={c.src}
+                            alt={`${c.name} logo`}
+                            loading="lazy"
+                            onMouseEnter={() => setPaused(true)}
+                            onMouseLeave={() => setPaused(false)}
+                            className={`w-auto max-w-[220px] object-contain lg:max-w-[280px] ${c.cls}`}
+                          />
+                        </div>
+                      )),
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
