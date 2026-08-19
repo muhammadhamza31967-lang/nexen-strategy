@@ -131,13 +131,13 @@ function AboutPage() {
             style={{ background: "radial-gradient(circle, #FFA53C 0%, transparent 70%)" }}
           />
           {/* L4 — flowing data paths across the full hero */}
-          {/* <svg
+          <svg
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full"
             viewBox="0 0 1440 800"
             preserveAspectRatio="xMidYMid slice"
             fill="none"
-          > */}
+          >
             <path
               className="ab-dash"
               d="M-80 660 C 320 600, 560 420, 940 380 S 1360 240, 1520 180"
