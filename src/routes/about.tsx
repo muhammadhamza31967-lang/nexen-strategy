@@ -106,125 +106,151 @@ function AboutPage() {
       <Header />
       <main className="overflow-x-hidden">
         {/* 01 — HERO */}
-        <section className="relative overflow-hidden bg-background pt-32 pb-16 lg:pt-40 lg:pb-24">
-          <div aria-hidden className="grid-faint-dark ab-grid absolute inset-[-80px] opacity-70" />
+        <section
+          className="relative isolate flex min-h-[620px] items-center overflow-hidden pt-32 pb-20 lg:min-h-[760px] lg:pt-40 lg:pb-24"
+          style={{
+            background:
+              "linear-gradient(140deg, #02052D 0%, #010C62 38%, #0A146F 62%, #111B82 100%)",
+          }}
+        >
+          {/* L2 — technical grid */}
+          <div aria-hidden className="grid-faint ab-grid absolute inset-[-90px] opacity-70" />
+          {/* L3 — atmospheric gradient fields */}
           <div
             aria-hidden
-            className="ab-drift pointer-events-none absolute right-[-12%] top-[-18%] h-[620px] w-[620px] rounded-full opacity-[0.16] blur-[120px]"
+            className="ab-drift pointer-events-none absolute right-[-10%] top-[-24%] h-[760px] w-[760px] rounded-full opacity-45 blur-[150px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
           <div
             aria-hidden
-            className="ab-drift2 pointer-events-none absolute left-[-14%] bottom-[-30%] h-[520px] w-[520px] rounded-full opacity-[0.14] blur-[120px]"
+            className="ab-drift2 pointer-events-none absolute left-[-16%] bottom-[-34%] h-[620px] w-[620px] rounded-full opacity-30 blur-[150px]"
             style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
           />
-          <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-              {/* content */}
-              <div className="lg:col-span-6">
-                <Reveal>
-                  <p className="eyebrow text-azure">About Us</p>
-                </Reveal>
-                <Reveal delay={80}>
-                  <h1
-                    className="display mt-7 max-w-[16ch] text-navy"
-                    style={{ fontSize: "clamp(2.4rem, 4.6vw, 4.1rem)" }}
-                  >
-                    We Build What Businesses Need Next.
-                  </h1>
-                </Reveal>
-                <Reveal delay={150}>
-                  <div className="mt-8 border-l-2 border-azure/60 pl-6">
-                    <p className="max-w-[52ch] text-lg leading-relaxed text-muted-foreground">
-                      Nexen Strategy brings together strategy, technology, creativity and marketing
-                      to help businesses navigate an increasingly digital world.
-                    </p>
-                  </div>
-                </Reveal>
-                <Reveal delay={220}>
-                  <div className="mt-10">
-                    <Link to="/" hash="services" className="btn-primary group">
-                      Explore Our Services
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </Reveal>
-              </div>
+          <div
+            aria-hidden
+            className="ab-drift pointer-events-none absolute right-[24%] bottom-[-20%] h-[380px] w-[380px] rounded-full opacity-[0.12] blur-[150px]"
+            style={{ background: "radial-gradient(circle, #FFA53C 0%, transparent 70%)" }}
+          />
+          {/* L4 — flowing data paths across the full hero */}
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 1440 800"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+          >
+            <path className="ab-dash" d="M-80 660 C 320 600, 560 420, 940 380 S 1360 240, 1520 180" stroke="#4A73FF" strokeOpacity="0.45" strokeWidth="1" />
+            <path className="ab-dash2" d="M-80 220 C 340 280, 620 560, 1020 520 S 1380 400, 1520 370" stroke="#3AF1FF" strokeOpacity="0.4" strokeWidth="1" />
+            <path className="ab-dash" d="M-80 440 C 400 430, 760 430, 1520 440" stroke="#3AF1FF" strokeOpacity="0.14" strokeWidth="1" style={{ animationDelay: "-12s" }} />
+          </svg>
 
-              {/* visual */}
-              <div className="lg:col-span-6">
-                <Reveal delay={180}>
-                  <div className="relative isolate overflow-hidden rounded-[26px] bg-navy p-6 sm:p-8">
-                    <div aria-hidden className="grid-faint ab-grid absolute inset-[-60px] opacity-60" />
-                    <div
-                      aria-hidden
-                      className="ab-drift pointer-events-none absolute inset-[-25%]"
-                      style={{
-                        background:
-                          "radial-gradient(45% 55% at 25% 25%, rgba(74,115,255,0.45) 0%, transparent 65%), radial-gradient(45% 55% at 80% 80%, rgba(58,241,255,0.25) 0%, transparent 70%)",
-                      }}
+          {/* L5/L6 — central digital system */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-[-14%] top-1/2 hidden w-[900px] -translate-y-1/2 lg:block xl:right-[-6%]"
+          >
+            <svg viewBox="0 0 720 720" className="h-auto w-full" fill="none">
+              <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.28" fill="none">
+                <circle cx="360" cy="360" r="300" strokeDasharray="3 14" />
+              </g>
+              <g className="ab-orbit-r" stroke="#3AF1FF" strokeOpacity="0.22" fill="none">
+                <circle cx="360" cy="360" r="222" strokeDasharray="2 18" />
+                <circle cx="360" cy="360" r="150" strokeOpacity="0.12" />
+              </g>
+              <g stroke="#3AF1FF" strokeWidth="1" fill="none" strokeOpacity="0.3">
+                <path className="ab-dash" d="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z" />
+                <path d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620" strokeOpacity="0.2" />
+              </g>
+              <g className="ab-float">
+                <rect x="292" y="292" width="136" height="136" rx="26" fill="none" stroke="#3AF1FF" strokeOpacity="0.4" transform="rotate(45 360 360)" />
+                <rect x="316" y="316" width="88" height="88" rx="16" fill="none" stroke="#4A73FF" strokeOpacity="0.55" />
+                <circle cx="360" cy="360" r="46" fill="#3AF1FF" opacity="0.08" />
+                <circle className="ab-pulse" cx="360" cy="360" r="9" fill="#3AF1FF" />
+              </g>
+              <g fill="#3AF1FF">
+                {[[360, 100], [134, 230], [586, 230], [134, 490], [586, 490], [360, 620]].map(
+                  ([cx, cy], i) => (
+                    <circle
+                      key={`${cx}-${cy}`}
+                      className="ab-pulse"
+                      cx={cx}
+                      cy={cy}
+                      r="4.5"
+                      style={{ animationDelay: `${i * -0.9}s` }}
                     />
-                    <svg
-                      aria-hidden
-                      className="relative block h-auto w-full"
-                      viewBox="0 0 520 460"
-                      fill="none"
-                    >
-                      <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.28" fill="none">
-                        <circle cx="260" cy="230" r="188" strokeDasharray="3 12" />
-                      </g>
-                      <g className="ab-orbit-r" stroke="#3AF1FF" strokeOpacity="0.22" fill="none">
-                        <circle cx="260" cy="230" r="132" strokeDasharray="2 16" />
-                      </g>
-                      <g stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" fill="none">
-                        <path className="ab-dash" d="M260 60 L104 160 L104 320 L260 410 L416 320 L416 160 Z" />
-                        <path className="ab-dash2" d="M104 160 L416 320 M416 160 L104 320 M260 60 L260 410" strokeOpacity="0.2" />
-                      </g>
-                      <g stroke="#4A73FF" strokeOpacity="0.5" strokeWidth="1" fill="none">
-                        <path d="M260 230 L260 60 M260 230 L104 160 M260 230 L416 160 M260 230 L104 320 M260 230 L416 320 M260 230 L260 410" strokeOpacity="0.28" />
-                      </g>
-                      <g className="ab-float">
-                        <rect x="212" y="182" width="96" height="96" rx="18" fill="none" stroke="#3AF1FF" strokeOpacity="0.55" />
-                        <rect x="230" y="200" width="60" height="60" rx="12" fill="none" stroke="#4A73FF" strokeOpacity="0.6" />
-                        <circle cx="260" cy="230" r="7" fill="#3AF1FF" />
-                      </g>
-                      <g fill="#3AF1FF">
-                        {[[260, 60], [104, 160], [416, 160], [104, 320], [416, 320], [260, 410]].map(
-                          ([cx, cy], i) => (
-                            <circle
-                              key={`${cx}-${cy}`}
-                              className="ab-pulse"
-                              cx={cx}
-                              cy={cy}
-                              r="4"
-                              style={{ animationDelay: `${i * -0.8}s` }}
-                            />
-                          ),
-                        )}
-                      </g>
-                    </svg>
+                  ),
+                )}
+              </g>
+              <g fill="#FFA53C" opacity="0.7">
+                <circle className="ab-node" cx="470" cy="168" r="2.5" />
+                <circle className="ab-node" cx="212" cy="556" r="2.5" style={{ animationDelay: "-3s" }} />
+              </g>
+              <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
+                <text x="330" y="72">STRATEGY</text>
+                <text x="596" y="226">TECHNOLOGY</text>
+                <text x="18" y="494">CREATIVITY</text>
+                <text x="336" y="666">GROWTH</text>
+              </g>
+            </svg>
+          </div>
 
-                    <div className="pointer-events-none absolute inset-0">
-                      {[
-                        { t: "Strategy", pos: "left-6 top-8" },
-                        { t: "Technology", pos: "right-6 top-8" },
-                        { t: "Creativity", pos: "left-6 bottom-8" },
-                        { t: "Growth", pos: "right-6 bottom-8" },
-                      ].map((l) => (
-                        <span
-                          key={l.t}
-                          className={cn(
-                            "absolute font-mono text-[0.6rem] uppercase tracking-[0.28em] text-white/45 sm:text-[0.68rem]",
-                            l.pos,
-                          )}
-                        >
-                          {l.t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
+          {/* mobile / tablet visual layer */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-16 right-[-22%] w-[520px] opacity-60 lg:hidden"
+          >
+            <svg viewBox="0 0 720 720" className="h-auto w-full" fill="none">
+              <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.3" fill="none">
+                <circle cx="360" cy="360" r="290" strokeDasharray="3 14" />
+              </g>
+              <g stroke="#3AF1FF" strokeOpacity="0.28" strokeWidth="1" fill="none">
+                <path d="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z" />
+                <path d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620" strokeOpacity="0.18" />
+              </g>
+              <circle className="ab-pulse" cx="360" cy="360" r="9" fill="#3AF1FF" />
+            </svg>
+          </div>
+
+          {/* content */}
+          <div className="relative mx-auto w-full max-w-[1400px] px-6 lg:px-12">
+            <div className="max-w-[46rem] lg:max-w-[38rem] xl:max-w-[42rem]">
+              <Reveal>
+                <p className="eyebrow text-cyan">About Us</p>
+              </Reveal>
+              <Reveal delay={80}>
+                <h1
+                  className="display mt-7 text-white"
+                  style={{ fontSize: "clamp(2.4rem, 4.6vw, 4.2rem)" }}
+                >
+                  We Build What Businesses Need <span className="text-cyan">Next.</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={150}>
+                <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-white/70">
+                  Nexen Strategy brings together strategy, technology, creativity and marketing to
+                  help businesses navigate an increasingly digital world.
+                </p>
+              </Reveal>
+              <Reveal delay={220}>
+                <div className="mt-10">
+                  <Link to="/" hash="services" className="btn-primary group">
+                    Explore Our Services
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </Reveal>
+              <Reveal delay={280}>
+                <div className="mt-12 flex items-center gap-4 font-mono text-[0.62rem] uppercase tracking-[0.3em] text-white/30">
+                  <span className="h-px w-12 bg-gradient-to-r from-cyan to-transparent" />
+                  <span>Strategy</span>
+                  <span className="text-white/15">/</span>
+                  <span>Technology</span>
+                  <span className="text-white/15">/</span>
+                  <span>Creativity</span>
+                  <span className="text-white/15">/</span>
+                  <span>Marketing</span>
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
