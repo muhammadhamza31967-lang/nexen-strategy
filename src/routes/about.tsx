@@ -152,14 +152,6 @@ function AboutPage() {
               strokeOpacity="0.4"
               strokeWidth="1"
             />
-            <path
-              className="ab-dash"
-              d="M-80 440 C 400 430, 760 430, 1520 440"
-              stroke="#3AF1FF"
-              strokeOpacity="0.14"
-              strokeWidth="1"
-              style={{ animationDelay: "-12s" }}
-            />
           </svg>
 
           {/* L5/L6 — central digital system */}
@@ -218,15 +210,6 @@ function AboutPage() {
                 ].map(([cx, cy]) => (
                   <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4.5" />
                 ))}
-              </g>
-              <g>
-                <circle r="3.5" fill="#FFA53C" opacity="0.85">
-                  <animateMotion
-                    dur="22s"
-                    repeatCount="indefinite"
-                    path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
-                  />
-                </circle>
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">
