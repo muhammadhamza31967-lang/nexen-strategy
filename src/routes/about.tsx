@@ -131,7 +131,7 @@ function AboutPage() {
             style={{ background: "radial-gradient(circle, #FFA53C 0%, transparent 70%)" }}
           />
           {/* L4 — flowing data paths across the full hero */}
-          <svg
+          {/* <svg
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full"
             viewBox="0 0 1440 800"
@@ -160,7 +160,7 @@ function AboutPage() {
               strokeWidth="1"
               style={{ animationDelay: "-12s" }}
             />
-          </svg>
+          </svg> */}
 
           {/* L5/L6 — central digital system */}
           <div
@@ -220,21 +220,21 @@ function AboutPage() {
                 ))}
               </g>
               <g>
-                {/* <circle r="3.5" fill="#FFA53C" opacity="0.85">
+                <circle r="3.5" fill="#FFA53C" opacity="0.85">
                   <animateMotion
                     dur="22s"
                     repeatCount="indefinite"
                     path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
                   />
-                </circle> */}
-                {/* <circle r="3" fill="#3AF1FF" opacity="0.7">
+                </circle>
+                <circle r="3" fill="#3AF1FF" opacity="0.7">
                   <animateMotion
                     dur="22s"
                     begin="-11s"
                     repeatCount="indefinite"
                     path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
                   />
-                </circle> */}
+                </circle>
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">
