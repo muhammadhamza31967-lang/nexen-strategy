@@ -200,7 +200,7 @@ function AboutPage() {
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">STRATEGY</text>
-                <text x="574" y="206">TECHNOLOGY</text>
+                <text x="536" y="200">TECHNOLOGY</text>
                 <text x="18" y="494">CREATIVITY</text>
                 <text x="336" y="666">GROWTH</text>
               </g>
