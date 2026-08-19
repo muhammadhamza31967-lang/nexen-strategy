@@ -147,7 +147,7 @@ function AboutPage() {
           {/* L5/L6 — central digital system */}
           <div
             aria-hidden
-            className="pointer-events-none absolute right-[-10%] top-1/2 hidden w-[740px] -translate-y-1/2 lg:block xl:right-[-2%]"
+            className="pointer-events-none absolute right-[-4%] top-1/2 hidden w-[700px] -translate-y-1/2 lg:block xl:right-[2%]"
           >
             <svg viewBox="0 0 720 720" className="h-auto w-full" fill="none">
               <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.28" fill="none">
@@ -200,7 +200,7 @@ function AboutPage() {
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">STRATEGY</text>
-                <text x="596" y="226">TECHNOLOGY</text>
+                <text x="574" y="206">TECHNOLOGY</text>
                 <text x="18" y="494">CREATIVITY</text>
                 <text x="336" y="666">GROWTH</text>
               </g>
