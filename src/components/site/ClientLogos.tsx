@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import cosh from "@/assets/client-cosh.svg.asset.json";
 import college from "@/assets/client-college-of-science.svg.asset.json";
@@ -10,13 +12,18 @@ const clients = [
 ];
 
 export function ClientLogos() {
+  const [paused, setPaused] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const STEP = 240;
+
   return (
     <section className="cll relative overflow-hidden border-t border-border bg-white">
       <style>{`
         @keyframes cll-marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
         @keyframes cll-glow{0%{transform:translate3d(-8%,0,0) scale(1)}50%{transform:translate3d(8%,0,0) scale(1.08)}100%{transform:translate3d(-8%,0,0) scale(1)}}
-        .cll-track{animation:cll-marquee 38s linear infinite;width:max-content}
-        .cll:hover .cll-track{animation-play-state:paused}
+        .cll-track{animation:cll-marquee 26s linear infinite;width:max-content}
+        .cll-track[data-paused="true"]{animation-play-state:paused}
+        .cll-shift{transition:transform 600ms cubic-bezier(.22,1,.36,1)}
         .cll-glow{animation:cll-glow 26s ease-in-out infinite}
         @media (prefers-reduced-motion: reduce){.cll-track,.cll-glow{animation:none !important}}
       `}</style>
@@ -47,8 +54,29 @@ export function ClientLogos() {
 
         <Reveal delay={90} className="mt-12 lg:mt-14">
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
-          <div className="relative overflow-hidden py-10 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="cll-track flex items-center">
+          <div className="relative">
+            <button
+              type="button"
+              aria-label="Previous client logos"
+              onClick={() => setOffset((o) => o + STEP)}
+              className="absolute left-0 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-white shadow-[0_8px_24px_-8px_rgba(255,72,63,0.6)] transition-transform duration-300 hover:scale-110 sm:h-10 sm:w-10"
+              style={{ backgroundImage: "linear-gradient(135deg,#ffa53c,#ff483f)" }}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next client logos"
+              onClick={() => setOffset((o) => o - STEP)}
+              className="absolute right-0 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-white shadow-[0_8px_24px_-8px_rgba(255,72,63,0.6)] transition-transform duration-300 hover:scale-110 sm:h-10 sm:w-10"
+              style={{ backgroundImage: "linear-gradient(135deg,#ffa53c,#ff483f)" }}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+
+            <div className="relative overflow-hidden px-12 py-10 sm:px-16 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+              <div className="cll-shift" style={{ transform: `translate3d(${offset}px,0,0)` }}>
+            <div className="cll-track flex items-center" data-paused={paused}>
               {[0, 1].map((dup) => (
                 <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
                   {clients.map((c) => (
@@ -57,12 +85,16 @@ export function ClientLogos() {
                         src={c.src}
                         alt={`${c.name} logo`}
                         loading="lazy"
+                        onMouseEnter={() => setPaused(true)}
+                        onMouseLeave={() => setPaused(false)}
                         className={`w-auto max-w-[220px] object-contain lg:max-w-[280px] ${c.cls}`}
                       />
                     </div>
                   ))}
                 </div>
               ))}
+            </div>
+              </div>
             </div>
           </div>
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
