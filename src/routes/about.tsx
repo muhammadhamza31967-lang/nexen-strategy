@@ -290,90 +290,91 @@ function AboutPage() {
         </section>
 
         {/* 02 — WHO WE ARE */}
-        <section className="relative overflow-hidden bg-background py-24 lg:py-32">
-          <div aria-hidden className="grid-faint pointer-events-none absolute inset-0 opacity-[0.25]" />
+        <section className="relative overflow-hidden bg-background py-24 lg:py-28">
+          <div aria-hidden className="grid-faint pointer-events-none absolute inset-0 opacity-[0.22]" />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(180deg, rgba(74,115,255,0.045) 0%, transparent 45%)" }}
+            style={{ background: "linear-gradient(120deg, rgba(74,115,255,0.05) 0%, transparent 42%, rgba(58,241,255,0.04) 100%)" }}
           />
-          <div className="relative mx-auto max-w-[1240px] px-6 lg:px-12">
-            {/* header */}
-            <Reveal>
-              <div className="flex items-center gap-4">
-                <span aria-hidden className="h-px w-10 bg-gradient-to-r from-cyan to-transparent" />
-                <p className="eyebrow text-azure">Who We Are</p>
+          <div className="relative mx-auto max-w-[1320px] px-6 lg:px-12">
+            <div className="grid gap-14 lg:grid-cols-[45fr_55fr] lg:items-start lg:gap-20">
+              {/* LEFT — brand statement */}
+              <div className="relative lg:pr-6">
+                <span aria-hidden className="pointer-events-none absolute -left-6 top-0 hidden h-full w-px bg-gradient-to-b from-azure/25 via-border to-transparent lg:block" />
+                <Reveal>
+                  <div className="flex items-center gap-4">
+                    <span aria-hidden className="h-px w-10 bg-gradient-to-r from-cyan to-transparent" />
+                    <p className="eyebrow text-azure">Who We Are</p>
+                  </div>
+                </Reveal>
+                <Reveal delay={90}>
+                  <h2
+                    className="display mt-8 max-w-[16ch] text-navy"
+                    style={{ fontSize: "clamp(2rem, 3.9vw, 3.5rem)" }}
+                  >
+                    A Digital Partner Built Around Business Outcomes.
+                  </h2>
+                </Reveal>
+                <Reveal delay={160}>
+                  <span
+                    aria-hidden
+                    className="mt-9 block h-[3px] w-24 rounded-full"
+                    style={{ background: "linear-gradient(90deg, #3AF1FF 0%, #4A73FF 100%)" }}
+                  />
+                </Reveal>
+                <Reveal delay={220}>
+                  <p className="mt-7 font-mono text-[0.62rem] uppercase tracking-[0.34em] text-navy/40">
+                    Business-First Digital Partnership
+                  </p>
+                </Reveal>
               </div>
-            </Reveal>
-            <Reveal delay={90}>
-              <h2
-                className="display mt-8 max-w-[19ch] text-navy"
-                style={{ fontSize: "clamp(1.9rem, 3.6vw, 3.25rem)" }}
-              >
-                A Digital Partner Built Around Business Outcomes.
-              </h2>
-            </Reveal>
 
-            {/* editorial divider */}
-            <Reveal delay={150}>
-              <div className="mt-12 flex items-center gap-6">
-                <span className="font-mono text-[0.6rem] uppercase tracking-[0.34em] text-navy/35">
-                  01 / Who We Are
-                </span>
-                <span aria-hidden className="h-px flex-1 origin-left bg-gradient-to-r from-azure/30 via-border to-transparent" />
-              </div>
-            </Reveal>
-
-            {/* editorial content flow */}
-            <div className="mt-16 lg:mt-20">
-              {[
-                {
-                  n: "01",
-                  text:
-                    "We work with organisations that want more from their digital presence than a website that simply looks good.",
-                },
-                {
-                  n: "02",
-                  text:
-                    "Our work spans digital experiences, software solutions, AI and automation, marketing and media — allowing us to support businesses across multiple stages of their digital journey.",
-                },
-              ].map((item, i) => (
-                <Reveal key={item.n} delay={200 + i * 90}>
-                  <div className="grid gap-6 border-t border-border/70 py-10 lg:grid-cols-12 lg:gap-12 lg:py-12">
-                    <div className="lg:col-span-3">
-                      <span className="font-mono text-[0.68rem] tracking-[0.34em] text-azure/70">{item.n}</span>
-                    </div>
-                    <div className="lg:col-span-9">
-                      <p className="max-w-[62ch] text-[1.0625rem] leading-[1.85] text-muted-foreground lg:text-lg">
+              {/* RIGHT — structured story */}
+              <div className="lg:pt-2">
+                {[
+                  {
+                    n: "01",
+                    text:
+                      "We work with organisations that want more from their digital presence than a website that simply looks good.",
+                  },
+                  {
+                    n: "02",
+                    text:
+                      "Our work spans digital experiences, software solutions, AI and automation, marketing and media — allowing us to support businesses across multiple stages of their digital journey.",
+                  },
+                ].map((item, i) => (
+                  <Reveal key={item.n} delay={200 + i * 100}>
+                    <div className="grid gap-4 border-b border-border/70 pb-9 pt-0 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 lg:pb-10">
+                      <span className="font-mono text-[0.66rem] tracking-[0.34em] text-azure/70 sm:pt-2">
+                        {item.n}
+                      </span>
+                      <p className="max-w-[58ch] text-[1.03rem] leading-[1.8] text-muted-foreground">
                         {item.text}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+                <Reveal delay={420}>
+                  <div className="grid gap-4 pt-9 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 lg:pt-10">
+                    <span className="font-mono text-[0.66rem] tracking-[0.34em] text-azure sm:pt-2">03</span>
+                    <div className="relative pl-6">
+                      <span
+                        aria-hidden
+                        className="absolute left-0 top-1 h-[calc(100%-0.5rem)] w-[2px] rounded-full"
+                        style={{ background: "linear-gradient(180deg, #3AF1FF 0%, rgba(74,115,255,0.15) 100%)" }}
+                      />
+                      <p
+                        className="max-w-[34ch] font-medium leading-[1.5] text-navy sm:max-w-[40ch]"
+                        style={{ fontSize: "clamp(1.25rem, 1.7vw, 1.6rem)" }}
+                      >
+                        Whether you need to launch, transform, automate or grow, we bring the people, expertise and
+                        technology together to make it happen.
                       </p>
                     </div>
                   </div>
                 </Reveal>
-              ))}
-
-              {/* closing statement */}
-              <Reveal delay={380}>
-                <div className="grid gap-6 border-t border-border/70 pt-12 lg:grid-cols-12 lg:gap-12 lg:pt-14">
-                  <div className="lg:col-span-3">
-                    <span className="font-mono text-[0.68rem] tracking-[0.34em] text-azure/70">03</span>
-                  </div>
-                  <div className="lg:col-span-9">
-                    <span
-                      aria-hidden
-                      className="mb-7 block h-px w-20"
-                      style={{ background: "linear-gradient(90deg, #3AF1FF 0%, rgba(74,115,255,0) 100%)" }}
-                    />
-                    <p
-                      className="max-w-[30ch] font-medium leading-[1.45] text-navy sm:max-w-[36ch]"
-                      style={{ fontSize: "clamp(1.35rem, 2.2vw, 1.95rem)" }}
-                    >
-                      Whether you need to launch, transform, automate or grow, we bring the people, expertise and
-                      technology together to make it happen.
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
+              </div>
             </div>
           </div>
         </section>
