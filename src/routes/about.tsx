@@ -167,17 +167,10 @@ function AboutPage() {
                 <circle cx="360" cy="360" r="46" fill="#3AF1FF" opacity="0.08" />
                 <circle className="ab-pulse" cx="360" cy="360" r="9" fill="#3AF1FF" />
               </g>
-              <g fill="#3AF1FF">
+              <g fill="#3AF1FF" opacity="0.55">
                 {[[360, 100], [134, 230], [586, 230], [134, 490], [586, 490], [360, 620]].map(
-                  ([cx, cy], i) => (
-                    <circle
-                      key={`${cx}-${cy}`}
-                      className="ab-pulse"
-                      cx={cx}
-                      cy={cy}
-                      r="4.5"
-                      style={{ animationDelay: `${i * -0.9}s` }}
-                    />
+                  ([cx, cy]) => (
+                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4.5" />
                   ),
                 )}
               </g>
