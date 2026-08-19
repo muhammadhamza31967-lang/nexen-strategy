@@ -17,6 +17,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
+import aboutEcosystem from "@/assets/about-ecosystem.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -295,13 +296,12 @@ function AboutPage() {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(120deg, rgba(74,115,255,0.05) 0%, transparent 42%, rgba(58,241,255,0.04) 100%)" }}
+            style={{ background: "linear-gradient(120deg, rgba(74,115,255,0.05) 0%, transparent 45%, rgba(58,241,255,0.04) 100%)" }}
           />
           <div className="relative mx-auto max-w-[1320px] px-6 lg:px-12">
-            <div className="grid gap-14 lg:grid-cols-[45fr_55fr] lg:items-start lg:gap-20">
-              {/* LEFT — brand statement */}
-              <div className="relative lg:pr-6">
-                <span aria-hidden className="pointer-events-none absolute -left-6 top-0 hidden h-full w-px bg-gradient-to-b from-azure/25 via-border to-transparent lg:block" />
+            <div className="grid items-center gap-14 lg:grid-cols-[54fr_46fr] lg:gap-20">
+              {/* LEFT — positioning + story */}
+              <div>
                 <Reveal>
                   <div className="flex items-center gap-4">
                     <span aria-hidden className="h-px w-10 bg-gradient-to-r from-cyan to-transparent" />
@@ -310,71 +310,81 @@ function AboutPage() {
                 </Reveal>
                 <Reveal delay={90}>
                   <h2
-                    className="display mt-8 max-w-[16ch] text-navy"
-                    style={{ fontSize: "clamp(2rem, 3.9vw, 3.5rem)" }}
+                    className="display mt-8 max-w-[17ch] text-navy"
+                    style={{ fontSize: "clamp(2rem, 3.7vw, 3.35rem)" }}
                   >
                     A Digital Partner Built Around Business Outcomes.
                   </h2>
                 </Reveal>
-                <Reveal delay={160}>
+                <Reveal delay={150}>
                   <span
                     aria-hidden
                     className="mt-9 block h-[3px] w-24 rounded-full"
                     style={{ background: "linear-gradient(90deg, #3AF1FF 0%, #4A73FF 100%)" }}
                   />
                 </Reveal>
-                <Reveal delay={220}>
-                  <p className="mt-7 font-mono text-[0.62rem] uppercase tracking-[0.34em] text-navy/40">
-                    Business-First Digital Partnership
+                <Reveal delay={210}>
+                  <p className="mt-9 max-w-[58ch] text-[1.03rem] leading-[1.85] text-muted-foreground">
+                    We work with organisations that want more from their digital presence than a website that simply
+                    looks good.
+                  </p>
+                </Reveal>
+                <Reveal delay={270}>
+                  <p className="mt-7 max-w-[58ch] text-[1.03rem] leading-[1.85] text-muted-foreground">
+                    Our work spans digital experiences, software solutions, AI and automation, marketing and media —
+                    allowing us to support businesses across multiple stages of their digital journey.
+                  </p>
+                </Reveal>
+                <Reveal delay={330}>
+                  <p
+                    className="mt-9 max-w-[44ch] font-medium leading-[1.55] text-navy"
+                    style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.4rem)" }}
+                  >
+                    Whether you need to launch, transform, automate or grow, we bring the people, expertise and
+                    technology together to make it happen.
                   </p>
                 </Reveal>
               </div>
 
-              {/* RIGHT — structured story */}
-              <div className="lg:pt-2">
-                {[
-                  {
-                    n: "01",
-                    text:
-                      "We work with organisations that want more from their digital presence than a website that simply looks good.",
-                  },
-                  {
-                    n: "02",
-                    text:
-                      "Our work spans digital experiences, software solutions, AI and automation, marketing and media — allowing us to support businesses across multiple stages of their digital journey.",
-                  },
-                ].map((item, i) => (
-                  <Reveal key={item.n} delay={200 + i * 100}>
-                    <div className="grid gap-4 border-b border-border/70 pb-9 pt-0 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 lg:pb-10">
-                      <span className="font-mono text-[0.66rem] tracking-[0.34em] text-azure/70 sm:pt-2">
-                        {item.n}
-                      </span>
-                      <p className="max-w-[58ch] text-[1.03rem] leading-[1.8] text-muted-foreground">
-                        {item.text}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-                <Reveal delay={420}>
-                  <div className="grid gap-4 pt-9 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 lg:pt-10">
-                    <span className="font-mono text-[0.66rem] tracking-[0.34em] text-azure sm:pt-2">03</span>
-                    <div className="relative pl-6">
-                      <span
-                        aria-hidden
-                        className="absolute left-0 top-1 h-[calc(100%-0.5rem)] w-[2px] rounded-full"
-                        style={{ background: "linear-gradient(180deg, #3AF1FF 0%, rgba(74,115,255,0.15) 100%)" }}
-                      />
-                      <p
-                        className="max-w-[34ch] font-medium leading-[1.5] text-navy sm:max-w-[40ch]"
-                        style={{ fontSize: "clamp(1.25rem, 1.7vw, 1.6rem)" }}
-                      >
-                        Whether you need to launch, transform, automate or grow, we bring the people, expertise and
-                        technology together to make it happen.
-                      </p>
-                    </div>
+              {/* RIGHT — premium visual */}
+              <Reveal delay={200}>
+                <div className="relative lg:translate-y-4">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-6 -z-10 rounded-[2.5rem] opacity-40 blur-[70px]"
+                    style={{ background: "radial-gradient(circle at 60% 40%, #4A73FF 0%, transparent 70%)" }}
+                  />
+                  <div
+                    className="relative overflow-hidden rounded-[1.75rem] border border-white/10"
+                    style={{ background: "linear-gradient(150deg, #010C62 0%, #0A146F 60%, #111B82 100%)" }}
+                  >
+                    <img
+                      src={aboutEcosystem}
+                      alt="Abstract navy visualisation of a connected digital ecosystem linking strategy, technology and business outcomes"
+                      loading="lazy"
+                      width={1024}
+                      height={1280}
+                      className="ab-float h-[380px] w-full object-cover opacity-90 mix-blend-screen sm:h-[460px] lg:h-[560px]"
+                    />
+                    <div aria-hidden className="grid-faint ab-grid pointer-events-none absolute inset-0 opacity-40" />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{ background: "linear-gradient(180deg, rgba(1,12,98,0.35) 0%, transparent 40%, rgba(1,12,98,0.55) 100%)" }}
+                    />
+                    <div
+                      aria-hidden
+                      className="ab-drift2 pointer-events-none absolute -left-1/4 top-0 h-full w-1/2 opacity-30"
+                      style={{ background: "linear-gradient(90deg, transparent, rgba(58,241,255,0.18), transparent)" }}
+                    />
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
+                      style={{ background: "linear-gradient(90deg, transparent, #3AF1FF, transparent)" }}
+                    />
                   </div>
-                </Reveal>
-              </div>
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
