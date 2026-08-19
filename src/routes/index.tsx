@@ -8,6 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { ServiceShowcase } from "@/components/site/ServiceShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { PortfolioPreview } from "@/components/site/PortfolioPreview";
+import { ClientLogos } from "@/components/site/ClientLogos";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import gatdLogo from "@/assets/gatd-logo.png.asset.json";
 import royaLogo from "@/assets/roya-ventures-logo.png.asset.json";
@@ -328,6 +329,8 @@ function Home() {
         />
       </main>
       <CtaFooterGap />
+      {/* 10 CLIENTS */}
+      <ClientLogos />
       {/* 10 FOOTER */}
       <Footer />
     </>
