@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import cosh from "@/assets/client-cosh.svg.asset.json";
@@ -17,6 +17,24 @@ export function ClientLogos() {
   const DURATION = 26;
   const PER_GROUP = clients.length * 2;
   const STEP = DURATION / PER_GROUP;
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
+
+  const nudge = (dir: 1 | -1) => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    const start = performance.now();
+    const from = delay;
+    const to = delay + dir * STEP;
+    const dur = 650;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDelay(from + (to - from) * eased);
+      if (t < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  };
 
   return (
     <section className="cll relative overflow-hidden border-t border-border bg-white">
@@ -56,24 +74,7 @@ export function ClientLogos() {
         <Reveal delay={90} className="mt-12 lg:mt-14">
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
           <div className="relative">
-            <button
-              type="button"
-              aria-label="Previous client logos"
-              onClick={() => setDelay((d) => d + STEP)}
-              className="absolute left-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:-translate-x-0.5 hover:scale-110"
-            >
-              <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
-            </button>
-            <button
-              type="button"
-              aria-label="Next client logos"
-              onClick={() => setDelay((d) => d - STEP)}
-              className="absolute right-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:translate-x-0.5 hover:scale-110"
-            >
-              <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
-            </button>
-
-            <div className="relative overflow-hidden px-12 py-10 sm:px-16 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="relative overflow-hidden py-10 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div
                 className="cll-track flex items-center"
                 data-paused={paused}
@@ -104,6 +105,24 @@ export function ClientLogos() {
             </div>
           </div>
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
+          <div className="mt-7 flex items-center justify-center gap-10">
+            <button
+              type="button"
+              aria-label="Previous client logos"
+              onClick={() => nudge(1)}
+              className="p-2 text-[#ff7a3d] transition-transform duration-300 hover:-translate-x-0.5 hover:scale-110"
+            >
+              <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next client logos"
+              onClick={() => nudge(-1)}
+              className="p-2 text-[#ff7a3d] transition-transform duration-300 hover:translate-x-0.5 hover:scale-110"
+            >
+              <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
+            </button>
+          </div>
         </Reveal>
       </div>
     </section>
