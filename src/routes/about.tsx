@@ -109,8 +109,7 @@ function AboutPage() {
         <section
           className="relative isolate flex min-h-[88svh] items-center overflow-hidden pt-36 pb-24 lg:min-h-[94svh] lg:pt-40 lg:pb-28"
           style={{
-            background:
-              "linear-gradient(140deg, #02052D 0%, #010C62 38%, #0A146F 62%, #111B82 100%)",
+            background: "linear-gradient(140deg, #02052D 0%, #010C62 38%, #0A146F 62%, #111B82 100%)",
           }}
         >
           {/* L2 — technical grid */}
@@ -139,9 +138,28 @@ function AboutPage() {
             preserveAspectRatio="xMidYMid slice"
             fill="none"
           >
-            <path className="ab-dash" d="M-80 660 C 320 600, 560 420, 940 380 S 1360 240, 1520 180" stroke="#4A73FF" strokeOpacity="0.45" strokeWidth="1" />
-            <path className="ab-dash2" d="M-80 220 C 340 280, 620 560, 1020 520 S 1380 400, 1520 370" stroke="#3AF1FF" strokeOpacity="0.4" strokeWidth="1" />
-            <path className="ab-dash" d="M-80 440 C 400 430, 760 430, 1520 440" stroke="#3AF1FF" strokeOpacity="0.14" strokeWidth="1" style={{ animationDelay: "-12s" }} />
+            <path
+              className="ab-dash"
+              d="M-80 660 C 320 600, 560 420, 940 380 S 1360 240, 1520 180"
+              stroke="#4A73FF"
+              strokeOpacity="0.45"
+              strokeWidth="1"
+            />
+            <path
+              className="ab-dash2"
+              d="M-80 220 C 340 280, 620 560, 1020 520 S 1380 400, 1520 370"
+              stroke="#3AF1FF"
+              strokeOpacity="0.4"
+              strokeWidth="1"
+            />
+            <path
+              className="ab-dash"
+              d="M-80 440 C 400 430, 760 430, 1520 440"
+              stroke="#3AF1FF"
+              strokeOpacity="0.14"
+              strokeWidth="1"
+              style={{ animationDelay: "-12s" }}
+            />
           </svg>
 
           {/* L5/L6 — central digital system */}
@@ -159,29 +177,56 @@ function AboutPage() {
               </g>
               <g stroke="#3AF1FF" strokeWidth="1" fill="none" strokeOpacity="0.3">
                 <path className="ab-dash" d="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z" />
-                <path d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620" strokeOpacity="0.2" />
+                <path
+                  d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620"
+                  strokeOpacity="0.2"
+                />
               </g>
               <g className="ab-float">
-                <rect x="292" y="292" width="136" height="136" rx="26" fill="none" stroke="#3AF1FF" strokeOpacity="0.4" transform="rotate(45 360 360)" />
-                <rect x="316" y="316" width="88" height="88" rx="16" fill="none" stroke="#4A73FF" strokeOpacity="0.55" />
+                <rect
+                  x="292"
+                  y="292"
+                  width="136"
+                  height="136"
+                  rx="26"
+                  fill="none"
+                  stroke="#3AF1FF"
+                  strokeOpacity="0.4"
+                  transform="rotate(45 360 360)"
+                />
+                <rect
+                  x="316"
+                  y="316"
+                  width="88"
+                  height="88"
+                  rx="16"
+                  fill="none"
+                  stroke="#4A73FF"
+                  strokeOpacity="0.55"
+                />
                 <circle cx="360" cy="360" r="46" fill="#3AF1FF" opacity="0.08" />
                 <circle className="ab-pulse" cx="360" cy="360" r="9" fill="#3AF1FF" />
               </g>
               <g fill="#3AF1FF" opacity="0.55">
-                {[[360, 100], [134, 230], [586, 230], [134, 490], [586, 490], [360, 620]].map(
-                  ([cx, cy]) => (
-                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4.5" />
-                  ),
-                )}
+                {[
+                  [360, 100],
+                  [134, 230],
+                  [586, 230],
+                  [134, 490],
+                  [586, 490],
+                  [360, 620],
+                ].map(([cx, cy]) => (
+                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4.5" />
+                ))}
               </g>
               <g>
-                <circle r="3.5" fill="#FFA53C" opacity="0.85">
+                {/* <circle r="3.5" fill="#FFA53C" opacity="0.85">
                   <animateMotion
                     dur="22s"
                     repeatCount="indefinite"
                     path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
                   />
-                </circle>
+                </circle> */}
                 <circle r="3" fill="#3AF1FF" opacity="0.7">
                   <animateMotion
                     dur="22s"
@@ -192,10 +237,18 @@ function AboutPage() {
                 </circle>
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
-                <text x="330" y="72">STRATEGY</text>
-                <text x="536" y="200">TECHNOLOGY</text>
-                <text x="18" y="494">CREATIVITY</text>
-                <text x="336" y="666">GROWTH</text>
+                <text x="330" y="72">
+                  STRATEGY
+                </text>
+                <text x="536" y="200">
+                  TECHNOLOGY
+                </text>
+                <text x="18" y="494">
+                  CREATIVITY
+                </text>
+                <text x="336" y="666">
+                  GROWTH
+                </text>
               </g>
             </svg>
           </div>
@@ -211,7 +264,10 @@ function AboutPage() {
               </g>
               <g stroke="#3AF1FF" strokeOpacity="0.28" strokeWidth="1" fill="none">
                 <path d="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z" />
-                <path d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620" strokeOpacity="0.18" />
+                <path
+                  d="M360 360 L360 100 M360 360 L134 230 M360 360 L586 230 M360 360 L134 490 M360 360 L586 490 M360 360 L360 620"
+                  strokeOpacity="0.18"
+                />
               </g>
               <circle className="ab-pulse" cx="360" cy="360" r="9" fill="#3AF1FF" />
             </svg>
@@ -224,17 +280,14 @@ function AboutPage() {
                 <p className="eyebrow text-cyan">About Us</p>
               </Reveal>
               <Reveal delay={80}>
-                <h1
-                  className="display mt-7 text-white"
-                  style={{ fontSize: "clamp(2.4rem, 4.6vw, 4.2rem)" }}
-                >
+                <h1 className="display mt-7 text-white" style={{ fontSize: "clamp(2.4rem, 4.6vw, 4.2rem)" }}>
                   We Build What Businesses Need <span className="text-cyan">Next.</span>
                 </h1>
               </Reveal>
               <Reveal delay={150}>
                 <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-white/70">
-                  Nexen Strategy brings together strategy, technology, creativity and marketing to
-                  help businesses navigate an increasingly digital world.
+                  Nexen Strategy brings together strategy, technology, creativity and marketing to help businesses
+                  navigate an increasingly digital world.
                 </p>
               </Reveal>
               <Reveal delay={220}>
@@ -273,10 +326,7 @@ function AboutPage() {
               <p className="eyebrow text-azure">Who We Are</p>
             </Reveal>
             <Reveal delay={70}>
-              <h2
-                className="display mt-10 max-w-5xl text-navy"
-                style={{ fontSize: "clamp(2rem, 4.4vw, 3.8rem)" }}
-              >
+              <h2 className="display mt-10 max-w-5xl text-navy" style={{ fontSize: "clamp(2rem, 4.4vw, 3.8rem)" }}>
                 A Digital Partner Built Around Business Outcomes.
               </h2>
             </Reveal>
@@ -285,23 +335,22 @@ function AboutPage() {
               <div className="lg:col-span-7">
                 <Reveal delay={80}>
                   <p className="max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
-                    We work with organisations that want more from their digital presence than a
-                    website that simply looks good.
+                    We work with organisations that want more from their digital presence than a website that simply
+                    looks good.
                   </p>
                 </Reveal>
                 <Reveal delay={140}>
                   <p className="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
-                    Our work spans digital experiences, software solutions, AI and automation,
-                    marketing and media — allowing us to support businesses across multiple stages of
-                    their digital journey.
+                    Our work spans digital experiences, software solutions, AI and automation, marketing and media —
+                    allowing us to support businesses across multiple stages of their digital journey.
                   </p>
                 </Reveal>
               </div>
               <div className="lg:col-span-5 lg:pt-16">
                 <Reveal delay={200}>
                   <p className="max-w-[52ch] border-l-2 border-cyan/70 pl-6 text-lg leading-relaxed text-navy">
-                    Whether you need to launch, transform, automate or grow, we bring the people,
-                    expertise and technology together to make it happen.
+                    Whether you need to launch, transform, automate or grow, we bring the people, expertise and
+                    technology together to make it happen.
                   </p>
                 </Reveal>
               </div>
@@ -324,10 +373,7 @@ function AboutPage() {
                   <p className="eyebrow text-cyan">Our Approach</p>
                 </Reveal>
                 <Reveal delay={70}>
-                  <h2
-                    className="display mt-8 text-white"
-                    style={{ fontSize: "clamp(2rem, 4vw, 3.4rem)" }}
-                  >
+                  <h2 className="display mt-8 text-white" style={{ fontSize: "clamp(2rem, 4vw, 3.4rem)" }}>
                     Understand. Create. Transform. Grow.
                   </h2>
                 </Reveal>
@@ -340,14 +386,14 @@ function AboutPage() {
                 </Reveal>
                 <Reveal delay={180}>
                   <p className="mt-7 text-lg leading-relaxed text-white/70">
-                    That means looking beyond features and technology to understand your customers,
-                    processes, objectives and challenges.
+                    That means looking beyond features and technology to understand your customers, processes,
+                    objectives and challenges.
                   </p>
                 </Reveal>
                 <Reveal delay={230}>
                   <p className="mt-7 text-lg leading-relaxed text-white/70">
-                    From there, we develop solutions that are practical, scalable and aligned with
-                    where your business is going — not simply where it is today.
+                    From there, we develop solutions that are practical, scalable and aligned with where your business
+                    is going — not simply where it is today.
                   </p>
                 </Reveal>
               </div>
@@ -356,7 +402,13 @@ function AboutPage() {
             {/* stage flow */}
             <div className="relative mt-20 lg:mt-28">
               <div aria-hidden className="absolute left-0 top-[26px] hidden h-px w-full bg-white/15 lg:block" />
-              <svg aria-hidden className="absolute left-0 top-[18px] hidden h-4 w-full lg:block" viewBox="0 0 1200 16" preserveAspectRatio="none" fill="none">
+              <svg
+                aria-hidden
+                className="absolute left-0 top-[18px] hidden h-4 w-full lg:block"
+                viewBox="0 0 1200 16"
+                preserveAspectRatio="none"
+                fill="none"
+              >
                 <path className="ab-dash" d="M0 8 H1200" stroke="#3AF1FF" strokeOpacity="0.7" strokeWidth="1.2" />
               </svg>
               <ol className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -370,10 +422,11 @@ function AboutPage() {
                           className="absolute -top-[30px] left-0 hidden h-3 w-3 rounded-full border-2 border-cyan bg-navy transition-transform duration-500 group-hover:scale-125 lg:block"
                         />
                         <div className="flex items-center gap-4 lg:pt-6">
-                          <Icon className="h-6 w-6 text-cyan transition-transform duration-500 group-hover:-translate-y-1" strokeWidth={1.4} />
-                          <span className="font-mono text-xs text-white/40">
-                            0{i + 1}
-                          </span>
+                          <Icon
+                            className="h-6 w-6 text-cyan transition-transform duration-500 group-hover:-translate-y-1"
+                            strokeWidth={1.4}
+                          />
+                          <span className="font-mono text-xs text-white/40">0{i + 1}</span>
                         </div>
                         <h3 className="display mt-6 text-3xl text-white lg:text-[2.4rem]">{s.word}</h3>
                         <span
@@ -454,17 +507,32 @@ function AboutPage() {
                 }}
               />
               <div aria-hidden className="grid-faint ab-grid pointer-events-none absolute inset-[-80px] opacity-70" />
-              <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1200 340" preserveAspectRatio="xMidYMid slice" fill="none">
-                <path className="ab-dash" d="M-60 260 C 260 220, 480 90, 800 110 S 1140 60, 1280 40" stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" />
-                <path className="ab-dash2" d="M-60 90 C 300 130, 520 280, 880 250 S 1180 190, 1280 170" stroke="#4A73FF" strokeOpacity="0.4" strokeWidth="1" />
+              <svg
+                aria-hidden
+                className="pointer-events-none absolute inset-0 h-full w-full"
+                viewBox="0 0 1200 340"
+                preserveAspectRatio="xMidYMid slice"
+                fill="none"
+              >
+                <path
+                  className="ab-dash"
+                  d="M-60 260 C 260 220, 480 90, 800 110 S 1140 60, 1280 40"
+                  stroke="#3AF1FF"
+                  strokeOpacity="0.35"
+                  strokeWidth="1"
+                />
+                <path
+                  className="ab-dash2"
+                  d="M-60 90 C 300 130, 520 280, 880 250 S 1180 190, 1280 170"
+                  stroke="#4A73FF"
+                  strokeOpacity="0.4"
+                  strokeWidth="1"
+                />
               </svg>
 
               <div className="relative max-w-3xl">
                 <Reveal>
-                  <h2
-                    className="display text-white"
-                    style={{ fontSize: "clamp(2rem, 4.2vw, 3.6rem)" }}
-                  >
+                  <h2 className="display text-white" style={{ fontSize: "clamp(2rem, 4.2vw, 3.6rem)" }}>
                     Let's Build Something That Matters.
                   </h2>
                 </Reveal>
