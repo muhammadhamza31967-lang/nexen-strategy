@@ -296,37 +296,155 @@ function AboutPage() {
             className="ab-drift2 pointer-events-none absolute right-[-10%] top-[10%] h-[480px] w-[480px] rounded-full opacity-[0.1] blur-[130px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
+          <div aria-hidden className="grid-faint pointer-events-none absolute inset-0 opacity-[0.35]" />
           <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-            <Reveal>
-              <p className="eyebrow text-azure">Who We Are</p>
-            </Reveal>
-            <Reveal delay={70}>
-              <h2 className="display mt-10 max-w-5xl text-navy" style={{ fontSize: "clamp(2rem, 4.4vw, 3.8rem)" }}>
-                A Digital Partner Built Around Business Outcomes.
-              </h2>
-            </Reveal>
-            <div aria-hidden className="mt-12 h-px w-full bg-border" />
-            <div className="grid gap-10 pt-12 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-7">
-                <Reveal delay={80}>
-                  <p className="max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
-                    We work with organisations that want more from their digital presence than a website that simply
-                    looks good.
-                  </p>
-                </Reveal>
-                <Reveal delay={140}>
-                  <p className="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
-                    Our work spans digital experiences, software solutions, AI and automation, marketing and media —
-                    allowing us to support businesses across multiple stages of their digital journey.
-                  </p>
+            {/* editorial heading area */}
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-3">
+                <Reveal>
+                  <div className="flex items-center gap-4">
+                    <span aria-hidden className="h-px w-10 bg-gradient-to-r from-cyan to-transparent" />
+                    <p className="eyebrow text-azure">Who We Are</p>
+                  </div>
                 </Reveal>
               </div>
-              <div className="lg:col-span-5 lg:pt-16">
+              <div className="lg:col-span-9">
+                <Reveal delay={70}>
+                  <h2
+                    className="display max-w-[22ch] text-navy"
+                    style={{ fontSize: "clamp(1.9rem, 3.4vw, 3.1rem)" }}
+                  >
+                    A Digital Partner Built Around Business Outcomes.
+                  </h2>
+                </Reveal>
+              </div>
+            </div>
+
+            <div aria-hidden className="mt-12 h-px w-full bg-border" />
+
+            {/* content + visual */}
+            <div className="grid gap-12 pt-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-6">
+                <Reveal delay={80}>
+                  <div className="relative pl-8">
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-1 font-mono text-[0.6rem] tracking-[0.3em] text-azure/60"
+                    >
+                      01
+                    </span>
+                    <p className="max-w-[54ch] text-lg leading-relaxed text-muted-foreground">
+                      We work with organisations that want more from their digital presence than a website that simply
+                      looks good.
+                    </p>
+                  </div>
+                </Reveal>
+                <div aria-hidden className="my-9 h-px w-24 bg-cyan/40" />
+                <Reveal delay={140}>
+                  <div className="relative pl-8">
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-1 font-mono text-[0.6rem] tracking-[0.3em] text-azure/60"
+                    >
+                      02
+                    </span>
+                    <p className="max-w-[54ch] text-lg leading-relaxed text-muted-foreground">
+                      Our work spans digital experiences, software solutions, AI and automation, marketing and media —
+                      allowing us to support businesses across multiple stages of their digital journey.
+                    </p>
+                  </div>
+                </Reveal>
+
+                {/* featured statement */}
                 <Reveal delay={200}>
-                  <p className="max-w-[52ch] border-l-2 border-cyan/70 pl-6 text-lg leading-relaxed text-navy">
-                    Whether you need to launch, transform, automate or grow, we bring the people, expertise and
-                    technology together to make it happen.
-                  </p>
+                  <div
+                    className="relative mt-12 overflow-hidden rounded-2xl px-8 py-9 lg:px-10"
+                    style={{ background: "linear-gradient(135deg, #010C62 0%, #0A146F 55%, #111B82 100%)" }}
+                  >
+                    <div aria-hidden className="grid-faint ab-grid absolute inset-[-40px] opacity-60" />
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-0 h-full w-[3px]"
+                      style={{ background: "linear-gradient(180deg, #3AF1FF 0%, #4A73FF 100%)" }}
+                    />
+                    <p className="relative font-mono text-[0.6rem] uppercase tracking-[0.32em] text-cyan/70">
+                      What It Means
+                    </p>
+                    <p className="relative mt-5 max-w-[46ch] text-xl leading-relaxed text-white lg:text-[1.4rem]">
+                      Whether you need to launch, transform, automate or grow, we bring the people, expertise and
+                      technology together to make it happen.
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* premium abstract visual */}
+              <div className="lg:col-span-6 lg:pl-6">
+                <Reveal delay={120}>
+                  <div className="relative">
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 -z-10 rounded-full opacity-30 blur-[110px]"
+                      style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
+                    />
+                    <svg viewBox="0 0 620 620" className="h-auto w-full" fill="none" aria-hidden>
+                      <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.25" fill="none">
+                        <circle cx="310" cy="310" r="250" strokeDasharray="3 14" />
+                      </g>
+                      <g className="ab-orbit-r" stroke="#3AF1FF" strokeOpacity="0.28" fill="none">
+                        <circle cx="310" cy="310" r="180" strokeDasharray="2 16" />
+                      </g>
+                      <circle cx="310" cy="310" r="112" stroke="#4A73FF" strokeOpacity="0.18" fill="none" />
+                      <g stroke="#4A73FF" strokeOpacity="0.35" fill="none">
+                        <path
+                          className="ab-dash"
+                          d="M120 250 L310 150 L500 250 L500 400 L310 500 L120 400 Z"
+                        />
+                        <path
+                          d="M310 150 L310 500 M120 250 L500 400 M500 250 L120 400"
+                          strokeOpacity="0.14"
+                        />
+                      </g>
+                      <g className="ab-float">
+                        <rect
+                          x="255"
+                          y="255"
+                          width="110"
+                          height="110"
+                          rx="22"
+                          fill="none"
+                          stroke="#3AF1FF"
+                          strokeOpacity="0.45"
+                          transform="rotate(45 310 310)"
+                        />
+                      </g>
+                      <circle cx="310" cy="310" r="38" fill="#3AF1FF" opacity="0.08" />
+                      <circle className="ab-pulse" cx="310" cy="310" r="8" fill="#3AF1FF" />
+                      <g fill="#4A73FF" opacity="0.6">
+                        {[
+                          [310, 150],
+                          [120, 250],
+                          [500, 250],
+                          [120, 400],
+                          [500, 400],
+                          [310, 500],
+                        ].map(([cx, cy]) => (
+                          <circle key={`w-${cx}-${cy}`} cx={cx} cy={cy} r="4" />
+                        ))}
+                      </g>
+                      <circle cx="500" cy="250" r="7" fill="#FFA53C" opacity="0.5" />
+                      <g
+                        fill="#010C62"
+                        opacity="0.4"
+                        fontSize="10"
+                        letterSpacing="4"
+                        fontFamily="ui-monospace, monospace"
+                      >
+                        <text x="272" y="128">STRATEGY</text>
+                        <text x="248" y="546">OUTCOMES</text>
+                      </g>
+                    </svg>
+                  </div>
                 </Reveal>
               </div>
             </div>
