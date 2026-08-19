@@ -41,11 +41,11 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const stages: { word: string; icon: LucideIcon }[] = [
-  { word: "Understand", icon: Search },
-  { word: "Create", icon: PenTool },
-  { word: "Transform", icon: Repeat },
-  { word: "Grow", icon: Sprout },
+const stages: { word: string; text: string; icon: LucideIcon }[] = [
+  { word: "Understand", text: "Customers, processes and objectives before features.", icon: Search },
+  { word: "Create", text: "Practical solutions designed, built and tested together.", icon: PenTool },
+  { word: "Transform", text: "Systems and experiences moved into everyday use.", icon: Repeat },
+  { word: "Grow", text: "Refined against real performance, quarter after quarter.", icon: Sprout },
 ];
 
 const values: { name: string; text: string; icon: LucideIcon }[] = [
