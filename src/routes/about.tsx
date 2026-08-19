@@ -103,11 +103,11 @@ function AboutPage() {
         @media (prefers-reduced-motion: reduce){.ab-orbit,.ab-orbit-r,.ab-pulse,.ab-float{animation:none !important}}
       `}</style>
 
-      <Header />
+      <Header overHero />
       <main className="overflow-x-hidden">
         {/* 01 — HERO */}
         <section
-          className="relative isolate flex min-h-[620px] items-center overflow-hidden pt-32 pb-20 lg:min-h-[760px] lg:pt-40 lg:pb-24"
+          className="relative isolate flex min-h-[88svh] items-center overflow-hidden pt-36 pb-24 lg:min-h-[94svh] lg:pt-40 lg:pb-28"
           style={{
             background:
               "linear-gradient(140deg, #02052D 0%, #010C62 38%, #0A146F 62%, #111B82 100%)",
@@ -147,7 +147,7 @@ function AboutPage() {
           {/* L5/L6 — central digital system */}
           <div
             aria-hidden
-            className="pointer-events-none absolute right-[-14%] top-1/2 hidden w-[900px] -translate-y-1/2 lg:block xl:right-[-6%]"
+            className="pointer-events-none absolute right-[-4%] top-1/2 hidden w-[700px] -translate-y-1/2 lg:block xl:right-[2%]"
           >
             <svg viewBox="0 0 720 720" className="h-auto w-full" fill="none">
               <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.28" fill="none">
@@ -181,13 +181,26 @@ function AboutPage() {
                   ),
                 )}
               </g>
-              <g fill="#FFA53C" opacity="0.7">
-                <circle className="ab-node" cx="470" cy="168" r="2.5" />
-                <circle className="ab-node" cx="212" cy="556" r="2.5" style={{ animationDelay: "-3s" }} />
+              <g>
+                <circle r="3.5" fill="#FFA53C" opacity="0.85">
+                  <animateMotion
+                    dur="22s"
+                    repeatCount="indefinite"
+                    path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
+                  />
+                </circle>
+                <circle r="3" fill="#3AF1FF" opacity="0.7">
+                  <animateMotion
+                    dur="22s"
+                    begin="-11s"
+                    repeatCount="indefinite"
+                    path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
+                  />
+                </circle>
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">STRATEGY</text>
-                <text x="596" y="226">TECHNOLOGY</text>
+                <text x="536" y="200">TECHNOLOGY</text>
                 <text x="18" y="494">CREATIVITY</text>
                 <text x="336" y="666">GROWTH</text>
               </g>
@@ -197,7 +210,7 @@ function AboutPage() {
           {/* mobile / tablet visual layer */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-16 right-[-22%] w-[520px] opacity-60 lg:hidden"
+            className="pointer-events-none absolute -bottom-20 right-[-20%] w-[430px] opacity-55 lg:hidden"
           >
             <svg viewBox="0 0 720 720" className="h-auto w-full" fill="none">
               <g className="ab-orbit" stroke="#4A73FF" strokeOpacity="0.3" fill="none">
