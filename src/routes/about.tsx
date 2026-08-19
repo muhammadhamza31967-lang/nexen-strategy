@@ -430,46 +430,60 @@ function AboutPage() {
               </div>
             </div>
 
-            {/* stage flow */}
-            <div className="relative mt-20 lg:mt-28">
-              <div aria-hidden className="absolute left-0 top-[26px] hidden h-px w-full bg-white/15 lg:block" />
-              <svg
-                aria-hidden
-                className="absolute left-0 top-[18px] hidden h-4 w-full lg:block"
-                viewBox="0 0 1200 16"
-                preserveAspectRatio="none"
-                fill="none"
-              >
-                <path className="ab-dash" d="M0 8 H1200" stroke="#3AF1FF" strokeOpacity="0.7" strokeWidth="1.2" />
-              </svg>
-              <ol className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-                {stages.map((s, i) => {
-                  const Icon = s.icon;
-                  return (
-                    <Reveal key={s.word} delay={i * 100} as="li">
-                      <div className="group relative">
-                        <span
-                          aria-hidden
-                          className="absolute -top-[30px] left-0 hidden h-3 w-3 rounded-full border-2 border-cyan bg-navy transition-transform duration-500 group-hover:scale-125 lg:block"
-                        />
-                        <div className="flex items-center gap-4 lg:pt-6">
-                          <Icon
-                            className="h-6 w-6 text-cyan transition-transform duration-500 group-hover:-translate-y-1"
-                            strokeWidth={1.4}
+            {/* stage flow — one connected horizontal process */}
+            <Reveal className="mt-16 lg:mt-20">
+              <div className="ab-flow relative -mx-6 overflow-x-auto px-6 pb-2 sm:mx-0 sm:overflow-visible sm:px-0">
+                <div className="relative min-w-[640px] sm:min-w-0">
+                  {/* continuous line */}
+                  <div
+                    aria-hidden
+                    className="absolute left-[12.5%] right-[12.5%] top-[7px] h-px bg-white/15"
+                  />
+                  <div
+                    aria-hidden
+                    className="ab-line absolute left-[12.5%] top-[7px] h-px origin-left"
+                    style={{
+                      right: "12.5%",
+                      background: "linear-gradient(90deg, #3AF1FF, #4A73FF)",
+                      opacity: 0.75,
+                    }}
+                  />
+                  <ol className="grid grid-cols-4">
+                    {stages.map((s, i) => {
+                      const Icon = s.icon;
+                      return (
+                        <li
+                          key={s.word}
+                          className="group relative px-3 text-center lg:px-6"
+                          style={{ transitionDelay: `${i * 90}ms` }}
+                        >
+                          {i > 0 && (
+                            <span aria-hidden className="absolute left-0 top-8 hidden h-[calc(100%-2.5rem)] w-px bg-white/8 lg:block" />
+                          )}
+                          <span
+                            aria-hidden
+                            className="mx-auto block h-[15px] w-[15px] rounded-full border border-cyan/70 bg-navy transition-all duration-500 group-hover:scale-110 group-hover:border-cyan group-hover:shadow-[0_0_18px_2px_rgba(58,241,255,0.45)]"
                           />
-                          <span className="font-mono text-xs text-white/40">0{i + 1}</span>
-                        </div>
-                        <h3 className="display mt-6 text-3xl text-white lg:text-[2.4rem]">{s.word}</h3>
-                        <span
-                          aria-hidden
-                          className="mt-6 block h-px w-10 bg-gradient-to-r from-cyan to-azure transition-all duration-500 group-hover:w-full"
-                        />
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </ol>
-            </div>
+                          <span className="mt-5 block font-mono text-[11px] tracking-[0.2em] text-white/40 transition-colors duration-500 group-hover:text-cyan">
+                            0{i + 1}
+                          </span>
+                          <Icon
+                            className="mx-auto mt-4 h-5 w-5 text-white/55 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:text-cyan"
+                            strokeWidth={1.3}
+                          />
+                          <h3 className="mt-4 text-lg font-semibold tracking-tight text-white/85 transition-colors duration-500 group-hover:text-white lg:text-xl">
+                            {s.word}
+                          </h3>
+                          <p className="mx-auto mt-2 max-w-[17rem] text-[0.82rem] leading-relaxed text-white/45 transition-colors duration-500 group-hover:text-white/65">
+                            {s.text}
+                          </p>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
