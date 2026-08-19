@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Facebook, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
@@ -8,6 +8,12 @@ const socials = [
   { label: "Facebook", href: "https://facebook.com", Icon: Facebook },
   { label: "Instagram", href: "https://instagram.com", Icon: Instagram },
   { label: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+];
+
+const contactItems = [
+  { Icon: Mail, label: "hello@nexenstrategy.com", href: "mailto:hello@nexenstrategy.com" },
+  { Icon: Phone, label: "+44 (0) 20 8000 0000", href: "tel:+442080000000" },
+  { Icon: MapPin, label: "United Kingdom", href: null as string | null },
 ];
 
 export function Footer() {
@@ -141,13 +147,41 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="eyebrow text-cyan">Subscribe</p>
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/65">
+            <p className="eyebrow text-cyan">Contact</p>
+            <ul className="mt-6 space-y-3.5">
+              {contactItems.map(({ Icon, label, href }) => {
+                const inner = (
+                  <span className="group flex items-center gap-3 text-sm text-white/70 transition-colors duration-300 hover:text-white">
+                    <Icon
+                      className="h-4 w-4 shrink-0 text-white/55 transition-colors duration-300 group-hover:text-cyan"
+                      strokeWidth={1.6}
+                    />
+                    {label}
+                  </span>
+                );
+                return (
+                  <li key={label}>
+                    {href ? (
+                      <a href={href} className="inline-flex">
+                        {inner}
+                      </a>
+                    ) : (
+                      inner
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-7 h-px w-full max-w-xs bg-white/12" />
+
+            <p className="eyebrow mt-7 text-cyan">Subscribe</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/65">
               Stay connected with Nexen Strategy. Get occasional insights, ideas and updates from
               our team.
             </p>
             <form
-              className="mt-6 space-y-3"
+              className="mt-5 space-y-3"
               onSubmit={(e) => {
                 e.preventDefault();
                 if (email.trim()) setSent(true);
