@@ -131,7 +131,7 @@ function AboutPage() {
             style={{ background: "radial-gradient(circle, #FFA53C 0%, transparent 70%)" }}
           />
           {/* L4 — flowing data paths across the full hero */}
-          {/* <svg
+          <svg
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full"
             viewBox="0 0 1440 800"
@@ -160,7 +160,7 @@ function AboutPage() {
               strokeWidth="1"
               style={{ animationDelay: "-12s" }}
             />
-          </svg> */}
+          </svg>
 
           {/* L5/L6 — central digital system */}
           <div
