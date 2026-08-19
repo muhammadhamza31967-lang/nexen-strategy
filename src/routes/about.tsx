@@ -91,6 +91,10 @@ function AboutPage() {
         .ab-grid{animation:ab-grid 40s linear infinite}
         .ab-dash{stroke-dasharray:160 900;animation:ab-dash 20s linear infinite}
         .ab-dash2{stroke-dasharray:120 1000;animation:ab-dash 26s linear infinite;animation-delay:-8s}
+        .ab-line{transform:scaleX(0);transition:transform 1.4s cubic-bezier(.22,1,.36,1) .1s}
+        .reveal[data-visible="true"] .ab-line{transform:scaleX(1)}
+        .ab-flow li{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+        .reveal[data-visible="true"] .ab-flow li{opacity:1;transform:none}
         .ab-node{animation:ab-node 6s ease-in-out infinite}
         @keyframes ab-orbit{to{transform:rotate(360deg)}}
         @keyframes ab-orbit-r{to{transform:rotate(-360deg)}}
