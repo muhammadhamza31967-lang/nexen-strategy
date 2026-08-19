@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import cosh from "@/assets/client-cosh.svg.asset.json";
@@ -17,6 +17,24 @@ export function ClientLogos() {
   const DURATION = 26;
   const PER_GROUP = clients.length * 2;
   const STEP = DURATION / PER_GROUP;
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
+
+  const nudge = (dir: 1 | -1) => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    const start = performance.now();
+    const from = delay;
+    const to = delay + dir * STEP;
+    const dur = 650;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDelay(from + (to - from) * eased);
+      if (t < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  };
 
   return (
     <section className="cll relative overflow-hidden border-t border-border bg-white">
