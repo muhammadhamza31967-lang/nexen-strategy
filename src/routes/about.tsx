@@ -227,14 +227,14 @@ function AboutPage() {
                     path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
                   />
                 </circle> */}
-                <circle r="3" fill="#3AF1FF" opacity="0.7">
+                {/* <circle r="3" fill="#3AF1FF" opacity="0.7">
                   <animateMotion
                     dur="22s"
                     begin="-11s"
                     repeatCount="indefinite"
                     path="M360 100 L134 230 L134 490 L360 620 L586 490 L586 230 Z"
                   />
-                </circle>
+                </circle> */}
               </g>
               <g fill="#FFFFFF" opacity="0.35" fontSize="11" letterSpacing="4" fontFamily="ui-monospace, monospace">
                 <text x="330" y="72">
