@@ -305,3 +305,27 @@
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+@keyframes ftr-dash {
+  to { stroke-dashoffset: -720; }
+}
+
+@keyframes ftr-pulse {
+  0%, 100% { opacity: 0.25; r: 2; }
+  50% { opacity: 0.9; r: 3.2; }
+}
+
+@keyframes ftr-grid {
+  from { background-position: 0 0; }
+  to { background-position: 88px 88px; }
+}
+
+@keyframes ftr-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-2%, 2%, 0) scale(1.06); }
+}
+
+@keyframes ftr-float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -12px); }
+}
