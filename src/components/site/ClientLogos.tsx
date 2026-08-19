@@ -74,24 +74,7 @@ export function ClientLogos() {
         <Reveal delay={90} className="mt-12 lg:mt-14">
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
           <div className="relative">
-            <button
-              type="button"
-              aria-label="Previous client logos"
-              onClick={() => setDelay((d) => d + STEP)}
-              className="absolute left-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:-translate-x-0.5 hover:scale-110"
-            >
-              <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
-            </button>
-            <button
-              type="button"
-              aria-label="Next client logos"
-              onClick={() => setDelay((d) => d - STEP)}
-              className="absolute right-0 top-1/2 z-20 -translate-y-1/2 p-2 text-[#ff7a3d] transition-transform duration-300 hover:translate-x-0.5 hover:scale-110"
-            >
-              <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
-            </button>
-
-            <div className="relative overflow-hidden px-12 py-10 sm:px-16 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="relative overflow-hidden py-10 lg:py-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div
                 className="cll-track flex items-center"
                 data-paused={paused}
@@ -122,6 +105,24 @@ export function ClientLogos() {
             </div>
           </div>
           <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
+          <div className="mt-7 flex items-center justify-center gap-10">
+            <button
+              type="button"
+              aria-label="Previous client logos"
+              onClick={() => nudge(1)}
+              className="p-2 text-[#ff7a3d] transition-transform duration-300 hover:-translate-x-0.5 hover:scale-110"
+            >
+              <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next client logos"
+              onClick={() => nudge(-1)}
+              className="p-2 text-[#ff7a3d] transition-transform duration-300 hover:translate-x-0.5 hover:scale-110"
+            >
+              <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.4} />
+            </button>
+          </div>
         </Reveal>
       </div>
     </section>
