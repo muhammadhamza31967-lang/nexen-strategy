@@ -164,8 +164,7 @@ export const Route = createFileRoute("/clients")({
       { property: "og:title", content: "Clients — Nexen Strategy" },
       {
         property: "og:description",
-        content:
-          "Strategy, design, technology and creativity delivered for businesses across six industries.",
+        content: "Strategy, design, technology and creativity delivered for businesses across six industries.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -230,9 +229,8 @@ function ClientsPage() {
             </Reveal>
             <Reveal delay={150}>
               <p className="mt-9 max-w-2xl text-lg leading-relaxed text-white/70">
-                We work with businesses across different industries, bringing together strategy,
-                design, technology and creativity to create meaningful digital experiences and
-                solutions.
+                We work with businesses across different industries, bringing together strategy, design, technology and
+                creativity to create meaningful digital experiences and solutions.
               </p>
             </Reveal>
             <Reveal delay={220}>
@@ -240,7 +238,7 @@ function ClientsPage() {
                 {[
                   { k: `${totalClients}+`, v: "Brands served" },
                   { k: "06", v: "Industries" },
-                  { k: "UK & GCC", v: "Markets" },
+                  { k: "UK, USA & GCC", v: "Markets" },
                   { k: "End-to-end", v: "Delivery" },
                 ].map((s) => (
                   <div key={s.v} className="min-w-0">
