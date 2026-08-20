@@ -141,7 +141,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
             )}
           >
             <Link
-              to={p.href}
+              to={p.href as "/contact"}
               className={cn(
                 "group relative block overflow-hidden rounded-2xl border transition-colors duration-500",
                 dark ? "border-white/10 hover:border-cyan/40" : "border-border hover:border-azure/40",
@@ -206,7 +206,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
             </p>
 
             <Link
-              to={p.href}
+              to={p.href as "/contact"}
               className={cn(
                 "group mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-tight",
                 dark ? "text-white" : "text-navy",
@@ -214,10 +214,6 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
             >
               View Case Study
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-              <span
-                aria-hidden
-                className="absolute"
-              />
             </Link>
             <span
               aria-hidden
