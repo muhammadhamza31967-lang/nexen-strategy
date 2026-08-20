@@ -301,7 +301,10 @@ function AboutPage() {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
-            style={{ background: "linear-gradient(120deg, rgba(74,115,255,0.05) 0%, transparent 45%, rgba(58,241,255,0.04) 100%)" }}
+            style={{
+              background:
+                "linear-gradient(120deg, rgba(74,115,255,0.05) 0%, transparent 45%, rgba(58,241,255,0.04) 100%)",
+            }}
           />
           <div className="relative mx-auto max-w-[1320px] px-6 lg:px-12">
             <div className="grid items-center gap-14 lg:grid-cols-[54fr_46fr] lg:gap-20">
@@ -361,7 +364,7 @@ function AboutPage() {
                   />
                   <div
                     className="relative overflow-hidden rounded-[1.75rem] border border-white/10"
-                    style={{ background: "linear-gradient(150deg, #010C62 0%, #0A146F 60%, #111B82 100%)" }}
+                    style={{ background: "linear-gradient(150deg, #010C62 0%, #0A146F 30%, #111B82 50%)" }}
                   >
                     <img
                       src={aboutEcosystem}
@@ -375,7 +378,10 @@ function AboutPage() {
                     <div
                       aria-hidden
                       className="pointer-events-none absolute inset-0"
-                      style={{ background: "linear-gradient(180deg, rgba(1,12,98,0.35) 0%, transparent 40%, rgba(1,12,98,0.55) 100%)" }}
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(1,12,98,0.35) 0%, transparent 40%, rgba(1,12,98,0.55) 100%)",
+                      }}
                     />
                     <div
                       aria-hidden
@@ -440,10 +446,7 @@ function AboutPage() {
               <div className="ab-flow relative -mx-6 overflow-x-auto px-6 pb-2 sm:mx-0 sm:overflow-visible sm:px-0">
                 <div className="relative min-w-[640px] sm:min-w-0">
                   {/* continuous line */}
-                  <div
-                    aria-hidden
-                    className="absolute left-[12.5%] right-[12.5%] top-[7px] h-px bg-white/15"
-                  />
+                  <div aria-hidden className="absolute left-[12.5%] right-[12.5%] top-[7px] h-px bg-white/15" />
                   <div
                     aria-hidden
                     className="ab-line absolute left-[12.5%] top-[7px] h-px origin-left"
@@ -463,7 +466,10 @@ function AboutPage() {
                           style={{ transitionDelay: `${i * 90}ms` }}
                         >
                           {i > 0 && (
-                            <span aria-hidden className="absolute left-0 top-8 hidden h-[calc(100%-2.5rem)] w-px bg-white/8 lg:block" />
+                            <span
+                              aria-hidden
+                              className="absolute left-0 top-8 hidden h-[calc(100%-2.5rem)] w-px bg-white/8 lg:block"
+                            />
                           )}
                           <span
                             aria-hidden
