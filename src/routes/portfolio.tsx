@@ -315,8 +315,9 @@ function PortfolioPage() {
               </p>
             </Reveal>
           </div>
+          <span aria-hidden className="mt-12 block h-px w-full bg-border lg:mt-16" />
           {/* Service filter tabs */}
-          <div className="mt-12 lg:mt-16">
+          <div className="mt-8 lg:mt-10">
             <style>{`
               .pf-scroll::-webkit-scrollbar{display:none}
               .pf-scroll{scrollbar-width:none;-ms-overflow-style:none}
@@ -350,7 +351,6 @@ function PortfolioPage() {
             </div>
           </div>
 
-          <span aria-hidden className="mt-12 block h-px w-full bg-border lg:mt-16" />
         </section>
 
         {/* Projects */}
