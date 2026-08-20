@@ -24,6 +24,16 @@ import mayfair from "@/assets/client-mayfair.svg.asset.json";
 import minahilKhan from "@/assets/client-minahil-khan.svg.asset.json";
 import mohsanCo from "@/assets/client-mohsan-co.svg.asset.json";
 import muazzamEstate from "@/assets/client-muazzam-estate.svg.asset.json";
+import nhFusion from "@/assets/client-nh-fusion.svg.asset.json";
+import oceanOffshore from "@/assets/client-ocean-offshore.svg.asset.json";
+import organicRoots from "@/assets/client-organic-roots.svg.asset.json";
+import pakMedinet from "@/assets/client-pakmedinet.svg.asset.json";
+import phr from "@/assets/client-phr.svg.asset.json";
+import quranReading from "@/assets/client-quran-reading.svg.asset.json";
+import rightMove from "@/assets/client-right-move.svg.asset.json";
+import roofConnect from "@/assets/client-roofconnect.svg.asset.json";
+import royaVenture from "@/assets/client-roya-venture.svg.asset.json";
+import mumpsMotors from "@/assets/client-mumps-motors.png.asset.json";
 
 const clients = [
   { name: "COSH", src: cosh.url, cls: "h-12 lg:h-16" },
@@ -49,12 +59,22 @@ const clients = [
   { name: "Minahil Khan", src: minahilKhan.url, cls: "h-16 lg:h-24" },
   { name: "Mohsan & Co", src: mohsanCo.url, cls: "h-16 lg:h-24" },
   { name: "Muazzam Estate", src: muazzamEstate.url, cls: "h-14 lg:h-20" },
+  { name: "NH Fusion", src: nhFusion.url, cls: "h-16 lg:h-24" },
+  { name: "Ocean Offshore", src: oceanOffshore.url, cls: "h-16 lg:h-24" },
+  { name: "Organic Roots", src: organicRoots.url, cls: "h-14 lg:h-20" },
+  { name: "PakMedinet", src: pakMedinet.url, cls: "h-10 lg:h-14" },
+  { name: "PHR", src: phr.url, cls: "h-16 lg:h-24" },
+  { name: "Quran Reading", src: quranReading.url, cls: "h-16 lg:h-24" },
+  { name: "Right Move", src: rightMove.url, cls: "h-12 lg:h-16" },
+  { name: "RoofConnect", src: roofConnect.url, cls: "h-12 lg:h-16" },
+  { name: "Roya Venture", src: royaVenture.url, cls: "h-11 lg:h-14" },
+  { name: "Mumps Motors", src: mumpsMotors.url, cls: "h-12 lg:h-16" },
 ];
 
 export function ClientLogos() {
   const [paused, setPaused] = useState(false);
   const [delay, setDelay] = useState(0);
-  const DURATION = 99;
+  const DURATION = 142;
   const PER_GROUP = clients.length;
   const STEP = DURATION / PER_GROUP;
   const rafRef = useRef<number | null>(null);
