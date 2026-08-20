@@ -276,26 +276,26 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
             <ArrowRight className="h-4 w-4" />
           </Link>
 
-          <div className="mt-2 border-t border-white/10 pt-6 pb-4">
-            <p className="eyebrow mb-4 text-[0.7rem] text-cyan/80">Contact</p>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3 text-white/70">
-                <Mail className="h-4 w-4 shrink-0 text-cyan/80" />
+          <div className="mt-7 border-t border-white/10 pt-5 pb-3">
+            <p className="eyebrow mb-3 text-[0.65rem] text-cyan">Contact</p>
+            <ul className="divide-y divide-white/8 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:divide-y-0">
+              <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:col-span-2 sm:py-1.5">
+                <Mail className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
                 <a
                   href="mailto:hello@nexenstrategy.com"
-                  className="transition-colors hover:text-cyan"
+                  className="truncate transition-colors hover:text-cyan"
                 >
                   hello@nexenstrategy.com
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-white/70">
-                <Phone className="h-4 w-4 shrink-0 text-cyan/80" />
+              <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:py-1.5">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
                 <a href="tel:+442080000000" className="transition-colors hover:text-cyan">
                   +44 (0) 20 8000 0000
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-white/70">
-                <MapPin className="h-4 w-4 shrink-0 text-cyan/80" />
+              <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:py-1.5">
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
                 United Kingdom
               </li>
             </ul>
