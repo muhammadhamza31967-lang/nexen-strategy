@@ -568,7 +568,7 @@ function AboutPage() {
                       onMouseEnter={() => setActiveValue(i)}
                       onFocus={() => setActiveValue(i)}
                       tabIndex={0}
-                      className="group relative grid gap-4 border-b border-border py-9 outline-none transition-[padding] duration-500 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[auto_minmax(0,0.9fr)_minmax(0,1fr)] lg:py-11 lg:hover:pl-4 lg:focus-visible:pl-4"
+                      className="group relative grid gap-4 border-b border-border py-9 pl-5 outline-none transition-[padding] duration-500 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 sm:pl-7 lg:grid-cols-[auto_minmax(0,0.9fr)_minmax(0,1fr)] lg:py-11 lg:pl-10 lg:hover:pl-14 lg:focus-visible:pl-14"
                     >
                       <span
                         aria-hidden
