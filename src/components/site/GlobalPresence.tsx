@@ -29,11 +29,11 @@ const countries: Country[] = [
     name: "United Arab Emirates",
     short: "UAE",
     flag: (
-      <svg viewBox={V} className="h-full w-full">
-        <rect width="60" height="13.34" fill="#00732F" />
-        <rect y="13.34" width="60" height="13.33" fill="#fff" />
-        <rect y="26.67" width="60" height="13.33" fill="#000" />
-        <rect width="15" height="40" fill="#FF0000" />
+      <svg viewBox="0 0 12 6" preserveAspectRatio="none" className="h-full w-full">
+        <rect width="12" height="6" fill="#00843d" />
+        <rect width="12" height="4" y="2" fill="#fff" />
+        <rect width="12" height="2" y="4" />
+        <rect width="3" height="6" fill="#c8102e" />
       </svg>
     ),
   },
