@@ -45,7 +45,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "01",
     title: "Real Estate",
-    note: "Property brands, developers and agencies.",
+    note: "We work with property brands, developers and real estate agencies to create digital experiences that build trust, strengthen their presence and support business growth.",
     clients: [
       { name: "Adobe Property Advisor", src: adobeProperty.url },
       { name: "DXB Real Estate", src: dxb.url },
@@ -58,7 +58,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "02",
     title: "Medical & Healthcare",
-    note: "Clinicians, healthcare providers and health-focused brands.",
+    note: "We support healthcare professionals, medical organisations and health-focused brands with digital experiences designed to communicate expertise, build credibility and connect with their audiences.",
     clients: [
       { name: "Dr Khurram", src: drKhurram.url },
       { name: "Dr Sarfraz", src: drSarfraz.url },
@@ -74,7 +74,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "03",
     title: "Education & Training",
-    note: "Education providers, training organisations and learning platforms.",
+    note: "From education providers to executive training organisations, we create digital solutions that make learning, communication and professional development more accessible and engaging.",
     clients: [
       { name: "Comwave", src: comwave.url },
       { name: "GATD", src: gatd.url },
@@ -87,7 +87,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "04",
     title: "Fashion & Clothing",
-    note: "Fashion, clothing, beauty and lifestyle brands.",
+    note: "We help fashion, clothing and lifestyle brands build distinctive digital identities and experiences that showcase their products and connect with modern audiences.",
     clients: [
       { name: "Borsac", src: borsac.url },
       { name: "NH Fusion", src: nhFusion.url },
@@ -99,7 +99,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "05",
     title: "Engineering & Technology",
-    note: "Technology, engineering, infrastructure and digital businesses.",
+    note: "We work with engineering, technology and infrastructure-focused businesses to create practical digital solutions that communicate complex capabilities clearly and support growth.",
     clients: [
       { name: "Hi Tech", src: hiTech.url },
       { name: "Mumps Motors", src: mumpsMotors.url },
@@ -113,7 +113,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "06",
     title: "Food & Hospitality",
-    note: "Food, hospitality and consumer-focused brands.",
+    note: "We create digital experiences for food, hospitality and consumer-focused brands that help them present their offerings, strengthen their identity and connect with customers.",
     clients: [{ name: "Umami", src: umami.url }],
   },
 ];
@@ -122,9 +122,13 @@ const totalClients = industries.reduce((n, i) => n + i.clients.length, 0);
 
 function LogoGrid({ clients }: { clients: Client[] }) {
   return (
-    <div className="mt-10 grid auto-rows-min grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+    <div className="mt-10 flex flex-wrap justify-center gap-4">
       {clients.map((c, i) => (
-        <Reveal key={c.name} delay={i * 55}>
+        <Reveal
+          key={c.name}
+          delay={i * 55}
+          className="w-[calc(50%-0.5rem)] sm:w-[calc(33.3333%-0.6667rem)] lg:w-[calc(20%-0.8rem)]"
+        >
           <div className="group relative flex h-[132px] items-center justify-center rounded-lg border border-[#E5E7EB] bg-white px-6 py-6 transition-colors duration-500 hover:border-[color-mix(in_oklab,var(--azure)_35%,#E5E7EB)] lg:h-[150px]">
             <span
               aria-hidden
@@ -259,17 +263,14 @@ function ClientsPage() {
             {industries.map((ind, idx) => (
               <div key={ind.num} className={idx === 0 ? "" : "mt-24 lg:mt-32"}>
                 <Reveal>
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5 sm:flex sm:items-end sm:justify-between sm:gap-8">
+                  <div className="min-w-0">
                     <span className="font-mono text-[0.75rem] text-azure">{ind.num}</span>
-                    <div className="min-w-0">
-                      <h2 className="display text-[1.7rem] uppercase text-navy sm:text-[2.2rem] lg:text-[2.7rem]">
-                        {ind.title}
-                      </h2>
-                      <p className="mt-2 text-sm text-muted-foreground">{ind.note}</p>
-                    </div>
-                    <span className="col-span-2 hidden text-xs text-muted-foreground sm:block">
-                      {String(ind.clients.length).padStart(2, "0")} clients
-                    </span>
+                    <h2 className="display mt-3 text-[1.7rem] uppercase text-navy sm:text-[2.2rem] lg:text-[2.7rem]">
+                      {ind.title}
+                    </h2>
+                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                      {ind.note}
+                    </p>
                   </div>
                 </Reveal>
                 <Reveal delay={60}>
