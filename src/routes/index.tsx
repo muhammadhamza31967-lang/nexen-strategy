@@ -131,9 +131,10 @@ function Home() {
           </div>
         </section>
 
-        {/* 02 INTRODUCTION — typography-led editorial section */}
+        {/* WHERE WE WORK — global presence banner */}
         <GlobalPresence />
 
+        {/* 02 INTRODUCTION — typography-led editorial section */}
         <section className="relative overflow-hidden">
           <div
             aria-hidden
