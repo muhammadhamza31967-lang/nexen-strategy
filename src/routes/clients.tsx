@@ -179,7 +179,7 @@ function ClientsPage() {
       <Header overHero />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-44 pb-28 lg:pt-56 lg:pb-36">
+        <section className="relative overflow-hidden bg-navy pt-32 pb-28 lg:pt-40 lg:pb-36">
           <div aria-hidden className="grid-faint absolute inset-0" />
           <div
             aria-hidden
@@ -235,15 +235,17 @@ function ClientsPage() {
               </p>
             </Reveal>
             <Reveal delay={220}>
-              <dl className="mt-14 grid max-w-3xl grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
+              <dl className="mt-14 grid max-w-4xl grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
                 {[
                   { k: `${totalClients}+`, v: "Brands served" },
                   { k: "06", v: "Industries" },
                   { k: "UK & GCC", v: "Markets" },
                   { k: "End-to-end", v: "Delivery" },
                 ].map((s) => (
-                  <div key={s.v}>
-                    <dt className="display text-[2rem] text-white lg:text-[2.4rem]">{s.k}</dt>
+                  <div key={s.v} className="min-w-0">
+                    <dt className="display whitespace-nowrap text-[1.6rem] text-white sm:text-[1.8rem] lg:text-[2.2rem]">
+                      {s.k}
+                    </dt>
                     <dd className="mt-2 text-sm text-white/55">{s.v}</dd>
                   </div>
                 ))}
