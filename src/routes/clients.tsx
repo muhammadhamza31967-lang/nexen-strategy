@@ -53,6 +53,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
       { name: "Muazzam Real Estate", src: muazzamEstate.url },
       { name: "Mustafa Al Ansari Real Estate", src: mustafaAlAnsari.url },
       { name: "Right Move", src: rightMove.url },
+      { name: "Roof Connect", src: roofConnect.url },
     ],
   },
   {
@@ -106,7 +107,6 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
       { name: "Sbidernet", src: sbidernet.url },
       { name: "Ocean of Shore", src: oceanOffshore.url },
       { name: "Mohsan & Co", src: mohsanCo.url },
-      { name: "Roof Connect", src: roofConnect.url },
       { name: "Roya Ventures", src: royaVenture.url },
     ],
   },
