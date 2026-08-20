@@ -263,17 +263,14 @@ function ClientsPage() {
             {industries.map((ind, idx) => (
               <div key={ind.num} className={idx === 0 ? "" : "mt-24 lg:mt-32"}>
                 <Reveal>
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5 sm:flex sm:items-end sm:justify-between sm:gap-8">
+                  <div className="min-w-0">
                     <span className="font-mono text-[0.75rem] text-azure">{ind.num}</span>
-                    <div className="min-w-0">
-                      <h2 className="display text-[1.7rem] uppercase text-navy sm:text-[2.2rem] lg:text-[2.7rem]">
-                        {ind.title}
-                      </h2>
-                      <p className="mt-2 text-sm text-muted-foreground">{ind.note}</p>
-                    </div>
-                    <span className="col-span-2 hidden text-xs text-muted-foreground sm:block">
-                      {String(ind.clients.length).padStart(2, "0")} clients
-                    </span>
+                    <h2 className="display mt-3 text-[1.7rem] uppercase text-navy sm:text-[2.2rem] lg:text-[2.7rem]">
+                      {ind.title}
+                    </h2>
+                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                      {ind.note}
+                    </p>
                   </div>
                 </Reveal>
                 <Reveal delay={60}>
