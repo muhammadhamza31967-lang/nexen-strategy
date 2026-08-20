@@ -145,8 +145,8 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
           <Link to="/portfolio" className={navLink}>
             Portfolio
           </Link>
-          <Link to="/partners" className={navLink}>
-            Partners
+          <Link to="/clients" className={navLink}>
+            Clients
           </Link>
           <Link to="/contact" className={navLink}>
             Contact Us
@@ -282,7 +282,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
 
           {[
             { to: "/portfolio", label: "Portfolio" },
-            { to: "/partners", label: "Partners" },
+            { to: "/clients", label: "Clients" },
             { to: "/contact", label: "Contact Us" },
           ].map((l) => (
             <Link

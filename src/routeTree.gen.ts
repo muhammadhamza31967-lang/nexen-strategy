@@ -11,8 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
@@ -26,14 +26,14 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PartnersRoute = PartnersRouteImport.update({
-  id: '/partners',
-  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -50,16 +50,16 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
-  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
-  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
@@ -67,24 +67,24 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
-  '/partners': typeof PartnersRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/partners' | '/portfolio' | '/services/$slug'
+    '/' | '/about' | '/clients' | '/contact' | '/portfolio' | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/contact' | '/partners' | '/portfolio' | '/services/$slug'
+    '/' | '/about' | '/clients' | '/contact' | '/portfolio' | '/services/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/clients'
     | '/contact'
-    | '/partners'
     | '/portfolio'
     | '/services/$slug'
   fileRoutesById: FileRoutesById
@@ -92,8 +92,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ClientsRoute: typeof ClientsRoute
   ContactRoute: typeof ContactRoute
-  PartnersRoute: typeof PartnersRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
@@ -114,18 +114,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/partners': {
-      id: '/partners'
-      path: '/partners'
-      fullPath: '/partners'
-      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -148,8 +148,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ClientsRoute: ClientsRoute,
   ContactRoute: ContactRoute,
-  PartnersRoute: PartnersRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
