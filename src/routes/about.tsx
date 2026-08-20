@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Compass,
   Network,
   Target,
@@ -79,6 +81,15 @@ const values: { name: string; text: string; icon: LucideIcon }[] = [
 
 function AboutPage() {
   const [activeValue, setActiveValue] = useState(0);
+  const [stage, setStage] = useState(0);
+  const flowRef = useRef<HTMLOListElement>(null);
+  const goStage = (i: number) => {
+    const el = flowRef.current;
+    if (!el) return;
+    const next = Math.max(0, Math.min(stages.length - 1, i));
+    el.scrollTo({ left: next * el.clientWidth, behavior: "smooth" });
+    setStage(next);
+  };
 
   return (
     <>
