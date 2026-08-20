@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -226,7 +227,20 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
   );
 }
 
+const filters = [
+  "All",
+  "Brand & Design",
+  "Web & App Development",
+  "Software Solutions",
+  "AI & Automation",
+  "Marketing & Growth",
+  "Media Production",
+];
+
 function PortfolioPage() {
+  const [active, setActive] = useState("All");
+  const visible = projects.filter((p) => active === "All" || p.category === active);
+
   return (
     <>
       <Header overHero />
@@ -304,20 +318,61 @@ function PortfolioPage() {
               </p>
             </Reveal>
           </div>
+          {/* Service filter tabs */}
+          <div className="mt-12 lg:mt-16">
+            <style>{`
+              .pf-scroll::-webkit-scrollbar{display:none}
+              .pf-scroll{scrollbar-width:none;-ms-overflow-style:none}
+              @keyframes pf-in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+              .pf-item{animation:pf-in 460ms cubic-bezier(.22,.61,.36,1) both}
+              @media (prefers-reduced-motion: reduce){.pf-item{animation:none !important}}
+            `}</style>
+            <div className="pf-scroll -mx-6 overflow-x-auto px-6 lg:mx-0 lg:overflow-visible lg:px-0">
+              <div className="flex w-max min-w-full items-center justify-start gap-2.5 lg:w-full lg:flex-wrap lg:justify-center lg:gap-3">
+                {filters.map((f) => {
+                  const on = f === active;
+                  return (
+                    <button
+                      key={f}
+                      type="button"
+                      onClick={() => setActive(f)}
+                      aria-pressed={on}
+                      className={cn(
+                        "shrink-0 rounded-full border px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
+                        on
+                          ? "border-transparent text-white shadow-[0_12px_30px_-14px_rgba(255,72,63,0.85)]"
+                          : "border-border bg-transparent text-muted-foreground hover:border-azure/40 hover:text-navy",
+                      )}
+                      style={on ? { backgroundImage: "linear-gradient(90deg,#FFA53C,#FF483F)" } : undefined}
+                    >
+                      {f}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
           <span aria-hidden className="mt-12 block h-px w-full bg-border lg:mt-16" />
         </section>
 
         {/* Projects */}
-        {projects.map((p, i) => (
-          <div key={p.number}>
+        {visible.map((p, i) => (
+          <div key={p.number} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
             <ProjectSection p={p} index={i} />
-            {!p.dark && !projects[i + 1]?.dark && i < projects.length - 1 && (
+            {!p.dark && !visible[i + 1]?.dark && i < visible.length - 1 && (
               <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
                 <span aria-hidden className="block h-px w-full bg-border" />
               </div>
             )}
           </div>
         ))}
+
+        {visible.length === 0 && (
+          <div className="mx-auto max-w-[1400px] px-6 py-24 text-center lg:px-12 lg:py-32">
+            <p className="text-lg text-muted-foreground">More projects coming soon.</p>
+          </div>
+        )}
 
         <div className="pt-10 lg:pt-16" />
 
