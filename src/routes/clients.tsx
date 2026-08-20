@@ -263,12 +263,12 @@ function ClientsPage() {
             {industries.map((ind, idx) => (
               <div key={ind.num} className={idx === 0 ? "" : "mt-24 lg:mt-32"}>
                 <Reveal>
-                  <div className="min-w-0">
+                  <div className="min-w-0 text-center">
                     <span className="font-mono text-[0.75rem] text-azure">{ind.num}</span>
                     <h2 className="display mt-3 text-[1.7rem] uppercase text-navy sm:text-[2.2rem] lg:text-[2.7rem]">
                       {ind.title}
                     </h2>
-                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                    <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
                       {ind.note}
                     </p>
                   </div>
