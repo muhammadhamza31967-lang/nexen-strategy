@@ -12,7 +12,7 @@ import mustafaAlAnsari from "@/assets/client-mustafa-al-ansari.png.asset.json";
 import rightMove from "@/assets/client-right-move.svg.asset.json";
 import drKhurram from "@/assets/client-dr-khurram.svg.asset.json";
 import drSarfraz from "@/assets/client-dr-sarfraz.svg.asset.json";
-import drShahid from "@/assets/client-dr-shahid.svg.asset.json";
+import drShahid from "@/assets/client-dr-shahid-v2.svg.asset.json";
 import drShoaib from "@/assets/client-dr-shoaib.svg.asset.json";
 import drWaseem from "@/assets/client-dr-waseem.svg.asset.json";
 import healthyLifePath from "@/assets/client-healthy-life-path.svg.asset.json";
@@ -24,7 +24,8 @@ import gatd from "@/assets/client-gatd.svg.asset.json";
 import phr from "@/assets/client-phr.svg.asset.json";
 import quranReading from "@/assets/client-quran-reading.svg.asset.json";
 import torque from "@/assets/client-torque.svg.asset.json";
-import vivd from "@/assets/client-vivd.svg.asset.json";
+import vivd from "@/assets/client-vivd-v2.svg.asset.json";
+import borsac from "@/assets/client-borsac.svg.asset.json";
 import nhFusion from "@/assets/client-nh-fusion.svg.asset.json";
 import flyShop from "@/assets/client-fly-shop.svg.asset.json";
 import glamByNoor from "@/assets/client-glam-by-noor.svg.asset.json";
@@ -88,6 +89,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
     title: "Fashion & Clothing",
     note: "Fashion, clothing, beauty and lifestyle brands.",
     clients: [
+      { name: "Borsac", src: borsac.url },
       { name: "NH Fusion", src: nhFusion.url },
       { name: "Fly Shop", src: flyShop.url },
       { name: "Glam by Noor", src: glamByNoor.url },
