@@ -49,10 +49,19 @@ const countries: Country[] = [
     flag: (
       <svg viewBox={V} className="h-full w-full">
         <rect width="60" height="40" fill="#006C35" />
-        <rect x="12" y="13" width="36" height="2.4" rx="1.2" fill="#fff" />
-        <rect x="15" y="17.5" width="30" height="2" rx="1" fill="#fff" />
-        <rect x="12" y="27" width="36" height="1.8" rx="0.9" fill="#fff" />
-        <path d="M12 27.9l3-2.2v4.4z" fill="#fff" />
+        {/* Shahada (stylised Arabic script line) */}
+        <g fill="none" stroke="#fff" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M9 16c1.2-2 2.6-2 3.6 0M14.5 16.5c0-2 .6-2.6 1.6-2.6s1.4.8 1.4 2.6M20 16.5c.2-2 1-2.6 2-2.6M24.5 16.5c0-2.4.8-3.2 2-3.2s1.8 1 1.8 3.2M31 16.5c0-2 .7-2.7 1.8-2.7s1.6.9 1.6 2.7M37 16.5c.3-2.3 1.2-3 2.3-3s1.8.9 1.8 3M44 16.5c0-2.2.8-3 1.9-3s1.7.8 1.7 3" />
+          <path d="M8 18.6h40" strokeWidth="1.2" />
+          <path d="M13 12.2c.7-.9 1.6-.9 2.3 0M27 11.8c.7-.9 1.6-.9 2.3 0M39 12c.7-.9 1.6-.9 2.3 0" strokeWidth="1" />
+        </g>
+        {/* Sword */}
+        <g fill="#fff">
+          <rect x="13" y="25.3" width="31" height="1.9" rx="0.95" />
+          <path d="M13 26.25l-3.4-2.1v4.2z" />
+          <rect x="44" y="24.2" width="2.2" height="4.1" rx="0.8" />
+          <rect x="46.6" y="25" width="3.4" height="2.5" rx="1.2" />
+        </g>
       </svg>
     ),
   },
