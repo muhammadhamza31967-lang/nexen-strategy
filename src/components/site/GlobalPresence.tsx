@@ -1,6 +1,10 @@
 import { Reveal } from "@/components/site/Reveal";
 import saudiFlag from "@/assets/flag-saudi-arabia.webp.asset.json";
 import singaporeFlag from "@/assets/flag-singapore.webp.asset.json";
+import pakistanFlag from "@/assets/flag-pakistan.png.asset.json";
+import qatarFlag from "@/assets/flag-qatar.png.asset.json";
+import ukFlag from "@/assets/flag-uk.png.asset.json";
+import usaFlag from "@/assets/flag-usa.png.asset.json";
 
 type Country = { name: string; short: string; flag: React.ReactNode };
 
@@ -11,26 +15,14 @@ const countries: Country[] = [
     name: "Pakistan",
     short: "PK",
     flag: (
-      <svg viewBox={V} className="h-full w-full">
-        <rect width="60" height="40" fill="#01411C" />
-        <rect width="15" height="40" fill="#fff" />
-        <circle cx="38" cy="20" r="9" fill="#fff" />
-        <circle cx="41.5" cy="17.5" r="9" fill="#01411C" />
-        <path d="M45 12l1.1 2.6 2.8.3-2.1 1.9.6 2.7-2.4-1.4-2.4 1.4.6-2.7-2.1-1.9 2.8-.3z" fill="#fff" />
-      </svg>
+      <img src={pakistanFlag.url} alt="" className="h-full w-full object-cover" loading="lazy" />
     ),
   },
   {
     name: "United Kingdom",
     short: "UK",
     flag: (
-      <svg viewBox={V} className="h-full w-full">
-        <rect width="60" height="40" fill="#012169" />
-        <path d="M0 0l60 40M60 0L0 40" stroke="#fff" strokeWidth="8" />
-        <path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" strokeWidth="4" />
-        <path d="M30 0v40M0 20h60" stroke="#fff" strokeWidth="13" />
-        <path d="M30 0v40M0 20h60" stroke="#C8102E" strokeWidth="8" />
-      </svg>
+      <img src={ukFlag.url} alt="" className="h-full w-full object-cover" loading="lazy" />
     ),
   },
   {
@@ -63,37 +55,14 @@ const countries: Country[] = [
     name: "Qatar",
     short: "QA",
     flag: (
-      <svg viewBox={V} className="h-full w-full">
-        <rect width="60" height="40" fill="#8A1538" />
-        <path
-          d="M0 0h14l-6 3.33 6 3.34-6 3.33 6 3.33-6 3.34 6 3.33-6 3.33 6 3.34-6 3.33 6 3.33-6 3.34 6 3.33H0z"
-          fill="#fff"
-        />
-      </svg>
+      <img src={qatarFlag.url} alt="" className="h-full w-full object-cover" loading="lazy" />
     ),
   },
   {
     name: "United States",
     short: "US",
     flag: (
-      <svg viewBox={V} className="h-full w-full">
-        <rect width="60" height="40" fill="#fff" />
-        {[0, 2, 4, 6, 8, 10, 12].map((i) => (
-          <rect key={i} y={i * 3.08} width="60" height="3.08" fill="#B22234" />
-        ))}
-        <rect width="26" height="21.5" fill="#3C3B6E" />
-        {Array.from({ length: 4 }).map((_, r) =>
-          Array.from({ length: 6 }).map((_, c) => (
-            <circle
-              key={`${r}-${c}`}
-              cx={2.5 + c * 4.3 + (r % 2 ? 2.1 : 0)}
-              cy={3 + r * 5.2}
-              r="1"
-              fill="#fff"
-            />
-          )),
-        )}
-      </svg>
+      <img src={usaFlag.url} alt="" className="h-full w-full object-cover" loading="lazy" />
     ),
   },
 ];
