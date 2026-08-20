@@ -98,8 +98,8 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   },
   {
     num: "05",
-    title: "Engineering & Technology",
-    note: "We work with engineering, technology and infrastructure-focused businesses to create practical digital solutions that communicate complex capabilities clearly and support growth.",
+    title: "Technology & Business Solutions",
+    note: "We work with technology, infrastructure and business-focused organisations to create practical digital solutions that simplify complex challenges, strengthen operations and support growth.",
     clients: [
       { name: "Hi Tech", src: hiTech.url },
       { name: "Mumps Motors", src: mumpsMotors.url },
