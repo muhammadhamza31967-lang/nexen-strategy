@@ -3,6 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Reveal } from "@/components/site/Reveal";
+import { GlobalPresence } from "@/components/site/GlobalPresence";
 
 import adobeProperty from "@/assets/client-adobe-property-advisor.svg.asset.json";
 import dxb from "@/assets/client-dxb-real-estate.svg.asset.json";
@@ -255,6 +256,8 @@ function ClientsPage() {
         </section>
 
         {/* Industries */}
+        <GlobalPresence />
+
         <section className="relative overflow-hidden bg-white">
           <div
             aria-hidden
