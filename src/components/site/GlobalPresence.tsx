@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Reveal } from "@/components/site/Reveal";
 
 type Country = { name: string; short: string; flag: React.ReactNode };
@@ -118,112 +117,96 @@ const countries: Country[] = [
 ];
 
 export function GlobalPresence() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width - 0.5).toFixed(3)}`);
-    el.style.setProperty("--my", `${((e.clientY - r.top) / r.height - 0.5).toFixed(3)}`);
-  };
+  const track = [...countries, ...countries, ...countries];
 
   return (
-    <section className="gp relative overflow-hidden bg-navy py-16 lg:py-20">
+    <section className="gp relative overflow-hidden bg-white py-14 lg:py-16">
       <style>{`
-        .gp{--mx:0;--my:0}
-        @keyframes gp-float{0%,100%{transform:translateY(0) rotateX(var(--rx)) rotateY(var(--ry))}50%{transform:translateY(-7px) rotateX(calc(var(--rx) + 2deg)) rotateY(calc(var(--ry) - 3deg))}}
+        .gp{--gp-dur:38s}
+        @keyframes gp-marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-33.3333%,0,0)}}
+        @keyframes gp-wave{0%,100%{transform:rotateY(-9deg) rotateX(3deg) translateY(0)}50%{transform:rotateY(9deg) rotateX(-2deg) translateY(-5px)}}
         @keyframes gp-drift{0%{transform:translateX(-2%)}50%{transform:translateX(2%)}100%{transform:translateX(-2%)}}
         @keyframes gp-dash{to{stroke-dashoffset:-320}}
-        @keyframes gp-node{0%,100%{opacity:.25}50%{opacity:1}}
-        .gp-flag{animation:gp-float 7s ease-in-out infinite;transform-style:preserve-3d}
-        @media (prefers-reduced-motion: reduce){.gp-flag,.gp-drift,.gp-dash,.gp-node{animation:none !important}}
+        .gp-track{display:flex;width:max-content;animation:gp-marquee var(--gp-dur) linear infinite}
+        .gp-flag{animation:gp-wave 6s ease-in-out infinite;transform-style:preserve-3d}
+        @media (prefers-reduced-motion: reduce){.gp-track,.gp-flag,.gp-dash,.gp-glow{animation:none !important}}
       `}</style>
 
-      {/* background layers */}
-      <div aria-hidden className="grid-faint absolute inset-0 opacity-60" />
+      {/* light premium background details */}
+      <div aria-hidden className="grid-faint absolute inset-0 opacity-[0.35]" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="gp-glow pointer-events-none absolute inset-0"
         style={{
-          animation: "gp-drift 26s ease-in-out infinite",
+          animation: "gp-drift 30s ease-in-out infinite",
           background:
-            "radial-gradient(50% 70% at 20% 20%, color-mix(in oklab, #4a73ff 22%, transparent), transparent 70%), radial-gradient(45% 65% at 85% 80%, color-mix(in oklab, #3af1ff 16%, transparent), transparent 70%)",
+            "radial-gradient(45% 70% at 15% 20%, color-mix(in oklab, #4a73ff 9%, transparent), transparent 70%), radial-gradient(40% 60% at 85% 85%, color-mix(in oklab, #3af1ff 10%, transparent), transparent 70%)",
         }}
       />
       <svg
         aria-hidden
-        viewBox="0 0 1200 300"
+        viewBox="0 0 1200 260"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-50"
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-40"
       >
         <defs>
           <linearGradient id="gp-line" x1="0" x2="1">
             <stop offset="0%" stopColor="#3af1ff" stopOpacity="0" />
-            <stop offset="50%" stopColor="#3af1ff" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#4a73ff" stopOpacity="0" />
+            <stop offset="50%" stopColor="#4a73ff" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="#3af1ff" stopOpacity="0" />
           </linearGradient>
         </defs>
-        {[60, 140, 220].map((y, i) => (
+        {[70, 170].map((y, i) => (
           <path
             key={y}
-            d={`M-40 ${y} C 250 ${y - 60}, 650 ${y + 70}, 1240 ${y - 20}`}
+            d={`M-40 ${y} C 280 ${y - 55}, 700 ${y + 60}, 1240 ${y - 25}`}
             fill="none"
             stroke="url(#gp-line)"
             strokeWidth="1"
-            strokeDasharray="8 12"
+            strokeDasharray="7 13"
             className="gp-dash"
-            style={{ animation: `gp-dash ${16 + i * 5}s linear infinite` }}
-          />
-        ))}
-        {[
-          [180, 82],
-          [520, 148],
-          [860, 96],
-          [1040, 196],
-        ].map(([x, y], i) => (
-          <circle
-            key={x}
-            cx={x}
-            cy={y}
-            r="2.5"
-            fill="#3af1ff"
-            className="gp-node"
-            style={{ animation: `gp-node ${5 + i}s ease-in-out infinite` }}
+            style={{ animation: `gp-dash ${18 + i * 6}s linear infinite` }}
           />
         ))}
       </svg>
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-        <Reveal>
-          <p className="eyebrow text-cyan">Where We Work</p>
-        </Reveal>
-        <Reveal delay={70}>
-          <h2 className="display mt-4 max-w-3xl text-[1.9rem] text-white sm:text-[2.4rem] lg:text-[3rem]">
-            Global Reach. Local Understanding.
-          </h2>
-        </Reveal>
+      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[40%_1fr] lg:gap-12 lg:px-12">
+        <div className="min-w-0">
+          <Reveal>
+            <p className="eyebrow text-azure">Where We Work</p>
+          </Reveal>
+          <Reveal delay={70}>
+            <h2 className="display mt-4 text-[1.9rem] text-navy sm:text-[2.3rem] lg:text-[2.8rem]">
+              Global Reach. Local Understanding.
+            </h2>
+          </Reveal>
+          <Reveal delay={130}>
+            <div
+              className="mt-6 h-px w-24"
+              style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.7 }}
+            />
+          </Reveal>
+        </div>
 
-        <div
-          ref={wrapRef}
-          onMouseMove={onMove}
-          className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:mt-12 lg:grid-cols-7 lg:gap-x-6"
-          style={{ perspective: "900px" }}
-        >
-          {countries.map((c, i) => (
-            <Reveal key={c.name} delay={i * 60}>
-              <div className="group flex flex-col items-center text-center">
+        <div className="relative min-w-0 overflow-hidden" style={{ perspective: "1000px" }}>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent"
+          />
+          <div className="gp-track py-6">
+            {track.map((c, i) => (
+              <div key={`${c.name}-${i}`} className="shrink-0 px-4 lg:px-6">
                 <div
-                  className="gp-flag relative h-[62px] w-[92px] rounded-[6px] transition-transform duration-500 group-hover:scale-[1.06] lg:h-[68px] lg:w-[102px]"
-                  style={
-                    {
-                      "--rx": "calc(var(--my) * -10deg)",
-                      "--ry": "calc(var(--mx) * 14deg)",
-                      animationDelay: `${i * 0.45}s`,
-                      boxShadow:
-                        "0 18px 34px -18px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.08)",
-                    } as React.CSSProperties
-                  }
+                  className="gp-flag relative h-[62px] w-[92px] rounded-[6px] lg:h-[70px] lg:w-[104px]"
+                  style={{
+                    animationDelay: `${(i % countries.length) * 0.4}s`,
+                    boxShadow:
+                      "0 16px 28px -16px rgba(1,12,98,0.45), 0 0 0 1px rgba(1,12,98,0.08)",
+                  }}
                 >
                   <div className="h-full w-full overflow-hidden rounded-[6px]">{c.flag}</div>
                   <span
@@ -231,25 +214,14 @@ export function GlobalPresence() {
                     className="pointer-events-none absolute inset-0 rounded-[6px]"
                     style={{
                       background:
-                        "linear-gradient(115deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.04) 32%, rgba(0,0,0,0.28) 62%, rgba(255,255,255,0.16) 100%)",
+                        "linear-gradient(115deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.05) 34%, rgba(1,12,98,0.22) 64%, rgba(255,255,255,0.25) 100%)",
                       mixBlendMode: "overlay",
                     }}
                   />
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -inset-x-2 -bottom-3 h-4 rounded-full opacity-60 blur-md"
-                    style={{ background: "radial-gradient(50% 100% at 50% 0%, #4a73ff, transparent 70%)" }}
-                  />
                 </div>
-                <p className="mt-5 text-[0.8rem] leading-snug text-white/80 lg:text-[0.85rem]">
-                  {c.name}
-                </p>
-                <span className="mt-1 font-mono text-[0.6rem] tracking-[0.2em] text-cyan/60">
-                  {c.short}
-                </span>
               </div>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
