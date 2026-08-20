@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Plus, Minus } from "lucide-react";
 import logo from "@/assets/nexen-logo.png.asset.json";
 import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
@@ -10,6 +10,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,6 +24,10 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) setMobileServicesOpen(false);
   }, [open]);
 
   const light = overHero && !scrolled;
@@ -131,11 +136,32 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
       {/* Mobile menu */}
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-navy transition-all duration-500 lg:hidden",
+          "fixed inset-0 z-50 overflow-hidden bg-navy transition-all duration-500 lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
-        <div className="flex items-center justify-between px-6 py-6">
+        {/* premium background layers */}
+        <div className="pointer-events-none absolute inset-0 grid-faint opacity-60" />
+        <div
+          className="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full opacity-50 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in oklab, var(--azure) 55%, transparent), transparent 70%)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute -bottom-40 -left-28 h-[380px] w-[380px] rounded-full opacity-35 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in oklab, var(--cyan) 45%, transparent), transparent 70%)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
+          style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.7 }}
+        />
+
+        <div className="relative flex items-center justify-between px-6 pt-7 pb-5 sm:px-8">
           <img
             src={logoWhite.url}
             alt="Nexen Strategy"
@@ -147,13 +173,13 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
             type="button"
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="p-2 text-white"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/20 bg-white/[0.06] text-white backdrop-blur-sm transition-colors hover:border-cyan/60 hover:text-cyan"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
         </div>
         <nav
-          className="flex h-[calc(100%-88px)] flex-col gap-1 overflow-y-auto px-6 pb-16"
+          className="relative flex h-[calc(100%-92px)] flex-col overflow-y-auto px-6 pb-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-8"
           aria-label="Mobile"
         >
           {[
@@ -164,23 +190,58 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-4 text-2xl font-semibold tracking-tight text-white"
+              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
             >
               {l.label}
+              <ArrowRight className="h-4 w-4 -translate-x-1 text-cyan opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
             </Link>
           ))}
-          <p className="eyebrow pt-7 pb-2 text-cyan">Services</p>
-          {services.map((s) => (
-            <Link
-              key={s.slug}
-              to="/services/$slug"
-              params={{ slug: s.slug }}
-              onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-3.5 text-lg font-medium text-white/85"
+
+          <div className="border-b border-white/10">
+            <button
+              type="button"
+              aria-expanded={mobileServicesOpen}
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              className="flex w-full items-center justify-between py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
             >
-              {s.title}
-            </Link>
-          ))}
+              Services
+              <span className="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-cyan transition-colors">
+                {mobileServicesOpen ? (
+                  <Minus className="h-4 w-4" />
+                ) : (
+                  <Plus className="h-4 w-4" />
+                )}
+              </span>
+            </button>
+            <div
+              className={cn(
+                "grid transition-all duration-400 ease-out",
+                mobileServicesOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0",
+              )}
+            >
+              <div className="overflow-hidden">
+                <div className="mb-4 ml-1 border-l border-white/12 pl-4">
+                  <p className="eyebrow pt-1 pb-1 text-[0.72rem] text-cyan/80">
+                    All Services
+                  </p>
+                  {services.map((s) => (
+                    <Link
+                      key={s.slug}
+                      to="/services/$slug"
+                      params={{ slug: s.slug }}
+                      onClick={() => setOpen(false)}
+                      className="block py-2.5 text-[1.05rem] font-medium text-white/75 transition-colors hover:text-cyan"
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {[
             { to: "/portfolio", label: "Portfolio" },
             { to: "/partners", label: "Partners" },
@@ -190,17 +251,19 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-4 text-2xl font-semibold tracking-tight text-white"
+              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
             >
               {l.label}
+              <ArrowRight className="h-4 w-4 -translate-x-1 text-cyan opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
             </Link>
           ))}
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="btn-primary mt-8 justify-center"
+            className="btn-primary mt-8 mb-4 justify-center"
           >
             Start a Project
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </nav>
       </div>
