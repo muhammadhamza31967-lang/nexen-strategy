@@ -170,12 +170,14 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={cn(
-          "fixed inset-0 z-50 overflow-hidden bg-navy transition-all duration-500 lg:hidden",
-          open ? "opacity-100" : "pointer-events-none opacity-0",
-        )}
-      >
+      {mounted &&
+        createPortal(
+          <div
+            className={cn(
+              "fixed inset-0 z-[9999] overflow-hidden bg-navy transition-all duration-500 lg:hidden",
+              open ? "opacity-100" : "pointer-events-none opacity-0",
+            )}
+          >
         {/* premium background layers */}
         <div className="pointer-events-none absolute inset-0 grid-faint opacity-60" />
         <div
