@@ -172,11 +172,8 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
             className={cn("lg:col-span-5", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
           >
             <div className="flex items-center gap-4">
-              <span className={cn("eyebrow text-[0.7rem]", dark ? "text-cyan" : "text-azure")}>{p.number}</span>
-              <span className={cn("h-px w-8", dark ? "bg-white/25" : "bg-border")} />
-              <span className={cn("eyebrow text-[0.65rem]", dark ? "text-white/60" : "text-muted-foreground")}>
-                {p.category}
-              </span>
+              <span className={cn("h-px w-8", dark ? "bg-white/25" : "bg-gradient-to-r from-amber to-ember")} />
+              <span className={cn("eyebrow text-[0.65rem]", dark ? "text-cyan" : "text-azure")}>{p.category}</span>
             </div>
 
             <h2
