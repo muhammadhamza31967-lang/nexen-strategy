@@ -326,10 +326,12 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
                 <MapPin className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
                 United Kingdom
               </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+             </ul>
+           </div>
+         </nav>
+          </div>,
+          document.body,
+        )}
     </header>
   );
 }
