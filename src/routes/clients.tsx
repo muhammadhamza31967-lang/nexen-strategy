@@ -57,7 +57,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "02",
     title: "Medical & Healthcare",
-    note: "Clinicians, clinics and health-focused brands.",
+    note: "Clinicians, healthcare providers and health-focused brands.",
     clients: [
       { name: "Dr Khurram", src: drKhurram.url },
       { name: "Dr Sarfraz", src: drSarfraz.url },
@@ -73,7 +73,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "03",
     title: "Education & Training",
-    note: "Learning platforms, academies and training providers.",
+    note: "Education providers, training organisations and learning platforms.",
     clients: [
       { name: "Comwave", src: comwave.url },
       { name: "GATD", src: gatd.url },
@@ -86,7 +86,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "04",
     title: "Fashion & Clothing",
-    note: "Retail, apparel and personal brands.",
+    note: "Fashion, clothing, beauty and lifestyle brands.",
     clients: [
       { name: "NH Fusion", src: nhFusion.url },
       { name: "Fly Shop", src: flyShop.url },
@@ -97,7 +97,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "05",
     title: "Engineering & Technology",
-    note: "Industrial, technical and infrastructure businesses.",
+    note: "Technology, engineering, infrastructure and digital businesses.",
     clients: [
       { name: "Hi Tech", src: hiTech.url },
       { name: "Mumps Motors", src: mumpsMotors.url },
@@ -111,7 +111,7 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   {
     num: "06",
     title: "Food & Hospitality",
-    note: "Dining and hospitality experiences.",
+    note: "Food, hospitality and consumer-focused brands.",
     clients: [{ name: "Umami", src: umami.url }],
   },
 ];
@@ -120,10 +120,10 @@ const totalClients = industries.reduce((n, i) => n + i.clients.length, 0);
 
 function LogoGrid({ clients }: { clients: Client[] }) {
   return (
-    <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-5">
+    <div className="mt-10 grid auto-rows-min grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
       {clients.map((c, i) => (
         <Reveal key={c.name} delay={i * 55}>
-          <div className="group relative flex h-[132px] items-center justify-center bg-white px-5 transition-colors duration-500 hover:bg-[color-mix(in_oklab,var(--cyan)_6%,white)] lg:h-[156px]">
+          <div className="group relative flex h-[132px] items-center justify-center rounded-lg border border-[#E5E7EB] bg-white px-6 py-6 transition-colors duration-500 hover:border-[color-mix(in_oklab,var(--azure)_35%,#E5E7EB)] lg:h-[150px]">
             <span
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -136,7 +136,7 @@ function LogoGrid({ clients }: { clients: Client[] }) {
               src={c.src}
               alt={c.name}
               loading="lazy"
-              className="relative max-h-[70px] w-auto max-w-[160px] object-contain opacity-80 grayscale transition-all duration-500 group-hover:scale-[1.04] group-hover:opacity-100 group-hover:grayscale-0"
+              className="relative m-auto max-h-[72px] w-auto max-w-[165px] object-contain transition-transform duration-500 group-hover:scale-[1.04]"
             />
           </div>
         </Reveal>
