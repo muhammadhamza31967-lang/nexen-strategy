@@ -442,26 +442,34 @@ function AboutPage() {
 
             {/* stage flow — one connected horizontal process */}
             <Reveal className="mt-16 lg:mt-20">
-              <div className="ab-flow relative -mx-6 overflow-x-auto px-6 pb-2 sm:mx-0 sm:overflow-visible sm:px-0">
-                <div className="relative min-w-[640px] sm:min-w-0">
+              <div className="ab-flow relative">
+                <div className="relative">
                   {/* continuous line */}
-                  <div aria-hidden className="absolute left-[12.5%] right-[12.5%] top-[7px] h-px bg-white/15" />
+                  <div aria-hidden className="absolute left-[12.5%] right-[12.5%] top-[7px] hidden h-px bg-white/15 sm:block" />
                   <div
                     aria-hidden
-                    className="ab-line absolute left-[12.5%] top-[7px] h-px origin-left"
+                    className="ab-line absolute left-[12.5%] top-[7px] hidden h-px origin-left sm:block"
                     style={{
                       right: "12.5%",
                       background: "linear-gradient(90deg, #3AF1FF, #4A73FF)",
                       opacity: 0.75,
                     }}
                   />
-                  <ol className="grid grid-cols-4">
+                  <ol
+                    ref={flowRef}
+                    onScroll={(e) => {
+                      const el = e.currentTarget;
+                      const w = el.clientWidth || 1;
+                      setStage(Math.round(el.scrollLeft / w));
+                    }}
+                    className="ab-scroll flex snap-x snap-mandatory overflow-x-auto sm:grid sm:grid-cols-4 sm:overflow-visible"
+                  >
                     {stages.map((s, i) => {
                       const Icon = s.icon;
                       return (
                         <li
                           key={s.word}
-                          className="group relative px-3 text-center lg:px-6"
+                          className="group relative w-full flex-none snap-center px-3 text-center sm:w-auto lg:px-6"
                           style={{ transitionDelay: `${i * 90}ms` }}
                         >
                           {i > 0 && (
@@ -491,6 +499,40 @@ function AboutPage() {
                       );
                     })}
                   </ol>
+
+                  {/* mobile controls */}
+                  <div className="mt-8 flex items-center justify-center gap-4 sm:hidden">
+                    <button
+                      type="button"
+                      aria-label="Previous step"
+                      onClick={() => goStage(stage - 1)}
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-cyan hover:text-cyan"
+                    >
+                      <ChevronLeft className="h-4 w-4" strokeWidth={1.5} />
+                    </button>
+                    <div className="flex items-center gap-2">
+                      {stages.map((s, i) => (
+                        <button
+                          key={s.word}
+                          type="button"
+                          aria-label={`Go to ${s.word}`}
+                          onClick={() => goStage(i)}
+                          className={cn(
+                            "h-1.5 rounded-full transition-all duration-300",
+                            i === stage ? "w-6 bg-cyan" : "w-1.5 bg-white/25",
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      aria-label="Next step"
+                      onClick={() => goStage(stage + 1)}
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-cyan hover:text-cyan"
+                    >
+                      <ChevronRight className="h-4 w-4" strokeWidth={1.5} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </Reveal>
