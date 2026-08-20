@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Plus, Minus } from "lucide-react";
 import logo from "@/assets/nexen-logo.png.asset.json";
 import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
@@ -10,6 +10,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,6 +24,10 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) setMobileServicesOpen(false);
   }, [open]);
 
   const light = overHero && !scrolled;
