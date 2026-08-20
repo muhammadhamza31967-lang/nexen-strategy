@@ -116,6 +116,8 @@ function AboutPage() {
         .ab-orbit-r{animation:ab-orbit-r 68s linear infinite;transform-origin:50% 50%}
         .ab-pulse{animation:ab-pulse 5s ease-in-out infinite}
         .ab-float{animation:ab-float 9s ease-in-out infinite}
+        .ab-scroll{scrollbar-width:none;-ms-overflow-style:none}
+        .ab-scroll::-webkit-scrollbar{display:none}
         @media (prefers-reduced-motion: reduce){.ab-drift,.ab-drift2,.ab-grid,.ab-dash,.ab-dash2,.ab-node{animation:none !important}}
         @media (prefers-reduced-motion: reduce){.ab-orbit,.ab-orbit-r,.ab-pulse,.ab-float{animation:none !important}}
       `}</style>
