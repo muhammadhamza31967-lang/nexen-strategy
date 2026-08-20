@@ -34,6 +34,12 @@ import rightMove from "@/assets/client-right-move.svg.asset.json";
 import roofConnect from "@/assets/client-roofconnect.svg.asset.json";
 import royaVenture from "@/assets/client-roya-venture.svg.asset.json";
 import mumpsMotors from "@/assets/client-mumps-motors.png.asset.json";
+import mustafaAlAnsari from "@/assets/client-mustafa-al-ansari.png.asset.json";
+import sbidernet from "@/assets/client-sbidernet.svg.asset.json";
+import soapSuds from "@/assets/client-soap-suds.svg.asset.json";
+import torque from "@/assets/client-torque.svg.asset.json";
+import umami from "@/assets/client-umami.svg.asset.json";
+import vivd from "@/assets/client-vivd.svg.asset.json";
 
 const clients = [
   { name: "COSH", src: cosh.url, cls: "h-12 lg:h-16" },
@@ -69,6 +75,12 @@ const clients = [
   { name: "RoofConnect", src: roofConnect.url, cls: "h-12 lg:h-16" },
   { name: "Roya Venture", src: royaVenture.url, cls: "h-11 lg:h-14" },
   { name: "Mumps Motors", src: mumpsMotors.url, cls: "h-12 lg:h-16" },
+  { name: "Mustafa Al Ansari Real Estate", src: mustafaAlAnsari.url, cls: "h-10 lg:h-14" },
+  { name: "Sbidernet", src: sbidernet.url, cls: "h-14 lg:h-20" },
+  { name: "Soap Suds", src: soapSuds.url, cls: "h-10 lg:h-14" },
+  { name: "Torque", src: torque.url, cls: "h-14 lg:h-20" },
+  { name: "Umami", src: umami.url, cls: "h-12 lg:h-16" },
+  { name: "VIVD", src: vivd.url, cls: "h-16 lg:h-24" },
 ];
 
 export function ClientLogos() {
