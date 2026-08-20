@@ -9,7 +9,7 @@ import comwave from "@/assets/client-comwave.svg.asset.json";
 import dxb from "@/assets/client-dxb-real-estate.svg.asset.json";
 import drKhurram from "@/assets/client-dr-khurram.svg.asset.json";
 import drSarfraz from "@/assets/client-dr-sarfraz.svg.asset.json";
-import drShahid from "@/assets/client-dr-shahid.svg.asset.json";
+import drShahid from "@/assets/client-dr-shahid-v2.svg.asset.json";
 import drShoaib from "@/assets/client-dr-shoaib.svg.asset.json";
 import drWaseem from "@/assets/client-dr-waseem.svg.asset.json";
 import englishCoach from "@/assets/client-english-coach.svg.asset.json";
@@ -37,7 +37,7 @@ import sbidernet from "@/assets/client-sbidernet.svg.asset.json";
 import soapSuds from "@/assets/client-soap-suds.svg.asset.json";
 import torque from "@/assets/client-torque.svg.asset.json";
 import umami from "@/assets/client-umami.svg.asset.json";
-import vivd from "@/assets/client-vivd.svg.asset.json";
+import vivd from "@/assets/client-vivd-v2.svg.asset.json";
 
 const clients = [
   { name: "COSH", src: cosh.url, cls: "h-12 lg:h-16" },
