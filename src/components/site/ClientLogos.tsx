@@ -86,7 +86,7 @@ const clients = [
 export function ClientLogos() {
   const [paused, setPaused] = useState(false);
   const [delay, setDelay] = useState(0);
-  const DURATION = 142;
+  const DURATION = 168;
   const PER_GROUP = clients.length;
   const STEP = DURATION / PER_GROUP;
   const rafRef = useRef<number | null>(null);
