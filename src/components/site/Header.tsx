@@ -1,6 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X, ArrowRight, Plus, Minus } from "lucide-react";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  ArrowRight,
+  Plus,
+  Minus,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import logo from "@/assets/nexen-logo.png.asset.json";
 import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
