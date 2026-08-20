@@ -133,12 +133,14 @@ export function GlobalPresence() {
       <style>{`
         .gp{--gp-dur:38s}
         @keyframes gp-marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-33.3333%,0,0)}}
-        @keyframes gp-wave{0%,100%{transform:rotateY(-9deg) rotateX(3deg) translateY(0)}50%{transform:rotateY(9deg) rotateX(-2deg) translateY(-5px)}}
+        @keyframes gp-wave{0%{transform:rotateY(-8deg) rotateX(2.5deg) skewY(1.2deg) translateY(0)}25%{transform:rotateY(0deg) rotateX(-1deg) skewY(-1.4deg) translateY(-3px)}50%{transform:rotateY(8deg) rotateX(-2deg) skewY(1deg) translateY(-5px)}75%{transform:rotateY(0deg) rotateX(1.5deg) skewY(-1.2deg) translateY(-2px)}100%{transform:rotateY(-8deg) rotateX(2.5deg) skewY(1.2deg) translateY(0)}}
+        @keyframes gp-cloth{0%{background-position:0% 50%}100%{background-position:200% 50%}}
         @keyframes gp-drift{0%{transform:translateX(-2%)}50%{transform:translateX(2%)}100%{transform:translateX(-2%)}}
         @keyframes gp-dash{to{stroke-dashoffset:-320}}
         .gp-track{display:flex;width:max-content;animation:gp-marquee var(--gp-dur) linear infinite}
         .gp-flag{animation:gp-wave 6s ease-in-out infinite;transform-style:preserve-3d}
-        @media (prefers-reduced-motion: reduce){.gp-track,.gp-flag,.gp-dash,.gp-glow{animation:none !important}}
+        .gp-cloth{background-size:200% 100%;animation:gp-cloth 4.5s linear infinite}
+        @media (prefers-reduced-motion: reduce){.gp-track,.gp-flag,.gp-cloth,.gp-dash,.gp-glow{animation:none !important}}
       `}</style>
 
       {/* light premium background details */}
@@ -220,10 +222,11 @@ export function GlobalPresence() {
                   <div className="h-full w-full overflow-hidden rounded-[6px]">{c.flag}</div>
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 rounded-[6px]"
+                    className="gp-cloth pointer-events-none absolute inset-0 rounded-[6px]"
                     style={{
+                      animationDelay: `${(i % countries.length) * 0.35}s`,
                       background:
-                        "linear-gradient(115deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.05) 34%, rgba(1,12,98,0.22) 64%, rgba(255,255,255,0.25) 100%)",
+                        "linear-gradient(105deg, rgba(255,255,255,0.42) 0%, rgba(1,12,98,0.20) 14%, rgba(255,255,255,0.30) 28%, rgba(1,12,98,0.18) 42%, rgba(255,255,255,0.34) 56%, rgba(1,12,98,0.20) 72%, rgba(255,255,255,0.40) 100%)",
                       mixBlendMode: "overlay",
                     }}
                   />
