@@ -17,7 +17,8 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
-import aboutEcosystem from "@/assets/about-ecosystem.jpg";
+import aboutEcosystemAsset from "@/assets/about-who-we-are.png.asset.json";
+const aboutEcosystem = aboutEcosystemAsset.url;
 
 export const Route = createFileRoute("/about")({
   head: () => ({
