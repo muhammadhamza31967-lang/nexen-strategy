@@ -9,6 +9,7 @@ import { ServiceShowcase } from "@/components/site/ServiceShowcase";
 import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { PortfolioPreview } from "@/components/site/PortfolioPreview";
 import { ClientLogos } from "@/components/site/ClientLogos";
+import { GlobalPresence } from "@/components/site/GlobalPresence";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import gatdLogo from "@/assets/gatd-logo.png.asset.json";
 import royaLogo from "@/assets/roya-ventures-logo.png.asset.json";
@@ -129,6 +130,9 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {/* WHERE WE WORK — global presence banner */}
+        <GlobalPresence />
 
         {/* 02 INTRODUCTION — typography-led editorial section */}
         <section className="relative overflow-hidden">
