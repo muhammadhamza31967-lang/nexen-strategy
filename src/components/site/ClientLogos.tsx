@@ -18,8 +18,6 @@ import gatd from "@/assets/client-gatd.svg.asset.json";
 import glamByNoor from "@/assets/client-glam-by-noor.svg.asset.json";
 import healthyLifePath from "@/assets/client-healthy-life-path.svg.asset.json";
 import hiTech from "@/assets/client-hi-tech.svg.asset.json";
-import hireX from "@/assets/client-hire-x.svg.asset.json";
-import leadSpark from "@/assets/client-leadspark.svg.asset.json";
 import mayfair from "@/assets/client-mayfair.svg.asset.json";
 import minahilKhan from "@/assets/client-minahil-khan.svg.asset.json";
 import mohsanCo from "@/assets/client-mohsan-co.svg.asset.json";
@@ -57,8 +55,6 @@ const clients = [
   { name: "Fly Shop", src: flyShop.url, cls: "h-10 lg:h-14" },
   { name: "GATD", src: gatd.url, cls: "h-10 lg:h-14" },
   { name: "Hi Tech", src: hiTech.url, cls: "h-10 lg:h-14" },
-  { name: "Hire X", src: hireX.url, cls: "h-14 lg:h-20" },
-  { name: "LeadSpark", src: leadSpark.url, cls: "h-9 lg:h-12" },
   { name: "Mayfair", src: mayfair.url, cls: "h-14 lg:h-20" },
   { name: "Healthy Life Path", src: healthyLifePath.url, cls: "h-12 lg:h-16" },
   { name: "Glam by Noor", src: glamByNoor.url, cls: "h-16 lg:h-24" },
