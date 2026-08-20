@@ -182,7 +182,7 @@ function Home() {
 
         {/* 03 SERVICES */}
         <section id="services" className="scroll-mt-24 bg-white">
-          <div className="mx-auto max-w-[1400px] px-6 py-[3.5rem] lg:px-12 lg:pb-[4.5rem] lg:pt-[4.5rem]">
+          <div className="mx-auto max-w-[1400px] px-6 pb-[5rem] pt-[3.5rem] lg:px-12 lg:pb-[6.5rem] lg:pt-[4.5rem]">
             <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-x-14">
               <Reveal className="lg:col-span-7">
                 <p className="eyebrow text-azure">Services</p>
