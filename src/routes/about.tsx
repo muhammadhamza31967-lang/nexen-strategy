@@ -364,7 +364,7 @@ function AboutPage() {
                   />
                   <div
                     className="relative overflow-hidden rounded-[1.75rem] border border-white/10"
-                    style={{ background: "linear-gradient(150deg, #010C62 0%, #0A146F 30%, #111B82 50%)" }}
+                    style={{ background: "#010C62" }}
                   >
                     <img
                       src={aboutEcosystem}
@@ -372,20 +372,19 @@ function AboutPage() {
                       loading="lazy"
                       width={1024}
                       height={1280}
-                      className="ab-float h-[380px] w-full object-cover opacity-90 mix-blend-screen sm:h-[460px] lg:h-[560px]"
+                      className="ab-float h-[380px] w-full object-cover sm:h-[460px] lg:h-[560px]"
                     />
-                    <div aria-hidden className="grid-faint ab-grid pointer-events-none absolute inset-0 opacity-40" />
+                    <div aria-hidden className="grid-faint ab-grid pointer-events-none absolute inset-0 opacity-10" />
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-0"
+                      className="pointer-events-none absolute inset-0 mix-blend-multiply"
                       style={{
-                        background:
-                          "linear-gradient(180deg, rgba(1,12,98,0.35) 0%, transparent 40%, rgba(1,12,98,0.55) 100%)",
+                        background: "rgba(1,12,98,0.10)",
                       }}
                     />
                     <div
                       aria-hidden
-                      className="ab-drift2 pointer-events-none absolute -left-1/4 top-0 h-full w-1/2 opacity-30"
+                      className="ab-drift2 pointer-events-none absolute -left-1/4 top-0 h-full w-1/2 opacity-10"
                       style={{ background: "linear-gradient(90deg, transparent, rgba(58,241,255,0.18), transparent)" }}
                     />
                     <span
