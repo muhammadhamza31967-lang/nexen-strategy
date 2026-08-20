@@ -4,18 +4,38 @@ import { Reveal } from "@/components/site/Reveal";
 import cosh from "@/assets/client-cosh.svg.asset.json";
 import college from "@/assets/client-college-of-science.svg.asset.json";
 import drAmir from "@/assets/client-dr-amir.svg.asset.json";
+import adobeProperty from "@/assets/client-adobe-property-advisor.svg.asset.json";
+import comwave from "@/assets/client-comwave.svg.asset.json";
+import dxb from "@/assets/client-dxb-real-estate.svg.asset.json";
+import drKhurram from "@/assets/client-dr-khurram.svg.asset.json";
+import drSarfraz from "@/assets/client-dr-sarfraz.svg.asset.json";
+import drShahid from "@/assets/client-dr-shahid.svg.asset.json";
+import drShoaib from "@/assets/client-dr-shoaib.svg.asset.json";
+import drWaseem from "@/assets/client-dr-waseem.svg.asset.json";
+import englishCoach from "@/assets/client-english-coach.svg.asset.json";
+import flyShop from "@/assets/client-fly-shop.svg.asset.json";
 
 const clients = [
   { name: "COSH", src: cosh.url, cls: "h-12 lg:h-16" },
   { name: "College of Science", src: college.url, cls: "h-14 lg:h-20" },
   { name: "Dr Amir", src: drAmir.url, cls: "h-16 lg:h-24" },
+  { name: "English Coach", src: englishCoach.url, cls: "h-12 lg:h-16" },
+  { name: "Dr Shahid", src: drShahid.url, cls: "h-16 lg:h-24" },
+  { name: "Dr Shoaib", src: drShoaib.url, cls: "h-14 lg:h-20" },
+  { name: "Dr Sarfraz", src: drSarfraz.url, cls: "h-9 lg:h-12" },
+  { name: "Dr Khurram", src: drKhurram.url, cls: "h-14 lg:h-20" },
+  { name: "Dr Waseem", src: drWaseem.url, cls: "h-9 lg:h-12" },
+  { name: "Comwave", src: comwave.url, cls: "h-11 lg:h-14" },
+  { name: "DXB Real Estate", src: dxb.url, cls: "h-16 lg:h-24" },
+  { name: "Adobe Property Advisor", src: adobeProperty.url, cls: "h-16 lg:h-24" },
+  { name: "Fly Shop", src: flyShop.url, cls: "h-10 lg:h-14" },
 ];
 
 export function ClientLogos() {
   const [paused, setPaused] = useState(false);
   const [delay, setDelay] = useState(0);
-  const DURATION = 26;
-  const PER_GROUP = clients.length * 2;
+  const DURATION = 56;
+  const PER_GROUP = clients.length;
   const STEP = DURATION / PER_GROUP;
   const rafRef = useRef<number | null>(null);
 
@@ -82,11 +102,11 @@ export function ClientLogos() {
               >
                 {[0, 1].map((dup) => (
                   <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
-                    {[0, 1].map((rep) =>
+                    {[0].map((rep) =>
                       clients.map((c) => (
                         <div
                           key={`${rep}-${c.name}`}
-                          className="flex items-center justify-center px-10 sm:px-14 lg:px-20"
+                          className="flex items-center justify-center px-8 sm:px-12 lg:px-16"
                         >
                           <img
                             src={c.src}
