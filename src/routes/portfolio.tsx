@@ -300,7 +300,7 @@ function PortfolioPage() {
         </section>
 
         {/* Selected work intro */}
-        <section className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12 lg:py-24">
+        <section className="mx-auto max-w-[1400px] px-6 pt-16 pb-6 lg:px-12 lg:pt-24 lg:pb-8">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-16">
             <Reveal className="lg:col-span-7">
               <p className="eyebrow text-azure">Selected Work</p>
@@ -317,7 +317,7 @@ function PortfolioPage() {
           </div>
           <span aria-hidden className="mt-12 block h-px w-full bg-border lg:mt-16" />
           {/* Service filter tabs */}
-          <div className="mt-8 lg:mt-10">
+          <div className="mt-14 lg:mt-20">
             <style>{`
               .pf-scroll::-webkit-scrollbar{display:none}
               .pf-scroll{scrollbar-width:none;-ms-overflow-style:none}
