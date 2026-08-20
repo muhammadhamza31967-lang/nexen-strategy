@@ -234,7 +234,7 @@ function ClientsPage() {
               </p>
             </Reveal>
             <Reveal delay={220}>
-              <dl className="mt-14 grid max-w-4xl grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
+              <dl className="mt-14 grid max-w-4xl grid-cols-2 gap-x-8 gap-y-8 sm:flex sm:max-w-none sm:flex-nowrap sm:items-start sm:gap-x-10 lg:gap-x-16">
                 {[
                   { k: `${totalClients}+`, v: "Brands served" },
                   { k: "06", v: "Industries" },
