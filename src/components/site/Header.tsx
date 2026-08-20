@@ -265,6 +265,31 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
             Start a Project
             <ArrowRight className="h-4 w-4" />
           </Link>
+
+          <div className="mt-2 border-t border-white/10 pt-6 pb-4">
+            <p className="eyebrow mb-4 text-[0.7rem] text-cyan/80">Contact</p>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3 text-white/70">
+                <Mail className="h-4 w-4 shrink-0 text-cyan/80" />
+                <a
+                  href="mailto:hello@nexenstrategy.com"
+                  className="transition-colors hover:text-cyan"
+                >
+                  hello@nexenstrategy.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-white/70">
+                <Phone className="h-4 w-4 shrink-0 text-cyan/80" />
+                <a href="tel:+442080000000" className="transition-colors hover:text-cyan">
+                  +44 (0) 20 8000 0000
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-white/70">
+                <MapPin className="h-4 w-4 shrink-0 text-cyan/80" />
+                United Kingdom
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
