@@ -255,9 +255,9 @@ function ClientsPage() {
           </div>
         </section>
 
-        {/* Industries */}
         <GlobalPresence />
 
+        {/* Industries */}
         <section className="relative overflow-hidden bg-white">
           <div
             aria-hidden
