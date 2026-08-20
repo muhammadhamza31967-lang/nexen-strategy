@@ -190,7 +190,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
+              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.15rem] font-semibold sm:text-[1.25rem] tracking-tight text-white transition-colors hover:text-cyan"
             >
               {l.label}
               <ArrowRight className="h-4 w-4 -translate-x-1 text-cyan opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
@@ -202,7 +202,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
               type="button"
               aria-expanded={mobileServicesOpen}
               onClick={() => setMobileServicesOpen((v) => !v)}
-              className="flex w-full items-center justify-between py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
+              className="flex w-full items-center justify-between py-4 text-[1.15rem] font-semibold sm:text-[1.25rem] tracking-tight text-white transition-colors hover:text-cyan"
             >
               Services
               <span className="grid h-8 w-8 place-items-center rounded-full border border-white/20 text-cyan transition-colors">
@@ -251,7 +251,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.35rem] font-semibold tracking-tight text-white transition-colors hover:text-cyan"
+              className="group flex items-center justify-between border-b border-white/10 py-4 text-[1.15rem] font-semibold sm:text-[1.25rem] tracking-tight text-white transition-colors hover:text-cyan"
             >
               {l.label}
               <ArrowRight className="h-4 w-4 -translate-x-1 text-cyan opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
