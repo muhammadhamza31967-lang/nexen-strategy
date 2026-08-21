@@ -49,7 +49,8 @@ function Frame({
             loading="lazy"
             className={cn(
               "h-full w-full transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]",
-              phone ? "object-contain object-center" : "object-cover object-top",
+              contain ? "object-contain object-center" : "object-cover object-top",
+              kind === "tablet" ? "p-1.5" : "",
             )}
           />
         </div>
