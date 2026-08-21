@@ -61,48 +61,36 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
   return (
     <div className="w-full">
       {/* Desktop / tablet composition */}
-      <div className="relative hidden aspect-[16/12] w-full sm:block">
+      <div className="relative hidden aspect-[16/10] w-full sm:block">
         <Frame
           src={a}
           alt={`${alt} — primary interface mockup`}
           kind="browser"
           ratio="16/10"
-          className={cn("absolute top-0 w-[82%]", flip ? "right-0" : "left-0")}
+          className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
         />
 
         {secondary[0] && (
           <Frame
             src={secondary[0]}
-            alt={`${alt} — supporting screen`}
-            kind="screen"
-            ratio="4/3"
-            className={cn(
-              "absolute bottom-[2%] w-[36%] md:w-[38%]",
-              flip ? "right-[24%]" : "left-[24%]",
-            )}
+            alt={`${alt} — mobile mockup`}
+            kind="phone"
+            ratio="9/17"
+            className={cn("absolute bottom-[6%] w-[18%]", flip ? "left-[1%]" : "right-[1%]")}
           />
         )}
 
         {secondary[1] && (
           <Frame
             src={secondary[1]}
-            alt={`${alt} — mobile mockup`}
-            kind="phone"
-            ratio="9/17"
-            className={cn("absolute bottom-[18%] w-[19%]", flip ? "left-[1%]" : "right-[1%]")}
-          />
-        )}
-
-        {secondary[2] && (
-          <Frame
-            src={secondary[2]}
             alt={`${alt} — dashboard detail`}
             kind="tablet"
             ratio="4/3"
-            className={cn("absolute top-[8%] w-[26%]", flip ? "left-0" : "right-0")}
+            className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
       </div>
+
 
       {/* Mobile: primary + controlled horizontal carousel */}
       <div className="sm:hidden">
