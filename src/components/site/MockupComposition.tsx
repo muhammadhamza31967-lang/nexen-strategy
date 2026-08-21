@@ -19,12 +19,14 @@ function Frame({
   kind = "screen",
   ratio,
   className,
+  fit = "cover",
 }: {
   src: string;
   alt: string;
   kind?: MockupKind;
   ratio: string;
   className?: string;
+  fit?: "cover" | "contain";
 }) {
   const phone = kind === "phone";
   return (
