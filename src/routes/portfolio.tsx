@@ -117,7 +117,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
     <section
       className={cn(
         "relative overflow-hidden",
-        dark ? "bg-navy py-24 lg:py-32" : "py-16 lg:py-24",
+        "bg-white py-16 lg:py-24",
       )}
     >
       {dark && (
