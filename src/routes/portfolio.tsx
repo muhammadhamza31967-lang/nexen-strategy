@@ -15,7 +15,7 @@ import svcMarketing from "@/assets/svc-marketing.jpg";
 import svcMedia from "@/assets/svc-media.jpg";
 import gatdMobile from "@/assets/gatd-mobile-3.png.asset.json";
 import gatdLaptop from "@/assets/gatd-laptop-2.png.asset.json";
-import gatdThird from "@/assets/gatd-img3.png.asset.json";
+import gatdThird from "@/assets/gatd-img3-2.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
