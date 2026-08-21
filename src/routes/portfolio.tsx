@@ -76,7 +76,6 @@ const projects: Project[] = [
     capabilities: ["Business Strategy", "Product Design", "Software Development"],
     image: work3,
     href: "/contact",
-    dark: true,
   },
   {
     number: "04",
@@ -112,13 +111,13 @@ const projects: Project[] = [
 
 function ProjectSection({ p, index }: { p: Project; index: number }) {
   const imageRight = index % 2 === 1;
-  const dark = !!p.dark;
+  const dark = false;
 
   return (
     <section
       className={cn(
         "relative overflow-hidden",
-        dark ? "bg-navy py-24 lg:py-32" : "py-16 lg:py-24",
+        "bg-white py-16 lg:py-24",
       )}
     >
       {dark && (
@@ -241,7 +240,7 @@ function PortfolioPage() {
   return (
     <>
       <Header overHero />
-      <main>
+      <main className="bg-white">
         {/* Hero */}
         <section className="relative overflow-hidden bg-navy pt-40 pb-24 lg:pt-52 lg:pb-32">
           <div aria-hidden className="grid-faint absolute inset-0" />
@@ -357,7 +356,7 @@ function PortfolioPage() {
         {visible.map((p, i) => (
           <div key={p.number} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
             <ProjectSection p={p} index={i} />
-            {!p.dark && !visible[i + 1]?.dark && i < visible.length - 1 && (
+            {i < visible.length - 1 && (
               <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
                 <span aria-hidden className="block h-px w-full bg-border" />
               </div>
