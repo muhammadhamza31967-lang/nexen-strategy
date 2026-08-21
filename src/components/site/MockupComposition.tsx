@@ -76,7 +76,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — mobile mockup`}
             kind="phone"
             ratio="9/17"
-            className={cn("absolute bottom-[6%] w-[18%]", flip ? "left-[1%]" : "right-[1%]")}
+            className={cn("absolute bottom-[6%] z-10 w-[18%]", flip ? "left-[4%]" : "right-[4%]")}
           />
         )}
 
