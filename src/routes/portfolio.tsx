@@ -13,7 +13,8 @@ import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 import svcMarketing from "@/assets/svc-marketing.jpg";
 import svcMedia from "@/assets/svc-media.jpg";
-import gatdMobile from "@/assets/gatd-mobile-2.png.asset.json";
+import gatdMobile from "@/assets/gatd-mobile-3.png.asset.json";
+import gatdLaptop from "@/assets/gatd-laptop-2.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -56,7 +57,7 @@ const projects: Project[] = [
     description:
       "A modern digital experience designed to communicate the business clearly, improve customer journeys and create a stronger digital foundation for growth.",
     capabilities: ["Strategy", "UX/UI", "Web Development"],
-    images: [work1, gatdMobile.url, work4],
+    images: [gatdLaptop.url, gatdMobile.url, work4],
     layout: "layered",
     href: "/contact",
   },
