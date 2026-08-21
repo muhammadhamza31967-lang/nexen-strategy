@@ -55,8 +55,8 @@ function Frame({
 }
 
 function LayeredComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
-  const [a, ...rest] = images;
-  const secondary = rest.filter(Boolean).slice(0, 3);
+  const a = images[0]!;
+  const secondary = images.slice(1).filter(Boolean).slice(0, 3);
 
   return (
     <div className="w-full">
@@ -128,7 +128,9 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
 }
 
 function SimpleComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
-  const [a, b, c] = images.slice(0, 3);
+  const a = images[0]!;
+  const b = images[1];
+  const c = images[2];
 
   return (
     <div className="w-full">
