@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 type MockupKind = "browser" | "screen" | "phone" | "tablet";
+export type MockupLayout = "layered" | "simple";
 
 function Chrome() {
   return (
@@ -53,18 +54,9 @@ function Frame({
   );
 }
 
-export function MockupComposition({
-  images,
-  alt,
-  flip = false,
-}: {
-  images: string[];
-  alt: string;
-  flip?: boolean;
-}) {
-  const [a, b, c, d] = images;
-  if (!a) return null;
-  const secondary = [b, c, d].filter(Boolean) as string[];
+function LayeredComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+  const a = images[0]!;
+  const secondary = images.slice(1).filter(Boolean).slice(0, 3);
 
   return (
     <div className="w-full">
@@ -84,7 +76,10 @@ export function MockupComposition({
             alt={`${alt} — supporting screen`}
             kind="screen"
             ratio="4/3"
-            className={cn("absolute bottom-0 w-[46%]", flip ? "right-[26%]" : "left-[26%]")}
+            className={cn(
+              "absolute bottom-[2%] w-[36%] md:w-[38%]",
+              flip ? "right-[24%]" : "left-[24%]",
+            )}
           />
         )}
 
@@ -94,7 +89,7 @@ export function MockupComposition({
             alt={`${alt} — mobile mockup`}
             kind="phone"
             ratio="9/17"
-            className={cn("absolute bottom-[6%] w-[19%]", flip ? "left-[1%]" : "right-[1%]")}
+            className={cn("absolute bottom-[18%] w-[19%]", flip ? "left-[1%]" : "right-[1%]")}
           />
         )}
 
@@ -104,7 +99,7 @@ export function MockupComposition({
             alt={`${alt} — dashboard detail`}
             kind="tablet"
             ratio="4/3"
-            className={cn("absolute top-[10%] w-[27%]", flip ? "left-0" : "right-0")}
+            className={cn("absolute top-[8%] w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
       </div>
@@ -129,5 +124,62 @@ export function MockupComposition({
         <style>{`.mk-scroll{scrollbar-width:none}.mk-scroll::-webkit-scrollbar{display:none}`}</style>
       </div>
     </div>
+  );
+}
+
+function SimpleComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+  const a = images[0]!;
+  const b = images[1];
+  const c = images[2];
+
+  return (
+    <div className="w-full">
+      {/* Desktop / tablet: one large image + up to two stacked supports */}
+      <div className={cn("hidden gap-4 sm:grid sm:grid-cols-12 sm:items-stretch")}>
+        <Frame
+          src={a}
+          alt={`${alt} — primary visual`}
+          kind="screen"
+          ratio="4/3"
+          className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
+        />
+        {b && (
+          <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+          </div>
+        )}
+      </div>
+
+      {/* Mobile: clean vertical stack */}
+      <div className="flex flex-col gap-4 sm:hidden">
+        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" className="w-full" />
+        {b && (
+          <div className="grid grid-cols-2 gap-4">
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function MockupComposition({
+  images,
+  alt,
+  flip = false,
+  layout = "simple",
+}: {
+  images: string[];
+  alt: string;
+  flip?: boolean;
+  layout?: MockupLayout;
+}) {
+  if (!images?.[0]) return null;
+  return layout === "layered" ? (
+    <LayeredComposition images={images} alt={alt} flip={flip} />
+  ) : (
+    <SimpleComposition images={images} alt={alt} flip={flip} />
   );
 }
