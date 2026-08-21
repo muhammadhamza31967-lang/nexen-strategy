@@ -73,7 +73,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
           kind="browser"
           ratio="1172/811"
           fit="contain"
-          className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+          className={cn("absolute top-[8%] w-[78%]", flip ? "right-0" : "left-0")}
         />
 
         {secondary[0] && (
@@ -83,7 +83,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             kind="phone"
             ratio="531/813"
             fit="contain"
-            className={cn("absolute bottom-[6%] z-10 w-[18%]", flip ? "left-[4%]" : "right-[4%]")}
+            className={cn("absolute bottom-[2%] z-20 w-[16%]", flip ? "left-[6%]" : "right-[6%]")}
           />
         )}
 
@@ -94,10 +94,11 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             kind="tablet"
             ratio="1719/922"
             fit="contain"
-            className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
+            className={cn("absolute top-0 z-10 w-[25%]", flip ? "left-0" : "right-0")}
           />
         )}
       </div>
+
 
 
       {/* Mobile: clean vertical stack, no squeezing */}
