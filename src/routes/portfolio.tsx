@@ -5,6 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Reveal } from "@/components/site/Reveal";
+import { MockupComposition } from "@/components/site/MockupComposition";
 import { cn } from "@/lib/utils";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
@@ -41,9 +42,8 @@ type Project = {
   title: string;
   description: string;
   capabilities: string[];
-  image: string;
+  images: string[];
   href: string;
-  dark?: boolean;
 };
 
 const projects: Project[] = [
@@ -54,7 +54,7 @@ const projects: Project[] = [
     description:
       "A modern digital experience designed to communicate the business clearly, improve customer journeys and create a stronger digital foundation for growth.",
     capabilities: ["Strategy", "UX/UI", "Web Development"],
-    image: work1,
+    images: [work1, work2, work3, work4],
     href: "/contact",
   },
   {
@@ -64,7 +64,7 @@ const projects: Project[] = [
     description:
       "A cohesive brand and digital identity designed to create consistency, improve recognition and establish a stronger presence across digital touchpoints.",
     capabilities: ["Brand Strategy", "Visual Identity", "Digital Design"],
-    image: work2,
+    images: [work2, svcMarketing, work4],
     href: "/contact",
   },
   {
@@ -74,7 +74,7 @@ const projects: Project[] = [
     description:
       "A scalable software solution designed to simplify operations, connect information and give teams better tools to manage everyday business processes.",
     capabilities: ["Business Strategy", "Product Design", "Software Development"],
-    image: work3,
+    images: [work3, work1, work2, svcMedia],
     href: "/contact",
   },
   {
@@ -84,7 +84,7 @@ const projects: Project[] = [
     description:
       "An AI and automation solution designed to reduce repetitive work, improve operational efficiency and create better experiences for teams and customers.",
     capabilities: ["AI Strategy", "Automation", "Software Development"],
-    image: work4,
+    images: [work4, work3, svcMarketing],
     href: "/contact",
   },
   {
@@ -94,7 +94,7 @@ const projects: Project[] = [
     description:
       "A growth-focused digital solution designed to strengthen online visibility, reach relevant audiences and turn digital engagement into meaningful business opportunities.",
     capabilities: ["Digital Strategy", "Marketing", "Performance"],
-    image: svcMarketing,
+    images: [svcMarketing, work2, work1, work3],
     href: "/contact",
   },
   {
@@ -104,7 +104,7 @@ const projects: Project[] = [
     description:
       "A visual content solution combining creative direction, photography, video and motion to communicate ideas clearly and create stronger audience engagement.",
     capabilities: ["Creative Direction", "Photography", "Video", "Motion"],
-    image: svcMedia,
+    images: [svcMedia, work4, work2],
     href: "/contact",
   },
 ];
@@ -133,36 +133,14 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
-          {/* Image */}
+          {/* Mockups */}
           <Reveal
             className={cn(
               "lg:col-span-7",
               imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
             )}
           >
-            <Link
-              to={p.href as "/contact"}
-              className={cn(
-                "group relative block overflow-hidden rounded-2xl border transition-colors duration-500",
-                dark ? "border-white/10 hover:border-cyan/40" : "border-border hover:border-azure/40",
-              )}
-            >
-              <img
-                src={p.image}
-                alt={`${p.title} — ${p.category} project by Nexen Strategy`}
-                loading="lazy"
-                className="aspect-[16/11] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-              />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{ background: "linear-gradient(180deg, rgba(1,12,98,0) 45%, rgba(1,12,98,0.55) 100%)" }}
-              />
-              <span className="pointer-events-none absolute bottom-5 left-6 flex translate-y-3 items-center gap-2 text-sm font-medium text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                View Case Study
-                <ArrowUpRight className="h-4 w-4" />
-              </span>
-            </Link>
+            <MockupComposition images={p.images} alt={p.title} flip={imageRight} />
           </Reveal>
 
           {/* Content */}
