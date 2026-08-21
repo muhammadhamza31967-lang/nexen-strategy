@@ -55,7 +55,7 @@ const projects: Project[] = [
     description:
       "A modern digital experience designed to communicate the business clearly, improve customer journeys and create a stronger digital foundation for growth.",
     capabilities: ["Strategy", "UX/UI", "Web Development"],
-    images: [work1, work2, work3, work4],
+    images: [work1, work3, work4],
     layout: "layered",
     href: "/contact",
   },
@@ -139,7 +139,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
           {/* Content */}
           <Reveal
             delay={120}
-            className={cn("lg:col-span-5", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
+            className={cn("lg:col-span-5 lg:-mt-10", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
           >
             <div className="flex items-center gap-4">
               <span className={"h-px w-8 bg-gradient-to-r from-amber to-ember"} />
