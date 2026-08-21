@@ -133,7 +133,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
             )}
           >
-            <MockupComposition images={p.images} alt={p.title} flip={imageRight} />
+            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} />
           </Reveal>
 
           {/* Content */}
