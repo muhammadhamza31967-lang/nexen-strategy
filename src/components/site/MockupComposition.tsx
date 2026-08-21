@@ -27,6 +27,7 @@ function Frame({
   className?: string;
 }) {
   const phone = kind === "phone";
+  const contain = phone || kind === "tablet";
   return (
     <figure
       className={cn(
