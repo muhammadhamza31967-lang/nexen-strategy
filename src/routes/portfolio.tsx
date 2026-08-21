@@ -43,6 +43,7 @@ type Project = {
   description: string;
   capabilities: string[];
   images: string[];
+  layout: "layered" | "simple";
   href: string;
 };
 
@@ -55,6 +56,7 @@ const projects: Project[] = [
       "A modern digital experience designed to communicate the business clearly, improve customer journeys and create a stronger digital foundation for growth.",
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [work1, work2, work3, work4],
+    layout: "layered",
     href: "/contact",
   },
   {
@@ -65,6 +67,7 @@ const projects: Project[] = [
       "A cohesive brand and digital identity designed to create consistency, improve recognition and establish a stronger presence across digital touchpoints.",
     capabilities: ["Brand Strategy", "Visual Identity", "Digital Design"],
     images: [work2, svcMarketing, work4],
+    layout: "simple",
     href: "/contact",
   },
   {
@@ -74,7 +77,8 @@ const projects: Project[] = [
     description:
       "A scalable software solution designed to simplify operations, connect information and give teams better tools to manage everyday business processes.",
     capabilities: ["Business Strategy", "Product Design", "Software Development"],
-    images: [work3, work1, work2, svcMedia],
+    images: [work3, work1, work2],
+    layout: "simple",
     href: "/contact",
   },
   {
@@ -85,6 +89,7 @@ const projects: Project[] = [
       "An AI and automation solution designed to reduce repetitive work, improve operational efficiency and create better experiences for teams and customers.",
     capabilities: ["AI Strategy", "Automation", "Software Development"],
     images: [work4, work3, svcMarketing],
+    layout: "simple",
     href: "/contact",
   },
   {
@@ -94,7 +99,8 @@ const projects: Project[] = [
     description:
       "A growth-focused digital solution designed to strengthen online visibility, reach relevant audiences and turn digital engagement into meaningful business opportunities.",
     capabilities: ["Digital Strategy", "Marketing", "Performance"],
-    images: [svcMarketing, work2, work1, work3],
+    images: [svcMarketing, work2, work1],
+    layout: "simple",
     href: "/contact",
   },
   {
@@ -105,9 +111,11 @@ const projects: Project[] = [
       "A visual content solution combining creative direction, photography, video and motion to communicate ideas clearly and create stronger audience engagement.",
     capabilities: ["Creative Direction", "Photography", "Video", "Motion"],
     images: [svcMedia, work4, work2],
+    layout: "simple",
     href: "/contact",
   },
 ];
+
 
 function ProjectSection({ p, index }: { p: Project; index: number }) {
   const imageRight = index % 2 === 1;
