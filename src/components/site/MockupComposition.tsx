@@ -46,7 +46,10 @@ function Frame({
             src={src}
             alt={alt}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]"
+            className={cn(
+              "h-full w-full transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]",
+              phone ? "object-contain object-center" : "object-cover object-top",
+            )}
           />
         </div>
       </div>
@@ -76,7 +79,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — mobile mockup`}
             kind="phone"
             ratio="9/17"
-            className={cn("absolute bottom-[6%] z-10 w-[18%]", flip ? "left-[4%]" : "right-[4%]")}
+            className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
           />
         )}
 
