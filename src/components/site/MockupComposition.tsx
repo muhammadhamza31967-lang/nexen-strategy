@@ -48,7 +48,10 @@ function Frame({
             src={src}
             alt={alt}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]"
+            className={cn(
+              "h-full w-full object-top transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]",
+              fit === "contain" ? "object-contain" : "object-cover",
+            )}
           />
         </div>
       </div>
@@ -68,8 +71,9 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
           src={a}
           alt={`${alt} — primary interface mockup`}
           kind="browser"
-          ratio="16/10"
-          className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+          ratio="1172/811"
+          fit="contain"
+          className={cn("absolute top-[12%] w-[76%]", flip ? "right-0" : "left-0")}
         />
 
         {secondary[0] && (
@@ -77,41 +81,59 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             src={secondary[0]}
             alt={`${alt} — mobile mockup`}
             kind="phone"
-            ratio="9/17"
-            className={cn("absolute bottom-[6%] z-10 w-[18%]", flip ? "left-[4%]" : "right-[4%]")}
+            ratio="531/813"
+            fit="contain"
+            className={cn("absolute bottom-[4%] z-10 w-[17%]", flip ? "left-[6%]" : "right-[6%]")}
           />
         )}
 
         {secondary[1] && (
           <Frame
             src={secondary[1]}
-            alt={`${alt} — dashboard detail`}
-            kind="tablet"
-            ratio="4/3"
-            className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
+            alt={`${alt} — supporting interface mockup`}
+            kind="screen"
+            ratio="1719/922"
+            fit="contain"
+            className={cn("absolute top-0 w-[32%]", flip ? "left-0" : "right-0")}
           />
         )}
       </div>
 
 
-      {/* Mobile: primary + controlled horizontal carousel */}
+      {/* Mobile: clean vertical stack, no squeezing */}
       <div className="sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" className="w-full" />
+        <Frame
+          src={a}
+          alt={`${alt} — primary interface mockup`}
+          kind="browser"
+          ratio="1172/811"
+          fit="contain"
+          className="w-full"
+        />
         {secondary.length > 0 && (
-          <div className="mk-scroll -mx-6 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
-            {secondary.map((src, i) => (
+          <div className="mt-4 flex items-start gap-4">
+            {secondary[0] && (
               <Frame
-                key={i}
-                src={src}
-                alt={`${alt} — supporting mockup ${i + 2}`}
-                kind="screen"
-                ratio="4/3"
-                className="w-[68%] shrink-0 snap-start"
+                src={secondary[0]}
+                alt={`${alt} — mobile mockup`}
+                kind="phone"
+                ratio="531/813"
+                fit="contain"
+                className="w-[38%] shrink-0"
               />
-            ))}
+            )}
+            {secondary[1] && (
+              <Frame
+                src={secondary[1]}
+                alt={`${alt} — supporting interface mockup`}
+                kind="screen"
+                ratio="1719/922"
+                fit="contain"
+                className="w-full"
+              />
+            )}
           </div>
         )}
-        <style>{`.mk-scroll{scrollbar-width:none}.mk-scroll::-webkit-scrollbar{display:none}`}</style>
       </div>
     </div>
   );
