@@ -31,14 +31,14 @@ function Frame({
     <figure
       className={cn(
         "group/mk overflow-hidden bg-white transition-all duration-500 ease-out",
-        phone ? "rounded-[1.4rem] p-1.5" : "rounded-xl",
+        phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
         className,
       )}
     >
       <div
-        className={cn("flex h-full w-full flex-col overflow-hidden bg-white", phone ? "rounded-[1rem]" : "")}
+        className={cn("flex h-full w-full flex-col overflow-hidden bg-white", phone ? "rounded-[1.25rem]" : "")}
       >
         {kind === "browser" && <Chrome />}
         <div className="relative flex-1 overflow-hidden" style={{ aspectRatio: ratio }}>
