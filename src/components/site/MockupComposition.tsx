@@ -48,7 +48,8 @@ function Frame({
             alt={alt}
             loading="lazy"
             className={cn(
-              "h-full w-full transition-transform duration-[900ms] ease-out group-hover/mk:scale-[1.04]",
+              "h-full w-full transition-transform duration-[900ms] ease-out",
+              kind === "tablet" ? "" : "group-hover/mk:scale-[1.04]",
               contain ? "object-contain object-center" : "object-cover object-top",
               kind === "tablet" ? "p-1.5" : "",
             )}
