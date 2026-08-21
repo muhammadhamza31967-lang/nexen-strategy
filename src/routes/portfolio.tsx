@@ -240,7 +240,7 @@ function PortfolioPage() {
   return (
     <>
       <Header overHero />
-      <main>
+      <main className="bg-white">
         {/* Hero */}
         <section className="relative overflow-hidden bg-navy pt-40 pb-24 lg:pt-52 lg:pb-32">
           <div aria-hidden className="grid-faint absolute inset-0" />
