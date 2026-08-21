@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -111,26 +111,11 @@ const projects: Project[] = [
 
 function ProjectSection({ p, index }: { p: Project; index: number }) {
   const imageRight = index % 2 === 1;
-  const dark = false;
 
   return (
     <section
-      className={cn(
-        "relative overflow-hidden",
-        "bg-white py-16 lg:py-24",
-      )}
+      className="relative overflow-hidden bg-white py-16 lg:py-24"
     >
-      {dark && (
-        <>
-          <div aria-hidden className="grid-faint absolute inset-0 opacity-70" />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-24 top-[-20%] h-[520px] w-[520px] rounded-full opacity-25 blur-[160px]"
-            style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
-          />
-        </>
-      )}
-
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
           {/* Mockups */}
@@ -149,50 +134,38 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
             className={cn("lg:col-span-5", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
           >
             <div className="flex items-center gap-4">
-              <span className={cn("h-px w-8", dark ? "bg-white/25" : "bg-gradient-to-r from-amber to-ember")} />
-              <span className={cn("eyebrow text-[0.65rem]", dark ? "text-cyan" : "text-azure")}>{p.category}</span>
+              <span className={"h-px w-8 bg-gradient-to-r from-amber to-ember"} />
+              <span className={"eyebrow text-[0.65rem] text-azure"}>{p.category}</span>
             </div>
 
             <h2
-              className={cn(
-                "display mt-6 text-[1.9rem] leading-[1.1] sm:text-[2.4rem] lg:text-[2.7rem]",
-                dark ? "text-white" : "text-navy",
-              )}
+              className="display mt-6 text-[1.9rem] leading-[1.1] text-navy sm:text-[2.4rem] lg:text-[2.7rem]"
             >
               {p.title}
             </h2>
 
             <p
-              className={cn(
-                "mt-5 max-w-xl text-base leading-relaxed",
-                dark ? "text-white/70" : "text-muted-foreground",
-              )}
+              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground"
             >
               {p.description}
             </p>
 
             <p
-              className={cn(
-                "mt-7 text-sm tracking-wide",
-                dark ? "text-white/55" : "text-muted-foreground",
-              )}
+              className="mt-7 text-sm tracking-wide text-muted-foreground"
             >
               {p.capabilities.join("  ·  ")}
             </p>
 
             <Link
               to={p.href as "/contact"}
-              className={cn(
-                "group mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-tight",
-                dark ? "text-white" : "text-navy",
-              )}
+              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-navy"
             >
               View Case Study
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </Link>
             <span
               aria-hidden
-              className={cn("mt-3 block h-px w-24", dark ? "bg-gradient-to-r from-cyan to-transparent" : "bg-gradient-to-r from-amber to-ember")}
+              className={"mt-3 block h-px w-24 bg-gradient-to-r from-amber to-ember"}
             />
           </Reveal>
         </div>
