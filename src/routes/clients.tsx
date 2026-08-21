@@ -39,6 +39,7 @@ import mohsanCo from "@/assets/client-mohsan-co.svg.asset.json";
 import roofConnect from "@/assets/client-roofconnect.svg.asset.json";
 import royaVenture from "@/assets/client-roya-venture.svg.asset.json";
 import umami from "@/assets/client-umami.svg.asset.json";
+import heroVideo from "@/assets/clients-hero.mp4.asset.json";
 
 type Client = { name: string; src: string };
 
@@ -180,7 +181,26 @@ function ClientsPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden bg-navy pt-32 pb-28 lg:pt-40 lg:pb-36">
-          <div aria-hidden className="grid-faint absolute inset-0" />
+          <video
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            src={heroVideo.url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden
+            tabIndex={-1}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(1,12,98,0.62) 0%, rgba(1,12,98,0.48) 45%, rgba(1,12,98,0.72) 100%)",
+            }}
+          />
+          <div aria-hidden className="grid-faint absolute inset-0 opacity-30" />
           <div
             aria-hidden
             className="pointer-events-none absolute -right-24 -top-24 h-[560px] w-[560px] rounded-full opacity-30 blur-[150px]"
