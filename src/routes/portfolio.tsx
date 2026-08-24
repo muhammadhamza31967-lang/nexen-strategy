@@ -147,7 +147,7 @@ const projects: Project[] = [
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [newGatdLaptop.url, newGatdMobile.url, mohsanThird.url],
     layout: "layered",
-    ratios: ["1172/811", "852/1310", "1105/667"],
+    ratios: ["1172/811", "852/1310", "4/3"],
     href: "/contact",
   },
 ];
