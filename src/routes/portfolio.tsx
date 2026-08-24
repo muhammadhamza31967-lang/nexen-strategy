@@ -73,7 +73,7 @@ const projects: Project[] = [
     description:
       "A responsive digital experience designed around business goals, usability and modern technology — combining clear communication, intuitive journeys and a scalable foundation built to support growth.",
     capabilities: ["Web Design", "UX/UI", "Web Development"],
-    images: [royaLaptop.url, royaMobile.url, royaThird.url],
+    images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
     href: "/contact",
   },
