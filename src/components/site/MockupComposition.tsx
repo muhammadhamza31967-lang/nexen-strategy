@@ -26,7 +26,7 @@ function Frame({
   kind?: MockupKind;
   ratio: string;
   className?: string;
-  frameColor?: "white" | "navy";
+  frameColor: "white" | "navy";
 }) {
   const phone = kind === "phone";
   const tablet = kind === "tablet";
