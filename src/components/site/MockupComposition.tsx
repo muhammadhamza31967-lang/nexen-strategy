@@ -78,7 +78,7 @@ function LayeredComposition({
   images: string[];
   alt: string;
   flip: boolean;
-  frameColor?: "white" | "navy";
+  frameColor: "white" | "navy";
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
