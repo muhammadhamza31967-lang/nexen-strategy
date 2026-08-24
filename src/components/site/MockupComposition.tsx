@@ -80,11 +80,11 @@ function LayeredComposition({
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
-  ratios?: string[];
+  ratios?: string[] | undefined;
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
-  const r = (i: number) => ratios?.[i] ?? (["16/10", "9/17", "4/3"] as const)[i];
+  const r = (i: number): string => ratios?.[i] ?? (["16/10", "9/17", "4/3"] as const)[i];
 
   return (
     <div className="w-full">
