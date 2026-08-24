@@ -26,6 +26,9 @@ import royaLaptop from "@/assets/roya-laptop.png.asset.json";
 import royaMobile from "@/assets/roya-mobile.png.asset.json";
 import royaMobile2 from "@/assets/roya-mobile-2.png.asset.json";
 import royaThird from "@/assets/roya-img3.png.asset.json";
+import drsarfrazLaptop from "@/assets/drsarfraz-laptop.png.asset.json";
+import drsarfrazMobile from "@/assets/drsarfraz-mobile.png.asset.json";
+import drsarfrazThird from "@/assets/drsarfraz-img3.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -165,6 +168,18 @@ const projects: Project[] = [
     layout: "layered",
     ratios: ["945/593", "517/890", "4/3"],
     thirdImageClassName: "!p-0",
+    href: "/contact",
+  },
+  {
+    number: "10",
+    category: "Web & App Development",
+    title: "Digital Experiences Built for Modern Businesses",
+    description:
+      "A responsive digital solution designed around usability, performance and a seamless experience across modern devices.",
+    capabilities: ["Web Design", "UX/UI", "Web Development"],
+    images: [drsarfrazLaptop.url, drsarfrazMobile.url, drsarfrazThird.url],
+    layout: "layered",
+    ratios: ["1277/832", "531/890", "957/792"],
     href: "/contact",
   },
 ];
