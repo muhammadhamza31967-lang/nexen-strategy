@@ -19,19 +19,24 @@ function Frame({
   kind = "screen",
   ratio,
   className,
+  frameColor = "white",
 }: {
   src: string;
   alt: string;
   kind?: MockupKind;
   ratio: string;
   className?: string;
+  frameColor: "white" | "navy";
 }) {
   const phone = kind === "phone";
-  const contain = phone || kind === "tablet";
+  const tablet = kind === "tablet";
+  const contain = phone || tablet;
+  const darkFrame = frameColor === "navy" && (phone || tablet);
   return (
     <figure
       className={cn(
-        "group/mk overflow-hidden bg-white transition-all duration-500 ease-out",
+        "group/mk overflow-hidden transition-all duration-500 ease-out",
+        darkFrame ? "bg-navy" : "bg-white",
         phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
@@ -39,7 +44,11 @@ function Frame({
       )}
     >
       <div
-        className={cn("flex h-full w-full flex-col overflow-hidden bg-white", phone ? "rounded-[1.25rem]" : "")}
+        className={cn(
+          "flex h-full w-full flex-col overflow-hidden",
+          darkFrame ? "bg-navy" : "bg-white",
+          phone ? "rounded-[1.25rem]" : "",
+        )}
       >
         {kind === "browser" && <Chrome />}
         <div className="relative flex-1 overflow-hidden" style={{ aspectRatio: ratio }}>
@@ -51,7 +60,7 @@ function Frame({
               "h-full w-full transition-transform duration-[900ms] ease-out",
               kind === "tablet" ? "" : "group-hover/mk:scale-[1.04]",
               contain ? "object-contain object-center" : "object-cover object-top",
-              kind === "tablet" ? "p-1.5" : "",
+              tablet ? "p-1.5" : "",
             )}
           />
         </div>
@@ -60,7 +69,17 @@ function Frame({
   );
 }
 
-function LayeredComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+function LayeredComposition({
+  images,
+  alt,
+  flip,
+  frameColor,
+}: {
+  images: string[];
+  alt: string;
+  flip: boolean;
+  frameColor: "white" | "navy";
+}) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
 
@@ -73,6 +92,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
           alt={`${alt} — primary interface mockup`}
           kind="browser"
           ratio="16/10"
+          frameColor={frameColor}
           className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
         />
 
@@ -82,6 +102,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — mobile mockup`}
             kind="phone"
             ratio="9/17"
+            frameColor={frameColor}
             className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
           />
         )}
@@ -92,6 +113,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — dashboard detail`}
             kind="tablet"
             ratio="4/3"
+            frameColor={frameColor}
             className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
@@ -100,7 +122,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
 
       {/* Mobile: primary + controlled horizontal carousel */}
       <div className="sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" className="w-full" />
+        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" frameColor={frameColor} className="w-full" />
         {secondary.length > 0 && (
           <div className="mk-scroll -mx-6 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
             {secondary.map((src, i) => (
@@ -110,6 +132,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
                 alt={`${alt} — supporting mockup ${i + 2}`}
                 kind="screen"
                 ratio="4/3"
+                frameColor={frameColor}
                 className="w-[68%] shrink-0 snap-start"
               />
             ))}
@@ -121,7 +144,17 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
   );
 }
 
-function SimpleComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+function SimpleComposition({
+  images,
+  alt,
+  flip,
+  frameColor,
+}: {
+  images: string[];
+  alt: string;
+  flip: boolean;
+  frameColor: "white" | "navy";
+}) {
   const a = images[0]!;
   const b = images[1];
   const c = images[2];
@@ -135,23 +168,24 @@ function SimpleComposition({ images, alt, flip }: { images: string[]; alt: strin
           alt={`${alt} — primary visual`}
           kind="screen"
           ratio="4/3"
+          frameColor={frameColor}
           className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
         />
         {b && (
           <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
 
       {/* Mobile: clean vertical stack */}
       <div className="flex flex-col gap-4 sm:hidden">
-        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" className="w-full" />
+        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
         {b && (
           <div className="grid grid-cols-2 gap-4">
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
@@ -164,16 +198,18 @@ export function MockupComposition({
   alt,
   flip = false,
   layout = "simple",
+  frameColor = "white",
 }: {
   images: string[];
   alt: string;
   flip?: boolean;
   layout?: MockupLayout;
+  frameColor?: "white" | "navy";
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
-    <LayeredComposition images={images} alt={alt} flip={flip} />
+    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
   ) : (
-    <SimpleComposition images={images} alt={alt} flip={flip} />
+    <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
   );
 }

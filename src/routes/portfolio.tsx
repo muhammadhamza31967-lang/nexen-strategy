@@ -51,6 +51,7 @@ type Project = {
   capabilities: string[];
   images: string[];
   layout: "layered" | "simple";
+  frameColor?: "white" | "navy";
   href: string;
 };
 
@@ -75,6 +76,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
+    frameColor: "navy",
     href: "/contact",
   },
   {
@@ -151,7 +153,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
             )}
           >
-            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} />
+            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} />
           </Reveal>
 
           {/* Content */}
