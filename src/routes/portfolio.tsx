@@ -164,6 +164,7 @@ const projects: Project[] = [
     images: [drshahidLaptop.url, drshahidMobile.url, drshahidThird.url],
     layout: "layered",
     ratios: ["945/593", "517/890", "4/3"],
+    thirdImageClassName: "!p-0",
     href: "/contact",
   },
 ];
