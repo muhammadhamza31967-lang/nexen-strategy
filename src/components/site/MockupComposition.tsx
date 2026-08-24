@@ -148,32 +148,24 @@ function SimpleComposition({
   const c = images[2];
   const r = (i: number): string => ratios?.[i] ?? "4/3";
 
+  // Same one-large + stacked-supports grid at every breakpoint — the 12-column
+  // proportional layout scales down naturally on smaller screens.
   return (
-    <div className="w-full">
-      {/* Desktop / tablet: one large image + up to two stacked supports */}
-      <div className={cn("hidden gap-4 sm:grid sm:grid-cols-12 sm:items-stretch")}>
-        <Frame
-          src={a}
-          alt={`${alt} — primary visual`}
-          kind="screen"
-          ratio={r(0)}
-          frameColor={frameColor}
-          className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
-        />
-        {b && (
-          <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
-          </div>
-        )}
-      </div>
-
-      {/* Mobile: clean vertical stack, one visual per row */}
-      <div className="flex w-full min-w-0 flex-col gap-5 overflow-hidden sm:hidden">
-        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {b && <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />}
-        {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
-      </div>
+    <div className={cn("grid w-full grid-cols-12 items-stretch gap-2.5 sm:gap-4")}>
+      <Frame
+        src={a}
+        alt={`${alt} — primary visual`}
+        kind="screen"
+        ratio={r(0)}
+        frameColor={frameColor}
+        className={cn(b ? "col-span-8" : "col-span-12", flip ? "order-2" : "order-1")}
+      />
+      {b && (
+        <div className={cn("flex flex-col gap-2.5 sm:gap-4 col-span-4", flip ? "order-1" : "order-2")}>
+          <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
+          {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
+        </div>
+      )}
     </div>
   );
 }
