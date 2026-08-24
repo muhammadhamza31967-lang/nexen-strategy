@@ -69,7 +69,17 @@ function Frame({
   );
 }
 
-function LayeredComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+function LayeredComposition({
+  images,
+  alt,
+  flip,
+  frameColor,
+}: {
+  images: string[];
+  alt: string;
+  flip: boolean;
+  frameColor?: "white" | "navy";
+}) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
 
@@ -82,6 +92,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
           alt={`${alt} — primary interface mockup`}
           kind="browser"
           ratio="16/10"
+          frameColor={frameColor}
           className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
         />
 
@@ -91,6 +102,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — mobile mockup`}
             kind="phone"
             ratio="9/17"
+            frameColor={frameColor}
             className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
           />
         )}
@@ -101,6 +113,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
             alt={`${alt} — dashboard detail`}
             kind="tablet"
             ratio="4/3"
+            frameColor={frameColor}
             className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
@@ -109,7 +122,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
 
       {/* Mobile: primary + controlled horizontal carousel */}
       <div className="sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" className="w-full" />
+        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" frameColor={frameColor} className="w-full" />
         {secondary.length > 0 && (
           <div className="mk-scroll -mx-6 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
             {secondary.map((src, i) => (
@@ -119,6 +132,7 @@ function LayeredComposition({ images, alt, flip }: { images: string[]; alt: stri
                 alt={`${alt} — supporting mockup ${i + 2}`}
                 kind="screen"
                 ratio="4/3"
+                frameColor={frameColor}
                 className="w-[68%] shrink-0 snap-start"
               />
             ))}
