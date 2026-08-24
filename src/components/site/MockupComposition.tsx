@@ -144,7 +144,17 @@ function LayeredComposition({
   );
 }
 
-function SimpleComposition({ images, alt, flip }: { images: string[]; alt: string; flip: boolean }) {
+function SimpleComposition({
+  images,
+  alt,
+  flip,
+  frameColor,
+}: {
+  images: string[];
+  alt: string;
+  flip: boolean;
+  frameColor?: "white" | "navy";
+}) {
   const a = images[0]!;
   const b = images[1];
   const c = images[2];
@@ -158,23 +168,24 @@ function SimpleComposition({ images, alt, flip }: { images: string[]; alt: strin
           alt={`${alt} — primary visual`}
           kind="screen"
           ratio="4/3"
+          frameColor={frameColor}
           className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
         />
         {b && (
           <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
 
       {/* Mobile: clean vertical stack */}
       <div className="flex flex-col gap-4 sm:hidden">
-        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" className="w-full" />
+        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
         {b && (
           <div className="grid grid-cols-2 gap-4">
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
@@ -187,16 +198,18 @@ export function MockupComposition({
   alt,
   flip = false,
   layout = "simple",
+  frameColor = "white",
 }: {
   images: string[];
   alt: string;
   flip?: boolean;
   layout?: MockupLayout;
+  frameColor?: "white" | "navy";
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
-    <LayeredComposition images={images} alt={alt} flip={flip} />
+    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
   ) : (
-    <SimpleComposition images={images} alt={alt} flip={flip} />
+    <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
   );
 }
