@@ -59,7 +59,7 @@ type Project = {
   layout: "layered" | "simple";
   frameColor?: "white" | "navy" | "black";
   ratios?: string[] | undefined;
-  thirdImageClassName?: string;
+  thirdImageClassName?: string | undefined;
   href: string;
 };
 
