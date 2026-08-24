@@ -383,16 +383,16 @@ function PortfolioPage() {
           </div>
           <span aria-hidden className="mt-12 block h-px w-full bg-border lg:mt-16" />
           {/* Service filter tabs */}
-          <div className="mt-14 lg:mt-20">
+          <div className="mt-14 min-w-0 max-w-full lg:mt-20">
             <style>{`
               .pf-scroll::-webkit-scrollbar{display:none}
-              .pf-scroll{scrollbar-width:none;-ms-overflow-style:none}
+              .pf-scroll{scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
               @keyframes pf-in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
               .pf-item{animation:pf-in 460ms cubic-bezier(.22,.61,.36,1) both}
               @media (prefers-reduced-motion: reduce){.pf-item{animation:none !important}}
             `}</style>
-            <div className="pf-scroll -mx-6 overflow-x-auto px-6 lg:mx-0 lg:overflow-visible lg:px-0">
-              <div className="flex w-max min-w-full items-center justify-start gap-2.5 lg:w-full lg:flex-wrap lg:justify-center lg:gap-3">
+            <div className="pf-scroll -mx-6 min-w-0 max-w-[100vw] overflow-x-auto px-6 lg:mx-0 lg:max-w-full lg:overflow-visible lg:px-0">
+              <div className="flex w-max min-w-full items-center justify-start gap-2 lg:w-full lg:flex-nowrap lg:justify-center lg:gap-1.5 xl:gap-3">
                 {filters.map((f) => {
                   const on = f === active;
                   return (
@@ -402,7 +402,7 @@ function PortfolioPage() {
                       onClick={() => setActive(f)}
                       aria-pressed={on}
                       className={cn(
-                        "shrink-0 rounded-full border px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
+                        "shrink-0 rounded-full border px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300 lg:px-3 lg:text-[0.62rem] lg:tracking-[0.08em] xl:px-5 xl:text-[0.75rem] xl:tracking-[0.12em]",
                         on
                           ? "border-transparent text-white shadow-[0_12px_30px_-14px_rgba(255,72,63,0.85)]"
                           : "border-border bg-transparent text-muted-foreground hover:border-azure/40 hover:text-navy",
