@@ -18,6 +18,7 @@ import gatdLaptop from "@/assets/gatd-laptop-2.png.asset.json";
 import gatdThird from "@/assets/gatd-img3-3.png.asset.json";
 import royaLaptop from "@/assets/roya-laptop.png.asset.json";
 import royaMobile from "@/assets/roya-mobile.png.asset.json";
+import royaMobile2 from "@/assets/roya-mobile-2.png.asset.json";
 import royaThird from "@/assets/roya-img3.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
@@ -72,7 +73,7 @@ const projects: Project[] = [
     description:
       "A responsive digital experience designed around business goals, usability and modern technology — combining clear communication, intuitive journeys and a scalable foundation built to support growth.",
     capabilities: ["Web Design", "UX/UI", "Web Development"],
-    images: [royaLaptop.url, royaMobile.url, royaThird.url],
+    images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
     href: "/contact",
   },
