@@ -5,10 +5,10 @@ export type MockupLayout = "layered" | "simple";
 
 function Chrome() {
   return (
-    <div className="flex h-6 shrink-0 items-center gap-1.5 border-b border-black/5 bg-[#F6F7FB] px-3">
-      <span className="h-1.5 w-1.5 rounded-full bg-black/15" />
-      <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-      <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
+    <div className="flex h-3.5 shrink-0 items-center gap-1 border-b border-black/5 bg-[#F6F7FB] px-2 sm:h-6 sm:gap-1.5 sm:px-3">
+      <span className="h-1 w-1 rounded-full bg-black/15 sm:h-1.5 sm:w-1.5" />
+      <span className="h-1 w-1 rounded-full bg-black/10 sm:h-1.5 sm:w-1.5" />
+      <span className="h-1 w-1 rounded-full bg-black/10 sm:h-1.5 sm:w-1.5" />
     </div>
   );
 }
@@ -39,7 +39,7 @@ function Frame({
       className={cn(
         "group/mk overflow-hidden transition-all duration-500 ease-out",
         darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
-        phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
+        phone ? "rounded-[0.9rem] p-[2px] sm:rounded-[1.4rem] sm:p-[3px]" : "rounded-md sm:rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
         className,
@@ -49,7 +49,7 @@ function Frame({
         className={cn(
           "flex h-full w-full flex-col overflow-hidden",
           darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
-          phone ? "rounded-[1.25rem]" : "",
+          phone ? "rounded-[0.75rem] sm:rounded-[1.25rem]" : "",
         )}
       >
         {kind === "browser" && <Chrome />}
@@ -91,69 +91,41 @@ function LayeredComposition({
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
   const r = (i: number): string => ratios?.[i] ?? ["16/10", "9/17", "4/3"][i]!;
 
+  // Single composition at every breakpoint — percentage-based widths and a fixed
+  // aspect ratio container scale the whole desktop composition proportionally.
   return (
-    <div className="w-full">
-      {/* Desktop / tablet composition */}
-      <div className="relative hidden aspect-[16/10] w-full sm:block">
+    <div className="relative aspect-[16/10] w-full">
+      <Frame
+        src={a}
+        alt={`${alt} — primary interface mockup`}
+        kind="browser"
+        ratio={r(0)}
+        frameColor={frameColor}
+        className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+      />
+
+      {secondary[0] && (
         <Frame
-          src={a}
-          alt={`${alt} — primary interface mockup`}
-          kind="browser"
-          ratio={r(0)}
+          src={secondary[0]}
+          alt={`${alt} — mobile mockup`}
+          kind="phone"
+          ratio={r(1)}
           frameColor={frameColor}
-          className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+          className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
         />
+      )}
 
-        {secondary[0] && (
-          <Frame
-            src={secondary[0]}
-            alt={`${alt} — mobile mockup`}
-            kind="phone"
-            ratio={r(1)}
-            frameColor={frameColor}
-            className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
-          />
-        )}
-
-        {secondary[1] && (
-          <Frame
-            src={secondary[1]}
-            alt={`${alt} — dashboard detail`}
-            kind="tablet"
-            ratio={r(2)}
-            frameColor={frameColor}
-            imgClassName={thirdImageClassName}
-            className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
-          />
-        )}
-      </div>
-
-
-      {/* Mobile: clean vertical stack — laptop, phone, supporting — all within viewport */}
-      <div className="flex w-full min-w-0 flex-col items-stretch gap-6 overflow-hidden sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {secondary[0] && (
-          <Frame
-            src={secondary[0]}
-            alt={`${alt} — mobile mockup`}
-            kind="phone"
-            ratio={r(1)}
-            frameColor={frameColor}
-            className="mx-auto w-[48%] max-w-[220px]"
-          />
-        )}
-        {secondary[1] && (
-          <Frame
-            src={secondary[1]}
-            alt={`${alt} — dashboard detail`}
-            kind="tablet"
-            ratio={r(2)}
-            frameColor={frameColor}
-            imgClassName={thirdImageClassName}
-            className="mx-auto w-[86%]"
-          />
-        )}
-      </div>
+      {secondary[1] && (
+        <Frame
+          src={secondary[1]}
+          alt={`${alt} — dashboard detail`}
+          kind="tablet"
+          ratio={r(2)}
+          frameColor={frameColor}
+          imgClassName={thirdImageClassName}
+          className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
+        />
+      )}
     </div>
   );
 }
@@ -176,32 +148,24 @@ function SimpleComposition({
   const c = images[2];
   const r = (i: number): string => ratios?.[i] ?? "4/3";
 
+  // Same one-large + stacked-supports grid at every breakpoint — the 12-column
+  // proportional layout scales down naturally on smaller screens.
   return (
-    <div className="w-full">
-      {/* Desktop / tablet: one large image + up to two stacked supports */}
-      <div className={cn("hidden gap-4 sm:grid sm:grid-cols-12 sm:items-stretch")}>
-        <Frame
-          src={a}
-          alt={`${alt} — primary visual`}
-          kind="screen"
-          ratio={r(0)}
-          frameColor={frameColor}
-          className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
-        />
-        {b && (
-          <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
-          </div>
-        )}
-      </div>
-
-      {/* Mobile: clean vertical stack, one visual per row */}
-      <div className="flex w-full min-w-0 flex-col gap-5 overflow-hidden sm:hidden">
-        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {b && <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />}
-        {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
-      </div>
+    <div className={cn("grid w-full grid-cols-12 items-stretch gap-2.5 sm:gap-4")}>
+      <Frame
+        src={a}
+        alt={`${alt} — primary visual`}
+        kind="screen"
+        ratio={r(0)}
+        frameColor={frameColor}
+        className={cn(b ? "col-span-8" : "col-span-12", flip ? "order-2" : "order-1")}
+      />
+      {b && (
+        <div className={cn("flex flex-col gap-2.5 sm:gap-4 col-span-4", flip ? "order-1" : "order-2")}>
+          <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
+          {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
+        </div>
+      )}
     </div>
   );
 }
