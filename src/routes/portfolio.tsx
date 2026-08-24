@@ -80,6 +80,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
+    ratios: ["1527/797", "528/930", "1275/811"],
     href: "/contact",
   },
   {
