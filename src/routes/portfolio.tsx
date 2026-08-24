@@ -51,7 +51,7 @@ type Project = {
   capabilities: string[];
   images: string[];
   layout: "layered" | "simple";
-  frameColor?: "white" | "navy";
+  frameColor?: "white" | "navy" | "black";
   href: string;
 };
 
@@ -76,7 +76,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
-    frameColor: "navy",
+    frameColor: "black",
     href: "/contact",
   },
   {
