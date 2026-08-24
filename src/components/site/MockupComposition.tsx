@@ -129,25 +129,30 @@ function LayeredComposition({
       </div>
 
 
-      {/* Mobile: primary + controlled horizontal carousel */}
-      <div className="sm:hidden">
+      {/* Mobile: clean vertical stack — laptop, phone, supporting — all within viewport */}
+      <div className="flex w-full min-w-0 flex-col items-stretch gap-6 overflow-hidden sm:hidden">
         <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {secondary.length > 0 && (
-          <div className="mk-scroll -mx-6 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
-            {secondary.map((src, i) => (
-              <Frame
-                key={i}
-                src={src}
-                alt={`${alt} — supporting mockup ${i + 2}`}
-                kind="screen"
-                ratio={r(i + 1)}
-                frameColor={frameColor}
-                className="w-[68%] shrink-0 snap-start"
-              />
-            ))}
-          </div>
+        {secondary[0] && (
+          <Frame
+            src={secondary[0]}
+            alt={`${alt} — mobile mockup`}
+            kind="phone"
+            ratio={r(1)}
+            frameColor={frameColor}
+            className="mx-auto w-[48%] max-w-[220px]"
+          />
         )}
-        <style>{`.mk-scroll{scrollbar-width:none}.mk-scroll::-webkit-scrollbar{display:none}`}</style>
+        {secondary[1] && (
+          <Frame
+            src={secondary[1]}
+            alt={`${alt} — dashboard detail`}
+            kind="tablet"
+            ratio={r(2)}
+            frameColor={frameColor}
+            imgClassName={thirdImageClassName}
+            className="mx-auto w-[86%]"
+          />
+        )}
       </div>
     </div>
   );
@@ -191,15 +196,11 @@ function SimpleComposition({
         )}
       </div>
 
-      {/* Mobile: clean vertical stack */}
-      <div className="flex flex-col gap-4 sm:hidden">
+      {/* Mobile: clean vertical stack, one visual per row */}
+      <div className="flex w-full min-w-0 flex-col gap-5 overflow-hidden sm:hidden">
         <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {b && (
-          <div className="grid grid-cols-2 gap-4">
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
-          </div>
-        )}
+        {b && <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />}
+        {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
       </div>
     </div>
   );
