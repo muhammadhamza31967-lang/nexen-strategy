@@ -55,7 +55,7 @@ type Project = {
   images: string[];
   layout: "layered" | "simple";
   frameColor?: "white" | "navy" | "black";
-  ratios?: string[];
+  ratios?: string[] | undefined;
   href: string;
 };
 
