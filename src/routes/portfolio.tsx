@@ -145,7 +145,6 @@ const projects: Project[] = [
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [newGatdLaptop.url, newGatdMobile.url, newGatdThird.url],
     layout: "layered",
-    frameColor: "black",
     href: "/contact",
   },
 ];
