@@ -162,7 +162,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [drshahidLaptop.url, drshahidMobile.url, drshahidThird.url],
     layout: "layered",
-    ratios: ["945/718", "527/811", "846/548"],
+    ratios: ["945/593", "517/890", "846/548"],
     href: "/contact",
   },
 ];
