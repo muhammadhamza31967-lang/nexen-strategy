@@ -153,7 +153,7 @@ function SimpleComposition({
   images: string[];
   alt: string;
   flip: boolean;
-  frameColor?: "white" | "navy";
+  frameColor: "white" | "navy";
 }) {
   const a = images[0]!;
   const b = images[1];
