@@ -49,7 +49,7 @@ function Frame({
         className={cn(
           "flex h-full w-full flex-col overflow-hidden",
           darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
-          phone ? "rounded-[1.25rem]" : "",
+          phone ? "rounded-[0.75rem] sm:rounded-[1.25rem]" : "",
         )}
       >
         {kind === "browser" && <Chrome />}
@@ -91,69 +91,41 @@ function LayeredComposition({
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
   const r = (i: number): string => ratios?.[i] ?? ["16/10", "9/17", "4/3"][i]!;
 
+  // Single composition at every breakpoint — percentage-based widths and a fixed
+  // aspect ratio container scale the whole desktop composition proportionally.
   return (
-    <div className="w-full">
-      {/* Desktop / tablet composition */}
-      <div className="relative hidden aspect-[16/10] w-full sm:block">
+    <div className="relative aspect-[16/10] w-full">
+      <Frame
+        src={a}
+        alt={`${alt} — primary interface mockup`}
+        kind="browser"
+        ratio={r(0)}
+        frameColor={frameColor}
+        className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+      />
+
+      {secondary[0] && (
         <Frame
-          src={a}
-          alt={`${alt} — primary interface mockup`}
-          kind="browser"
-          ratio={r(0)}
+          src={secondary[0]}
+          alt={`${alt} — mobile mockup`}
+          kind="phone"
+          ratio={r(1)}
           frameColor={frameColor}
-          className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
+          className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
         />
+      )}
 
-        {secondary[0] && (
-          <Frame
-            src={secondary[0]}
-            alt={`${alt} — mobile mockup`}
-            kind="phone"
-            ratio={r(1)}
-            frameColor={frameColor}
-            className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
-          />
-        )}
-
-        {secondary[1] && (
-          <Frame
-            src={secondary[1]}
-            alt={`${alt} — dashboard detail`}
-            kind="tablet"
-            ratio={r(2)}
-            frameColor={frameColor}
-            imgClassName={thirdImageClassName}
-            className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
-          />
-        )}
-      </div>
-
-
-      {/* Mobile: clean vertical stack — laptop, phone, supporting — all within viewport */}
-      <div className="flex w-full min-w-0 flex-col items-stretch gap-6 overflow-hidden sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio={r(0)} frameColor={frameColor} className="w-full" />
-        {secondary[0] && (
-          <Frame
-            src={secondary[0]}
-            alt={`${alt} — mobile mockup`}
-            kind="phone"
-            ratio={r(1)}
-            frameColor={frameColor}
-            className="mx-auto w-[48%] max-w-[220px]"
-          />
-        )}
-        {secondary[1] && (
-          <Frame
-            src={secondary[1]}
-            alt={`${alt} — dashboard detail`}
-            kind="tablet"
-            ratio={r(2)}
-            frameColor={frameColor}
-            imgClassName={thirdImageClassName}
-            className="mx-auto w-[86%]"
-          />
-        )}
-      </div>
+      {secondary[1] && (
+        <Frame
+          src={secondary[1]}
+          alt={`${alt} — dashboard detail`}
+          kind="tablet"
+          ratio={r(2)}
+          frameColor={frameColor}
+          imgClassName={thirdImageClassName}
+          className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
+        />
+      )}
     </div>
   );
 }
