@@ -19,8 +19,8 @@ import gatdThird from "@/assets/gatd-img3-3.png.asset.json";
 import mohsanLaptop from "@/assets/mohsan-laptop.png.asset.json";
 import mohsanMobile from "@/assets/mohsan-mobile.png.asset.json";
 import mohsanThird from "@/assets/mohsan-img3.png.asset.json";
-import drshahidLaptop from "@/assets/drshahid-laptop.png.asset.json";
-import drshahidMobile from "@/assets/drshahid-mobile.png.asset.json";
+import drshahidLaptop from "@/assets/drshahid-laptop-2.png.asset.json";
+import drshahidMobile from "@/assets/drshahid-mobile-2.png.asset.json";
 import drshahidThird from "@/assets/drshahid-img3.png.asset.json";
 import royaLaptop from "@/assets/roya-laptop.png.asset.json";
 import royaMobile from "@/assets/roya-mobile.png.asset.json";
@@ -162,7 +162,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [drshahidLaptop.url, drshahidMobile.url, drshahidThird.url],
     layout: "layered",
-    ratios: ["945/718", "527/811", "846/548"],
+    ratios: ["945/593", "517/890", "846/548"],
     href: "/contact",
   },
 ];
