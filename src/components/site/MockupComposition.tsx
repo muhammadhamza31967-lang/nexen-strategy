@@ -212,7 +212,7 @@ export function MockupComposition({
   flip?: boolean;
   layout?: MockupLayout;
   frameColor?: "white" | "navy" | "black";
-  ratios?: string[];
+  ratios?: string[] | undefined;
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
