@@ -233,10 +233,16 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
 
   return (
     <section className="relative overflow-hidden bg-white py-16 lg:py-24">
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
+      <div className="relative mx-auto w-full max-w-[1400px] min-w-0 px-6 lg:px-12">
+        <div className="grid min-w-0 items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
+          {/* Category — shown above the visuals on mobile only */}
+          <div className="flex min-w-0 items-center gap-4 lg:hidden">
+            <span className={"h-px w-8 bg-gradient-to-r from-amber to-ember"} />
+            <span className={"eyebrow text-[0.65rem] text-azure"}>{p.category}</span>
+          </div>
+
           {/* Mockups */}
-          <Reveal className={cn("lg:col-span-7", imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1")}>
+          <Reveal className={cn("min-w-0 lg:col-span-7", imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1")}>
             <MockupComposition
               images={p.images}
               alt={p.title}
@@ -251,9 +257,9 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
           {/* Content */}
           <Reveal
             delay={120}
-            className={cn("lg:col-span-5 lg:-mt-10", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
+            className={cn("min-w-0 lg:col-span-5 lg:-mt-10", imageRight ? "lg:order-1 lg:col-start-1" : "lg:order-2")}
           >
-            <div className="flex items-center gap-4">
+            <div className="hidden items-center gap-4 lg:flex">
               <span className={"h-px w-8 bg-gradient-to-r from-amber to-ember"} />
               <span className={"eyebrow text-[0.65rem] text-azure"}>{p.category}</span>
             </div>
