@@ -182,6 +182,50 @@ const projects: Project[] = [
     ratios: ["1277/832", "532/892", "836/668"],
     href: "/contact",
   },
+  {
+    number: "11",
+    category: "Brand & Design",
+    title: "Building a Distinctive Brand Identity",
+    description:
+      "A cohesive visual identity created to give a growing business a stronger presence, clearer positioning and a consistent visual language across its customer touchpoints.",
+    capabilities: ["Brand Strategy", "Visual Identity", "Art Direction"],
+    images: [work1, work3, svcMedia],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "12",
+    category: "Brand & Design",
+    title: "Creating a Brand System That Connects Every Touchpoint",
+    description:
+      "A refined brand system designed to create consistency across digital platforms, marketing materials and customer experiences.",
+    capabilities: ["Brand Identity", "Graphic Design", "Brand Guidelines"],
+    images: [svcMarketing, work1, work3],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "13",
+    category: "Brand & Design",
+    title: "A Visual Identity Designed for Modern Audiences",
+    description:
+      "A contemporary visual direction combining typography, colour and creative design to establish a stronger and more recognisable brand presence.",
+    capabilities: ["Visual Identity", "Creative Direction", "Digital Design"],
+    images: [work4],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "14",
+    category: "Brand & Design",
+    title: "Designing a Brand Experience With Purpose",
+    description:
+      "A complete visual design approach developed to bring clarity, consistency and personality to the brand across multiple communication channels.",
+    capabilities: ["Brand Strategy", "Visual Design", "Marketing Collateral"],
+    images: [work3, work2, svcMarketing],
+    layout: "simple",
+    href: "/contact",
+  },
 ];
 
 
