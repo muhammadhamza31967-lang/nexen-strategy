@@ -78,12 +78,14 @@ function LayeredComposition({
   flip,
   frameColor,
   ratios,
+  thirdImageClassName,
 }: {
   images: string[];
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
   ratios?: string[] | undefined;
+  thirdImageClassName?: string;
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
@@ -120,6 +122,7 @@ function LayeredComposition({
             kind="tablet"
             ratio={r(2)}
             frameColor={frameColor}
+            imgClassName={thirdImageClassName}
             className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
