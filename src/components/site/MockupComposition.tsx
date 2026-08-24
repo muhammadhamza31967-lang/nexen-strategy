@@ -74,14 +74,17 @@ function LayeredComposition({
   alt,
   flip,
   frameColor,
+  ratios,
 }: {
   images: string[];
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
+  ratios?: string[];
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
+  const r = (i: number) => ratios?.[i] ?? (["16/10", "9/17", "4/3"] as const)[i];
 
   return (
     <div className="w-full">
@@ -91,7 +94,7 @@ function LayeredComposition({
           src={a}
           alt={`${alt} — primary interface mockup`}
           kind="browser"
-          ratio="16/10"
+          ratio={r(0)}
           frameColor={frameColor}
           className={cn("absolute top-[6%] w-[80%]", flip ? "right-0" : "left-0")}
         />
@@ -101,7 +104,7 @@ function LayeredComposition({
             src={secondary[0]}
             alt={`${alt} — mobile mockup`}
             kind="phone"
-            ratio="9/17"
+            ratio={r(1)}
             frameColor={frameColor}
             className={cn("absolute bottom-[6%] z-10 w-[16%]", flip ? "left-[5%]" : "right-[5%]")}
           />
@@ -112,7 +115,7 @@ function LayeredComposition({
             src={secondary[1]}
             alt={`${alt} — dashboard detail`}
             kind="tablet"
-            ratio="4/3"
+            ratio={r(2)}
             frameColor={frameColor}
             className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
@@ -122,7 +125,7 @@ function LayeredComposition({
 
       {/* Mobile: primary + controlled horizontal carousel */}
       <div className="sm:hidden">
-        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio="16/10" frameColor={frameColor} className="w-full" />
+        <Frame src={a} alt={`${alt} — primary interface mockup`} kind="browser" ratio={r(0)} frameColor={frameColor} className="w-full" />
         {secondary.length > 0 && (
           <div className="mk-scroll -mx-6 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
             {secondary.map((src, i) => (
@@ -131,7 +134,7 @@ function LayeredComposition({
                 src={src}
                 alt={`${alt} — supporting mockup ${i + 2}`}
                 kind="screen"
-                ratio="4/3"
+                ratio={r(i + 1)}
                 frameColor={frameColor}
                 className="w-[68%] shrink-0 snap-start"
               />
@@ -149,15 +152,18 @@ function SimpleComposition({
   alt,
   flip,
   frameColor,
+  ratios,
 }: {
   images: string[];
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
+  ratios?: string[];
 }) {
   const a = images[0]!;
   const b = images[1];
   const c = images[2];
+  const r = (i: number) => ratios?.[i] ?? "4/3";
 
   return (
     <div className="w-full">
@@ -167,25 +173,25 @@ function SimpleComposition({
           src={a}
           alt={`${alt} — primary visual`}
           kind="screen"
-          ratio="4/3"
+          ratio={r(0)}
           frameColor={frameColor}
           className={cn(b ? "sm:col-span-8" : "sm:col-span-12", flip ? "sm:order-2" : "sm:order-1")}
         />
         {b && (
           <div className={cn("flex flex-col gap-4 sm:col-span-4", flip ? "sm:order-1" : "sm:order-2")}>
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
 
       {/* Mobile: clean vertical stack */}
       <div className="flex flex-col gap-4 sm:hidden">
-        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
+        <Frame src={a} alt={`${alt} — primary visual`} kind="screen" ratio={r(0)} frameColor={frameColor} className="w-full" />
         {b && (
           <div className="grid grid-cols-2 gap-4">
-            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />
-            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio="4/3" frameColor={frameColor} className="w-full" />}
+            <Frame src={b} alt={`${alt} — supporting visual`} kind="screen" ratio={r(1)} frameColor={frameColor} className="w-full" />
+            {c && <Frame src={c} alt={`${alt} — detail visual`} kind="screen" ratio={r(2)} frameColor={frameColor} className="w-full" />}
           </div>
         )}
       </div>
@@ -199,17 +205,19 @@ export function MockupComposition({
   flip = false,
   layout = "simple",
   frameColor = "white",
+  ratios,
 }: {
   images: string[];
   alt: string;
   flip?: boolean;
   layout?: MockupLayout;
   frameColor?: "white" | "navy" | "black";
+  ratios?: string[];
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
-    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
+    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
   ) : (
-    <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} />
+    <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
   );
 }
