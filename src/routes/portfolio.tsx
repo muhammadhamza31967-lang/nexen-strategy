@@ -137,6 +137,18 @@ const projects: Project[] = [
     layout: "simple",
     href: "/contact",
   },
+  {
+    number: "08",
+    category: "Web & App Development",
+    title: "Digital Experiences Built for Modern Businesses",
+    description:
+      "A responsive digital experience designed to create a seamless journey across devices, strengthen the digital presence and support meaningful business growth.",
+    capabilities: ["Strategy", "UX/UI", "Web Development"],
+    images: [newGatdLaptop.url, newGatdMobile.url, newGatdThird.url],
+    layout: "layered",
+    frameColor: "black",
+    href: "/contact",
+  },
 ];
 
 
