@@ -1,4 +1,4 @@
-import { createFileRoute, notFound, redirect, Link } from "@tanstack/react-router";
+import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -12,10 +12,6 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
-    // Canonical Brand & Design page lives at /services/brand-design
-    if (params.slug === "brand-and-design") {
-      throw redirect({ to: "/services/brand-design" });
-    }
     const content = serviceContent[params.slug as ServiceKey];
     if (!content) throw notFound();
     return { content };
