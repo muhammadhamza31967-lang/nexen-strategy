@@ -51,6 +51,7 @@ type Project = {
   capabilities: string[];
   images: string[];
   layout: "layered" | "simple";
+  frameColor?: "white" | "navy";
   href: string;
 };
 
