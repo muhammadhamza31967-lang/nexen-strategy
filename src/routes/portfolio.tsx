@@ -16,6 +16,9 @@ import svcMedia from "@/assets/svc-media.jpg";
 import gatdMobile from "@/assets/gatd-mobile-3.png.asset.json";
 import gatdLaptop from "@/assets/gatd-laptop-2.png.asset.json";
 import gatdThird from "@/assets/gatd-img3-3.png.asset.json";
+import newGatdLaptop from "@/assets/gatd-laptop.png.asset.json";
+import newGatdMobile from "@/assets/gatd-mobile-2.png.asset.json";
+import newGatdThird from "@/assets/gatd-img3.png.asset.json";
 import royaLaptop from "@/assets/roya-laptop.png.asset.json";
 import royaMobile from "@/assets/roya-mobile.png.asset.json";
 import royaMobile2 from "@/assets/roya-mobile-2.png.asset.json";
@@ -132,6 +135,18 @@ const projects: Project[] = [
     capabilities: ["Creative Direction", "Photography", "Video", "Motion"],
     images: [svcMedia, work4, work2],
     layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "08",
+    category: "Web & App Development",
+    title: "Digital Experiences Built for Modern Businesses",
+    description:
+      "A responsive digital experience designed to create a seamless journey across devices, strengthen the digital presence and support meaningful business growth.",
+    capabilities: ["Strategy", "UX/UI", "Web Development"],
+    images: [newGatdLaptop.url, newGatdMobile.url, newGatdThird.url],
+    layout: "layered",
+    frameColor: "black",
     href: "/contact",
   },
 ];
