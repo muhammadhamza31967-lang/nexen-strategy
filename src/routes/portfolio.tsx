@@ -145,9 +145,8 @@ const projects: Project[] = [
     description:
       "A responsive digital experience designed to create a seamless journey across devices, strengthen the digital presence and support meaningful business growth.",
     capabilities: ["Strategy", "UX/UI", "Web Development"],
-    images: [newGatdLaptop.url, newGatdMobile.url, mohsanThird.url],
+    images: [mohsanLaptop.url, mohsanMobile.url, mohsanThird.url],
     layout: "layered",
-    ratios: ["1172/811", "852/1310", "4/3"],
     href: "/contact",
   },
 ];
