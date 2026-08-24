@@ -1,5 +1,5 @@
 export type ServiceKey =
-  | "brand-and-design"
+  | "brand-design"
   | "web-and-app-development"
   | "software-solutions"
   | "ai-and-automation"
@@ -17,7 +17,7 @@ export const services: ServiceSummary[] = [
   {
     no: "01",
     title: "Brand & Design",
-    slug: "brand-and-design",
+    slug: "brand-design",
     short:
       "Identity, visual systems and design that give your business presence, clarity and confidence.",
   },

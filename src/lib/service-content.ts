@@ -21,8 +21,8 @@ export interface ServiceContent {
 }
 
 export const serviceContent: Record<ServiceKey, ServiceContent> = {
-  "brand-and-design": {
-    slug: "brand-and-design",
+  "brand-design": {
+    slug: "brand-design",
     no: "01",
     label: "Brand & Design",
     hero: "Build a Brand People Remember.",
