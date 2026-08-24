@@ -55,6 +55,7 @@ type Project = {
   images: string[];
   layout: "layered" | "simple";
   frameColor?: "white" | "navy" | "black";
+  ratios?: string[] | undefined;
   href: string;
 };
 
@@ -79,6 +80,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [royaLaptop.url, royaMobile2.url, royaThird.url],
     layout: "layered",
+    ratios: ["1527/797", "528/930", "1275/811"],
     href: "/contact",
   },
   {
@@ -145,6 +147,7 @@ const projects: Project[] = [
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [newGatdLaptop.url, newGatdMobile.url, newGatdThird.url],
     layout: "layered",
+    ratios: ["1172/811", "852/1310", "1105/667"],
     href: "/contact",
   },
 ];
@@ -166,7 +169,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
             )}
           >
-            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} />
+            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} ratios={p.ratios} />
           </Reveal>
 
           {/* Content */}
