@@ -166,7 +166,7 @@ const projects: Project[] = [
     capabilities: ["Web Design", "UX/UI", "Web Development"],
     images: [drshahidLaptop.url, drshahidMobile.url, drshahidThird.url],
     layout: "layered",
-    ratios: ["945/593", "517/890", "4/3"],
+    ratios: ["945/593", "517/890", "3/3"],
     thirdImageClassName: "!p-0",
     href: "/contact",
   },
@@ -228,24 +228,24 @@ const projects: Project[] = [
   },
 ];
 
-
 function ProjectSection({ p, index }: { p: Project; index: number }) {
   const imageRight = index % 2 === 1;
 
   return (
-    <section
-      className="relative overflow-hidden bg-white py-16 lg:py-24"
-    >
+    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
           {/* Mockups */}
-          <Reveal
-            className={cn(
-              "lg:col-span-7",
-              imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
-            )}
-          >
-            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} ratios={p.ratios} thirdImageClassName={p.thirdImageClassName} />
+          <Reveal className={cn("lg:col-span-7", imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1")}>
+            <MockupComposition
+              images={p.images}
+              alt={p.title}
+              flip={imageRight}
+              layout={p.layout}
+              frameColor={p.frameColor ?? "white"}
+              ratios={p.ratios}
+              thirdImageClassName={p.thirdImageClassName}
+            />
           </Reveal>
 
           {/* Content */}
@@ -258,23 +258,13 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               <span className={"eyebrow text-[0.65rem] text-azure"}>{p.category}</span>
             </div>
 
-            <h2
-              className="display mt-6 text-[1.9rem] leading-[1.1] text-navy sm:text-[2.4rem] lg:text-[2.7rem]"
-            >
+            <h2 className="display mt-6 text-[1.9rem] leading-[1.1] text-navy sm:text-[2.4rem] lg:text-[2.7rem]">
               {p.title}
             </h2>
 
-            <p
-              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground"
-            >
-              {p.description}
-            </p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">{p.description}</p>
 
-            <p
-              className="mt-7 text-sm tracking-wide text-muted-foreground"
-            >
-              {p.capabilities.join("  ·  ")}
-            </p>
+            <p className="mt-7 text-sm tracking-wide text-muted-foreground">{p.capabilities.join("  ·  ")}</p>
 
             <Link
               to={p.href as "/contact"}
@@ -283,10 +273,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               View Case Study
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </Link>
-            <span
-              aria-hidden
-              className={"mt-3 block h-px w-24 bg-gradient-to-r from-amber to-ember"}
-            />
+            <span aria-hidden className={"mt-3 block h-px w-24 bg-gradient-to-r from-amber to-ember"} />
           </Reveal>
         </div>
       </div>
@@ -341,7 +328,10 @@ function PortfolioPage() {
               strokeWidth="1"
             />
           </svg>
-          <span aria-hidden className="ghost-type absolute -left-6 bottom-0 text-[7rem] text-white/[0.03] lg:text-[14rem]">
+          <span
+            aria-hidden
+            className="ghost-type absolute -left-6 bottom-0 text-[7rem] text-white/[0.03] lg:text-[14rem]"
+          >
             NEXEN
           </span>
 
@@ -420,7 +410,6 @@ function PortfolioPage() {
               </div>
             </div>
           </div>
-
         </section>
 
         {/* Projects */}
