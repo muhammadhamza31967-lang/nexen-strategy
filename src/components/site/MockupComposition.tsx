@@ -28,7 +28,7 @@ function Frame({
   ratio: string;
   className?: string;
   frameColor: "white" | "navy" | "black";
-  imgClassName?: string;
+  imgClassName?: string | undefined;
 }) {
   const phone = kind === "phone";
   const tablet = kind === "tablet";
@@ -85,7 +85,7 @@ function LayeredComposition({
   flip: boolean;
   frameColor: "white" | "navy" | "black";
   ratios?: string[] | undefined;
-  thirdImageClassName?: string;
+  thirdImageClassName?: string | undefined;
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
@@ -220,7 +220,7 @@ export function MockupComposition({
   layout?: MockupLayout;
   frameColor?: "white" | "navy" | "black";
   ratios?: string[] | undefined;
-  thirdImageClassName?: string;
+  thirdImageClassName?: string | undefined;
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
