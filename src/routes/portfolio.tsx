@@ -65,6 +65,7 @@ const projects: Project[] = [
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [gatdLaptop.url, gatdMobile.url, gatdThird.url],
     layout: "layered",
+    frameColor: "black",
     href: "/contact",
   },
   {
