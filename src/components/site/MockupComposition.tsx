@@ -212,6 +212,7 @@ export function MockupComposition({
   layout = "simple",
   frameColor = "white",
   ratios,
+  thirdImageClassName,
 }: {
   images: string[];
   alt: string;
@@ -219,10 +220,11 @@ export function MockupComposition({
   layout?: MockupLayout;
   frameColor?: "white" | "navy" | "black";
   ratios?: string[] | undefined;
+  thirdImageClassName?: string;
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
-    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
+    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} thirdImageClassName={thirdImageClassName} />
   ) : (
     <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
   );
