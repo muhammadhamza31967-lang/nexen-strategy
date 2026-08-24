@@ -15,6 +15,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ServicesBrandDesignRouteImport } from './routes/services/brand-design'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesBrandDesignRoute = ServicesBrandDesignRouteImport.update({
+  id: '/services/brand-design',
+  path: '/services/brand-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/brand-design': typeof ServicesBrandDesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/brand-design': typeof ServicesBrandDesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,14 +79,27 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/brand-design': typeof ServicesBrandDesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/clients' | '/contact' | '/portfolio' | '/services/$slug'
+    | '/'
+    | '/about'
+    | '/clients'
+    | '/contact'
+    | '/portfolio'
+    | '/services/$slug'
+    | '/services/brand-design'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/about' | '/clients' | '/contact' | '/portfolio' | '/services/$slug'
+    | '/'
+    | '/about'
+    | '/clients'
+    | '/contact'
+    | '/portfolio'
+    | '/services/$slug'
+    | '/services/brand-design'
   id:
     | '__root__'
     | '/'
@@ -87,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services/$slug'
+    | '/services/brand-design'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -96,6 +118,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesBrandDesignRoute: typeof ServicesBrandDesignRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -142,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/brand-design': {
+      id: '/services/brand-design'
+      path: '/services/brand-design'
+      fullPath: '/services/brand-design'
+      preLoaderRoute: typeof ServicesBrandDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -152,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesBrandDesignRoute: ServicesBrandDesignRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

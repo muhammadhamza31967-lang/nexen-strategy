@@ -218,7 +218,6 @@ function BrandDesignPage() {
                 {processSteps.map((s, i) => (
                   <Reveal key={s.no} delay={i * 90}>
                     <div className="group border-t border-navy/20 pt-8 transition-colors duration-500 hover:border-amber lg:border-t-0 lg:pt-10">
-                      <span aria-hidden className="absolute hidden lg:block" />
                       <p className="font-mono text-[0.72rem] tracking-[0.18em] text-azure">{s.no}</p>
                       <h3 className="display mt-5 text-2xl text-navy transition-colors duration-500 group-hover:text-azure lg:text-[1.7rem]">
                         {s.name}
