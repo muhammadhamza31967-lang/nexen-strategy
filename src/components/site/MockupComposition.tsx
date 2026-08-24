@@ -19,19 +19,24 @@ function Frame({
   kind = "screen",
   ratio,
   className,
+  frameColor = "white",
 }: {
   src: string;
   alt: string;
   kind?: MockupKind;
   ratio: string;
   className?: string;
+  frameColor?: "white" | "navy";
 }) {
   const phone = kind === "phone";
-  const contain = phone || kind === "tablet";
+  const tablet = kind === "tablet";
+  const contain = phone || tablet;
+  const darkFrame = frameColor === "navy" && (phone || tablet);
   return (
     <figure
       className={cn(
-        "group/mk overflow-hidden bg-white transition-all duration-500 ease-out",
+        "group/mk overflow-hidden transition-all duration-500 ease-out",
+        darkFrame ? "bg-navy" : "bg-white",
         phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
@@ -39,7 +44,11 @@ function Frame({
       )}
     >
       <div
-        className={cn("flex h-full w-full flex-col overflow-hidden bg-white", phone ? "rounded-[1.25rem]" : "")}
+        className={cn(
+          "flex h-full w-full flex-col overflow-hidden",
+          darkFrame ? "bg-navy" : "bg-white",
+          phone ? "rounded-[1.25rem]" : "",
+        )}
       >
         {kind === "browser" && <Chrome />}
         <div className="relative flex-1 overflow-hidden" style={{ aspectRatio: ratio }}>
@@ -51,7 +60,7 @@ function Frame({
               "h-full w-full transition-transform duration-[900ms] ease-out",
               kind === "tablet" ? "" : "group-hover/mk:scale-[1.04]",
               contain ? "object-contain object-center" : "object-cover object-top",
-              kind === "tablet" ? "p-1.5" : "",
+              tablet ? "p-1.5" : "",
             )}
           />
         </div>
