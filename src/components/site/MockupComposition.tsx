@@ -20,6 +20,7 @@ function Frame({
   ratio,
   className,
   frameColor = "white",
+  imgClassName,
 }: {
   src: string;
   alt: string;
@@ -27,6 +28,7 @@ function Frame({
   ratio: string;
   className?: string;
   frameColor: "white" | "navy" | "black";
+  imgClassName?: string;
 }) {
   const phone = kind === "phone";
   const tablet = kind === "tablet";
@@ -61,6 +63,7 @@ function Frame({
               kind === "tablet" ? "" : "group-hover/mk:scale-[1.04]",
               contain ? "object-contain object-center" : "object-cover object-top",
               tablet ? "p-1.5" : "",
+              imgClassName,
             )}
           />
         </div>
