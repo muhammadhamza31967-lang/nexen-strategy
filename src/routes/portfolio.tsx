@@ -77,7 +77,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-    number: "03",
+    number: "04",
     category: "Brand & Design",
     title: "A Digital Identity Built for a Stronger Market Presence",
     description:
@@ -99,7 +99,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-    number: "04",
+    number: "05",
     category: "AI & Automation",
     title: "Turning Repetitive Processes Into Intelligent Workflows",
     description:
@@ -110,7 +110,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-    number: "05",
+    number: "06",
     category: "Marketing & Growth",
     title: "Building Digital Visibility That Creates Opportunity",
     description:
@@ -121,7 +121,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-    number: "06",
+    number: "07",
     category: "Media Production",
     title: "Bringing Business Stories to Life Through Visual Content",
     description:
