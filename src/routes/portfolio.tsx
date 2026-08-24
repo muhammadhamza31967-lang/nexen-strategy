@@ -59,6 +59,7 @@ type Project = {
   layout: "layered" | "simple";
   frameColor?: "white" | "navy" | "black";
   ratios?: string[] | undefined;
+  thirdImageClassName?: string | undefined;
   href: string;
 };
 
@@ -163,6 +164,7 @@ const projects: Project[] = [
     images: [drshahidLaptop.url, drshahidMobile.url, drshahidThird.url],
     layout: "layered",
     ratios: ["945/593", "517/890", "4/3"],
+    thirdImageClassName: "!p-0",
     href: "/contact",
   },
 ];
@@ -184,7 +186,7 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
               imageRight ? "lg:order-2 lg:col-start-6" : "lg:order-1",
             )}
           >
-            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} ratios={p.ratios} />
+            <MockupComposition images={p.images} alt={p.title} flip={imageRight} layout={p.layout} frameColor={p.frameColor ?? "white"} ratios={p.ratios} thirdImageClassName={p.thirdImageClassName} />
           </Reveal>
 
           {/* Content */}

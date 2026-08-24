@@ -20,6 +20,7 @@ function Frame({
   ratio,
   className,
   frameColor = "white",
+  imgClassName,
 }: {
   src: string;
   alt: string;
@@ -27,6 +28,7 @@ function Frame({
   ratio: string;
   className?: string;
   frameColor: "white" | "navy" | "black";
+  imgClassName?: string | undefined;
 }) {
   const phone = kind === "phone";
   const tablet = kind === "tablet";
@@ -61,6 +63,7 @@ function Frame({
               kind === "tablet" ? "" : "group-hover/mk:scale-[1.04]",
               contain ? "object-contain object-center" : "object-cover object-top",
               tablet ? "p-1.5" : "",
+              imgClassName,
             )}
           />
         </div>
@@ -75,12 +78,14 @@ function LayeredComposition({
   flip,
   frameColor,
   ratios,
+  thirdImageClassName,
 }: {
   images: string[];
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
   ratios?: string[] | undefined;
+  thirdImageClassName?: string | undefined;
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
@@ -117,6 +122,7 @@ function LayeredComposition({
             kind="tablet"
             ratio={r(2)}
             frameColor={frameColor}
+            imgClassName={thirdImageClassName}
             className={cn("absolute top-0 w-[26%]", flip ? "left-0" : "right-0")}
           />
         )}
@@ -206,6 +212,7 @@ export function MockupComposition({
   layout = "simple",
   frameColor = "white",
   ratios,
+  thirdImageClassName,
 }: {
   images: string[];
   alt: string;
@@ -213,10 +220,11 @@ export function MockupComposition({
   layout?: MockupLayout;
   frameColor?: "white" | "navy" | "black";
   ratios?: string[] | undefined;
+  thirdImageClassName?: string | undefined;
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
-    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
+    <LayeredComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} thirdImageClassName={thirdImageClassName} />
   ) : (
     <SimpleComposition images={images} alt={alt} flip={flip} frameColor={frameColor} ratios={ratios} />
   );
