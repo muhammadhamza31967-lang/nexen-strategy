@@ -158,12 +158,12 @@ function SimpleComposition({
   alt: string;
   flip: boolean;
   frameColor: "white" | "navy" | "black";
-  ratios?: string[];
+  ratios?: string[] | undefined;
 }) {
   const a = images[0]!;
   const b = images[1];
   const c = images[2];
-  const r = (i: number) => ratios?.[i] ?? "4/3";
+  const r = (i: number): string => ratios?.[i] ?? "4/3";
 
   return (
     <div className="w-full">
