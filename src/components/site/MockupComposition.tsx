@@ -5,10 +5,10 @@ export type MockupLayout = "layered" | "simple";
 
 function Chrome() {
   return (
-    <div className="flex h-6 shrink-0 items-center gap-1.5 border-b border-black/5 bg-[#F6F7FB] px-3">
-      <span className="h-1.5 w-1.5 rounded-full bg-black/15" />
-      <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
-      <span className="h-1.5 w-1.5 rounded-full bg-black/10" />
+    <div className="flex h-3.5 shrink-0 items-center gap-1 border-b border-black/5 bg-[#F6F7FB] px-2 sm:h-6 sm:gap-1.5 sm:px-3">
+      <span className="h-1 w-1 rounded-full bg-black/15 sm:h-1.5 sm:w-1.5" />
+      <span className="h-1 w-1 rounded-full bg-black/10 sm:h-1.5 sm:w-1.5" />
+      <span className="h-1 w-1 rounded-full bg-black/10 sm:h-1.5 sm:w-1.5" />
     </div>
   );
 }
@@ -39,7 +39,7 @@ function Frame({
       className={cn(
         "group/mk overflow-hidden transition-all duration-500 ease-out",
         darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
-        phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
+        phone ? "rounded-[0.9rem] p-[2px] sm:rounded-[1.4rem] sm:p-[3px]" : "rounded-md sm:rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
         className,
