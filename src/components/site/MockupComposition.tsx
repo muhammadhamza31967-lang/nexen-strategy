@@ -26,17 +26,17 @@ function Frame({
   kind?: MockupKind;
   ratio: string;
   className?: string;
-  frameColor: "white" | "navy";
+  frameColor: "white" | "navy" | "black";
 }) {
   const phone = kind === "phone";
   const tablet = kind === "tablet";
   const contain = phone || tablet;
-  const darkFrame = frameColor === "navy" && (phone || tablet);
+  const darkFrame = (frameColor === "navy" || frameColor === "black") && (phone || tablet);
   return (
     <figure
       className={cn(
         "group/mk overflow-hidden transition-all duration-500 ease-out",
-        darkFrame ? "bg-navy" : "bg-white",
+        darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
         phone ? "rounded-[1.4rem] p-[3px]" : "rounded-xl",
         "border border-black/[0.07] shadow-[0_22px_60px_-28px_rgba(1,12,98,0.35)]",
         "hover:-translate-y-1.5 hover:shadow-[0_34px_80px_-30px_rgba(1,12,98,0.45)]",
@@ -46,7 +46,7 @@ function Frame({
       <div
         className={cn(
           "flex h-full w-full flex-col overflow-hidden",
-          darkFrame ? "bg-navy" : "bg-white",
+          darkFrame ? (frameColor === "black" ? "bg-black" : "bg-navy") : "bg-white",
           phone ? "rounded-[1.25rem]" : "",
         )}
       >
@@ -78,7 +78,7 @@ function LayeredComposition({
   images: string[];
   alt: string;
   flip: boolean;
-  frameColor: "white" | "navy";
+  frameColor: "white" | "navy" | "black";
 }) {
   const a = images[0]!;
   const secondary = images.slice(1).filter(Boolean).slice(0, 3);
@@ -153,7 +153,7 @@ function SimpleComposition({
   images: string[];
   alt: string;
   flip: boolean;
-  frameColor: "white" | "navy";
+  frameColor: "white" | "navy" | "black";
 }) {
   const a = images[0]!;
   const b = images[1];
@@ -204,7 +204,7 @@ export function MockupComposition({
   alt: string;
   flip?: boolean;
   layout?: MockupLayout;
-  frameColor?: "white" | "navy";
+  frameColor?: "white" | "navy" | "black";
 }) {
   if (!images?.[0]) return null;
   return layout === "layered" ? (
