@@ -36,7 +36,7 @@ interface ShowcaseItem {
 const items: ShowcaseItem[] = [
   {
     no: "01",
-    slug: "brand-and-design",
+    slug: "brand-design",
     title: "Brand & Design",
     headline: "Build a brand people recognise and remember.",
     description:

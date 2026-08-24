@@ -25,7 +25,7 @@ export interface ServiceVisuals {
 }
 
 export const serviceVisuals: Record<ServiceKey, ServiceVisuals> = {
-  "brand-and-design": {
+  "brand-design": {
     heroLayout: "split",
     detail: detailBrand,
     detailAlt: "Printed brand identity system with typography specimens and colour swatches",
