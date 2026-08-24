@@ -147,6 +147,7 @@ const projects: Project[] = [
     capabilities: ["Strategy", "UX/UI", "Web Development"],
     images: [mohsanLaptop.url, mohsanMobile.url, mohsanThird.url],
     layout: "layered",
+    ratios: ["1567/922", "532/895", "1267/893"],
     href: "/contact",
   },
 ];
