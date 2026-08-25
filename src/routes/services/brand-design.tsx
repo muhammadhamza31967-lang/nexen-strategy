@@ -406,7 +406,7 @@ function BrandDesignPage() {
                     <li key={s.name} className="border-b border-border">
                       <button
                         type="button"
-                        onClick={() => setActiveService(on ? -1 : i)}
+                        onClick={() => setActiveService(i)}
                         aria-expanded={on}
                         className="flex w-full items-center gap-4 py-4 text-left"
                       >
