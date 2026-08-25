@@ -443,7 +443,8 @@ function BrandDesignPage() {
                         )}
                       >
                         <div className="overflow-hidden">
-                          <div className="overflow-hidden rounded-lg shadow-[0_30px_60px_-30px_rgba(1,12,98,0.35)]">
+                          <p className="text-lg leading-relaxed text-navy/75">{s.text}</p>
+                          <div className="mt-5 overflow-hidden rounded-lg shadow-[0_30px_60px_-30px_rgba(1,12,98,0.35)]">
                             <img
                               src={s.img}
                               alt={s.alt}
@@ -453,9 +454,6 @@ function BrandDesignPage() {
                               className="aspect-[4/3] w-full object-cover"
                             />
                           </div>
-                          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                            {s.text}
-                          </p>
                         </div>
                       </div>
                     </li>
