@@ -281,25 +281,27 @@ function BrandDesignPage() {
         <section className="relative overflow-hidden border-t border-border bg-white">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
           <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
-            {/* Section header */}
-            <Reveal>
+            {/* Section header — mobile / tablet only (desktop header lives in the left column) */}
+            <Reveal className="lg:hidden">
               <div className="flex items-end justify-between gap-8">
                 <div>
                   <p className="eyebrow text-azure">What we do</p>
                   <h2 className="display mt-5 text-4xl text-navy lg:text-5xl">What We Do</h2>
                 </div>
-                <span
-                  aria-hidden
-                  className="mb-2 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
-                />
               </div>
             </Reveal>
 
-            {/* ---- Desktop: navigation + large visual ---- */}
-            <div className="mt-14 hidden lg:grid lg:grid-cols-12 lg:gap-16">
-              {/* Service navigation */}
+            {/* ---- Desktop: editorial navigation + label / title / description / visual ---- */}
+            <div className="hidden lg:grid lg:grid-cols-12 lg:gap-16">
+              {/* Left: header + premium service navigation */}
               <Reveal className="lg:col-span-5">
-                <ul className="border-t border-border">
+                <p className="eyebrow text-azure">What we do</p>
+                <h2 className="display mt-5 text-4xl text-navy lg:text-5xl">What We Do</h2>
+                <span
+                  aria-hidden
+                  className="mt-9 block h-px w-24 bg-gradient-to-r from-amber to-ember"
+                />
+                <ul className="mt-12 border-t border-border">
                   {serviceAreas.map((s, i) => {
                     const on = i === activeService;
                     return (
@@ -310,20 +312,22 @@ function BrandDesignPage() {
                           onFocus={() => setActiveService(i)}
                           onClick={() => setActiveService(i)}
                           aria-current={on}
-                          className="group relative flex w-full items-baseline gap-5 border-b border-border py-5 text-left outline-none"
+                          className="group relative flex w-full items-center gap-6 border-b border-border py-6 text-left outline-none"
                         >
                           <span
                             className={cn(
-                              "font-mono text-[11px] transition-colors duration-300",
-                              on ? "text-ember" : "text-muted-foreground/70",
+                              "w-7 shrink-0 font-mono text-[11px] tracking-[0.14em] transition-colors duration-300",
+                              on ? "text-ember" : "text-muted-foreground/60",
                             )}
                           >
                             {String(i + 1).padStart(2, "0")}
                           </span>
                           <span
                             className={cn(
-                              "display text-[1.55rem] tracking-tight transition-all duration-300 ease-out",
-                              on ? "translate-x-1.5 text-navy" : "text-navy/45 group-hover:text-navy/75",
+                              "display text-[1.7rem] leading-none tracking-tight transition-all duration-300 ease-out",
+                              on
+                                ? "translate-x-2 text-navy"
+                                : "text-navy/40 group-hover:translate-x-1 group-hover:text-navy/70",
                             )}
                           >
                             {s.name}
@@ -331,14 +335,14 @@ function BrandDesignPage() {
                           <ArrowRight
                             aria-hidden
                             className={cn(
-                              "ml-auto h-4 w-4 shrink-0 self-center text-ember transition-all duration-300",
+                              "ml-auto h-[18px] w-[18px] shrink-0 text-ember transition-all duration-300",
                               on ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0",
                             )}
                           />
                           <span
                             aria-hidden
                             className={cn(
-                              "absolute bottom-[-1px] left-0 h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-500 ease-out",
+                              "absolute bottom-[-1px] left-0 h-[2px] bg-gradient-to-r from-amber to-ember transition-[width] duration-500 ease-out",
                               on ? "w-full" : "w-0",
                             )}
                           />
@@ -349,9 +353,20 @@ function BrandDesignPage() {
                 </ul>
               </Reveal>
 
-              {/* Large visual + caption */}
+              {/* Right: label → title → description → large visual */}
               <Reveal delay={120} className="lg:col-span-7">
-                <div className="relative">
+                <div key={activeService} className="bd-caption">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ember">
+                    {String(activeService + 1).padStart(2, "0")} — Capability
+                  </p>
+                  <h3 className="display mt-4 text-3xl text-navy xl:text-[2.6rem]">
+                    {serviceAreas[activeService]?.name ?? serviceAreas[0]?.name}
+                  </h3>
+                  <p className="mt-6 max-w-2xl text-xl leading-relaxed text-navy/75 xl:text-[1.35rem]">
+                    {serviceAreas[activeService]?.text ?? serviceAreas[0]?.text}
+                  </p>
+                </div>
+                <div className="relative mt-10">
                   {/* offset frame line */}
                   <span
                     aria-hidden
@@ -379,19 +394,6 @@ function BrandDesignPage() {
                     <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-navy/55 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur-sm">
                       {String(activeService + 1).padStart(2, "0")} / 07
                     </span>
-                  </div>
-                  {/* active description caption */}
-                  <div className="mt-7 flex items-start gap-5">
-                    <span
-                      aria-hidden
-                      className="mt-3 h-px w-10 shrink-0 bg-gradient-to-r from-amber to-ember"
-                    />
-                    <p
-                      key={activeService}
-                      className="bd-caption max-w-xl text-base leading-relaxed text-muted-foreground"
-                    >
-                      {serviceAreas[activeService]?.text ?? serviceAreas[0]?.text}
-                    </p>
                   </div>
                 </div>
               </Reveal>
