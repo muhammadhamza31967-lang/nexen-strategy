@@ -65,9 +65,9 @@ const serviceAreas = [
   },
   {
     name: "AI Development",
-    text: "AI-powered applications and intelligent digital experiences designed around real business needs and workflows.",
+    text: "Build and deploy AI-powered websites and applications using modern AI-assisted development and vibe coding workflows, turning ideas into functional digital products faster.",
     img: wadAi,
-    alt: "AI-powered application interface with an assistant panel and automated workflow builder",
+    alt: "AI-assisted development workflow showing prompt interface, generated code and a live website or application preview",
   },
   {
     name: "API & System Integration",
