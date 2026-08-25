@@ -34,10 +34,6 @@ import svcBrandGuidelines from "@/assets/svc-brand-guidelines.jpg";
 const heroParagraph =
   "Your brand is more than a logo. We create distinctive visual identities and digital experiences that help businesses communicate with clarity, consistency and confidence.";
 
-const introParagraphs = [
-  "A strong brand creates recognition. A strong digital experience creates connection.",
-  "We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.",
-];
 
 const serviceAreas = [
   {
