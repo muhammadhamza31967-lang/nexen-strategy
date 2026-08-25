@@ -27,7 +27,10 @@ import wadMobile from "@/assets/wad-mobile.jpg";
 import wadWordpress from "@/assets/wad-wordpress.jpg";
 import wadShopify from "@/assets/wad-shopify.jpg";
 import wadEcommerce from "@/assets/wad-ecommerce.jpg";
+import wadAi from "@/assets/wad-ai.jpg";
+import wadApi from "@/assets/wad-api.jpg";
 import wadModular from "@/assets/wad-modular.jpg";
+
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
@@ -59,8 +62,20 @@ const serviceAreas = [
     text: "Intuitive mobile experiences designed for iOS, Android and cross-platform environments.",
     img: wadMobile,
     alt: "Three mobile application screens showing a modern iOS and Android product interface",
+  {
+    name: "AI Development",
+    text: "AI-powered applications and intelligent digital experiences designed around real business needs and workflows.",
+    img: wadAi,
+    alt: "AI-powered application interface with an assistant panel and automated workflow builder",
   },
   {
+    name: "API & System Integration",
+    text: "Connect websites, applications and business systems through reliable APIs and seamless integrations.",
+    img: wadApi,
+    alt: "API integration dashboard showing connected business systems and live data flows",
+  },
+  {
+
     name: "WordPress Development",
     text: "Professional WordPress websites built for flexibility, performance and easy content management.",
     img: wadWordpress,
