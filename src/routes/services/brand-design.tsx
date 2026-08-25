@@ -1,27 +1,75 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { CtaSection } from "@/components/site/CtaSection";
 import { Reveal } from "@/components/site/Reveal";
-import { ProcessTimeline } from "@/components/site/ProcessTimeline";
-import { serviceContent } from "@/lib/service-content";
-import { services } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import brandHero from "@/assets/brand-hero.jpg";
 import brandSignature from "@/assets/brand-signature.jpg";
 import brandTouchpoints from "@/assets/brand-touchpoints.jpg";
 
-const content = serviceContent["brand-design"];
+/* ================================================================
+   FINAL APPROVED CONTENT — do not alter wording
+   ================================================================ */
+
+const heroParagraph =
+  "Your brand is more than a logo. We create distinctive visual identities and digital experiences that help businesses communicate with clarity, consistency and confidence.";
+
+const introParagraphs = [
+  "A strong brand creates recognition. A strong digital experience creates connection.",
+  "We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.",
+];
+
+const serviceAreas = [
+  {
+    name: "Brand Identity",
+    text: "Develop a clear and distinctive visual identity that gives your business a recognisable presence across every channel.",
+  },
+  {
+    name: "Logo Design",
+    text: "Create memorable logos that provide a strong visual foundation for your brand.",
+  },
+  {
+    name: "Visual Identity",
+    text: "Define colours, typography, imagery and visual elements that create consistency across your communications.",
+  },
+  {
+    name: "Graphic Design",
+    text: "Create professional visual assets for digital platforms, marketing campaigns, print and business communications.",
+  },
+  {
+    name: "UI/UX Design",
+    text: "Design intuitive interfaces and meaningful user experiences around the needs of your customers.",
+  },
+  {
+    name: "Website & Digital Design",
+    text: "Create engaging digital experiences that combine visual impact with usability.",
+  },
+  {
+    name: "Design Systems",
+    text: "Develop scalable design frameworks that keep digital products and communications consistent as they grow.",
+  },
+];
+
+const processStages = [
+  { name: "Discover", text: "Understand your brand, audience, market and objectives." },
+  { name: "Define", text: "Establish the creative direction and visual opportunity." },
+  { name: "Design", text: "Develop concepts, interfaces and visual assets." },
+  { name: "Refine", text: "Review, test and improve the work based on feedback." },
+  { name: "Deliver", text: "Provide the final assets and systems ready for implementation." },
+];
+
+const closingParagraph =
+  "We combine creativity with strategic thinking to create brands and digital experiences that people understand, remember and trust.";
 
 export const Route = createFileRoute("/services/brand-design")({
   head: () => ({
     meta: [
-      { title: `${content.label} — Nexen Strategy` },
-      { name: "description", content: content.intro.slice(0, 155) },
-      { property: "og:title", content: `${content.hero} | ${content.label} — Nexen Strategy` },
-      { property: "og:description", content: content.intro.slice(0, 155) },
+      { title: "Brand & Design — Nexen Strategy" },
+      { name: "description", content: heroParagraph.slice(0, 155) },
+      { property: "og:title", content: "Build a Brand People Remember. | Brand & Design — Nexen Strategy" },
+      { property: "og:description", content: heroParagraph.slice(0, 155) },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -30,8 +78,7 @@ export const Route = createFileRoute("/services/brand-design")({
 });
 
 function BrandDesignPage() {
-  const [openCap, setOpenCap] = useState<number | null>(0);
-  const others = services.filter((s) => s.slug !== content.slug).slice(0, 3);
+  const [activeStage, setActiveStage] = useState(0);
 
   return (
     <>
@@ -44,38 +91,32 @@ function BrandDesignPage() {
       <Header />
       <main className="bg-white">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden pt-36 pb-20 lg:pt-48 lg:pb-28">
+        <section className="relative overflow-hidden pt-36 pb-24 lg:pt-48 lg:pb-32">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-60" />
           <div
             aria-hidden
             className="pointer-events-none absolute -top-40 right-[-12%] h-[560px] w-[560px] rounded-full opacity-[0.08] blur-[140px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
-          <div className="relative mx-auto grid max-w-[1400px] items-center gap-14 px-6 lg:grid-cols-12 lg:gap-16 lg:px-12">
+          <div className="relative mx-auto grid max-w-[1400px] items-center gap-16 px-6 lg:grid-cols-12 lg:gap-16 lg:px-12">
             <div className="lg:col-span-6">
               <Reveal>
-                <p className="eyebrow text-azure">
-                  {content.no} — {content.label}
-                </p>
+                <p className="eyebrow text-azure">03 — Brand &amp; Design</p>
               </Reveal>
               <Reveal delay={80}>
                 <h1 className="display mt-7 text-[2.7rem] text-navy sm:text-6xl lg:text-[4.4rem]">
-                  {content.hero}
+                  Build a Brand People Remember.
                 </h1>
               </Reveal>
               <Reveal delay={160}>
                 <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                  {content.intro}
+                  {heroParagraph}
                 </p>
               </Reveal>
               <Reveal delay={230}>
                 <div className="mt-11 flex flex-wrap gap-4">
                   <Link to="/contact" className="btn-primary group">
-                    Start a Project
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link to="/portfolio" className="btn-ghost-dark group">
-                    See Related Work
+                    Start a Design Project
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -91,10 +132,23 @@ function BrandDesignPage() {
                 <div className="relative overflow-hidden bg-secondary/40">
                   <img
                     src={brandHero}
-                    alt={content.imageAlt}
+                    alt="Premium brand identity system with typography, colour palette and logo applications"
                     width={1024}
                     height={1280}
                     className="aspect-[4/5] w-full object-cover"
+                  />
+                </div>
+                <div
+                  aria-hidden
+                  className="absolute -bottom-10 -left-10 hidden w-52 overflow-hidden shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block"
+                >
+                  <img
+                    src={brandTouchpoints}
+                    alt=""
+                    loading="lazy"
+                    width={1600}
+                    height={1200}
+                    className="aspect-[4/3] w-full object-cover"
                   />
                 </div>
                 <span
@@ -106,24 +160,28 @@ function BrandDesignPage() {
           </div>
         </section>
 
-        {/* ============ THE APPROACH ============ */}
+        {/* ============ INTRODUCTION ============ */}
         <section className="border-t border-border">
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <Reveal className="lg:col-span-3">
-                <p className="eyebrow text-azure">The approach</p>
+              <Reveal className="lg:col-span-5">
                 <span
                   aria-hidden
-                  className="mt-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
+                  className="mb-10 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
                 />
+                <h2 className="display text-[2rem] leading-[1.12] text-navy sm:text-4xl lg:text-[3rem]">
+                  Design With Purpose. Identity With Direction.
+                </h2>
               </Reveal>
-              <div className="lg:col-span-6">
-                {content.body.map((p, i) => (
-                  <Reveal key={i} delay={80 + i * 70}>
+              <div className="lg:col-span-6 lg:col-start-7">
+                {introParagraphs.map((p, i) => (
+                  <Reveal key={i} delay={100 + i * 80}>
                     <p
                       className={cn(
                         "leading-relaxed",
-                        i === 0 ? "text-xl text-navy/85 lg:text-2xl" : "mt-8 text-lg text-muted-foreground",
+                        i === 0
+                          ? "text-xl text-navy/85 lg:text-2xl"
+                          : "mt-8 text-lg text-muted-foreground",
                       )}
                     >
                       {p}
@@ -131,16 +189,6 @@ function BrandDesignPage() {
                   </Reveal>
                 ))}
               </div>
-              <Reveal delay={200} className="lg:col-span-3">
-                <ul className="space-y-6 border-l border-border pl-7">
-                  {content.outcomes.map((o) => (
-                    <li key={o} className="flex gap-3 text-navy">
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-amber" strokeWidth={2} />
-                      <span className="text-base font-medium leading-relaxed">{o}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
             </div>
           </div>
         </section>
@@ -167,162 +215,145 @@ function BrandDesignPage() {
           />
         </section>
 
-        {/* ============ IN PRACTICE ============ */}
-        <section className="border-t border-border bg-secondary/30">
+        {/* ============ WHAT WE DO ============ */}
+        <section className="border-t border-border">
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
-              <Reveal className="lg:col-span-7">
-                <div className="relative">
+            <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-4">
+                <Reveal>
+                  <p className="eyebrow text-azure">What we do</p>
+                  <h2 className="display mt-6 text-4xl text-navy lg:text-5xl">What We Do</h2>
                   <span
                     aria-hidden
-                    className="absolute -bottom-5 -left-5 hidden h-full w-full border border-navy/15 lg:block"
+                    className="mt-10 block h-px w-14 bg-gradient-to-r from-amber to-ember"
                   />
-                  <div className="relative overflow-hidden bg-white shadow-[0_40px_90px_-40px_rgba(1,12,98,0.35)]">
-                    <img
-                      src={brandTouchpoints}
-                      alt="One brand identity applied consistently across digital and print touchpoints"
-                      loading="lazy"
-                      width={1600}
-                      height={1200}
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-[1.6s] ease-out hover:scale-[1.03]"
-                    />
-                  </div>
+                </Reveal>
+              </div>
+              <div className="lg:col-span-8">
+                <div className="border-t border-border">
+                  {serviceAreas.map((s, i) => (
+                    <Reveal key={s.name} delay={i * 50}>
+                      <div className="group relative border-b border-border py-8 lg:py-9">
+                        <div className="grid gap-3 lg:grid-cols-12 lg:items-baseline lg:gap-8">
+                          <span className="font-mono text-xs text-muted-foreground lg:col-span-1">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <h3 className="display text-2xl tracking-tight text-navy transition-transform duration-500 ease-out group-hover:translate-x-2 lg:col-span-5 lg:text-[1.75rem]">
+                            {s.name}
+                          </h3>
+                          <p className="text-base leading-relaxed text-muted-foreground lg:col-span-6">
+                            {s.text}
+                          </p>
+                        </div>
+                        <span
+                          aria-hidden
+                          className="absolute bottom-[-1px] left-0 h-px w-0 bg-gradient-to-r from-amber to-ember transition-[width] duration-700 ease-out group-hover:w-full"
+                        />
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-              <Reveal delay={140} className="lg:col-span-5">
-                <p className="eyebrow text-azure">In practice</p>
-                <h2 className="display mt-6 text-[1.9rem] text-navy sm:text-4xl lg:text-[2.6rem]">
-                  {content.closing}
-                </h2>
-                <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-                  {content.intro}
-                </p>
-                <Link
-                  to="/portfolio"
-                  className="group mt-9 inline-flex items-center gap-3 text-sm font-semibold text-navy"
-                >
-                  See related work
-                  <ArrowUpRight className="h-5 w-5 text-amber transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                </Link>
-              </Reveal>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ============ CAPABILITIES ============ */}
-        <section className="relative overflow-hidden border-t border-border bg-navy">
+        {/* ============ OUR DESIGN PROCESS ============ */}
+        <section className="border-t border-border bg-secondary/30">
+          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
+            <Reveal>
+              <p className="eyebrow text-azure">Our design process</p>
+              <h2 className="display mt-6 max-w-2xl text-[2rem] text-navy sm:text-4xl lg:text-[3rem]">
+                Our Design Process
+              </h2>
+            </Reveal>
+
+            <div className="relative mt-20">
+              <div aria-hidden className="absolute left-0 top-[5px] hidden h-px w-full bg-border lg:block" />
+              <div
+                aria-hidden
+                className="absolute left-0 top-[5px] hidden h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-700 lg:block"
+                style={{ width: `${((activeStage + 1) / processStages.length) * 100}%` }}
+              />
+              <div aria-hidden className="absolute bottom-0 left-[5px] top-0 w-px bg-border lg:hidden" />
+              <ol className="grid gap-12 pl-10 lg:grid-cols-5 lg:gap-8 lg:pl-0">
+                {processStages.map((s, i) => {
+                  const on = i <= activeStage;
+                  return (
+                    <Reveal key={s.name} delay={i * 90} as="li">
+                      <div
+                        onMouseEnter={() => setActiveStage(i)}
+                        onFocus={() => setActiveStage(i)}
+                        tabIndex={0}
+                        className="group relative outline-none"
+                      >
+                        <span
+                          aria-hidden
+                          className={cn(
+                            "absolute -left-10 top-0 h-[11px] w-[11px] rounded-full border-2 bg-white transition-colors duration-500 lg:-top-[0px] lg:left-0",
+                            on ? "border-ember" : "border-border",
+                          )}
+                        />
+                        <div className="lg:pt-10">
+                          <span className="font-mono text-xs text-muted-foreground">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <h3
+                            className={cn(
+                              "mt-4 text-2xl font-semibold tracking-tight transition-colors duration-500",
+                              on ? "text-navy" : "text-navy/50",
+                            )}
+                          >
+                            {s.name}
+                          </h3>
+                          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                            {s.text}
+                          </p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ CLOSING ============ */}
+        <section className="relative overflow-hidden bg-navy">
           <div aria-hidden className="grid-faint absolute inset-0" />
           <div
             aria-hidden
             className="pointer-events-none absolute top-[-20%] left-[-10%] h-[520px] w-[520px] rounded-full opacity-25 blur-[150px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
-          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-4">
-                <Reveal>
-                  <p className="eyebrow text-cyan">What we do</p>
-                  <h2 className="display mt-6 text-4xl text-white lg:text-5xl">Capabilities</h2>
-                  <p className="mt-7 max-w-sm text-base leading-relaxed text-white/60">
-                    Engage a single capability or the full discipline. The standard does not change.
-                  </p>
-                </Reveal>
-              </div>
-              <div className="lg:col-span-8">
-                <div className="border-t border-white/12">
-                  {content.capabilities.map((c, i) => {
-                    const open = openCap === i;
-                    return (
-                      <Reveal key={c.name} delay={i * 50}>
-                        <div className="border-b border-white/12">
-                          <button
-                            type="button"
-                            onClick={() => setOpenCap(open ? null : i)}
-                            aria-expanded={open}
-                            className="group flex w-full items-center justify-between gap-6 py-7 text-left"
-                          >
-                            <span className="flex items-baseline gap-5">
-                              <span className="font-mono text-[0.7rem] text-cyan/70">
-                                {String(i + 1).padStart(2, "0")}
-                              </span>
-                              <span
-                                className={cn(
-                                  "text-lg font-semibold tracking-tight text-white transition-colors duration-400 group-hover:text-cyan lg:text-xl",
-                                  open && "text-cyan",
-                                )}
-                              >
-                                {c.name}
-                              </span>
-                            </span>
-                            <Plus
-                              className={cn(
-                                "h-5 w-5 shrink-0 text-white/40 transition-transform duration-500",
-                                open && "rotate-45 text-amber",
-                              )}
-                            />
-                          </button>
-                          <div
-                            className={cn(
-                              "grid transition-[grid-template-rows,opacity] duration-500 ease-out",
-                              open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-                            )}
-                          >
-                            <div className="overflow-hidden">
-                              <p className="max-w-xl pb-8 pl-9 text-base leading-relaxed text-white/60">
-                                {c.text}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </Reveal>
-                    );
-                  })}
+          <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
+            <div className="max-w-4xl">
+              <Reveal>
+                <span
+                  aria-hidden
+                  className="mb-10 block h-px w-16 bg-gradient-to-r from-amber to-ember"
+                />
+                <h2 className="display text-[2.2rem] leading-[1.1] text-white sm:text-5xl lg:text-[3.6rem]">
+                  Good Design Creates Recognition. Great Design Creates Connection.
+                </h2>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/60">
+                  {closingParagraph}
+                </p>
+              </Reveal>
+              <Reveal delay={200}>
+                <div className="mt-12">
+                  <Link to="/contact" className="btn-primary group">
+                    Start a Design Project
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
-
-        {/* ============ PROCESS ============ */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <Reveal>
-              <p className="eyebrow text-azure">How we work</p>
-              <h2 className="display mt-6 max-w-2xl text-[2rem] text-navy sm:text-4xl lg:text-[3rem]">
-                From first conversation to measurable result.
-              </h2>
-            </Reveal>
-            <ProcessTimeline />
-          </div>
-        </section>
-
-        {/* ============ CONTINUE EXPLORING ============ */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
-            <p className="eyebrow text-azure">Continue exploring</p>
-            <div className="mt-10 border-t border-border">
-              {others.map((s) => (
-                <Link
-                  key={s.slug}
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className="group flex items-center justify-between gap-6 border-b border-border py-7 transition-[padding] duration-500 hover:pl-3"
-                >
-                  <span className="flex items-baseline gap-6">
-                    <span className="font-mono text-xs text-muted-foreground">{s.no}</span>
-                    <span className="display text-2xl text-navy transition-colors group-hover:text-azure lg:text-4xl">
-                      {s.title}
-                    </span>
-                  </span>
-                  <ArrowUpRight className="h-6 w-6 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-azure" />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============ CTA ============ */}
-        <CtaSection eyebrow={content.label} heading={content.closing} />
       </main>
       <Footer />
     </>
