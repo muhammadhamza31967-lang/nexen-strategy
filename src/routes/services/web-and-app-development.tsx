@@ -64,7 +64,6 @@ const serviceAreas = [
     alt: "Three mobile application screens showing a modern iOS and Android product interface",
   },
   {
-
     name: "AI Development",
     text: "AI-powered applications and intelligent digital experiences designed around real business needs and workflows.",
     img: wadAi,
@@ -78,7 +77,6 @@ const serviceAreas = [
   },
   {
     name: "WordPress Development",
-
     text: "Professional WordPress websites built for flexibility, performance and easy content management.",
     img: wadWordpress,
     alt: "Content management system page editor interface with reusable content blocks",
