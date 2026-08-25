@@ -15,6 +15,7 @@ import svcGraphicDesign from "@/assets/svc-graphic-design.jpg";
 import svcUiuxDesign from "@/assets/svc-uiux-design.jpg";
 import svcWebDesign from "@/assets/svc-web-design.jpg";
 import svcDesignSystems from "@/assets/svc-design-systems.jpg";
+import svcBrandGuidelines from "@/assets/svc-brand-guidelines.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
@@ -70,6 +71,12 @@ const serviceAreas = [
     text: "Develop scalable design frameworks that keep digital products and communications consistent as they grow.",
     img: svcDesignSystems,
     alt: "Design system component library with colours, typography and UI components",
+  },
+  {
+    name: "Brand Guidelines",
+    text: "Develop clear brand guidelines that define how your identity should be used consistently across digital, print and marketing communications.",
+    img: svcBrandGuidelines,
+    alt: "Brand guidelines book showing logo usage, typography, colour palette and print applications",
   },
 ];
 
@@ -401,7 +408,7 @@ function BrandDesignPage() {
                     ))}
                     {/* index marker */}
                     <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-navy/55 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur-sm">
-                      {String(activeService + 1).padStart(2, "0")} / 07
+                      {String(activeService + 1).padStart(2, "0")} / {String(serviceAreas.length).padStart(2, "0")}
                     </span>
                   </div>
                 </div>
