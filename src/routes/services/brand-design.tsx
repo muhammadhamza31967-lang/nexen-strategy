@@ -192,37 +192,113 @@ function BrandDesignPage() {
 
 
         {/* ============ INTRODUCTION ============ */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-              <Reveal className="lg:col-span-5">
-                <span
-                  aria-hidden
-                  className="mb-10 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
-                />
-                <h2 className="display text-[2rem] leading-[1.12] text-navy sm:text-4xl lg:text-[3rem]">
-                  Design With Purpose. Identity With Direction.
-                </h2>
-              </Reveal>
-              <div className="lg:col-span-6 lg:col-start-7">
-                {introParagraphs.map((p, i) => (
-                  <Reveal key={i} delay={100 + i * 80}>
-                    <p
-                      className={cn(
-                        "leading-relaxed",
-                        i === 0
-                          ? "text-xl text-navy/85 lg:text-2xl"
-                          : "mt-8 text-lg text-muted-foreground",
-                      )}
+        <section className="relative overflow-hidden border-t border-border bg-white">
+          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
+          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+              {/* Left: headline */}
+              <div className="lg:col-span-5">
+                <Reveal>
+                  <span
+                    aria-hidden
+                    className="mb-8 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
+                  />
+                  <h2 className="display text-[2.5rem] leading-[0.98] text-navy sm:text-5xl lg:text-[4rem]">
+                    Design
+                    <br />
+                    With Purpose.
+                    <br />
+                    Identity With Direction.
+                  </h2>
+                </Reveal>
+
+                {/* Subtle brand identity specimen */}
+                <Reveal delay={160} className="mt-12 hidden lg:block">
+                  <svg
+                    width="160"
+                    height="160"
+                    viewBox="0 0 160 160"
+                    fill="none"
+                    aria-hidden="true"
+                    className="text-navy/15"
+                  >
+                    <defs>
+                      <linearGradient id="intro-amber-ember" x1="0" y1="0" x2="1" y2="1">
+                        <stop stopColor="#FFA53C" />
+                        <stop offset="1" stopColor="#FF483F" />
+                      </linearGradient>
+                      <linearGradient id="intro-cyan-azure" x1="0" y1="0" x2="1" y2="0">
+                        <stop stopColor="#3AF1FF" />
+                        <stop offset="1" stopColor="#4A73FF" />
+                      </linearGradient>
+                      <pattern id="intro-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M40 0H0V40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                      </pattern>
+                    </defs>
+                    <rect width="160" height="160" fill="url(#intro-grid)" />
+                    {/* Large ghost letterform */}
+                    <text
+                      x="12"
+                      y="118"
+                      fontFamily="Manrope, ui-sans-serif, sans-serif"
+                      fontSize="112"
+                      fontWeight="700"
+                      fill="currentColor"
+                      opacity="0.08"
                     >
-                      {p}
-                    </p>
-                  </Reveal>
-                ))}
+                      N
+                    </text>
+                    {/* Colour swatches */}
+                    <rect x="12" y="12" width="32" height="32" rx="3" fill="#010C62" />
+                    <rect x="52" y="12" width="32" height="32" rx="3" fill="url(#intro-amber-ember)" />
+                    <rect x="92" y="12" width="32" height="32" rx="3" fill="white" stroke="currentColor" strokeWidth="1" />
+                    {/* Circular mark */}
+                    <circle cx="128" cy="128" r="22" stroke="url(#intro-cyan-azure)" strokeWidth="1.5" fill="none" />
+                    <circle cx="128" cy="128" r="6" fill="#3AF1FF" />
+                    {/* Fine accent line */}
+                    <line x1="12" y1="148" x2="88" y2="148" stroke="url(#intro-amber-ember)" strokeWidth="2" />
+                  </svg>
+                </Reveal>
+              </div>
+
+              {/* Centre: vertical connector */}
+              <Reveal delay={120} className="relative hidden lg:col-span-1 lg:block">
+                <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 flex-col items-center">
+                  <span className="block h-full w-px bg-gradient-to-b from-transparent via-navy/15 to-transparent" />
+                  <span className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gradient-to-br from-azure to-cyan" />
+                </div>
+              </Reveal>
+
+              {/* Right: content — consistent body typography */}
+              <div className="flex flex-col justify-center lg:col-span-6">
+                <Reveal delay={100}>
+                  <p className="text-lg leading-relaxed text-navy/85">
+                    A strong brand creates recognition. A strong digital experience creates connection.
+                  </p>
+                </Reveal>
+                <Reveal delay={180}>
+                  <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+                    We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.
+                  </p>
+                </Reveal>
+
+                {/* Mobile-visible brand specimen */}
+                <Reveal delay={240} className="mt-10 lg:hidden">
+                  <div className="flex items-center gap-4">
+                    <span className="h-px w-12 bg-gradient-to-r from-amber to-ember" />
+                    <div className="flex items-center gap-2.5">
+                      <span className="h-4 w-4 rounded-[2px] bg-navy" />
+                      <span className="h-4 w-4 rounded-[2px] bg-gradient-to-br from-amber to-ember" />
+                      <span className="h-4 w-4 rounded-[2px] border border-navy/20 bg-white" />
+                    </div>
+                    <span className="h-px flex-1 bg-navy/10" />
+                  </div>
+                </Reveal>
               </div>
             </div>
           </div>
         </section>
+
 
         {/* ============ SIGNATURE VISUAL ============ */}
         <section className="relative overflow-hidden bg-navy">
