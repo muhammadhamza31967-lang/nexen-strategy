@@ -16,6 +16,7 @@ import swPortal from "@/assets/sw-portal.jpg";
 import swCustom from "@/assets/sw-custom.jpg";
 import swDashboards from "@/assets/sw-dashboards.jpg";
 import swIntegrations from "@/assets/sw-integrations.jpg";
+import swWorkflowAutomation from "@/assets/sw-workflow-automation.jpg";
 import swModular from "@/assets/sw-modular.jpg";
 
 /* ================================================================
@@ -63,6 +64,12 @@ const serviceAreas = [
     text: "Connect your existing tools and platforms through APIs and intelligent integrations.",
     img: swIntegrations,
     alt: "Multiple business systems connected through APIs and integration flows",
+  },
+  {
+    name: "Workflow Automation",
+    text: "Automate repetitive business processes and workflows to improve efficiency, reduce manual work and keep operations connected.",
+    img: swWorkflowAutomation,
+    alt: "Workflow automation dashboard showing connected trigger, process and action steps",
   },
 ];
 
