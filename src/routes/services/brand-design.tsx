@@ -95,7 +95,7 @@ function BrandDesignPage() {
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-40" />
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 right-[0%] h-[560px] w-[560px] rounded-full opacity-[0.07] blur-[140px]"
+            className="pointer-events-none absolute -top-40 right-[-12%] h-[560px] w-[560px] rounded-full opacity-[0.07] blur-[140px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
           <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
