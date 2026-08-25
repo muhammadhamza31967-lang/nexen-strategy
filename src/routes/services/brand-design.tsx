@@ -266,13 +266,15 @@ function BrandDesignPage() {
 
         {/* ============ SIGNATURE VISUAL ============ */}
         <section className="relative overflow-hidden bg-navy">
-          <div className="bd-kenburns">
-            <img
-              src={brandSignature}
-              alt="Complete brand identity system applied across packaging, stationery, guidelines and digital"
-              loading="lazy"
-              width={1920}
-              height={1088}
+          <div>
+            <video
+              ref={signatureVideoRef}
+              src={brandSignatureVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="h-[52vh] min-h-[320px] w-full object-cover opacity-90 lg:h-[78vh]"
             />
           </div>
@@ -285,6 +287,7 @@ function BrandDesignPage() {
             }}
           />
         </section>
+
 
         {/* ============ WHAT WE DO — image-led showcase ============ */}
         <section className="relative overflow-hidden border-t border-border bg-white">
