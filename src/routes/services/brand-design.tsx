@@ -110,8 +110,33 @@ export const Route = createFileRoute("/services/brand-design")({
 function BrandDesignPage() {
   const [activeStage, setActiveStage] = useState(0);
   const [activeService, setActiveService] = useState(0);
+  const signatureVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = signatureVideoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
+
     <>
       <style>{`
         @keyframes bd-drift{0%{transform:scale(1.06) translateX(-1.2%)}100%{transform:scale(1.06) translateX(1.2%)}}
