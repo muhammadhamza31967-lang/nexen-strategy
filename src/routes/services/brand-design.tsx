@@ -301,7 +301,7 @@ function BrandDesignPage() {
                   aria-hidden
                   className="mt-9 block h-px w-24 bg-gradient-to-r from-amber to-ember"
                 />
-                <ul className="mt-12 border-t border-border">
+                <ul className="mt-12">
                   {serviceAreas.map((s, i) => {
                     const on = i === activeService;
                     return (
@@ -312,38 +312,47 @@ function BrandDesignPage() {
                           onFocus={() => setActiveService(i)}
                           onClick={() => setActiveService(i)}
                           aria-current={on}
-                          className="group relative flex w-full items-center gap-6 border-b border-border py-6 text-left outline-none"
+                          className="group relative flex w-full items-center gap-5 border-b border-border py-5 text-left outline-none transition-colors duration-300"
                         >
+                          {/* outline number */}
                           <span
                             className={cn(
-                              "w-7 shrink-0 font-mono text-[11px] tracking-[0.14em] transition-colors duration-300",
-                              on ? "text-ember" : "text-muted-foreground/60",
+                              "flex h-8 w-8 shrink-0 items-center justify-center font-mono text-[13px] font-medium tracking-[0.02em] text-transparent transition-all duration-300",
+                              on
+                                ? "[-webkit-text-stroke:1px_#ff483f]"
+                                : "[-webkit-text-stroke:1px_rgba(1,12,98,0.25)] group-hover:[-webkit-text-stroke:1px_rgba(1,12,98,0.55)]",
                             )}
                           >
                             {String(i + 1).padStart(2, "0")}
                           </span>
+
+                          {/* service name */}
                           <span
                             className={cn(
-                              "display text-[1.7rem] leading-none tracking-tight transition-all duration-300 ease-out",
+                              "display text-[1.55rem] leading-none tracking-tight transition-all duration-300 ease-out",
                               on
-                                ? "translate-x-2 text-navy"
-                                : "text-navy/40 group-hover:translate-x-1 group-hover:text-navy/70",
+                                ? "text-navy"
+                                : "text-navy/40 group-hover:text-navy/75",
                             )}
                           >
                             {s.name}
                           </span>
+
+                          {/* arrow indicator */}
                           <ArrowRight
                             aria-hidden
                             className={cn(
-                              "ml-auto h-[18px] w-[18px] shrink-0 text-ember transition-all duration-300",
-                              on ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0",
+                              "ml-auto h-4 w-4 shrink-0 text-ember transition-all duration-300",
+                              on ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-50",
                             )}
                           />
+
+                          {/* active / hover accent line */}
                           <span
                             aria-hidden
                             className={cn(
-                              "absolute bottom-[-1px] left-0 h-[2px] bg-gradient-to-r from-amber to-ember transition-[width] duration-500 ease-out",
-                              on ? "w-full" : "w-0",
+                              "absolute left-0 top-1/2 h-8 w-[2px] -translate-y-1/2 bg-gradient-to-b from-amber to-ember transition-all duration-300",
+                              on ? "opacity-100" : "opacity-0 group-hover:opacity-60",
                             )}
                           />
                         </button>
@@ -362,7 +371,7 @@ function BrandDesignPage() {
                   <h3 className="display mt-4 text-3xl text-navy xl:text-[2.6rem]">
                     {serviceAreas[activeService]?.name ?? serviceAreas[0]?.name}
                   </h3>
-                  <p className="mt-6 max-w-2xl text-xl leading-relaxed text-navy/75 xl:text-[1.35rem]">
+                  <p className="mt-7 max-w-2xl text-[1.35rem] leading-[1.7] text-navy/80">
                     {serviceAreas[activeService]?.text ?? serviceAreas[0]?.text}
                   </p>
                 </div>
@@ -414,8 +423,10 @@ function BrandDesignPage() {
                       >
                         <span
                           className={cn(
-                            "font-mono text-[11px]",
-                            on ? "text-ember" : "text-muted-foreground/70",
+                            "flex h-7 w-7 items-center justify-center font-mono text-[12px] font-medium tracking-[0.02em] text-transparent transition-all duration-300",
+                            on
+                              ? "[-webkit-text-stroke:1px_#ff483f]"
+                              : "[-webkit-text-stroke:1px_rgba(1,12,98,0.25)]",
                           )}
                         >
                           {String(i + 1).padStart(2, "0")}
