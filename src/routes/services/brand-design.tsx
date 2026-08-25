@@ -302,7 +302,6 @@ function BrandDesignPage() {
         </section>
 
 
-
         {/* ============ SIGNATURE VISUAL / VIDEO ============ */}
         <section className="relative overflow-hidden bg-navy">
           <div>
