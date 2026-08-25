@@ -408,7 +408,7 @@ function BrandDesignPage() {
                     ))}
                     {/* index marker */}
                     <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-navy/55 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur-sm">
-                      {String(activeService + 1).padStart(2, "0")} / 07
+                      {String(activeService + 1).padStart(2, "0")} / {String(serviceAreas.length).padStart(2, "0")}
                     </span>
                   </div>
                 </div>
