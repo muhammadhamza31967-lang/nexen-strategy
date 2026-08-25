@@ -390,7 +390,7 @@ function BrandDesignPage() {
                       key={activeService}
                       className="bd-caption max-w-xl text-base leading-relaxed text-muted-foreground"
                     >
-                      {serviceAreas[activeService].text}
+                      {serviceAreas[activeService]?.text ?? serviceAreas[0]?.text}
                     </p>
                   </div>
                 </div>
