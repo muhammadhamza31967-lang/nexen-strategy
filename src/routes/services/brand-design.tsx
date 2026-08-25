@@ -139,7 +139,7 @@ function BrandDesignPage() {
 
               {/* ---- Art-directed visual composition ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative lg:-mr-14 lg:pl-8">
+                <div className="relative lg:-mr-4 lg:pl-8">
                   {/* thin offset framing line */}
                   <span
                     aria-hidden
