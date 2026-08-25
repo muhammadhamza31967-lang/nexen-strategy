@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ServicesBrandDesignRouteImport } from './routes/services/brand-design'
+import { Route as ServicesSoftwareSolutionsRouteImport } from './routes/services/software-solutions'
 import { Route as ServicesWebAndAppDevelopmentRouteImport } from './routes/services/web-and-app-development'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,12 @@ const ServicesBrandDesignRoute = ServicesBrandDesignRouteImport.update({
   path: '/services/brand-design',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSoftwareSolutionsRoute =
+  ServicesSoftwareSolutionsRouteImport.update({
+    id: '/services/software-solutions',
+    path: '/services/software-solutions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesWebAndAppDevelopmentRoute =
   ServicesWebAndAppDevelopmentRouteImport.update({
     id: '/services/web-and-app-development',
@@ -68,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
 export interface FileRoutesByTo {
@@ -78,6 +86,7 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
 export interface FileRoutesById {
@@ -89,6 +98,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
 export interface FileRouteTypes {
@@ -101,6 +111,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/services/$slug'
     | '/services/brand-design'
+    | '/services/software-solutions'
     | '/services/web-and-app-development'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/services/$slug'
     | '/services/brand-design'
+    | '/services/software-solutions'
     | '/services/web-and-app-development'
   id:
     | '__root__'
@@ -121,6 +133,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/services/$slug'
     | '/services/brand-design'
+    | '/services/software-solutions'
     | '/services/web-and-app-development'
   fileRoutesById: FileRoutesById
 }
@@ -132,6 +145,7 @@ export interface RootRouteChildren {
   PortfolioRoute: typeof PortfolioRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesBrandDesignRoute: typeof ServicesBrandDesignRoute
+  ServicesSoftwareSolutionsRoute: typeof ServicesSoftwareSolutionsRoute
   ServicesWebAndAppDevelopmentRoute: typeof ServicesWebAndAppDevelopmentRoute
 }
 
@@ -186,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBrandDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/software-solutions': {
+      id: '/services/software-solutions'
+      path: '/services/software-solutions'
+      fullPath: '/services/software-solutions'
+      preLoaderRoute: typeof ServicesSoftwareSolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/web-and-app-development': {
       id: '/services/web-and-app-development'
       path: '/services/web-and-app-development'
@@ -204,6 +225,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioRoute: PortfolioRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesBrandDesignRoute: ServicesBrandDesignRoute,
+  ServicesSoftwareSolutionsRoute: ServicesSoftwareSolutionsRoute,
   ServicesWebAndAppDevelopmentRoute: ServicesWebAndAppDevelopmentRoute,
 }
 export const routeTree = rootRouteImport
