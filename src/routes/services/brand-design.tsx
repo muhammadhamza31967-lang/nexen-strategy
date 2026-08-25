@@ -7,8 +7,9 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
 import brandHero from "@/assets/brand-hero.jpg";
-import brandSignature from "@/assets/brand-signature.jpg";
+import brandSignatureVideo from "@/assets/brand-signature.mp4.asset.json";
 import brandTouchpoints from "@/assets/brand-touchpoints.jpg";
+
 import svcBrandIdentity from "@/assets/svc-brand-identity.jpg";
 import svcLogoDesign from "@/assets/svc-logo-design.jpg";
 import svcVisualIdentity from "@/assets/svc-visual-identity.jpg";
