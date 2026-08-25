@@ -1,6 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Search,
+  Crosshair,
+  PenTool,
+  SlidersHorizontal,
+  Rocket,
+  type LucideIcon,
+} from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -82,12 +90,12 @@ const serviceAreas = [
   },
 ];
 
-const processStages = [
-  { name: "Discover", text: "Understand your brand, audience, market and objectives." },
-  { name: "Define", text: "Establish the creative direction and visual opportunity." },
-  { name: "Design", text: "Develop concepts, interfaces and visual assets." },
-  { name: "Refine", text: "Review, test and improve the work based on feedback." },
-  { name: "Deliver", text: "Provide the final assets and systems ready for implementation." },
+const processStages: { name: string; text: string; icon: LucideIcon }[] = [
+  { name: "Discover", text: "Understand your brand, audience, market and objectives.", icon: Search },
+  { name: "Define", text: "Establish the creative direction and visual opportunity.", icon: Crosshair },
+  { name: "Design", text: "Develop concepts, interfaces and visual assets.", icon: PenTool },
+  { name: "Refine", text: "Review, test and improve the work based on feedback.", icon: SlidersHorizontal },
+  { name: "Deliver", text: "Provide the final assets and systems ready for implementation.", icon: Rocket },
 ];
 
 const closingParagraph =
