@@ -15,6 +15,7 @@ import svcGraphicDesign from "@/assets/svc-graphic-design.jpg";
 import svcUiuxDesign from "@/assets/svc-uiux-design.jpg";
 import svcWebDesign from "@/assets/svc-web-design.jpg";
 import svcDesignSystems from "@/assets/svc-design-systems.jpg";
+import svcBrandGuidelines from "@/assets/svc-brand-guidelines.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
