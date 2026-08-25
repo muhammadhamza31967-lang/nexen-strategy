@@ -8,6 +8,13 @@ import { cn } from "@/lib/utils";
 import brandHero from "@/assets/brand-hero.jpg";
 import brandSignature from "@/assets/brand-signature.jpg";
 import brandTouchpoints from "@/assets/brand-touchpoints.jpg";
+import svcBrandIdentity from "@/assets/svc-brand-identity.jpg";
+import svcLogoDesign from "@/assets/svc-logo-design.jpg";
+import svcVisualIdentity from "@/assets/svc-visual-identity.jpg";
+import svcGraphicDesign from "@/assets/svc-graphic-design.jpg";
+import svcUiuxDesign from "@/assets/svc-uiux-design.jpg";
+import svcWebDesign from "@/assets/svc-web-design.jpg";
+import svcDesignSystems from "@/assets/svc-design-systems.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
@@ -25,30 +32,44 @@ const serviceAreas = [
   {
     name: "Brand Identity",
     text: "Develop a clear and distinctive visual identity that gives your business a recognisable presence across every channel.",
+    img: svcBrandIdentity,
+    alt: "Brand identity system presented across guidelines, stationery and business cards",
   },
   {
     name: "Logo Design",
     text: "Create memorable logos that provide a strong visual foundation for your brand.",
+    img: svcLogoDesign,
+    alt: "Logo design exploration sheet with construction grid, lockups and variations",
   },
   {
     name: "Visual Identity",
     text: "Define colours, typography, imagery and visual elements that create consistency across your communications.",
+    img: svcVisualIdentity,
+    alt: "Visual identity system with typography specimen, colour palette and pattern samples",
   },
   {
     name: "Graphic Design",
     text: "Create professional visual assets for digital platforms, marketing campaigns, print and business communications.",
+    img: svcGraphicDesign,
+    alt: "Graphic design collateral across brochures, posters and marketing print",
   },
   {
     name: "UI/UX Design",
     text: "Design intuitive interfaces and meaningful user experiences around the needs of your customers.",
+    img: svcUiuxDesign,
+    alt: "Polished mobile and tablet interface screens for a digital product",
   },
   {
     name: "Website & Digital Design",
     text: "Create engaging digital experiences that combine visual impact with usability.",
+    img: svcWebDesign,
+    alt: "Premium corporate website design shown on laptop and mobile",
   },
   {
     name: "Design Systems",
     text: "Develop scalable design frameworks that keep digital products and communications consistent as they grow.",
+    img: svcDesignSystems,
+    alt: "Design system component library with colours, typography and UI components",
   },
 ];
 
