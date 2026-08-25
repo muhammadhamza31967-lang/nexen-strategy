@@ -72,6 +72,12 @@ const serviceAreas = [
     img: svcDesignSystems,
     alt: "Design system component library with colours, typography and UI components",
   },
+  {
+    name: "Brand Guidelines",
+    text: "Develop clear brand guidelines that define how your identity should be used consistently across digital, print and marketing communications.",
+    img: svcBrandGuidelines,
+    alt: "Brand guidelines book showing logo usage, typography, colour palette and print applications",
+  },
 ];
 
 const processStages = [
