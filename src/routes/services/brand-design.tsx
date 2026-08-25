@@ -91,72 +91,98 @@ function BrandDesignPage() {
       <Header />
       <main className="bg-white">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden pt-36 pb-24 lg:pt-48 lg:pb-32">
-          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-60" />
+        <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-40" />
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 right-[-12%] h-[560px] w-[560px] rounded-full opacity-[0.08] blur-[140px]"
+            className="pointer-events-none absolute -top-40 right-[-12%] h-[560px] w-[560px] rounded-full opacity-[0.07] blur-[140px]"
             style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
           />
-          <div className="relative mx-auto grid max-w-[1400px] items-center gap-16 px-6 lg:grid-cols-12 lg:gap-16 lg:px-12">
-            <div className="lg:col-span-6">
-              <Reveal>
-                <p className="eyebrow text-azure">03 — Brand &amp; Design</p>
-              </Reveal>
-              <Reveal delay={80}>
-                <h1 className="display mt-7 text-[2.7rem] text-navy sm:text-6xl lg:text-[4.4rem]">
-                  Build a Brand People Remember.
-                </h1>
-              </Reveal>
-              <Reveal delay={160}>
-                <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                  {heroParagraph}
-                </p>
-              </Reveal>
-              <Reveal delay={230}>
-                <div className="mt-11 flex flex-wrap gap-4">
-                  <Link to="/contact" className="btn-primary group">
-                    Start a Design Project
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+          <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
+            <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+              {/* ---- Copy ---- */}
+              <div className="relative z-10 lg:col-span-6">
+                <Reveal>
+                  <div className="flex items-center gap-5">
+                    <p className="eyebrow text-azure">03 — Brand &amp; Design</p>
+                    <span
+                      aria-hidden
+                      className="h-px w-12 bg-gradient-to-r from-amber to-ember"
+                    />
+                  </div>
+                </Reveal>
+                <Reveal delay={80}>
+                  <h1 className="display mt-9 text-[3rem] leading-[1.02] text-navy sm:text-6xl lg:text-[4.6rem]">
+                    Build
+                    <br />
+                    a Brand People Remember.
+                  </h1>
+                </Reveal>
+                <Reveal delay={160}>
+                  <p className="mt-9 max-w-md text-lg leading-relaxed text-muted-foreground">
+                    {heroParagraph}
+                  </p>
+                </Reveal>
+                <Reveal delay={230}>
+                  <div className="mt-11 flex items-center gap-8">
+                    <Link to="/contact" className="btn-primary group">
+                      Start a Design Project
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                    <span
+                      aria-hidden
+                      className="hidden h-px w-16 bg-navy/15 sm:block"
+                    />
+                  </div>
+                </Reveal>
+              </div>
+
+              {/* ---- Art-directed visual composition ---- */}
+              <Reveal delay={180} className="lg:col-span-6">
+                <div className="relative lg:-mr-4 lg:pl-8">
+                  {/* thin offset framing line */}
+                  <span
+                    aria-hidden
+                    className="absolute -top-6 -right-6 hidden h-full w-full rounded-xl border border-navy/12 lg:block"
+                  />
+                  {/* primary brand visual */}
+                  <div className="relative overflow-hidden rounded-xl bg-secondary/40 shadow-[0_60px_110px_-45px_rgba(1,12,98,0.4)]">
+                    <img
+                      src={brandHero}
+                      alt="Premium brand identity system with typography, colour palette and logo applications"
+                      width={1024}
+                      height={1280}
+                      className="aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
+                  {/* small cropped brand detail — overlapping bottom-left */}
+                  <div className="absolute -bottom-8 left-2 hidden w-44 overflow-hidden rounded-lg border-[5px] border-white shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block">
+                    <img
+                      src={brandTouchpoints}
+                      alt="Brand identity applied across digital and print touchpoints"
+                      loading="lazy"
+                      width={1600}
+                      height={1200}
+                      className="aspect-square w-full object-cover object-left-top"
+                    />
+                  </div>
+                  {/* colour swatch detail — overlapping top-left edge */}
+                  <div
+                    aria-hidden
+                    className="absolute -left-5 top-12 hidden flex-col gap-2.5 lg:flex"
+                  >
+                    <span className="h-9 w-9 rounded-[4px] bg-navy shadow-[0_14px_28px_-12px_rgba(1,12,98,0.5)]" />
+                    <span className="h-9 w-9 rounded-[4px] bg-gradient-to-br from-amber to-ember shadow-[0_14px_28px_-12px_rgba(255,72,63,0.5)]" />
+                    <span className="h-9 w-9 rounded-[4px] border border-navy/15 bg-white shadow-[0_14px_28px_-12px_rgba(1,12,98,0.25)]" />
+                  </div>
+                  {/* fine orange accent marker */}
+                  <span
+                    aria-hidden
+                    className="absolute -bottom-5 right-12 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
+                  />
                 </div>
               </Reveal>
             </div>
-
-            <Reveal delay={180} className="lg:col-span-6">
-              <div className="relative">
-                <span
-                  aria-hidden
-                  className="absolute -top-5 -right-5 hidden h-full w-full border border-navy/15 lg:block"
-                />
-                <div className="relative overflow-hidden bg-secondary/40">
-                  <img
-                    src={brandHero}
-                    alt="Premium brand identity system with typography, colour palette and logo applications"
-                    width={1024}
-                    height={1280}
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                </div>
-                <div
-                  aria-hidden
-                  className="absolute -bottom-10 -left-10 hidden w-52 overflow-hidden shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block"
-                >
-                  <img
-                    src={brandTouchpoints}
-                    alt=""
-                    loading="lazy"
-                    width={1600}
-                    height={1200}
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-                <span
-                  aria-hidden
-                  className="mt-6 block h-px w-24 bg-gradient-to-r from-amber to-ember"
-                />
-              </div>
-            </Reveal>
           </div>
         </section>
 
