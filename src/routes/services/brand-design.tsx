@@ -277,7 +277,7 @@ function BrandDesignPage() {
           />
         </section>
 
-        {/* ============ WHAT WE DO — image-led showcase ============ */
+        {/* ============ WHAT WE DO — image-led showcase ============ */}
         <section className="relative overflow-hidden border-t border-border bg-white">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
           <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
