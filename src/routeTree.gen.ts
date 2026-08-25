@@ -15,6 +15,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ServicesAiAndAutomationRouteImport } from './routes/services/ai-and-automation'
 import { Route as ServicesBrandDesignRouteImport } from './routes/services/brand-design'
 import { Route as ServicesSoftwareSolutionsRouteImport } from './routes/services/software-solutions'
 import { Route as ServicesWebAndAppDevelopmentRouteImport } from './routes/services/web-and-app-development'
@@ -49,6 +50,11 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesAiAndAutomationRoute = ServicesAiAndAutomationRouteImport.update({
+  id: '/services/ai-and-automation',
+  path: '/services/ai-and-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesBrandDesignRoute = ServicesBrandDesignRouteImport.update({
   id: '/services/brand-design',
   path: '/services/brand-design',
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services/$slug'
+    | '/services/ai-and-automation'
     | '/services/brand-design'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services/$slug'
+    | '/services/ai-and-automation'
     | '/services/brand-design'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services/$slug'
+    | '/services/ai-and-automation'
     | '/services/brand-design'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesAiAndAutomationRoute: typeof ServicesAiAndAutomationRoute
   ServicesBrandDesignRoute: typeof ServicesBrandDesignRoute
   ServicesSoftwareSolutionsRoute: typeof ServicesSoftwareSolutionsRoute
   ServicesWebAndAppDevelopmentRoute: typeof ServicesWebAndAppDevelopmentRoute
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/ai-and-automation': {
+      id: '/services/ai-and-automation'
+      path: '/services/ai-and-automation'
+      fullPath: '/services/ai-and-automation'
+      preLoaderRoute: typeof ServicesAiAndAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/brand-design': {
       id: '/services/brand-design'
       path: '/services/brand-design'
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesAiAndAutomationRoute: ServicesAiAndAutomationRoute,
   ServicesBrandDesignRoute: ServicesBrandDesignRoute,
   ServicesSoftwareSolutionsRoute: ServicesSoftwareSolutionsRoute,
   ServicesWebAndAppDevelopmentRoute: ServicesWebAndAppDevelopmentRoute,
