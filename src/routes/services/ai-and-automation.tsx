@@ -16,6 +16,8 @@ import aiAgents from "@/assets/ai-agents.jpg";
 import aiWorkflow from "@/assets/ai-workflow.jpg";
 import aiMarketing from "@/assets/ai-marketing.jpg";
 import aiIntegrations from "@/assets/ai-integrations.jpg";
+import aiSocialMediaAutomation from "@/assets/ai-social-media-automation.jpg";
+import aiDataInsights from "@/assets/ai-data-insights.jpg";
 import aiBusinessValue from "@/assets/ai-business-value.jpg";
 
 /* ================================================================
@@ -63,6 +65,18 @@ const capabilities = [
     text: "Connect AI capabilities with your existing websites, software and business platforms.",
     img: aiIntegrations,
     alt: "AI connected through APIs to a website, CRM, business software and analytics platforms",
+  },
+  {
+    name: "Social Media Automation",
+    text: "Automate social media content, publishing, engagement and campaign workflows to maintain a consistent digital presence with less manual effort.",
+    img: aiSocialMediaAutomation,
+    alt: "Social media automation platform showing content creation, scheduling, multi-platform publishing and analytics",
+  },
+  {
+    name: "AI-Powered Data & Insights",
+    text: "Use AI to analyse business information, identify patterns and turn complex data into clearer insights for better decision-making.",
+    img: aiDataInsights,
+    alt: "AI analytics dashboard turning business data into charts, patterns and decision insights",
   },
 ];
 
