@@ -159,7 +159,7 @@ function BrandDesignPage() {
                       />
                     </div>
                     {/* small cropped brand detail — overlapping bottom-left */}
-                    <div className="absolute -bottom-8 -left-10 hidden w-40 overflow-hidden rounded-lg border-[5px] border-white shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block">
+                    <div className="absolute -bottom-8 -left-10 hidden w-36 overflow-hidden rounded-lg border-[5px] border-white shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block">
                       <img
                         src={brandTouchpoints}
                         alt="Brand identity applied across digital and print touchpoints"
