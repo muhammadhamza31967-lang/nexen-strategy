@@ -192,8 +192,16 @@ function BrandDesignPage() {
         .bd-kenburns{animation:bd-drift 26s ease-in-out infinite alternate;will-change:transform}
         @keyframes bd-caption{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
         .bd-caption{animation:bd-caption .45s ease-out both}
-        @media (prefers-reduced-motion: reduce){.bd-kenburns,.bd-caption{animation:none !important}}
+        @keyframes bd-cta-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3%,-2.5%,0) scale(1.06)}}
+        .bd-cta-drift{animation:bd-cta-drift 24s ease-in-out infinite}
+        @keyframes bd-cta-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-72px,-72px,0)}}
+        .bd-cta-grid{animation:bd-cta-grid 40s linear infinite}
+        @keyframes bd-cta-dash{to{stroke-dashoffset:-1600}}
+        .bd-cta-dash{stroke-dasharray:160 900;animation:bd-cta-dash 20s linear infinite}
+        .bd-cta-dash2{stroke-dasharray:120 1000;animation:bd-cta-dash 26s linear infinite;animation-delay:-8s}
+        @media (prefers-reduced-motion: reduce){.bd-kenburns,.bd-caption,.bd-cta-drift,.bd-cta-grid,.bd-cta-dash,.bd-cta-dash2{animation:none !important}}
       `}</style>
+
 
       <Header />
       <main className="bg-white">
