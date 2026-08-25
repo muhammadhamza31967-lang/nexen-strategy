@@ -34,10 +34,6 @@ import svcBrandGuidelines from "@/assets/svc-brand-guidelines.jpg";
 const heroParagraph =
   "Your brand is more than a logo. We create distinctive visual identities and digital experiences that help businesses communicate with clarity, consistency and confidence.";
 
-const introParagraphs = [
-  "A strong brand creates recognition. A strong digital experience creates connection.",
-  "We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.",
-];
 
 const serviceAreas = [
   {
@@ -306,47 +302,7 @@ function BrandDesignPage() {
         </section>
 
 
-        {/* ============ INTRODUCTION ============ */}
-        <section className="relative overflow-hidden border-t border-border bg-white">
-          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
-          <div className="relative mx-auto max-w-[1400px] px-6 py-14 lg:px-12 lg:py-20">
-            <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-              {/* Left: heading */}
-              <div className="lg:col-span-5">
-                <Reveal>
-                  <span
-                    aria-hidden
-                    className="mb-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
-                  />
-                  <h2 className="display text-3xl leading-[1.08] tracking-tight text-navy sm:text-4xl lg:text-[2.1rem] xl:text-[2.5rem]">
-                    Design
-                    <br />
-                    With Purpose.
-                    <br />
-                    Identity With Direction.
-                  </h2>
-                </Reveal>
-              </div>
-
-              {/* Right: content — unified editorial body */}
-              <div className="lg:col-span-7 lg:pt-2">
-                <Reveal delay={100}>
-                  <p className="text-xl leading-relaxed text-navy/85">
-                    A strong brand creates recognition. A strong digital experience creates connection.
-                  </p>
-                </Reveal>
-                <Reveal delay={180}>
-                  <p className="mt-8 text-xl leading-relaxed text-navy/60">
-                    We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.
-                  </p>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        {/* ============ SIGNATURE VISUAL ============ */}
+        {/* ============ SIGNATURE VISUAL / VIDEO ============ */}
         <section className="relative overflow-hidden bg-navy">
           <div>
             <video
