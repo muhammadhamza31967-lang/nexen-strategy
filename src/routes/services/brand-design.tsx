@@ -107,7 +107,9 @@ function BrandDesignPage() {
       <style>{`
         @keyframes bd-drift{0%{transform:scale(1.06) translateX(-1.2%)}100%{transform:scale(1.06) translateX(1.2%)}}
         .bd-kenburns{animation:bd-drift 26s ease-in-out infinite alternate;will-change:transform}
-        @media (prefers-reduced-motion: reduce){.bd-kenburns{animation:none !important}}
+        @keyframes bd-caption{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
+        .bd-caption{animation:bd-caption .45s ease-out both}
+        @media (prefers-reduced-motion: reduce){.bd-kenburns,.bd-caption{animation:none !important}}
       `}</style>
 
       <Header />
