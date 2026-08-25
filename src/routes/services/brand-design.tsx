@@ -275,45 +275,189 @@ function BrandDesignPage() {
           />
         </section>
 
-        {/* ============ WHAT WE DO ============ */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-              <div className="lg:col-span-4">
-                <Reveal>
+        {/* ============ WHAT WE DO — image-led showcase ============ */}
+        <section className="relative overflow-hidden border-t border-border bg-white">
+          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
+          <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
+            {/* Section header */}
+            <Reveal>
+              <div className="flex items-end justify-between gap-8">
+                <div>
                   <p className="eyebrow text-azure">What we do</p>
-                  <h2 className="display mt-6 text-4xl text-navy lg:text-5xl">What We Do</h2>
-                  <span
-                    aria-hidden
-                    className="mt-10 block h-px w-14 bg-gradient-to-r from-amber to-ember"
-                  />
-                </Reveal>
+                  <h2 className="display mt-5 text-4xl text-navy lg:text-5xl">What We Do</h2>
+                </div>
+                <span
+                  aria-hidden
+                  className="mb-2 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
+                />
               </div>
-              <div className="lg:col-span-8">
-                <div className="border-t border-border">
-                  {serviceAreas.map((s, i) => (
-                    <Reveal key={s.name} delay={i * 50}>
-                      <div className="group relative border-b border-border py-8 lg:py-9">
-                        <div className="grid gap-3 lg:grid-cols-12 lg:items-baseline lg:gap-8">
-                          <span className="font-mono text-xs text-muted-foreground lg:col-span-1">
+            </Reveal>
+
+            {/* ---- Desktop: navigation + large visual ---- */}
+            <div className="mt-14 hidden lg:grid lg:grid-cols-12 lg:gap-16">
+              {/* Service navigation */}
+              <Reveal className="lg:col-span-5">
+                <ul className="border-t border-border">
+                  {serviceAreas.map((s, i) => {
+                    const on = i === activeService;
+                    return (
+                      <li key={s.name}>
+                        <button
+                          type="button"
+                          onMouseEnter={() => setActiveService(i)}
+                          onFocus={() => setActiveService(i)}
+                          onClick={() => setActiveService(i)}
+                          aria-current={on}
+                          className="group relative flex w-full items-baseline gap-5 border-b border-border py-5 text-left outline-none"
+                        >
+                          <span
+                            className={cn(
+                              "font-mono text-[11px] transition-colors duration-300",
+                              on ? "text-ember" : "text-muted-foreground/70",
+                            )}
+                          >
                             {String(i + 1).padStart(2, "0")}
                           </span>
-                          <h3 className="display text-2xl tracking-tight text-navy transition-transform duration-500 ease-out group-hover:translate-x-2 lg:col-span-5 lg:text-[1.75rem]">
+                          <span
+                            className={cn(
+                              "display text-[1.55rem] tracking-tight transition-all duration-300 ease-out",
+                              on ? "translate-x-1.5 text-navy" : "text-navy/45 group-hover:text-navy/75",
+                            )}
+                          >
                             {s.name}
-                          </h3>
-                          <p className="text-base leading-relaxed text-muted-foreground lg:col-span-6">
+                          </span>
+                          <ArrowRight
+                            aria-hidden
+                            className={cn(
+                              "ml-auto h-4 w-4 shrink-0 self-center text-ember transition-all duration-300",
+                              on ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0",
+                            )}
+                          />
+                          <span
+                            aria-hidden
+                            className={cn(
+                              "absolute bottom-[-1px] left-0 h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-500 ease-out",
+                              on ? "w-full" : "w-0",
+                            )}
+                          />
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Reveal>
+
+              {/* Large visual + caption */}
+              <Reveal delay={120} className="lg:col-span-7">
+                <div className="relative">
+                  {/* offset frame line */}
+                  <span
+                    aria-hidden
+                    className="absolute -top-4 -right-4 hidden h-full w-full rounded-xl border border-navy/10 lg:block"
+                  />
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary/40 shadow-[0_50px_90px_-45px_rgba(1,12,98,0.4)]">
+                    {serviceAreas.map((s, i) => (
+                      <img
+                        key={s.name}
+                        src={s.img}
+                        alt={s.alt}
+                        loading="lazy"
+                        width={1280}
+                        height={960}
+                        aria-hidden={i !== activeService}
+                        className={cn(
+                          "absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out",
+                          i === activeService
+                            ? "scale-100 opacity-100"
+                            : "scale-[1.04] opacity-0",
+                        )}
+                      />
+                    ))}
+                    {/* index marker */}
+                    <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-navy/55 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur-sm">
+                      {String(activeService + 1).padStart(2, "0")} / 07
+                    </span>
+                  </div>
+                  {/* active description caption */}
+                  <div className="mt-7 flex items-start gap-5">
+                    <span
+                      aria-hidden
+                      className="mt-3 h-px w-10 shrink-0 bg-gradient-to-r from-amber to-ember"
+                    />
+                    <p
+                      key={activeService}
+                      className="bd-caption max-w-xl text-base leading-relaxed text-muted-foreground"
+                    >
+                      {serviceAreas[activeService].text}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* ---- Mobile / tablet: touch accordion ---- */}
+            <div className="mt-10 lg:hidden">
+              <ul className="border-t border-border">
+                {serviceAreas.map((s, i) => {
+                  const on = i === activeService;
+                  return (
+                    <li key={s.name} className="border-b border-border">
+                      <button
+                        type="button"
+                        onClick={() => setActiveService(on ? -1 : i)}
+                        aria-expanded={on}
+                        className="flex w-full items-center gap-4 py-4 text-left"
+                      >
+                        <span
+                          className={cn(
+                            "font-mono text-[11px]",
+                            on ? "text-ember" : "text-muted-foreground/70",
+                          )}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className={cn(
+                            "display text-xl tracking-tight transition-colors duration-300",
+                            on ? "text-navy" : "text-navy/55",
+                          )}
+                        >
+                          {s.name}
+                        </span>
+                        <ArrowRight
+                          aria-hidden
+                          className={cn(
+                            "ml-auto h-4 w-4 shrink-0 transition-all duration-300",
+                            on ? "rotate-90 text-ember" : "text-navy/30",
+                          )}
+                        />
+                      </button>
+                      <div
+                        className={cn(
+                          "grid transition-all duration-500 ease-out",
+                          on ? "grid-rows-[1fr] pb-6 opacity-100" : "grid-rows-[0fr] opacity-0",
+                        )}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="overflow-hidden rounded-lg shadow-[0_30px_60px_-30px_rgba(1,12,98,0.35)]">
+                            <img
+                              src={s.img}
+                              alt={s.alt}
+                              loading="lazy"
+                              width={1280}
+                              height={960}
+                              className="aspect-[4/3] w-full object-cover"
+                            />
+                          </div>
+                          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                             {s.text}
                           </p>
                         </div>
-                        <span
-                          aria-hidden
-                          className="absolute bottom-[-1px] left-0 h-px w-0 bg-gradient-to-r from-amber to-ember transition-[width] duration-700 ease-out group-hover:w-full"
-                        />
                       </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>
