@@ -195,8 +195,8 @@ function BrandDesignPage() {
         <section className="relative overflow-hidden border-t border-border bg-white">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
           <div className="relative mx-auto max-w-[1400px] px-6 py-14 lg:px-12 lg:py-20">
-            <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-              {/* Left: accent + heading */}
+            <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+              {/* Left: heading */}
               <div className="lg:col-span-5">
                 <Reveal>
                   <span
@@ -213,90 +213,15 @@ function BrandDesignPage() {
                 </Reveal>
               </div>
 
-              {/* Centre: brand identity artifact */}
-              <Reveal delay={140} className="lg:col-span-2">
-                <div className="relative flex items-center justify-center">
-                  {/* horizontal connector hairline (desktop) */}
-                  <span
-                    aria-hidden
-                    className="absolute -inset-x-4 top-1/2 hidden h-px bg-navy/10 lg:block"
-                  />
-                  {/* soft off-white panel behind the artifact */}
-                  <span
-                    aria-hidden
-                    className="absolute left-1/2 top-1/2 h-[112%] w-[132%] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-secondary/60"
-                  />
-                  <div className="relative w-full max-w-[250px] lg:max-w-none">
-                    {/* offset frame */}
-                    <span
-                      aria-hidden
-                      className="absolute -right-2.5 -top-2.5 h-full w-full rounded-lg border border-navy/12"
-                    />
-                    <div className="relative overflow-hidden rounded-lg border border-navy/10 bg-white shadow-[0_35px_70px_-35px_rgba(1,12,98,0.35)]">
-                      {/* typography specimen */}
-                      <div className="relative bg-navy px-4 pb-4 pt-3.5">
-                        <div className="flex items-center justify-between">
-                          <span className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/45">
-                            Identity
-                          </span>
-                          <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
-                        </div>
-                        <p aria-hidden className="display mt-2 text-[2.4rem] leading-none text-white">
-                          Aa
-                        </p>
-                        <span
-                          aria-hidden
-                          className="mt-3 block h-px w-9 bg-gradient-to-r from-amber to-ember"
-                        />
-                      </div>
-                      {/* geometric mark on fine grid */}
-                      <div className="relative px-4 py-4">
-                        <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.05]" />
-                        <svg viewBox="0 0 120 72" fill="none" aria-hidden="true" className="relative w-full">
-                          <defs>
-                            <linearGradient id="bd-idf-cool" x1="0" y1="0" x2="1" y2="0">
-                              <stop stopColor="#3AF1FF" />
-                              <stop offset="1" stopColor="#4A73FF" />
-                            </linearGradient>
-                            <linearGradient id="bd-idf-warm" x1="0" y1="0" x2="1" y2="1">
-                              <stop stopColor="#FFA53C" />
-                              <stop offset="1" stopColor="#FF483F" />
-                            </linearGradient>
-                          </defs>
-                          <line x1="60" y1="6" x2="60" y2="66" stroke="#010C62" strokeOpacity="0.12" strokeWidth="0.75" />
-                          <line x1="10" y1="36" x2="110" y2="36" stroke="#010C62" strokeOpacity="0.12" strokeWidth="0.75" />
-                          <circle cx="60" cy="36" r="23" stroke="url(#bd-idf-cool)" strokeWidth="1.25" />
-                          <path d="M49 45 L60 27 L71 45" stroke="url(#bd-idf-warm)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                          <line x1="60" y1="27" x2="60" y2="49" stroke="url(#bd-idf-warm)" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M10 14v-4h4M106 10h4v4M10 58v4h4M110 62v-4h-4" stroke="#010C62" strokeOpacity="0.3" strokeWidth="0.75" />
-                        </svg>
-                      </div>
-                      {/* colour system */}
-                      <div className="flex h-7">
-                        <span className="flex-[2] bg-navy" />
-                        <span className="flex-1 bg-gradient-to-br from-amber to-ember" />
-                        <span className="flex-1 bg-gradient-to-br from-cyan to-azure" />
-                        <span className="flex-1 border-l border-t border-navy/10 bg-white" />
-                      </div>
-                      <div className="flex items-center justify-between border-t border-navy/10 px-4 py-2">
-                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#010C62</span>
-                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#FF483F</span>
-                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#3AF1FF</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Right: content — consistent body typography */}
-              <div className="lg:col-span-5">
+              {/* Right: content — unified editorial body */}
+              <div className="lg:col-span-7 lg:pt-2">
                 <Reveal delay={100}>
-                  <p className="text-lg leading-relaxed text-navy/85">
+                  <p className="text-xl leading-relaxed text-navy/85">
                     A strong brand creates recognition. A strong digital experience creates connection.
                   </p>
                 </Reveal>
                 <Reveal delay={180}>
-                  <p className="mt-6 text-lg leading-relaxed text-navy/60">
+                  <p className="mt-8 text-xl leading-relaxed text-navy/60">
                     We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.
                   </p>
                 </Reveal>
