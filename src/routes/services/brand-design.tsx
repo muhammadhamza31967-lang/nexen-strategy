@@ -1,13 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
 import brandHero from "@/assets/brand-hero.jpg";
-import brandSignature from "@/assets/brand-signature.jpg";
+import brandSignatureVideo from "@/assets/brand-signature.mp4.asset.json";
 import brandTouchpoints from "@/assets/brand-touchpoints.jpg";
+
 import svcBrandIdentity from "@/assets/svc-brand-identity.jpg";
 import svcLogoDesign from "@/assets/svc-logo-design.jpg";
 import svcVisualIdentity from "@/assets/svc-visual-identity.jpg";
@@ -108,8 +110,33 @@ export const Route = createFileRoute("/services/brand-design")({
 function BrandDesignPage() {
   const [activeStage, setActiveStage] = useState(0);
   const [activeService, setActiveService] = useState(0);
+  const signatureVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = signatureVideoRef.current;
+    if (!video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      video.pause();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
+
     <>
       <style>{`
         @keyframes bd-drift{0%{transform:scale(1.06) translateX(-1.2%)}100%{transform:scale(1.06) translateX(1.2%)}}
@@ -264,13 +291,15 @@ function BrandDesignPage() {
 
         {/* ============ SIGNATURE VISUAL ============ */}
         <section className="relative overflow-hidden bg-navy">
-          <div className="bd-kenburns">
-            <img
-              src={brandSignature}
-              alt="Complete brand identity system applied across packaging, stationery, guidelines and digital"
-              loading="lazy"
-              width={1920}
-              height={1088}
+          <div>
+            <video
+              ref={signatureVideoRef}
+              src={brandSignatureVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
               className="h-[52vh] min-h-[320px] w-full object-cover opacity-90 lg:h-[78vh]"
             />
           </div>
@@ -283,6 +312,7 @@ function BrandDesignPage() {
             }}
           />
         </section>
+
 
         {/* ============ WHAT WE DO — image-led showcase ============ */}
         <section className="relative overflow-hidden border-t border-border bg-white">
