@@ -100,6 +100,7 @@ export const Route = createFileRoute("/services/brand-design")({
 
 function BrandDesignPage() {
   const [activeStage, setActiveStage] = useState(0);
+  const [activeService, setActiveService] = useState(0);
 
   return (
     <>
