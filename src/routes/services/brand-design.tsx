@@ -194,16 +194,16 @@ function BrandDesignPage() {
         {/* ============ INTRODUCTION ============ */}
         <section className="relative overflow-hidden border-t border-border bg-white">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.03]" />
-          <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-              {/* Left: headline */}
+          <div className="relative mx-auto max-w-[1400px] px-6 py-14 lg:px-12 lg:py-20">
+            <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+              {/* Left: accent + heading */}
               <div className="lg:col-span-5">
                 <Reveal>
                   <span
                     aria-hidden
-                    className="mb-8 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
+                    className="mb-6 block h-px w-14 bg-gradient-to-r from-azure to-cyan"
                   />
-                  <h2 className="display text-[2.5rem] leading-[0.98] text-navy sm:text-5xl lg:text-[4rem]">
+                  <h2 className="display text-3xl leading-[1.08] tracking-tight text-navy sm:text-4xl lg:text-[2.1rem] xl:text-[2.5rem]">
                     Design
                     <br />
                     With Purpose.
@@ -211,88 +211,94 @@ function BrandDesignPage() {
                     Identity With Direction.
                   </h2>
                 </Reveal>
-
-                {/* Subtle brand identity specimen */}
-                <Reveal delay={160} className="mt-12 hidden lg:block">
-                  <svg
-                    width="160"
-                    height="160"
-                    viewBox="0 0 160 160"
-                    fill="none"
-                    aria-hidden="true"
-                    className="text-navy/15"
-                  >
-                    <defs>
-                      <linearGradient id="intro-amber-ember" x1="0" y1="0" x2="1" y2="1">
-                        <stop stopColor="#FFA53C" />
-                        <stop offset="1" stopColor="#FF483F" />
-                      </linearGradient>
-                      <linearGradient id="intro-cyan-azure" x1="0" y1="0" x2="1" y2="0">
-                        <stop stopColor="#3AF1FF" />
-                        <stop offset="1" stopColor="#4A73FF" />
-                      </linearGradient>
-                      <pattern id="intro-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M40 0H0V40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                      </pattern>
-                    </defs>
-                    <rect width="160" height="160" fill="url(#intro-grid)" />
-                    {/* Large ghost letterform */}
-                    <text
-                      x="12"
-                      y="118"
-                      fontFamily="Manrope, ui-sans-serif, sans-serif"
-                      fontSize="112"
-                      fontWeight="700"
-                      fill="currentColor"
-                      opacity="0.08"
-                    >
-                      N
-                    </text>
-                    {/* Colour swatches */}
-                    <rect x="12" y="12" width="32" height="32" rx="3" fill="#010C62" />
-                    <rect x="52" y="12" width="32" height="32" rx="3" fill="url(#intro-amber-ember)" />
-                    <rect x="92" y="12" width="32" height="32" rx="3" fill="white" stroke="currentColor" strokeWidth="1" />
-                    {/* Circular mark */}
-                    <circle cx="128" cy="128" r="22" stroke="url(#intro-cyan-azure)" strokeWidth="1.5" fill="none" />
-                    <circle cx="128" cy="128" r="6" fill="#3AF1FF" />
-                    {/* Fine accent line */}
-                    <line x1="12" y1="148" x2="88" y2="148" stroke="url(#intro-amber-ember)" strokeWidth="2" />
-                  </svg>
-                </Reveal>
               </div>
 
-              {/* Centre: vertical connector */}
-              <Reveal delay={120} className="relative hidden lg:col-span-1 lg:block">
-                <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 flex-col items-center">
-                  <span className="block h-full w-px bg-gradient-to-b from-transparent via-navy/15 to-transparent" />
-                  <span className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gradient-to-br from-azure to-cyan" />
+              {/* Centre: brand identity artifact */}
+              <Reveal delay={140} className="lg:col-span-2">
+                <div className="relative flex items-center justify-center">
+                  {/* horizontal connector hairline (desktop) */}
+                  <span
+                    aria-hidden
+                    className="absolute -inset-x-4 top-1/2 hidden h-px bg-navy/10 lg:block"
+                  />
+                  {/* soft off-white panel behind the artifact */}
+                  <span
+                    aria-hidden
+                    className="absolute left-1/2 top-1/2 h-[112%] w-[132%] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-secondary/60"
+                  />
+                  <div className="relative w-full max-w-[250px] lg:max-w-none">
+                    {/* offset frame */}
+                    <span
+                      aria-hidden
+                      className="absolute -right-2.5 -top-2.5 h-full w-full rounded-lg border border-navy/12"
+                    />
+                    <div className="relative overflow-hidden rounded-lg border border-navy/10 bg-white shadow-[0_35px_70px_-35px_rgba(1,12,98,0.35)]">
+                      {/* typography specimen */}
+                      <div className="relative bg-navy px-4 pb-4 pt-3.5">
+                        <div className="flex items-center justify-between">
+                          <span className="font-mono text-[8px] uppercase tracking-[0.28em] text-white/45">
+                            Identity
+                          </span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                        </div>
+                        <p aria-hidden className="display mt-2 text-[2.4rem] leading-none text-white">
+                          Aa
+                        </p>
+                        <span
+                          aria-hidden
+                          className="mt-3 block h-px w-9 bg-gradient-to-r from-amber to-ember"
+                        />
+                      </div>
+                      {/* geometric mark on fine grid */}
+                      <div className="relative px-4 py-4">
+                        <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-[0.05]" />
+                        <svg viewBox="0 0 120 72" fill="none" aria-hidden="true" className="relative w-full">
+                          <defs>
+                            <linearGradient id="bd-idf-cool" x1="0" y1="0" x2="1" y2="0">
+                              <stop stopColor="#3AF1FF" />
+                              <stop offset="1" stopColor="#4A73FF" />
+                            </linearGradient>
+                            <linearGradient id="bd-idf-warm" x1="0" y1="0" x2="1" y2="1">
+                              <stop stopColor="#FFA53C" />
+                              <stop offset="1" stopColor="#FF483F" />
+                            </linearGradient>
+                          </defs>
+                          <line x1="60" y1="6" x2="60" y2="66" stroke="#010C62" strokeOpacity="0.12" strokeWidth="0.75" />
+                          <line x1="10" y1="36" x2="110" y2="36" stroke="#010C62" strokeOpacity="0.12" strokeWidth="0.75" />
+                          <circle cx="60" cy="36" r="23" stroke="url(#bd-idf-cool)" strokeWidth="1.25" />
+                          <path d="M49 45 L60 27 L71 45" stroke="url(#bd-idf-warm)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <line x1="60" y1="27" x2="60" y2="49" stroke="url(#bd-idf-warm)" strokeWidth="2" strokeLinecap="round" />
+                          <path d="M10 14v-4h4M106 10h4v4M10 58v4h4M110 62v-4h-4" stroke="#010C62" strokeOpacity="0.3" strokeWidth="0.75" />
+                        </svg>
+                      </div>
+                      {/* colour system */}
+                      <div className="flex h-7">
+                        <span className="flex-[2] bg-navy" />
+                        <span className="flex-1 bg-gradient-to-br from-amber to-ember" />
+                        <span className="flex-1 bg-gradient-to-br from-cyan to-azure" />
+                        <span className="flex-1 border-l border-t border-navy/10 bg-white" />
+                      </div>
+                      <div className="flex items-center justify-between border-t border-navy/10 px-4 py-2">
+                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#010C62</span>
+                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#FF483F</span>
+                        <span className="font-mono text-[7.5px] tracking-[0.16em] text-navy/45">#3AF1FF</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
 
               {/* Right: content — consistent body typography */}
-              <div className="flex flex-col justify-center lg:col-span-6">
+              <div className="lg:col-span-5">
                 <Reveal delay={100}>
                   <p className="text-lg leading-relaxed text-navy/85">
                     A strong brand creates recognition. A strong digital experience creates connection.
                   </p>
                 </Reveal>
                 <Reveal delay={180}>
-                  <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+                  <p className="mt-6 text-lg leading-relaxed text-navy/60">
                     We bring both together to help businesses establish a visual presence that reflects who they are, what they offer and where they want to go.
                   </p>
-                </Reveal>
-
-                {/* Mobile-visible brand specimen */}
-                <Reveal delay={240} className="mt-10 lg:hidden">
-                  <div className="flex items-center gap-4">
-                    <span className="h-px w-12 bg-gradient-to-r from-amber to-ember" />
-                    <div className="flex items-center gap-2.5">
-                      <span className="h-4 w-4 rounded-[2px] bg-navy" />
-                      <span className="h-4 w-4 rounded-[2px] bg-gradient-to-br from-amber to-ember" />
-                      <span className="h-4 w-4 rounded-[2px] border border-navy/20 bg-white" />
-                    </div>
-                    <span className="h-px flex-1 bg-navy/10" />
-                  </div>
                 </Reveal>
               </div>
             </div>
