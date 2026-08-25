@@ -1,6 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Search,
+  Crosshair,
+  PenTool,
+  SlidersHorizontal,
+  Rocket,
+  type LucideIcon,
+} from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -82,12 +90,12 @@ const serviceAreas = [
   },
 ];
 
-const processStages = [
-  { name: "Discover", text: "Understand your brand, audience, market and objectives." },
-  { name: "Define", text: "Establish the creative direction and visual opportunity." },
-  { name: "Design", text: "Develop concepts, interfaces and visual assets." },
-  { name: "Refine", text: "Review, test and improve the work based on feedback." },
-  { name: "Deliver", text: "Provide the final assets and systems ready for implementation." },
+const processStages: { name: string; text: string; icon: LucideIcon }[] = [
+  { name: "Discover", text: "Understand your brand, audience, market and objectives.", icon: Search },
+  { name: "Define", text: "Establish the creative direction and visual opportunity.", icon: Crosshair },
+  { name: "Design", text: "Develop concepts, interfaces and visual assets.", icon: PenTool },
+  { name: "Refine", text: "Review, test and improve the work based on feedback.", icon: SlidersHorizontal },
+  { name: "Deliver", text: "Provide the final assets and systems ready for implementation.", icon: Rocket },
 ];
 
 const closingParagraph =
@@ -109,8 +117,49 @@ export const Route = createFileRoute("/services/brand-design")({
 
 function BrandDesignPage() {
   const [activeStage, setActiveStage] = useState(0);
+  const [stageAutoPlay, setStageAutoPlay] = useState(true);
   const [activeService, setActiveService] = useState(0);
   const signatureVideoRef = useRef<HTMLVideoElement>(null);
+  const stageTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!stageAutoPlay) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(
+      () => setActiveStage((v) => (v + 1) % processStages.length),
+      2600,
+    );
+    return () => window.clearInterval(id);
+  }, [stageAutoPlay]);
+
+  const selectStage = (i: number) => {
+    setStageAutoPlay(false);
+    setActiveStage(i);
+  };
+
+  const scrollStageTrack = (i: number) => {
+    selectStage(i);
+    const el = stageTrackRef.current;
+    const child = el?.children[i] as HTMLElement | undefined;
+    if (el && child) {
+      el.scrollTo({ left: child.offsetLeft - el.clientWidth * 0.12, behavior: "smooth" });
+    }
+  };
+
+  const onStageTrackScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const child = el.children[0] as HTMLElement | undefined;
+    if (!child) return;
+    const step = child.offsetWidth + 16;
+    const idx = Math.min(
+      processStages.length - 1,
+      Math.max(0, Math.round(el.scrollLeft / step)),
+    );
+    if (idx !== activeStage) {
+      setStageAutoPlay(false);
+      setActiveStage(idx);
+    }
+  };
 
   useEffect(() => {
     const video = signatureVideoRef.current;
@@ -513,62 +562,212 @@ function BrandDesignPage() {
         </section>
 
         {/* ============ OUR DESIGN PROCESS ============ */}
-        <section className="border-t border-border bg-secondary/30">
-          <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
-            <Reveal>
-              <p className="eyebrow text-azure">Our design process</p>
-              <h2 className="display mt-6 max-w-2xl text-[2rem] text-navy sm:text-4xl lg:text-[3rem]">
-                Our Design Process
-              </h2>
+        <section className="relative overflow-hidden border-t border-border bg-secondary/40">
+          <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-50" />
+          <div className="relative mx-auto max-w-[1400px] px-6 py-16 lg:px-12 lg:py-24">
+            <Reveal className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="eyebrow text-azure">Our design process</p>
+                <h2 className="display mt-5 text-[2rem] text-navy sm:text-4xl lg:text-[2.75rem]">
+                  Our Design Process
+                </h2>
+              </div>
+              <p
+                aria-hidden
+                className="hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground lg:flex"
+              >
+                <span className="h-px w-10 bg-gradient-to-r from-amber to-ember" />
+                Discover — Define — Design — Refine — Deliver
+              </p>
             </Reveal>
 
-            <div className="relative mt-20">
-              <div aria-hidden className="absolute left-0 top-[5px] hidden h-px w-full bg-border lg:block" />
+            {/* ---- Desktop / tablet: horizontal timeline ---- */}
+            <div className="relative mt-14 hidden md:block">
               <div
                 aria-hidden
-                className="absolute left-0 top-[5px] hidden h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-700 lg:block"
-                style={{ width: `${((activeStage + 1) / processStages.length) * 100}%` }}
+                className="absolute left-[10%] right-[10%] top-7 h-px bg-navy/10"
               />
-              <div aria-hidden className="absolute bottom-0 left-[5px] top-0 w-px bg-border lg:hidden" />
-              <ol className="grid gap-12 pl-10 lg:grid-cols-5 lg:gap-8 lg:pl-0">
+              <div
+                aria-hidden
+                className="absolute left-[10%] top-7 h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-700 ease-out"
+                style={{
+                  width: `${(activeStage / (processStages.length - 1)) * 80}%`,
+                }}
+              />
+              <ol className="relative grid grid-cols-5">
                 {processStages.map((s, i) => {
                   const on = i <= activeStage;
+                  const current = i === activeStage;
+                  const Icon = s.icon;
                   return (
-                    <Reveal key={s.name} delay={i * 90} as="li">
+                    <Reveal key={s.name} delay={i * 80} as="li">
                       <div
-                        onMouseEnter={() => setActiveStage(i)}
-                        onFocus={() => setActiveStage(i)}
+                        onMouseEnter={() => selectStage(i)}
+                        onFocus={() => selectStage(i)}
                         tabIndex={0}
-                        className="group relative outline-none"
+                        className="group flex flex-col items-center px-3 text-center outline-none"
                       >
-                        <span
-                          aria-hidden
-                          className={cn(
-                            "absolute -left-10 top-0 h-[11px] w-[11px] rounded-full border-2 bg-white transition-colors duration-500 lg:-top-[0px] lg:left-0",
-                            on ? "border-ember" : "border-border",
-                          )}
-                        />
-                        <div className="lg:pt-10">
-                          <span className="font-mono text-xs text-muted-foreground">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <h3
+                        <span className="flex h-14 items-center">
+                          <span
+                            aria-hidden
                             className={cn(
-                              "mt-4 text-2xl font-semibold tracking-tight transition-colors duration-500",
-                              on ? "text-navy" : "text-navy/50",
+                              "block rounded-full border-2 transition-all duration-500",
+                              current
+                                ? "h-3.5 w-3.5 border-ember bg-ember shadow-[0_0_0_7px_rgba(255,72,63,0.14)]"
+                                : on
+                                  ? "h-3 w-3 border-navy bg-navy"
+                                  : "h-3 w-3 border-navy/20 bg-white group-hover:border-navy/40",
                             )}
-                          >
-                            {s.name}
-                          </h3>
-                          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                            {s.text}
-                          </p>
-                        </div>
+                          />
+                        </span>
+                        <span
+                          className={cn(
+                            "font-mono text-[11px] tracking-[0.2em] transition-colors duration-500",
+                            current ? "text-ember" : "text-muted-foreground",
+                          )}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className={cn(
+                            "relative mt-4 flex h-16 w-16 items-center justify-center rounded-2xl border transition-all duration-500",
+                            current
+                              ? "-translate-y-1 border-navy bg-navy text-white shadow-[0_20px_44px_-18px_rgba(1,12,98,0.55)]"
+                              : "border-navy/10 bg-white text-navy/45 group-hover:border-navy/25 group-hover:text-navy",
+                          )}
+                        >
+                          <Icon className="h-6 w-6" strokeWidth={1.5} />
+                          <span
+                            aria-hidden
+                            className={cn(
+                              "absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-amber to-ember transition-all duration-500",
+                              current ? "scale-100 opacity-100" : "scale-50 opacity-0",
+                            )}
+                          />
+                        </span>
+                        <h3
+                          className={cn(
+                            "mt-5 text-lg font-semibold tracking-tight transition-colors duration-500",
+                            current ? "text-navy" : "text-navy/40",
+                          )}
+                        >
+                          {s.name}
+                        </h3>
+                        <p
+                          className={cn(
+                            "mt-2.5 max-w-[230px] text-sm leading-relaxed transition-colors duration-500",
+                            current ? "text-navy/70" : "text-muted-foreground",
+                          )}
+                        >
+                          {s.text}
+                        </p>
                       </div>
                     </Reveal>
                   );
                 })}
               </ol>
+            </div>
+
+            {/* ---- Mobile: compact horizontal carousel ---- */}
+            <div className="mt-12 md:hidden">
+              <div className="mb-6 flex items-center">
+                {processStages.map((s, i) => (
+                  <button
+                    key={s.name}
+                    type="button"
+                    onClick={() => scrollStageTrack(i)}
+                    aria-label={`Go to step ${i + 1}: ${s.name}`}
+                    className="flex items-center"
+                  >
+                    <span
+                      className={cn(
+                        "flex h-8 w-8 items-center justify-center rounded-full border font-mono text-[11px] transition-all duration-300",
+                        i === activeStage
+                          ? "border-ember bg-ember text-white"
+                          : i < activeStage
+                            ? "border-navy bg-navy text-white"
+                            : "border-navy/15 bg-white text-muted-foreground",
+                      )}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {i < processStages.length - 1 && (
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "h-px w-5 transition-colors duration-300",
+                          i < activeStage ? "bg-ember" : "bg-navy/15",
+                        )}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+              <div
+                ref={stageTrackRef}
+                onScroll={onStageTrackScroll}
+                className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {processStages.map((s, i) => {
+                  const current = i === activeStage;
+                  const Icon = s.icon;
+                  return (
+                    <article
+                      key={s.name}
+                      className={cn(
+                        "w-[76%] shrink-0 snap-center rounded-2xl border bg-white p-6 transition-all duration-500",
+                        current
+                          ? "border-navy/20 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.35)]"
+                          : "border-navy/10",
+                      )}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span
+                          className={cn(
+                            "font-mono text-xs tracking-[0.2em]",
+                            current ? "text-ember" : "text-muted-foreground",
+                          )}
+                        >
+                          {String(i + 1).padStart(2, "0")} / 05
+                        </span>
+                        <span
+                          className={cn(
+                            "relative flex h-11 w-11 items-center justify-center rounded-xl border transition-colors duration-300",
+                            current
+                              ? "border-navy bg-navy text-white"
+                              : "border-navy/10 text-navy/50",
+                          )}
+                        >
+                          <Icon className="h-5 w-5" strokeWidth={1.5} />
+                          {current && (
+                            <span
+                              aria-hidden
+                              className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-gradient-to-br from-amber to-ember"
+                            />
+                          )}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-xl font-semibold tracking-tight text-navy">
+                        {s.name}
+                      </h3>
+                      <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                        {s.text}
+                      </p>
+                    </article>
+                  );
+                })}
+              </div>
+              <div aria-hidden className="mt-5 flex gap-1.5">
+                {processStages.map((s, i) => (
+                  <span
+                    key={s.name}
+                    className={cn(
+                      "h-[3px] flex-1 rounded-full transition-colors duration-300",
+                      i <= activeStage ? "bg-gradient-to-r from-amber to-ember" : "bg-navy/10",
+                    )}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
