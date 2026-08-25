@@ -117,8 +117,49 @@ export const Route = createFileRoute("/services/brand-design")({
 
 function BrandDesignPage() {
   const [activeStage, setActiveStage] = useState(0);
+  const [stageAutoPlay, setStageAutoPlay] = useState(true);
   const [activeService, setActiveService] = useState(0);
   const signatureVideoRef = useRef<HTMLVideoElement>(null);
+  const stageTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!stageAutoPlay) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(
+      () => setActiveStage((v) => (v + 1) % processStages.length),
+      2600,
+    );
+    return () => window.clearInterval(id);
+  }, [stageAutoPlay]);
+
+  const selectStage = (i: number) => {
+    setStageAutoPlay(false);
+    setActiveStage(i);
+  };
+
+  const scrollStageTrack = (i: number) => {
+    selectStage(i);
+    const el = stageTrackRef.current;
+    const child = el?.children[i] as HTMLElement | undefined;
+    if (el && child) {
+      el.scrollTo({ left: child.offsetLeft - el.clientWidth * 0.12, behavior: "smooth" });
+    }
+  };
+
+  const onStageTrackScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const child = el.children[0] as HTMLElement | undefined;
+    if (!child) return;
+    const step = child.offsetWidth + 16;
+    const idx = Math.min(
+      processStages.length - 1,
+      Math.max(0, Math.round(el.scrollLeft / step)),
+    );
+    if (idx !== activeStage) {
+      setStageAutoPlay(false);
+      setActiveStage(idx);
+    }
+  };
 
   useEffect(() => {
     const video = signatureVideoRef.current;
