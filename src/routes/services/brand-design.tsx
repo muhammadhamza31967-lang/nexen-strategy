@@ -141,7 +141,8 @@ function BrandDesignPage() {
               <Reveal delay={180} className="lg:col-span-6">
                 <div className="relative flex items-center justify-center">
                   {/* inner composition container: reduced & rebalanced */}
-                  <div className="relative w-[88%]">
+                  <div className="relative w-[85%]">
+
                     {/* thin offset framing line */}
                     <span
                       aria-hidden
