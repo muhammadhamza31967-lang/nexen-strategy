@@ -192,8 +192,16 @@ function BrandDesignPage() {
         .bd-kenburns{animation:bd-drift 26s ease-in-out infinite alternate;will-change:transform}
         @keyframes bd-caption{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
         .bd-caption{animation:bd-caption .45s ease-out both}
-        @media (prefers-reduced-motion: reduce){.bd-kenburns,.bd-caption{animation:none !important}}
+        @keyframes bd-cta-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3%,-2.5%,0) scale(1.06)}}
+        .bd-cta-drift{animation:bd-cta-drift 24s ease-in-out infinite}
+        @keyframes bd-cta-grid{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-72px,-72px,0)}}
+        .bd-cta-grid{animation:bd-cta-grid 40s linear infinite}
+        @keyframes bd-cta-dash{to{stroke-dashoffset:-1600}}
+        .bd-cta-dash{stroke-dasharray:160 900;animation:bd-cta-dash 20s linear infinite}
+        .bd-cta-dash2{stroke-dasharray:120 1000;animation:bd-cta-dash 26s linear infinite;animation-delay:-8s}
+        @media (prefers-reduced-motion: reduce){.bd-kenburns,.bd-caption,.bd-cta-drift,.bd-cta-grid,.bd-cta-dash,.bd-cta-dash2{animation:none !important}}
       `}</style>
+
 
       <Header />
       <main className="bg-white">
@@ -772,41 +780,66 @@ function BrandDesignPage() {
           </div>
         </section>
 
-        {/* ============ CLOSING ============ */}
-        <section className="relative overflow-hidden bg-navy">
-          <div aria-hidden className="grid-faint absolute inset-0" />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute top-[-20%] left-[-10%] h-[520px] w-[520px] rounded-full opacity-25 blur-[150px]"
-            style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
-          />
-          <div className="relative mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40">
-            <div className="max-w-4xl">
-              <Reveal>
-                <span
-                  aria-hidden
-                  className="mb-10 block h-px w-16 bg-gradient-to-r from-amber to-ember"
+        {/* ============ CLOSING CTA ============ */}
+        <section className="relative bg-white pb-16 lg:pb-24">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+            <div className="relative isolate overflow-hidden rounded-[24px] bg-navy px-7 py-14 sm:px-12 lg:px-20 lg:py-20">
+              <div
+                aria-hidden
+                className="bd-cta-drift pointer-events-none absolute inset-[-20%]"
+                style={{
+                  background:
+                    "radial-gradient(40% 60% at 15% 25%, rgba(74,115,255,0.4) 0%, transparent 65%), radial-gradient(40% 60% at 85% 75%, rgba(58,241,255,0.25) 0%, transparent 70%)",
+                }}
+              />
+              <div aria-hidden className="grid-faint bd-cta-grid pointer-events-none absolute inset-[-80px] opacity-70" />
+              <svg
+                aria-hidden
+                className="pointer-events-none absolute inset-0 h-full w-full"
+                viewBox="0 0 1200 340"
+                preserveAspectRatio="xMidYMid slice"
+                fill="none"
+              >
+                <path
+                  className="bd-cta-dash"
+                  d="M-60 260 C 260 220, 480 90, 800 110 S 1140 60, 1280 40"
+                  stroke="#3AF1FF"
+                  strokeOpacity="0.35"
+                  strokeWidth="1"
                 />
-                <h2 className="display text-[2.2rem] leading-[1.1] text-white sm:text-5xl lg:text-[3.6rem]">
-                  Good Design Creates Recognition. Great Design Creates Connection.
-                </h2>
-              </Reveal>
-              <Reveal delay={120}>
-                <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/60">
-                  {closingParagraph}
-                </p>
-              </Reveal>
-              <Reveal delay={200}>
-                <div className="mt-12">
-                  <Link to="/contact" className="btn-primary group">
-                    Start a Design Project
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </Reveal>
+                <path
+                  className="bd-cta-dash2"
+                  d="M-60 90 C 300 130, 520 280, 880 250 S 1180 190, 1280 170"
+                  stroke="#4A73FF"
+                  strokeOpacity="0.4"
+                  strokeWidth="1"
+                />
+              </svg>
+
+              <div className="relative max-w-3xl">
+                <Reveal>
+                  <h2 className="display text-white" style={{ fontSize: "clamp(2rem, 4.2vw, 3.6rem)" }}>
+                    Good Design Creates Recognition. Great Design Creates Connection.
+                  </h2>
+                </Reveal>
+                <Reveal delay={90}>
+                  <p className="mt-7 text-lg leading-relaxed text-white/75">
+                    {closingParagraph}
+                  </p>
+                </Reveal>
+                <Reveal delay={150}>
+                  <div className="mt-10">
+                    <Link to="/contact" className="btn-primary group">
+                      Start a Design Project
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
