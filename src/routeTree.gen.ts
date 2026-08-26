@@ -17,6 +17,7 @@ import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ServicesAiAndAutomationRouteImport } from './routes/services/ai-and-automation'
 import { Route as ServicesBrandDesignRouteImport } from './routes/services/brand-design'
+import { Route as ServicesMarketingAndGrowthRouteImport } from './routes/services/marketing-and-growth'
 import { Route as ServicesSoftwareSolutionsRouteImport } from './routes/services/software-solutions'
 import { Route as ServicesWebAndAppDevelopmentRouteImport } from './routes/services/web-and-app-development'
 
@@ -60,6 +61,12 @@ const ServicesBrandDesignRoute = ServicesBrandDesignRouteImport.update({
   path: '/services/brand-design',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesMarketingAndGrowthRoute =
+  ServicesMarketingAndGrowthRouteImport.update({
+    id: '/services/marketing-and-growth',
+    path: '/services/marketing-and-growth',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesSoftwareSolutionsRoute =
   ServicesSoftwareSolutionsRouteImport.update({
     id: '/services/software-solutions',
@@ -82,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/marketing-and-growth': typeof ServicesMarketingAndGrowthRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
@@ -94,6 +102,7 @@ export interface FileRoutesByTo {
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/marketing-and-growth': typeof ServicesMarketingAndGrowthRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
@@ -107,6 +116,7 @@ export interface FileRoutesById {
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
   '/services/brand-design': typeof ServicesBrandDesignRoute
+  '/services/marketing-and-growth': typeof ServicesMarketingAndGrowthRoute
   '/services/software-solutions': typeof ServicesSoftwareSolutionsRoute
   '/services/web-and-app-development': typeof ServicesWebAndAppDevelopmentRoute
 }
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/services/ai-and-automation'
     | '/services/brand-design'
+    | '/services/marketing-and-growth'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
   fileRoutesByTo: FileRoutesByTo
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/services/ai-and-automation'
     | '/services/brand-design'
+    | '/services/marketing-and-growth'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
   id:
@@ -145,6 +157,7 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/services/ai-and-automation'
     | '/services/brand-design'
+    | '/services/marketing-and-growth'
     | '/services/software-solutions'
     | '/services/web-and-app-development'
   fileRoutesById: FileRoutesById
@@ -158,6 +171,7 @@ export interface RootRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesAiAndAutomationRoute: typeof ServicesAiAndAutomationRoute
   ServicesBrandDesignRoute: typeof ServicesBrandDesignRoute
+  ServicesMarketingAndGrowthRoute: typeof ServicesMarketingAndGrowthRoute
   ServicesSoftwareSolutionsRoute: typeof ServicesSoftwareSolutionsRoute
   ServicesWebAndAppDevelopmentRoute: typeof ServicesWebAndAppDevelopmentRoute
 }
@@ -220,6 +234,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBrandDesignRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/marketing-and-growth': {
+      id: '/services/marketing-and-growth'
+      path: '/services/marketing-and-growth'
+      fullPath: '/services/marketing-and-growth'
+      preLoaderRoute: typeof ServicesMarketingAndGrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/software-solutions': {
       id: '/services/software-solutions'
       path: '/services/software-solutions'
@@ -246,6 +267,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesAiAndAutomationRoute: ServicesAiAndAutomationRoute,
   ServicesBrandDesignRoute: ServicesBrandDesignRoute,
+  ServicesMarketingAndGrowthRoute: ServicesMarketingAndGrowthRoute,
   ServicesSoftwareSolutionsRoute: ServicesSoftwareSolutionsRoute,
   ServicesWebAndAppDevelopmentRoute: ServicesWebAndAppDevelopmentRoute,
 }
