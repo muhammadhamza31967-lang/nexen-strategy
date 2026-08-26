@@ -87,6 +87,60 @@ const approachParagraphs = [
 
 const growthStages = ["Visibility", "Engagement", "Leads", "Customers", "Growth"];
 
+function GrowthJourney() {
+  return (
+    <div className="relative">
+      <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-5 sm:gap-2">
+        {/* progression line */}
+        <span
+          aria-hidden
+          className="absolute left-[calc(10%)] right-[calc(10%)] top-[7px] hidden h-px bg-gradient-to-r from-navy/15 via-navy/15 to-ember/50 sm:block"
+        />
+        {growthStages.map((stage, i) => {
+          const last = i === growthStages.length - 1;
+          return (
+            <div
+              key={stage}
+              className="relative flex items-center gap-4 sm:block"
+              style={{ animation: `fade-in 0.5s ease-out both`, animationDelay: `${i * 140}ms` }}
+            >
+              <span
+                aria-hidden
+                className={cn(
+                  "relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border bg-white",
+                  last
+                    ? "border-ember shadow-[0_0_0_5px_rgba(255,72,63,0.12)]"
+                    : "border-navy/25 shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
+                )}
+              >
+                <span
+                  className={cn(
+                    "absolute inset-[4px] rounded-full",
+                    last ? "bg-ember" : "bg-navy/35",
+                  )}
+                />
+              </span>
+              <div className="sm:mt-4">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-navy/40">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p
+                  className={cn(
+                    "mt-1 font-mono text-[11px] uppercase tracking-[0.18em]",
+                    last ? "text-navy" : "text-navy/65",
+                  )}
+                >
+                  {stage}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/services/marketing-and-growth")({
   head: () => ({
     meta: [
