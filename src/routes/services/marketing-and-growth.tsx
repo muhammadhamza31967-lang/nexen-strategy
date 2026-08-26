@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -19,6 +19,8 @@ import mktAutomation from "@/assets/mkt-automation.jpg";
 import mktEmail from "@/assets/mkt-email.jpg";
 import mktCro from "@/assets/mkt-cro.jpg";
 import mktApproach from "@/assets/mkt-approach.jpg";
+import mktPanelA from "@/assets/mkt-approach-panel-a.jpg";
+import mktPanelB from "@/assets/mkt-approach-panel-b.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
