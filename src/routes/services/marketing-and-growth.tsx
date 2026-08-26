@@ -16,6 +16,8 @@ import mktPaidAds from "@/assets/mkt-paid-ads.jpg";
 import mktContent from "@/assets/mkt-content.jpg";
 import mktLeadgen from "@/assets/mkt-leadgen.jpg";
 import mktAutomation from "@/assets/mkt-automation.jpg";
+import mktEmail from "@/assets/mkt-email.jpg";
+import mktCro from "@/assets/mkt-cro.jpg";
 import mktApproach from "@/assets/mkt-approach.jpg";
 
 /* ================================================================
@@ -61,6 +63,18 @@ const capabilities = [
     text: "Use automation to nurture prospects, improve follow-up and streamline customer communications.",
     img: mktAutomation,
     alt: "Marketing automation workflow builder connecting lead, trigger, message, follow-up, nurture and conversion steps",
+  },
+  {
+    name: "Email Marketing",
+    text: "Create targeted email campaigns and customer communications that nurture relationships, support conversions and keep audiences engaged.",
+    img: mktEmail,
+    alt: "Email marketing platform showing campaign creation, audience segmentation, email delivery, engagement metrics and conversion",
+  },
+  {
+    name: "Conversion Rate Optimisation",
+    text: "Improve digital experiences, landing pages and customer journeys to turn more visitors into leads and customers.",
+    img: mktCro,
+    alt: "Conversion rate optimisation dashboard showing landing page, user behaviour, optimisation variants, conversion lift and growth",
   },
 ];
 
