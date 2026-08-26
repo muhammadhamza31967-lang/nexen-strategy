@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -19,6 +19,8 @@ import mktAutomation from "@/assets/mkt-automation.jpg";
 import mktEmail from "@/assets/mkt-email.jpg";
 import mktCro from "@/assets/mkt-cro.jpg";
 import mktApproach from "@/assets/mkt-approach.jpg";
+import mktPanelA from "@/assets/mkt-approach-panel-a.jpg";
+import mktPanelB from "@/assets/mkt-approach-panel-b.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
@@ -84,6 +86,60 @@ const approachParagraphs = [
 ];
 
 const growthStages = ["Visibility", "Engagement", "Leads", "Customers", "Growth"];
+
+function GrowthJourney() {
+  return (
+    <div className="relative">
+      <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-5 sm:gap-2">
+        {/* progression line */}
+        <span
+          aria-hidden
+          className="absolute left-[calc(10%)] right-[calc(10%)] top-[7px] hidden h-px bg-gradient-to-r from-navy/15 via-navy/15 to-ember/50 sm:block"
+        />
+        {growthStages.map((stage, i) => {
+          const last = i === growthStages.length - 1;
+          return (
+            <div
+              key={stage}
+              className="relative flex items-center gap-4 sm:block"
+              style={{ animation: `fade-in 0.5s ease-out both`, animationDelay: `${i * 140}ms` }}
+            >
+              <span
+                aria-hidden
+                className={cn(
+                  "relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border bg-white",
+                  last
+                    ? "border-ember shadow-[0_0_0_5px_rgba(255,72,63,0.12)]"
+                    : "border-navy/25 shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
+                )}
+              >
+                <span
+                  className={cn(
+                    "absolute inset-[4px] rounded-full",
+                    last ? "bg-ember" : "bg-navy/35",
+                  )}
+                />
+              </span>
+              <div className="sm:mt-4">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-navy/40">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p
+                  className={cn(
+                    "mt-1 font-mono text-[11px] uppercase tracking-[0.18em]",
+                    last ? "text-navy" : "text-navy/65",
+                  )}
+                >
+                  {stage}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/services/marketing-and-growth")({
   head: () => ({
@@ -436,47 +492,47 @@ function MarketingGrowthPage() {
 
         {/* ============ OUR APPROACH ============ */}
         <section className="relative overflow-hidden border-t border-border bg-white">
-          <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
-            <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-              <Reveal className="lg:col-span-5">
+          <div
+            aria-hidden
+            className="grid-faint pointer-events-none absolute inset-0 opacity-40"
+          />
+          <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-24">
+            <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+              {/* LEFT */}
+              <Reveal className="order-1 lg:col-span-5">
                 <p className="eyebrow text-azure">Our approach</p>
-                <h2 className="display mt-5 text-[2rem] leading-[1.1] text-navy sm:text-4xl lg:text-[2.7rem]">
-                  Marketing Built Around Your Goals.
+                <h2 className="display mt-4 text-[2rem] leading-[1.08] text-navy sm:text-[2.35rem] lg:text-[2.6rem]">
+                  Marketing Built Around
+                  <br className="hidden sm:block" /> Your Goals.
                 </h2>
                 <span
                   aria-hidden
-                  className="mt-8 block h-px w-24 bg-gradient-to-r from-amber to-ember"
+                  className="mt-6 block h-[3px] w-16 rounded-full bg-gradient-to-r from-amber to-ember"
                 />
-                <div className="mt-9 space-y-6">
+                <div className="mt-6 space-y-4">
                   {approachParagraphs.map((p) => (
-                    <p key={p} className="max-w-xl text-lg leading-[1.75] text-navy/75">
+                    <p key={p} className="max-w-xl text-[1.0625rem] leading-[1.7] text-navy/75">
                       {p}
                     </p>
                   ))}
                 </div>
-
-                {/* growth chain */}
-                <ul className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-3">
-                  {growthStages.map((stage, i) => (
-                    <li key={stage} className="flex items-center gap-3">
-                      <span className="rounded-full border border-navy/12 bg-secondary/50 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-navy/70">
-                        {stage}
-                      </span>
-                      {i < growthStages.length - 1 && (
-                        <ArrowRight aria-hidden className="h-3.5 w-3.5 text-ember/70" />
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-8 hidden lg:block">
+                  <Link to="/contact" className="btn-primary group">
+                    Start Growing
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </Reveal>
 
-              <Reveal delay={120} className="lg:col-span-7">
+              {/* GROWTH JOURNEY — mobile position */}
+              <Reveal delay={80} className="order-2 lg:hidden">
+                <GrowthJourney />
+              </Reveal>
+
+              {/* RIGHT VISUAL */}
+              <Reveal delay={120} className="order-3 lg:order-2 lg:col-span-7">
                 <div className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute -bottom-5 -right-5 hidden h-full w-full rounded-2xl border border-navy/12 lg:block"
-                  />
-                  <div className="relative overflow-hidden rounded-2xl bg-secondary/30 shadow-[0_50px_90px_-45px_rgba(1,12,98,0.4)]">
+                  <div className="relative mx-auto w-[86%] overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_50px_90px_-45px_rgba(1,12,98,0.45)]">
                     <img
                       src={mktApproach}
                       alt="Growth dashboard where marketing channels feed visibility, engagement, leads, customers and overall growth"
@@ -486,25 +542,56 @@ function MarketingGrowthPage() {
                       className="aspect-[8/5] w-full object-cover"
                     />
                   </div>
-                  <svg
-                    aria-hidden
-                    className="pointer-events-none absolute -bottom-6 left-0 hidden h-16 w-full lg:block"
-                    viewBox="0 0 600 60"
-                    fill="none"
-                  >
-                    <path
-                      className="mkt-draw"
-                      d="M0 55 C 120 50, 200 34, 300 28 S 470 14, 600 4"
-                      stroke="#FFA53C"
-                      strokeOpacity="0.7"
-                      strokeWidth="1.5"
+
+                  {/* floating analytics panel */}
+                  <div className="animate-fade-in absolute -left-2 bottom-6 w-[34%] overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_28px_60px_-30px_rgba(1,12,98,0.5)] sm:-left-4">
+                    <img
+                      src={mktPanelA}
+                      alt="Audience insights panel with campaign performance breakdown"
+                      loading="lazy"
+                      width={960}
+                      height={688}
+                      className="aspect-[4/3] w-full object-cover"
                     />
-                  </svg>
+                  </div>
+
+                  {/* conversion / funnel panel */}
+                  <div className="animate-fade-in absolute -right-1 top-6 w-[30%] overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_28px_60px_-30px_rgba(1,12,98,0.5)] sm:-right-3">
+                    <img
+                      src={mktPanelB}
+                      alt="Conversion funnel panel showing lead generation and conversion stages"
+                      loading="lazy"
+                      width={960}
+                      height={688}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
+
+                  {/* small growth indicator */}
+                  <div className="animate-fade-in absolute -bottom-4 right-4 flex items-center gap-2 rounded-full border border-navy/10 bg-white px-4 py-2 shadow-[0_18px_40px_-20px_rgba(1,12,98,0.55)] sm:right-10">
+                    <TrendingUp aria-hidden className="h-4 w-4 text-ember" />
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-navy/70">
+                      Growth
+                    </span>
+                  </div>
                 </div>
               </Reveal>
+
+              {/* GROWTH JOURNEY — desktop full width */}
+              <Reveal delay={160} className="order-4 hidden lg:col-span-12 lg:block">
+                <GrowthJourney />
+              </Reveal>
+
+              <div className="order-5 lg:hidden">
+                <Link to="/contact" className="btn-primary group">
+                  Start Growing
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
+
 
         {/* ============ CLOSING CTA ============ */}
         <section className="relative bg-white pb-16 lg:pb-24">
