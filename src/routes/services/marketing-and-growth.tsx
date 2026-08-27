@@ -111,20 +111,11 @@ function GrowthJourney() {
             >
               <span
                 aria-hidden
-                className={cn(
-                  "relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border bg-white",
-                  last
-                    ? "border-[#ffa53c] shadow-[0_0_0_5px_rgba(255,165,60,0.16)]"
-                    : "border-[#010C62] shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
-                )}
+                className="relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border border-[#ffa53c] bg-white shadow-[0_0_0_5px_rgba(255,165,60,0.16)]"
               >
-                <span
-                  className={cn(
-                    "absolute inset-[4px] rounded-full",
-                    last ? "bg-[#ffa53c]" : "bg-[#010C62]",
-                  )}
-                />
+                <span className="absolute inset-[4px] rounded-full bg-[#ffa53c]" />
               </span>
+
               <div className="sm:mt-4 sm:text-center">
                 <p className="font-mono text-[11px] tracking-[0.2em] text-[#010C62]">
                   {String(i + 1).padStart(2, "0")}
