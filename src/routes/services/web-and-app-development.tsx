@@ -228,25 +228,30 @@ function WebAppDevelopmentPage() {
                 </Reveal>
               </div>
 
-              {/* ---- Digital product showcase ---- */}
+              {/* ---- Digital product ecosystem showcase ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[560px] lg:max-w-[600px]">
+                <div className="relative mx-auto w-full max-w-[540px] lg:max-w-[580px]">
                   {/* atmospheric depth */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.10] blur-[110px] sm:block"
+                    className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.09] blur-[120px] sm:block"
                     style={{ background: "radial-gradient(circle, #010C62 0%, transparent 70%)" }}
                   />
+                  {/* fine geometric guides */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute left-[6%] top-[10%] hidden h-px w-[88%] bg-navy/[0.07] sm:block"
+                    className="pointer-events-none absolute left-[4%] top-[12%] hidden h-px w-[92%] bg-navy/[0.06] sm:block"
                   />
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute bottom-[8%] left-[10%] hidden h-px w-[80%] bg-navy/[0.06] sm:block"
+                    className="pointer-events-none absolute bottom-[10%] left-[4%] hidden h-px w-[92%] bg-navy/[0.05] sm:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute bottom-[10%] left-[12%] hidden w-px bg-navy/[0.05] sm:block sm:top-[12%]"
                   />
 
-                  {/* connection path (desktop) */}
+                  {/* connector paths */}
                   <svg
                     aria-hidden
                     viewBox="0 0 100 100"
@@ -254,19 +259,33 @@ function WebAppDevelopmentPage() {
                     className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
                   >
                     <path
-                      d="M74 14 L74 24 M20 78 L20 58 L44 58"
+                      d="M70 15 L70 23"
                       fill="none"
                       stroke="#010C62"
-                      strokeOpacity="0.18"
+                      strokeOpacity="0.22"
+                      strokeWidth="0.3"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                    <path
+                      d="M24 74 L24 84"
+                      fill="none"
+                      stroke="#010C62"
+                      strokeOpacity="0.22"
                       strokeWidth="0.3"
                       vectorEffect="non-scaling-stroke"
                     />
                   </svg>
 
-                  <div className="flex flex-col gap-6 sm:block sm:pb-[18%] sm:pl-[6%] sm:pr-[2%] sm:pt-[16%]">
+                  <div className="flex flex-col gap-8 sm:block sm:pb-[16%] sm:pl-[8%] sm:pr-[4%] sm:pt-[15%]">
                     {/* 01 — main web experience */}
-                    <figure className="relative sm:ml-auto sm:w-[86%]">
-                      <div className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_36px_72px_-40px_rgba(1,12,98,0.35)]">
+                    <figure
+                      className="relative sm:ml-auto sm:w-[84%]"
+                      style={{ perspective: "1400px" }}
+                    >
+                      <div
+                        className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_40px_80px_-46px_rgba(1,12,98,0.38)]"
+                        style={{ transform: "rotateY(-2.5deg) rotateX(1deg)" }}
+                      >
                         <div className="flex h-6 items-center gap-1.5 border-b border-navy/[0.07] bg-secondary/40 px-3">
                           <span className="h-1.5 w-1.5 rounded-full bg-navy/15" />
                           <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
@@ -281,41 +300,41 @@ function WebAppDevelopmentPage() {
                           className="aspect-[5/4] w-full object-cover"
                         />
                       </div>
-                      <figcaption className="mt-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45">
+                      <figcaption className="mt-3 text-[0.6rem] font-medium uppercase tracking-[0.26em] text-navy/40">
                         01 — Web
                       </figcaption>
                     </figure>
 
-                    {/* 03 — application dashboard, upper-right */}
-                    <figure className="relative sm:absolute sm:right-0 sm:top-0 sm:w-[38%]">
-                      <div className="overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.32)]">
+                    {/* 02 — application dashboard, upper-right */}
+                    <figure className="relative sm:absolute sm:right-[3%] sm:top-0 sm:w-[32%]">
+                      <div className="overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_22px_46px_-28px_rgba(1,12,98,0.3)]">
                         <img
                           src={wadHeroPanel}
                           alt="Web application analytics dashboard panel"
                           loading="lazy"
                           width={1024}
                           height={768}
-                          className="aspect-[4/3] w-full rounded-lg object-cover"
+                          className="aspect-[4/3] w-full object-cover"
                         />
                       </div>
-                      <figcaption className="mt-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45">
+                      <figcaption className="mt-2 text-[0.6rem] font-medium uppercase tracking-[0.26em] text-navy/40">
                         02 — App
                       </figcaption>
                     </figure>
 
-                    {/* 02 — mobile app, lower-left */}
-                    <figure className="wad-float relative mx-auto w-[46%] sm:absolute sm:bottom-0 sm:left-0 sm:mx-0 sm:w-[17%]">
-                      <div className="overflow-hidden rounded-[1rem] border-[5px] border-white bg-white shadow-[0_26px_54px_-28px_rgba(1,12,98,0.38)] ring-1 ring-navy/[0.06]">
+                    {/* 03 — mobile app, lower-left */}
+                    <figure className="wad-float relative mx-auto w-[42%] sm:absolute sm:bottom-0 sm:left-[4%] sm:mx-0 sm:w-[16.5%]">
+                      <div className="overflow-hidden rounded-[0.85rem] border border-navy/15 bg-white shadow-[0_24px_50px_-26px_rgba(1,12,98,0.4)]">
                         <img
                           src={wadHeroMobile}
                           alt="Mobile application interface screen"
                           loading="lazy"
                           width={720}
                           height={1280}
-                          className="aspect-[9/17] w-full object-cover object-top"
+                          className="block aspect-[9/17] w-full rounded-[0.8rem] object-cover object-top"
                         />
                       </div>
-                      <figcaption className="mt-2 text-center text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45 sm:text-left">
+                      <figcaption className="mt-2 text-center text-[0.6rem] font-medium uppercase tracking-[0.26em] text-navy/40 sm:text-left">
                         03 — Mobile
                       </figcaption>
                     </figure>
@@ -324,14 +343,15 @@ function WebAppDevelopmentPage() {
                   {/* tiny accents */}
                   <span
                     aria-hidden
-                    className="absolute right-[2%] top-[8%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
+                    className="absolute right-[1%] top-[9%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
                   />
                   <span
                     aria-hidden
-                    className="absolute bottom-[3%] right-[16%] hidden h-px w-14 bg-gradient-to-r from-ember/70 to-transparent lg:block"
+                    className="absolute bottom-[9%] right-[6%] hidden h-1 w-1 rounded-full bg-ember/70 lg:block"
                   />
                 </div>
               </Reveal>
+
 
 
             </div>
