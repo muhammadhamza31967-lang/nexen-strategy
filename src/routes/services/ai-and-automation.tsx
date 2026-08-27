@@ -219,6 +219,21 @@ function AiAutomationPage() {
                         strokeOpacity="0.75"
                         strokeWidth="0.4"
                       />
+                      {/* brain icon → top of mobile assistant */}
+                      <path
+                        d="M9 22 C 9 30, 14 33, 14 42"
+                        stroke="#010C62"
+                        strokeOpacity="0.16"
+                        strokeWidth="0.3"
+                        strokeDasharray="1.4 2"
+                      />
+                      <path
+                        className="ai-flow"
+                        d="M9 22 C 9 30, 14 33, 14 42"
+                        stroke="#3AF1FF"
+                        strokeOpacity="0.75"
+                        strokeWidth="0.4"
+                      />
                       {/* automation panel → sparkle */}
                       <path
                         d="M97 45 L97 20"
@@ -228,8 +243,10 @@ function AiAutomationPage() {
                         strokeDasharray="1.4 2"
                       />
                       <circle cx="30" cy="33" r="0.8" fill="#010C62" fillOpacity="0.35" />
+                      <circle cx="14" cy="42" r="0.8" fill="#010C62" fillOpacity="0.3" />
                       <circle cx="62" cy="78" r="0.8" fill="#010C62" fillOpacity="0.3" />
                       <circle cx="97" cy="45" r="0.8" fill="#010C62" fillOpacity="0.3" />
+
                     </svg>
 
                     {/* MAIN — AI operations dashboard */}
