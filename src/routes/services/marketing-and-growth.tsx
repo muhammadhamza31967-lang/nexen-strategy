@@ -102,7 +102,7 @@ function GrowthJourney() {
           }}
         />
         {growthStages.map((stage, i) => {
-          const last = i === growthStages.length - 1;
+          
           return (
             <div
               key={stage}
