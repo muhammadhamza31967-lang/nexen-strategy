@@ -177,15 +177,46 @@ function AiAutomationPage() {
                 </Reveal>
               </div>
 
-              {/* ---- AI working inside a business system ---- */}
+              {/* ---- AI operations & automation system ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="relative w-[92%] lg:w-[88%]">
-                    <span
+                <div className="relative">
+                  {/* atmospheric depth */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -top-16 right-0 h-[420px] w-[420px] rounded-full opacity-[0.10] blur-[130px]"
+                    style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
+                  />
+
+                  {/* ===== Desktop / tablet: art-directed composition ===== */}
+                  <div className="relative hidden aspect-[10/9] w-full sm:block">
+                    <svg
                       aria-hidden
-                      className="absolute -top-6 -right-6 hidden h-full w-full rounded-2xl border border-navy/12 lg:block"
-                    />
-                    <div className="relative overflow-hidden rounded-2xl bg-secondary/40 shadow-[0_50px_90px_-40px_rgba(1,12,98,0.4)]">
+                      className="pointer-events-none absolute inset-0 h-full w-full"
+                      viewBox="0 0 100 90"
+                      preserveAspectRatio="none"
+                      fill="none"
+                    >
+                      <path d="M74 17 L74 30" stroke="#010C62" strokeOpacity="0.18" strokeWidth="0.25" />
+                      <path className="ai-flow" d="M74 17 L74 30" stroke="#3AF1FF" strokeOpacity="0.8" strokeWidth="0.4" />
+                      <path d="M20 40 L20 66" stroke="#010C62" strokeOpacity="0.18" strokeWidth="0.25" />
+                      <path className="ai-flow" d="M20 40 L20 66" stroke="#3AF1FF" strokeOpacity="0.7" strokeWidth="0.4" />
+                      <path d="M20 66 L34 66" stroke="#010C62" strokeOpacity="0.14" strokeWidth="0.25" />
+                    </svg>
+
+                    {/* 01 — main AI operations platform */}
+                    <figure className="absolute left-[8%] top-[16%] w-[80%] overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_46px_90px_-44px_rgba(1,12,98,0.45)]">
+                      <div className="flex h-7 items-center gap-1.5 border-b border-navy/[0.07] bg-[#F7F8FC] px-3">
+                        <span className="h-1.5 w-1.5 rounded-full bg-navy/15" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                        <span className="ml-3 font-mono text-[8px] uppercase tracking-[0.22em] text-navy/40">
+                          AI Operations
+                        </span>
+                        <span className="ml-auto flex items-center gap-1.5">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#3AF1FF]" />
+                          <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-navy/35">Live</span>
+                        </span>
+                      </div>
                       <img
                         src={aiHeroMain}
                         alt="AI assistant working alongside a live business operations dashboard"
@@ -193,18 +224,16 @@ function AiAutomationPage() {
                         height={1024}
                         className="aspect-[5/4] w-full object-cover"
                       />
-                    </div>
-                    <div className="ai-float absolute -bottom-10 -left-8 hidden w-[24%] overflow-hidden rounded-[1.1rem] border-[5px] border-white shadow-[0_36px_70px_-28px_rgba(1,12,98,0.5)] sm:block">
-                      <img
-                        src={aiHeroMobile}
-                        alt="Mobile AI assistant showing a conversation and an automation status card"
-                        loading="lazy"
-                        width={720}
-                        height={1280}
-                        className="aspect-[9/16] w-full object-cover object-top"
-                      />
-                    </div>
-                    <div className="absolute -right-6 top-[12%] hidden w-[42%] overflow-hidden rounded-xl border-[5px] border-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.45)] lg:block">
+                    </figure>
+
+                    {/* 02 — automation workflow panel, upper right */}
+                    <figure className="absolute right-0 top-0 w-[46%] overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_34px_70px_-34px_rgba(1,12,98,0.45)]">
+                      <div className="flex items-center justify-between border-b border-navy/[0.07] bg-white px-2.5 py-1.5">
+                        <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-navy/45">
+                          Trigger → AI → Action
+                        </span>
+                        <span className="h-1 w-1 rounded-full bg-[#ffa53c]" />
+                      </div>
                       <img
                         src={aiHeroPanel}
                         alt="Automation workflow panel with connected trigger, AI agent, condition and action nodes"
@@ -213,32 +242,71 @@ function AiAutomationPage() {
                         height={768}
                         className="aspect-[4/3] w-full object-cover"
                       />
+                    </figure>
+
+                    {/* AI intelligence layer */}
+                    <div className="absolute left-0 top-[30%] w-[30%] rounded-xl border border-navy/10 bg-white/95 p-3 shadow-[0_26px_56px_-30px_rgba(1,12,98,0.4)] backdrop-blur">
+                      <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-navy/40">AI Assistant</p>
+                      <ul className="mt-2 space-y-1.5">
+                        {["Understands", "Analyses", "Recommends", "Acts"].map((s, i) => (
+                          <li key={s} className="flex items-center gap-2">
+                            <span
+                              className="h-1.5 w-1.5 rounded-full"
+                              style={{ background: i === 3 ? "#ffa53c" : "#3AF1FF" }}
+                            />
+                            <span className="text-[10px] font-medium tracking-tight text-navy/75">{s}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <svg
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
-                      viewBox="0 0 400 320"
-                      fill="none"
-                    >
-                      <path
-                        className="ai-flow"
-                        d="M40 250 C 130 250, 150 150, 250 140 S 370 90, 400 70"
-                        stroke="#3AF1FF"
-                        strokeOpacity="0.55"
-                        strokeWidth="1.2"
+
+                    {/* 03 — mobile AI assistant */}
+                    <figure className="ai-float absolute bottom-0 left-[10%] w-[20%] overflow-hidden rounded-[1rem] border-[3px] border-white bg-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.5)]">
+                      <img
+                        src={aiHeroMobile}
+                        alt="Mobile AI assistant showing a conversation and an automation status card"
+                        loading="lazy"
+                        width={720}
+                        height={1280}
+                        className="aspect-[9/16] w-full rounded-[0.8rem] object-cover object-center"
                       />
-                    </svg>
+                    </figure>
+
                     <span
                       aria-hidden
-                      className="absolute -bottom-5 right-14 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
+                      className="absolute bottom-[6%] right-[6%] h-px w-20 bg-gradient-to-r from-amber to-ember"
                     />
-                    <span
-                      aria-hidden
-                      className="absolute -left-4 top-8 hidden h-16 w-px bg-gradient-to-b from-azure to-transparent lg:block"
-                    />
+                  </div>
+
+                  {/* ===== Mobile: clean stacked order ===== */}
+                  <div className="space-y-5 sm:hidden">
+                    <figure className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_30px_60px_-34px_rgba(1,12,98,0.45)]">
+                      <img
+                        src={aiHeroMain}
+                        alt="AI assistant working alongside a live business operations dashboard"
+                        className="aspect-[5/4] w-full object-cover"
+                      />
+                    </figure>
+                    <figure className="overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_24px_50px_-32px_rgba(1,12,98,0.4)]">
+                      <img
+                        src={aiHeroPanel}
+                        alt="Automation workflow panel with connected trigger, AI agent, condition and action nodes"
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                    </figure>
+                    <figure className="mx-auto w-[46%] overflow-hidden rounded-[1rem] border-[3px] border-white bg-white shadow-[0_24px_50px_-28px_rgba(1,12,98,0.45)]">
+                      <img
+                        src={aiHeroMobile}
+                        alt="Mobile AI assistant showing a conversation and an automation status card"
+                        loading="lazy"
+                        className="aspect-[9/16] w-full rounded-[0.8rem] object-cover object-center"
+                      />
+                    </figure>
                   </div>
                 </div>
               </Reveal>
+
             </div>
 
             {/* AI inside the business — technical strip */}
