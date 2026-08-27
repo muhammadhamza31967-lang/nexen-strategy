@@ -228,67 +228,111 @@ function WebAppDevelopmentPage() {
                 </Reveal>
               </div>
 
-              {/* ---- Digital product ecosystem composition ---- */}
+              {/* ---- Digital product showcase ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[620px] pb-14 pl-3 pr-2 pt-10 sm:pb-16 lg:pl-8 lg:pt-14">
-                  {/* depth layer */}
+                <div className="relative mx-auto w-full max-w-[560px] lg:max-w-[600px]">
+                  {/* atmospheric depth */}
                   <span
                     aria-hidden
-                    className="absolute right-1 top-6 hidden h-[72%] w-[86%] rounded-2xl border border-navy/[0.09] bg-white/60 lg:block"
-                  />
-
-                  {/* 01 — main website / browser */}
-                  <div className="relative ml-auto w-[92%] overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_44px_86px_-42px_rgba(1,12,98,0.42)]">
-                    <div className="flex h-6 items-center gap-1.5 border-b border-navy/[0.07] bg-secondary/50 px-3">
-                      <span className="h-1.5 w-1.5 rounded-full bg-navy/15" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
-                      <span className="ml-2 h-2 w-24 rounded-full bg-navy/[0.06]" />
-                    </div>
-                    <img
-                      src={wadHeroMain}
-                      alt="Premium corporate website interface displayed in a browser window"
-                      width={1280}
-                      height={1024}
-                      className="aspect-[5/4] w-full object-cover"
-                    />
-                  </div>
-
-                  {/* 03 — web application / dashboard, floating upper-right */}
-                  <div className="absolute right-0 top-0 w-[40%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_30px_60px_-30px_rgba(1,12,98,0.4)] sm:w-[36%]">
-                    <img
-                      src={wadHeroPanel}
-                      alt="Web application analytics dashboard panel"
-                      loading="lazy"
-                      width={1024}
-                      height={768}
-                      className="aspect-[4/3] w-full rounded-lg object-cover"
-                    />
-                  </div>
-
-                  {/* 02 — mobile application, lower-left anchor */}
-                  <div className="wad-float absolute bottom-4 left-0 w-[19%] overflow-hidden rounded-[0.95rem] border-[4px] border-white bg-white shadow-[0_30px_60px_-28px_rgba(1,12,98,0.45)] sm:w-[17%]">
-                    <img
-                      src={wadHeroMobile}
-                      alt="Mobile application interface screen"
-                      loading="lazy"
-                      width={720}
-                      height={1280}
-                      className="aspect-[9/17] w-full object-cover object-top"
-                    />
-                  </div>
-
-                  {/* technical markers */}
-                  <span
-                    aria-hidden
-                    className="absolute bottom-6 right-[10%] hidden h-px w-20 bg-gradient-to-r from-amber to-ember lg:block"
+                    className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.10] blur-[110px] sm:block"
+                    style={{ background: "radial-gradient(circle, #010C62 0%, transparent 70%)" }}
                   />
                   <span
                     aria-hidden
-                    className="absolute left-[7%] top-[24%] hidden h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent lg:block"
+                    className="pointer-events-none absolute left-[6%] top-[10%] hidden h-px w-[88%] bg-navy/[0.07] sm:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute bottom-[8%] left-[10%] hidden h-px w-[80%] bg-navy/[0.06] sm:block"
+                  />
+
+                  {/* connection path (desktop) */}
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                    className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+                  >
+                    <path
+                      d="M74 14 L74 24 M20 78 L20 58 L44 58"
+                      fill="none"
+                      stroke="#010C62"
+                      strokeOpacity="0.18"
+                      strokeWidth="0.3"
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  </svg>
+
+                  <div className="flex flex-col gap-6 sm:block sm:pb-[18%] sm:pl-[6%] sm:pr-[2%] sm:pt-[16%]">
+                    {/* 01 — main web experience */}
+                    <figure className="relative sm:ml-auto sm:w-[86%]">
+                      <div className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_36px_72px_-40px_rgba(1,12,98,0.35)]">
+                        <div className="flex h-6 items-center gap-1.5 border-b border-navy/[0.07] bg-secondary/40 px-3">
+                          <span className="h-1.5 w-1.5 rounded-full bg-navy/15" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                          <span className="ml-2 h-2 w-24 rounded-full bg-navy/[0.06]" />
+                        </div>
+                        <img
+                          src={wadHeroMain}
+                          alt="Premium corporate website interface displayed in a browser window"
+                          width={1280}
+                          height={1024}
+                          className="aspect-[5/4] w-full object-cover"
+                        />
+                      </div>
+                      <figcaption className="mt-3 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45">
+                        01 — Web
+                      </figcaption>
+                    </figure>
+
+                    {/* 03 — application dashboard, upper-right */}
+                    <figure className="relative sm:absolute sm:right-0 sm:top-0 sm:w-[38%]">
+                      <div className="overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.32)]">
+                        <img
+                          src={wadHeroPanel}
+                          alt="Web application analytics dashboard panel"
+                          loading="lazy"
+                          width={1024}
+                          height={768}
+                          className="aspect-[4/3] w-full rounded-lg object-cover"
+                        />
+                      </div>
+                      <figcaption className="mt-2 text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45">
+                        02 — App
+                      </figcaption>
+                    </figure>
+
+                    {/* 02 — mobile app, lower-left */}
+                    <figure className="wad-float relative mx-auto w-[46%] sm:absolute sm:bottom-0 sm:left-0 sm:mx-0 sm:w-[17%]">
+                      <div className="overflow-hidden rounded-[1rem] border-[5px] border-white bg-white shadow-[0_26px_54px_-28px_rgba(1,12,98,0.38)] ring-1 ring-navy/[0.06]">
+                        <img
+                          src={wadHeroMobile}
+                          alt="Mobile application interface screen"
+                          loading="lazy"
+                          width={720}
+                          height={1280}
+                          className="aspect-[9/17] w-full object-cover object-top"
+                        />
+                      </div>
+                      <figcaption className="mt-2 text-center text-[0.62rem] font-medium uppercase tracking-[0.24em] text-navy/45 sm:text-left">
+                        03 — Mobile
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  {/* tiny accents */}
+                  <span
+                    aria-hidden
+                    className="absolute right-[2%] top-[8%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute bottom-[3%] right-[16%] hidden h-px w-14 bg-gradient-to-r from-ember/70 to-transparent lg:block"
                   />
                 </div>
               </Reveal>
+
 
             </div>
           </div>
