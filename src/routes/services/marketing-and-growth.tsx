@@ -91,17 +91,23 @@ function GrowthJourney() {
   return (
     <div className="relative">
       <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-5 sm:gap-2">
-        {/* progression line */}
+        {/* progression line — passes exactly through the centre of every dot */}
         <span
           aria-hidden
-          className="absolute left-[calc(10%)] right-[calc(10%)] top-[7px] hidden h-px bg-gradient-to-r from-navy/15 via-navy/15 to-ember/50 sm:block"
+          className="absolute left-[9%] right-[9%] hidden h-[2px] rounded-full sm:block"
+          style={{
+            top: "7px",
+            marginTop: "-1px",
+            background:
+              "linear-gradient(to right, rgba(255,165,60,0.35) 0%, rgba(255,165,60,0.55) 50%, #ffa53c 100%)",
+          }}
         />
         {growthStages.map((stage, i) => {
           const last = i === growthStages.length - 1;
           return (
             <div
               key={stage}
-              className="relative flex items-center gap-4 sm:block"
+              className="relative flex items-center gap-4 sm:flex-col sm:items-center sm:gap-0"
               style={{ animation: `fade-in 0.5s ease-out both`, animationDelay: `${i * 140}ms` }}
             >
               <span
@@ -109,18 +115,18 @@ function GrowthJourney() {
                 className={cn(
                   "relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border bg-white",
                   last
-                    ? "border-ember shadow-[0_0_0_5px_rgba(255,72,63,0.12)]"
-                    : "border-navy/25 shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
+                    ? "border-[#ffa53c] shadow-[0_0_0_5px_rgba(255,165,60,0.16)]"
+                    : "border-[#ffa53c]/50 shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
                 )}
               >
                 <span
                   className={cn(
                     "absolute inset-[4px] rounded-full",
-                    last ? "bg-ember" : "bg-navy/35",
+                    last ? "bg-[#ffa53c]" : "bg-navy/35",
                   )}
                 />
               </span>
-              <div className="sm:mt-4">
+              <div className="sm:mt-4 sm:text-center">
                 <p className="font-mono text-[11px] tracking-[0.2em] text-navy/40">
                   {String(i + 1).padStart(2, "0")}
                 </p>
@@ -138,6 +144,7 @@ function GrowthJourney() {
         })}
       </div>
     </div>
+
   );
 }
 
