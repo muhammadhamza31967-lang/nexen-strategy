@@ -228,58 +228,68 @@ function WebAppDevelopmentPage() {
                 </Reveal>
               </div>
 
-              {/* ---- Layered digital-product composition ---- */}
+              {/* ---- Digital product ecosystem composition ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="relative w-[92%] lg:w-[88%]">
-                    <span
-                      aria-hidden
-                      className="absolute -top-6 -right-6 hidden h-full w-full rounded-2xl border border-navy/12 lg:block"
-                    />
-                    {/* primary browser interface */}
-                    <div className="relative overflow-hidden rounded-2xl bg-secondary/40 shadow-[0_50px_90px_-40px_rgba(1,12,98,0.4)]">
-                      <img
-                        src={wadHeroMain}
-                        alt="Premium corporate website interface displayed in a browser window"
-                        width={1280}
-                        height={1024}
-                        className="aspect-[5/4] w-full object-cover"
-                      />
+                <div className="relative mx-auto w-full max-w-[620px] pb-14 pl-3 pr-2 pt-10 sm:pb-16 lg:pl-8 lg:pt-14">
+                  {/* depth layer */}
+                  <span
+                    aria-hidden
+                    className="absolute right-1 top-6 hidden h-[72%] w-[86%] rounded-2xl border border-navy/[0.09] bg-white/60 lg:block"
+                  />
+
+                  {/* 01 — main website / browser */}
+                  <div className="relative ml-auto w-[92%] overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_44px_86px_-42px_rgba(1,12,98,0.42)]">
+                    <div className="flex h-6 items-center gap-1.5 border-b border-navy/[0.07] bg-secondary/50 px-3">
+                      <span className="h-1.5 w-1.5 rounded-full bg-navy/15" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-navy/10" />
+                      <span className="ml-2 h-2 w-24 rounded-full bg-navy/[0.06]" />
                     </div>
-                    {/* mobile app screen */}
-                    <div className="wad-float absolute -bottom-10 -left-8 hidden w-[27%] overflow-hidden rounded-[1.1rem] border-[5px] border-white shadow-[0_36px_70px_-28px_rgba(1,12,98,0.5)] sm:block">
-                      <img
-                        src={wadHeroMobile}
-                        alt="Mobile application interface screen"
-                        loading="lazy"
-                        width={720}
-                        height={1280}
-                        className="aspect-[9/17] w-full object-cover object-top"
-                      />
-                    </div>
-                    {/* floating dashboard panel */}
-                    <div className="absolute -right-6 top-[14%] hidden w-[42%] overflow-hidden rounded-xl border-[5px] border-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.45)] lg:block">
-                      <img
-                        src={wadHeroPanel}
-                        alt="Web application analytics dashboard panel"
-                        loading="lazy"
-                        width={1024}
-                        height={768}
-                        className="aspect-[4/3] w-full object-cover"
-                      />
-                    </div>
-                    {/* technical markers */}
-                    <span
-                      aria-hidden
-                      className="absolute -bottom-5 right-14 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
-                    />
-                    <span
-                      aria-hidden
-                      className="absolute -left-4 top-8 hidden h-16 w-px bg-gradient-to-b from-azure to-transparent lg:block"
+                    <img
+                      src={wadHeroMain}
+                      alt="Premium corporate website interface displayed in a browser window"
+                      width={1280}
+                      height={1024}
+                      className="aspect-[5/4] w-full object-cover"
                     />
                   </div>
+
+                  {/* 03 — web application / dashboard, floating upper-right */}
+                  <div className="absolute right-0 top-0 w-[40%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_30px_60px_-30px_rgba(1,12,98,0.4)] sm:w-[36%]">
+                    <img
+                      src={wadHeroPanel}
+                      alt="Web application analytics dashboard panel"
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="aspect-[4/3] w-full rounded-lg object-cover"
+                    />
+                  </div>
+
+                  {/* 02 — mobile application, lower-left anchor */}
+                  <div className="wad-float absolute bottom-4 left-0 w-[19%] overflow-hidden rounded-[0.95rem] border-[4px] border-white bg-white shadow-[0_30px_60px_-28px_rgba(1,12,98,0.45)] sm:w-[17%]">
+                    <img
+                      src={wadHeroMobile}
+                      alt="Mobile application interface screen"
+                      loading="lazy"
+                      width={720}
+                      height={1280}
+                      className="aspect-[9/17] w-full object-cover object-top"
+                    />
+                  </div>
+
+                  {/* technical markers */}
+                  <span
+                    aria-hidden
+                    className="absolute bottom-6 right-[10%] hidden h-px w-20 bg-gradient-to-r from-amber to-ember lg:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute left-[7%] top-[24%] hidden h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent lg:block"
+                  />
                 </div>
               </Reveal>
+
             </div>
           </div>
         </section>
