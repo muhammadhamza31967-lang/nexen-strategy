@@ -31,7 +31,6 @@ import wadAi from "@/assets/wad-ai.jpg";
 import wadApi from "@/assets/wad-api.jpg";
 import wadModular from "@/assets/wad-modular.jpg";
 
-
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
    ================================================================ */
@@ -213,9 +212,7 @@ function WebAppDevelopmentPage() {
                   </h1>
                 </Reveal>
                 <Reveal delay={160}>
-                  <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
-                    {heroParagraph}
-                  </p>
+                  <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">{heroParagraph}</p>
                 </Reveal>
                 <Reveal delay={230}>
                   <div className="mt-10 flex items-center gap-8">
@@ -275,10 +272,7 @@ function WebAppDevelopmentPage() {
 
                   <div className="flex flex-col gap-8 sm:block sm:pb-[14%] sm:pl-[6%] sm:pr-[6%] sm:pt-[14%]">
                     {/* 01 — main web experience */}
-                    <figure
-                      className="relative sm:ml-auto sm:w-[86%]"
-                      style={{ perspective: "1600px" }}
-                    >
+                    <figure className="relative sm:ml-auto sm:w-[86%]" style={{ perspective: "1600px" }}>
                       <div
                         className="overflow-hidden rounded-2xl border border-navy/[0.08] bg-white shadow-[0_46px_90px_-46px_rgba(1,12,98,0.4)]"
                         style={{ transform: "rotateY(-7deg) rotateX(2deg) rotate(-1.5deg)" }}
@@ -329,7 +323,7 @@ function WebAppDevelopmentPage() {
                   </div>
 
                   {/* subtle markers */}
-                  <span
+                  {/* <span
                     aria-hidden
                     className="absolute left-[40%] top-[6%] hidden text-[0.58rem] font-medium uppercase tracking-[0.26em] text-navy/40 sm:block"
                   >
@@ -346,17 +340,13 @@ function WebAppDevelopmentPage() {
                     className="absolute bottom-[8%] left-0 hidden text-[0.58rem] font-medium uppercase tracking-[0.26em] text-navy/40 sm:block"
                   >
                     03 — Mobile
-                  </span>
+                  </span> */}
                   <span
                     aria-hidden
                     className="absolute right-[3%] top-[46%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
                   />
                 </div>
               </Reveal>
-
-
-
-
             </div>
           </div>
         </section>
@@ -371,10 +361,7 @@ function WebAppDevelopmentPage() {
                 <h2 className="display mt-5 text-[2.1rem] leading-[1.1] text-navy sm:text-4xl lg:text-[3rem]">
                   More Than Just a Website.
                 </h2>
-                <span
-                  aria-hidden
-                  className="mt-8 block h-px w-24 bg-gradient-to-r from-amber to-ember"
-                />
+                <span aria-hidden className="mt-8 block h-px w-24 bg-gradient-to-r from-amber to-ember" />
                 <div className="mt-9 space-y-6">
                   {overviewParagraphs.map((p) => (
                     <p key={p} className="max-w-xl text-lg leading-[1.75] text-navy/75">
@@ -431,10 +418,7 @@ function WebAppDevelopmentPage() {
               <Reveal className="lg:col-span-5">
                 <p className="eyebrow text-azure">Services</p>
                 <h2 className="display mt-5 text-4xl text-navy lg:text-5xl">What We Build</h2>
-                <span
-                  aria-hidden
-                  className="mt-9 block h-px w-24 bg-gradient-to-r from-amber to-ember"
-                />
+                <span aria-hidden className="mt-9 block h-px w-24 bg-gradient-to-r from-amber to-ember" />
                 <ul className="mt-12">
                   {serviceAreas.map((s, i) => {
                     const on = i === activeService;
@@ -496,9 +480,7 @@ function WebAppDevelopmentPage() {
                     {String(activeService + 1).padStart(2, "0")} — Capability
                   </p>
                   <h3 className="display mt-4 text-3xl text-navy xl:text-[2.5rem]">{active.name}</h3>
-                  <p className="mt-6 max-w-2xl text-[1.2rem] leading-[1.7] text-navy/80">
-                    {active.text}
-                  </p>
+                  <p className="mt-6 max-w-2xl text-[1.2rem] leading-[1.7] text-navy/80">{active.text}</p>
                   <div className="relative mt-9">
                     <span
                       aria-hidden
@@ -521,8 +503,7 @@ function WebAppDevelopmentPage() {
                         />
                       ))}
                       <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-navy/55 px-3.5 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur-sm">
-                        {String(activeService + 1).padStart(2, "0")} /{" "}
-                        {String(serviceAreas.length).padStart(2, "0")}
+                        {String(activeService + 1).padStart(2, "0")} / {String(serviceAreas.length).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -546,9 +527,7 @@ function WebAppDevelopmentPage() {
                         <span
                           className={cn(
                             "flex h-7 w-7 items-center justify-center font-mono text-[12px] font-medium text-transparent transition-all duration-300",
-                            on
-                              ? "[-webkit-text-stroke:1px_#ff483f]"
-                              : "[-webkit-text-stroke:1px_rgba(1,12,98,0.25)]",
+                            on ? "[-webkit-text-stroke:1px_#ff483f]" : "[-webkit-text-stroke:1px_rgba(1,12,98,0.25)]",
                           )}
                         >
                           {String(i + 1).padStart(2, "0")}
@@ -604,9 +583,7 @@ function WebAppDevelopmentPage() {
             <Reveal className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="eyebrow text-azure">Our approach</p>
-                <h2 className="display mt-5 text-[2rem] text-navy sm:text-4xl lg:text-[2.75rem]">
-                  Our Approach
-                </h2>
+                <h2 className="display mt-5 text-[2rem] text-navy sm:text-4xl lg:text-[2.75rem]">Our Approach</h2>
               </div>
               <p
                 aria-hidden
@@ -739,9 +716,7 @@ function WebAppDevelopmentPage() {
                       key={s.name}
                       className={cn(
                         "w-[62%] shrink-0 snap-center rounded-2xl border bg-white p-6 transition-all duration-500",
-                        current
-                          ? "border-navy/20 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.35)]"
-                          : "border-navy/10",
+                        current ? "border-navy/20 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.35)]" : "border-navy/10",
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -756,17 +731,13 @@ function WebAppDevelopmentPage() {
                         <span
                           className={cn(
                             "relative flex h-11 w-11 items-center justify-center rounded-xl border transition-colors duration-300",
-                            current
-                              ? "border-navy bg-navy text-white"
-                              : "border-navy/10 text-navy/50",
+                            current ? "border-navy bg-navy text-white" : "border-navy/10 text-navy/50",
                           )}
                         >
                           <Icon className="h-5 w-5" strokeWidth={1.5} />
                         </span>
                       </div>
-                      <h3 className="mt-5 text-lg font-semibold tracking-tight text-navy">
-                        {s.name}
-                      </h3>
+                      <h3 className="mt-5 text-lg font-semibold tracking-tight text-navy">{s.name}</h3>
                     </article>
                   );
                 })}
@@ -815,10 +786,7 @@ function WebAppDevelopmentPage() {
                   <br />
                   Around Your Business
                 </h2>
-                <span
-                  aria-hidden
-                  className="mt-8 block h-px w-24 bg-gradient-to-r from-amber to-ember"
-                />
+                <span aria-hidden className="mt-8 block h-px w-24 bg-gradient-to-r from-amber to-ember" />
                 <div className="mt-9 space-y-6">
                   {closingParagraphs.map((p) => (
                     <p key={p} className="max-w-xl text-lg leading-[1.75] text-navy/75">
@@ -872,10 +840,7 @@ function WebAppDevelopmentPage() {
 
               <div className="relative max-w-3xl">
                 <Reveal>
-                  <h2
-                    className="display text-white"
-                    style={{ fontSize: "clamp(2rem, 4.2vw, 3.6rem)" }}
-                  >
+                  <h2 className="display text-white" style={{ fontSize: "clamp(2rem, 4.2vw, 3.6rem)" }}>
                     Digital Experiences Built to Perform.
                   </h2>
                 </Reveal>
