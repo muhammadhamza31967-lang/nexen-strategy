@@ -220,66 +220,70 @@ function MarketingGrowthPage() {
 
               {/* ---- Marketing intelligence composition ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="relative w-[92%] lg:w-[88%]">
-                    <span
-                      aria-hidden
-                      className="absolute -top-6 -right-6 hidden h-full w-full rounded-2xl border border-navy/12 lg:block"
-                    />
-                    <div className="relative overflow-hidden rounded-2xl bg-secondary/40 shadow-[0_50px_90px_-40px_rgba(1,12,98,0.4)]">
-                      <img
-                        src={mktHeroMain}
-                        alt="Marketing intelligence dashboard showing audience analytics, campaign performance, traffic and conversion growth"
-                        width={1280}
-                        height={1024}
-                        className="aspect-[5/4] w-full object-cover"
-                      />
-                    </div>
-                    <div className="mkt-float absolute -bottom-10 -left-8 hidden w-[24%] overflow-hidden rounded-[1.1rem] border-[5px] border-white shadow-[0_36px_70px_-28px_rgba(1,12,98,0.5)] sm:block">
-                      <img
-                        src={mktHeroMobile}
-                        alt="Mobile marketing app showing campaign performance and new lead volume"
-                        loading="lazy"
-                        width={720}
-                        height={1280}
-                        className="aspect-[9/16] w-full object-cover object-top"
-                      />
-                    </div>
-                    <div className="absolute -right-6 top-[12%] hidden w-[44%] overflow-hidden rounded-xl border-[5px] border-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.45)] lg:block">
-                      <img
-                        src={mktHeroPanel}
-                        alt="Growth journey panel linking attention, engagement, leads, customers and growth"
-                        loading="lazy"
-                        width={1024}
-                        height={768}
-                        className="aspect-[4/3] w-full object-cover"
-                      />
-                    </div>
-                    <svg
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
-                      viewBox="0 0 400 320"
-                      fill="none"
-                    >
-                      <path
-                        className="mkt-flow"
-                        d="M30 260 C 120 258, 160 170, 250 150 S 372 96, 400 62"
-                        stroke="#4A73FF"
-                        strokeOpacity="0.5"
-                        strokeWidth="1.2"
-                      />
-                    </svg>
-                    <span
-                      aria-hidden
-                      className="absolute -bottom-5 right-14 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
-                    />
-                    <span
-                      aria-hidden
-                      className="absolute -left-4 top-8 hidden h-16 w-px bg-gradient-to-b from-azure to-transparent lg:block"
+                <div className="relative mx-auto w-full max-w-[620px] pb-12 pl-4 pr-2 sm:pb-16 lg:pl-8">
+                  {/* soft background glow */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute right-[-8%] top-[-10%] h-[80%] w-[80%] rounded-full opacity-[0.10] blur-[110px]"
+                    style={{ background: "radial-gradient(circle, #4A73FF 0%, transparent 70%)" }}
+                  />
+                  {/* depth layers behind the dashboard */}
+                  <span
+                    aria-hidden
+                    className="absolute right-0 top-3 hidden h-[74%] w-[88%] rounded-2xl border border-navy/10 bg-white/60 lg:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute right-2 top-6 hidden h-[70%] w-[84%] rounded-2xl border border-navy/[0.07] lg:block"
+                  />
+
+                  {/* 1 — main dashboard, biased right */}
+                  <div className="relative ml-auto w-[94%] overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_44px_86px_-42px_rgba(1,12,98,0.42)]">
+                    <img
+                      src={mktHeroMain}
+                      alt="Marketing intelligence dashboard showing audience analytics, campaign performance, traffic and conversion growth"
+                      width={1280}
+                      height={1024}
+                      className="aspect-[5/4] w-full object-cover"
                     />
                   </div>
+
+                  {/* 2 — growth / conversion insight panel, docked to the dashboard */}
+                  <div className="absolute bottom-2 right-[6%] w-[46%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_28px_58px_-30px_rgba(1,12,98,0.4)] sm:bottom-4 sm:w-[42%]">
+                    <img
+                      src={mktHeroPanel}
+                      alt="Growth journey panel linking attention, engagement, leads, customers and growth"
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="aspect-[4/3] w-full rounded-lg object-cover"
+                    />
+                  </div>
+
+                  {/* 3 — supporting mobile preview, lower-left with controlled overlap */}
+                  <div className="mkt-float absolute bottom-6 left-0 w-[17%] overflow-hidden rounded-[0.9rem] border-[4px] border-white bg-white shadow-[0_30px_60px_-28px_rgba(1,12,98,0.45)] sm:w-[15%]">
+                    <img
+                      src={mktHeroMobile}
+                      alt="Mobile marketing app showing campaign performance and new lead volume"
+                      loading="lazy"
+                      width={720}
+                      height={1280}
+                      className="aspect-[9/16] w-full object-cover object-top"
+                    />
+                  </div>
+
+                  {/* refined accents */}
+                  <span
+                    aria-hidden
+                    className="absolute left-[6%] top-[10%] hidden h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent lg:block"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute right-[6%] top-[-10px] hidden h-px w-20 bg-gradient-to-r from-amber to-ember lg:block"
+                  />
                 </div>
               </Reveal>
+
             </div>
 
             {/* Growth chain — technical strip */}
