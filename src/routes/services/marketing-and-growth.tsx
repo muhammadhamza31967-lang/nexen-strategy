@@ -98,8 +98,7 @@ function GrowthJourney() {
           style={{
             top: "7px",
             marginTop: "-1px",
-            background:
-              "linear-gradient(to right, rgba(255,165,60,0.35) 0%, rgba(255,165,60,0.55) 50%, #ffa53c 100%)",
+            background: "#010C62",
           }}
         />
         {growthStages.map((stage, i) => {
@@ -116,28 +115,24 @@ function GrowthJourney() {
                   "relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border bg-white",
                   last
                     ? "border-[#ffa53c] shadow-[0_0_0_5px_rgba(255,165,60,0.16)]"
-                    : "border-[#ffa53c]/50 shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
+                    : "border-[#010C62] shadow-[0_0_0_4px_rgba(1,12,98,0.05)]",
                 )}
               >
                 <span
                   className={cn(
                     "absolute inset-[4px] rounded-full",
-                    last ? "bg-[#ffa53c]" : "bg-navy/35",
+                    last ? "bg-[#ffa53c]" : "bg-[#010C62]",
                   )}
                 />
               </span>
               <div className="sm:mt-4 sm:text-center">
-                <p className="font-mono text-[11px] tracking-[0.2em] text-navy/40">
+                <p className="font-mono text-[11px] tracking-[0.2em] text-[#010C62]">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <p
-                  className={cn(
-                    "mt-1 font-mono text-[11px] uppercase tracking-[0.18em]",
-                    last ? "text-navy" : "text-navy/65",
-                  )}
-                >
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#010C62]">
                   {stage}
                 </p>
+
               </div>
             </div>
           );
