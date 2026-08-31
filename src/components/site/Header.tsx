@@ -17,7 +17,13 @@ import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-export function Header({ overHero = false }: { overHero?: boolean }) {
+export function Header({
+  overHero = false,
+  transparentDefault = false,
+}: {
+  overHero?: boolean;
+  transparentDefault?: boolean;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
