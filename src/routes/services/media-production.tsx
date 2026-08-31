@@ -15,7 +15,7 @@ import mpProduct from "@/assets/mp-product-video.jpg";
 import mpPhotography from "@/assets/mp-photography.jpg";
 import mpSocial from "@/assets/mp-social-content-v2.jpg";
 import mpMotion from "@/assets/mp-motion-graphics-v4.jpg";
-import mpAnimation from "@/assets/mp-animation-v2.jpg";
+import mpAnimation from "@/assets/mp-animation-v3.jpg";
 import mpEditing from "@/assets/mp-video-editing.jpg";
 import mpDetail from "@/assets/media-2.jpg";
 
@@ -238,16 +238,6 @@ function MediaProductionPage() {
                       <Play aria-hidden className="ml-0.5 h-5 w-5 fill-white text-white" />
                     </span>
 
-                    {/* timeline / scrubber */}
-                    <div className="absolute inset-x-6 bottom-6">
-                      <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.2em] text-white/70">
-                        <span>00:00:12</span>
-                        <span>4K · 24FPS</span>
-                      </div>
-                      <div className="relative mt-2 h-[2px] w-full overflow-hidden rounded-full bg-white/25">
-                        <span className="mp-scrub absolute inset-0 block bg-gradient-to-r from-amber to-ember" />
-                      </div>
-                    </div>
                   </div>
 
                   {/* 02 — vertical social frame */}
