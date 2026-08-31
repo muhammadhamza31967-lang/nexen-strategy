@@ -40,6 +40,27 @@ const projects = [
     summary: "A secure patient and practitioner portal replacing four disconnected systems.",
     image: work4,
   },
+  {
+    title: "Roya Ventures",
+    sector: "Investment & Advisory",
+    category: "Web & App Development",
+    summary: "A responsive digital experience engineered end to end — clear communication, intuitive journeys and a scalable foundation built to support growth.",
+    image: royaWeb.url,
+  },
+  {
+    title: "Hightech",
+    sector: "Industrial Engineering",
+    category: "Brand & Design",
+    summary: "Brand identity and a professional company profile that brings Hightech's identity, services and capabilities together through a clear, cohesive visual system.",
+    image: hitechBrand.url,
+  },
+  {
+    title: "Dr Shahid Mahmud Clinic",
+    sector: "Healthcare",
+    category: "Social Media Marketing",
+    summary: "Social media marketing across multiple platforms — consistent content, increased visibility and strong engagement and audience growth for the clinic.",
+    image: drShahidSocial.url,
+  },
 ];
 
 const ROTATE_MS = 5500;
