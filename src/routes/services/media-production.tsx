@@ -381,8 +381,8 @@ function MediaProductionPage() {
               </Reveal>
 
               {/* Right: label → title → description → visual */}
-              <Reveal delay={120} className="lg:col-span-7">
-                <div key={activeCapability} className="mp-caption">
+              <Reveal delay={120} className="flex flex-col lg:col-span-7">
+                <div key={activeCapability} className="mp-caption flex flex-1 flex-col">
                   <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-ember">
                     {String(activeCapability + 1).padStart(2, "0")} — Production
                   </p>
@@ -390,12 +390,12 @@ function MediaProductionPage() {
                   <p className="mt-6 max-w-2xl text-[1.15rem] leading-[1.7] text-navy/80">
                     {active.text}
                   </p>
-                  <div className="relative mt-9">
+                  <div className="relative mt-9 min-h-[440px] flex-1 lg:mt-10">
                     <span
                       aria-hidden
                       className="absolute -top-4 -right-4 hidden h-full w-full rounded-2xl border border-navy/10 lg:block"
                     />
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-navy/10 bg-navy shadow-[0_50px_90px_-45px_rgba(1,12,98,0.45)]">
+                    <div className="relative h-full w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy shadow-[0_50px_90px_-45px_rgba(1,12,98,0.45)]">
                       {capabilities.map((s, i) => (
                         <img
                           key={s.name}
@@ -426,17 +426,6 @@ function MediaProductionPage() {
                         {String(activeCapability + 1).padStart(2, "0")} /{" "}
                         {String(capabilities.length).padStart(2, "0")}
                       </span>
-                      {/* timeline */}
-                      <div className="absolute inset-x-5 bottom-5">
-                        <div className="relative h-[2px] w-full overflow-hidden rounded-full bg-white/25">
-                          <span
-                            className="absolute inset-y-0 left-0 block bg-gradient-to-r from-amber to-ember transition-all duration-700"
-                            style={{
-                              width: `${((activeCapability + 1) / capabilities.length) * 100}%`,
-                            }}
-                          />
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
