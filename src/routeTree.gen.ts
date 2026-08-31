@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ServicesAiAndAutomationRouteImport } from './routes/services/ai-and-automation'
@@ -40,6 +41,11 @@ const ClientsRoute = ClientsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/clients': typeof ClientsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/portfolio': typeof PortfolioRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-and-automation': typeof ServicesAiAndAutomationRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/clients'
     | '/contact'
+    | '/gallery'
     | '/portfolio'
     | '/services/$slug'
     | '/services/ai-and-automation'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/clients'
     | '/contact'
+    | '/gallery'
     | '/portfolio'
     | '/services/$slug'
     | '/services/ai-and-automation'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/clients'
     | '/contact'
+    | '/gallery'
     | '/portfolio'
     | '/services/$slug'
     | '/services/ai-and-automation'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ClientsRoute: typeof ClientsRoute
   ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesAiAndAutomationRoute: typeof ServicesAiAndAutomationRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ClientsRoute: ClientsRoute,
   ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesAiAndAutomationRoute: ServicesAiAndAutomationRoute,
