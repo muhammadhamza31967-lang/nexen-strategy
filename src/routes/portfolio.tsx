@@ -38,18 +38,18 @@ import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
 import nexaflowMain from "@/assets/pf-nexaflow-main.jpg";
 import nexaflowCrm from "@/assets/pf-nexaflow-crm.jpg";
 import nexaflowWorkflow from "@/assets/pf-nexaflow-workflow.jpg";
-import nexusMain from "@/assets/pf-nexus-main.jpg";
-import nexusWorkflow from "@/assets/pf-nexus-workflow.jpg";
-import nexusAnalytics from "@/assets/pf-nexus-analytics.jpg";
-import vertexMain from "@/assets/pf-vertex-main.jpg";
-import vertexComms from "@/assets/pf-vertex-comms.jpg";
-import vertexSettings from "@/assets/pf-vertex-settings.jpg";
-import flowmindMain from "@/assets/pf-flowmind-main.jpg";
-import flowmindAgents from "@/assets/pf-flowmind-agents.jpg";
-import flowmindBuilder from "@/assets/pf-flowmind-builder.jpg";
-import assistiqMain from "@/assets/pf-assistiq-main.jpg";
-import assistiqInsights from "@/assets/pf-assistiq-insights.jpg";
-import assistiqTasks from "@/assets/pf-assistiq-tasks.jpg";
+import opsMain from "@/assets/pf-ops-main.jpg";
+import opsWorkflow from "@/assets/pf-ops-workflow.jpg";
+import opsAnalytics from "@/assets/pf-ops-analytics.jpg";
+import crmMain from "@/assets/pf-crm-main.jpg";
+import crmPipeline from "@/assets/pf-crm-pipeline.jpg";
+import crmPortal from "@/assets/pf-crm-portal.jpg";
+import aiAutoMain from "@/assets/pf-aiauto-main.jpg";
+import aiAutoFlow from "@/assets/pf-aiauto-flow.jpg";
+import aiAutoDash from "@/assets/pf-aiauto-dash.jpg";
+import aiAssistMain from "@/assets/pf-aiassist-main.jpg";
+import aiAssistTasks from "@/assets/pf-aiassist-tasks.jpg";
+import aiAssistInsights from "@/assets/pf-aiassist-insights.jpg";
 import hitech1 from "@/assets/hitech-profile-1.jpg.asset.json";
 import roya1 from "@/assets/roya-profile-1.jpg.asset.json";
 import roya2 from "@/assets/roya-profile-2.jpg.asset.json";
@@ -148,22 +148,22 @@ const projects: Project[] = [
   {
     number: "13",
     category: "Software Solutions",
-    title: "Nexus Operations Platform",
+    title: "Business Operations Platform",
     description:
-      "A centralized business operations platform designed to connect teams, workflows and business information in one intelligent environment.",
-    capabilities: ["Business Platform", "Dashboard", "Workflow Management"],
-    images: [nexusMain, nexusWorkflow, nexusAnalytics],
+      "A centralized software platform designed to simplify business operations, connect information and give teams better control over everyday workflows.",
+    capabilities: ["Custom Software", "Business Platforms", "Dashboard Development"],
+    images: [opsMain, opsWorkflow, opsAnalytics],
     layout: "simple",
     href: "/contact",
   },
   {
     number: "14",
     category: "Software Solutions",
-    title: "Vertex Business Portal",
+    title: "Customer Management System",
     description:
-      "A secure digital portal designed to simplify communication, information access and everyday business processes for teams and stakeholders.",
-    capabilities: ["Business Portal", "Custom Software", "System Integration"],
-    images: [vertexMain, vertexComms, vertexSettings],
+      "A scalable customer management solution designed to organize customer information, streamline communication and improve internal processes.",
+    capabilities: ["CRM Solutions", "Custom Software", "System Integration"],
+    images: [crmMain, crmPipeline, crmPortal],
     layout: "simple",
     href: "/contact",
   },
@@ -181,22 +181,22 @@ const projects: Project[] = [
   {
     number: "16",
     category: "AI & Automation",
-    title: "FlowMind AI",
+    title: "Intelligent Workflow Automation",
     description:
-      "An AI-powered workflow system designed to automate repetitive business tasks, organize information and help teams work more efficiently.",
+      "An AI-powered automation platform designed to reduce repetitive tasks, connect business processes and help teams work more efficiently.",
     capabilities: ["AI Automation", "Workflow Automation", "AI Integration"],
-    images: [flowmindMain, flowmindAgents, flowmindBuilder],
+    images: [aiAutoMain, aiAutoFlow, aiAutoDash],
     layout: "simple",
     href: "/contact",
   },
   {
     number: "17",
     category: "AI & Automation",
-    title: "AssistIQ",
+    title: "AI Business Assistant",
     description:
-      "An intelligent AI assistant solution designed to help teams access information, automate everyday tasks and improve operational efficiency.",
-    capabilities: ["AI Assistant", "AI Automation", "Business Intelligence"],
-    images: [assistiqMain, assistiqInsights, assistiqTasks],
+      "An intelligent assistant solution designed to help teams access information, complete everyday tasks and make better use of business data.",
+    capabilities: ["AI Assistants", "AI Agents", "Business Automation"],
+    images: [aiAssistMain, aiAssistTasks, aiAssistInsights],
     layout: "simple",
     href: "/contact",
   },
@@ -338,13 +338,6 @@ function ProjectSection({ p, index }: { p: Project; index: number }) {
 
             <p className="mt-7 text-sm tracking-wide text-muted-foreground">{p.capabilities.join("  ·  ")}</p>
 
-            <Link
-              to={p.href as "/contact"}
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-navy"
-            >
-              View Case Study
-              <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-            </Link>
             <span aria-hidden className={"mt-3 block h-px w-24 bg-gradient-to-r from-amber to-ember"} />
           </Reveal>
         </div>
