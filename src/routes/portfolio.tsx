@@ -62,6 +62,9 @@ import hitech3 from "@/assets/hitech-profile-3.jpg.asset.json";
 import umami1 from "@/assets/umami-1.jpg.asset.json";
 import umami2 from "@/assets/umami-2.jpg.asset.json";
 import umami3 from "@/assets/umami-3.jpg.asset.json";
+import mediaShoot1 from "@/assets/media-img1.png.asset.json";
+import mediaShoot2 from "@/assets/media-img2.png.asset.json";
+import mediaShoot3 from "@/assets/media-img4.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
