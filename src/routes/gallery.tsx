@@ -135,25 +135,13 @@ function GalleryPage() {
           ) : (
             <div
               key={filter}
-              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-8"
+              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8"
             >
-              {/* Featured image */}
-              {featured && (
-                <Reveal className="sm:col-span-2 lg:col-span-7">
-                  <GalleryCard item={featured} featured />
+              {visible.map((item, i) => (
+                <Reveal key={item.src} delay={60 + i * 70}>
+                  <GalleryCard item={item} />
                 </Reveal>
-              )}
-
-              {/* Supporting images */}
-              {supporting.length > 0 && (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:gap-8">
-                  {supporting.map((item, i) => (
-                    <Reveal key={item.src} delay={90 + i * 80}>
-                      <GalleryCard item={item} />
-                    </Reveal>
-                  ))}
-                </div>
-              )}
+              ))}
             </div>
           )}
         </section>
