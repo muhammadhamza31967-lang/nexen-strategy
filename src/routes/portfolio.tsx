@@ -282,7 +282,6 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-  {
     number: "13",
     category: "Brand & Design",
     title: "Distinctive Logos Built to Be Remembered",
