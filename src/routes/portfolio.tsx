@@ -217,11 +217,11 @@ const projects: Project[] = [
   {
     number: "07",
     category: "Media Production",
-    title: "Bringing Business Stories to Life Through Visual Content",
+    title: "Social Media Video Production for Dr Shoaib Ahmed",
     description:
-      "A visual content solution combining creative direction, photography, video and motion to communicate ideas clearly and create stronger audience engagement.",
-    capabilities: ["Creative Direction", "Photography", "Video", "Motion"],
-    images: [svcMedia, work4, work2],
+      "We produced professional video content for Dr Shoaib Ahmed, creating engaging visuals specifically designed for social media platforms. From production and shooting to creating content suited for digital audiences, the work was focused on building a stronger and more engaging social media presence.",
+    capabilities: ["Video Production", "Social Media Content", "Creative Direction"],
+    images: [mediaShoot1.url, mediaShoot2.url, mediaShoot3.url],
     layout: "simple",
     href: "/contact",
   },
