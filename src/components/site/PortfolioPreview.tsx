@@ -3,43 +3,12 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
 import royaWeb from "@/assets/roya-laptop.png.asset.json";
 import hitechBrand from "@/assets/hitech-profile-1.jpg.asset.json";
 import drShahidSocial from "@/assets/Dr-Shahid-Posts-Mockup.jpg.asset.json";
+import umamiSocial from "@/assets/umami-1.jpg.asset.json";
 
 const projects = [
-  {
-    title: "Halden & Co.",
-    sector: "Retail & E-commerce",
-    category: "Web & Apps",
-    summary: "A considered commerce experience rebuilt around merchandising and repeat purchase.",
-    image: work1,
-  },
-  {
-    title: "Northgate Group",
-    sector: "Professional Services",
-    category: "Brand & Design",
-    summary: "A complete identity system for a group of specialist advisory businesses.",
-    image: work2,
-  },
-  {
-    title: "Meridian Operations",
-    sector: "Industrial & Manufacturing",
-    category: "AI & Automation",
-    summary: "Automated workflows that removed thousands of manual admin hours a year.",
-    image: work3,
-  },
-  {
-    title: "Aurora Health Portal",
-    sector: "Healthcare",
-    category: "Software",
-    summary: "A secure patient and practitioner portal replacing four disconnected systems.",
-    image: work4,
-  },
   {
     title: "Roya Ventures",
     sector: "Investment & Advisory",
@@ -60,6 +29,13 @@ const projects = [
     category: "Social Media Marketing",
     summary: "Social media marketing across multiple platforms — consistent content, increased visibility and strong engagement and audience growth for the clinic.",
     image: drShahidSocial.url,
+  },
+  {
+    title: "Umami",
+    sector: "UK · Hospitality",
+    category: "Social Media Marketing",
+    summary: "We delivered social media marketing for Umami, creating engaging content and a consistent digital presence designed to strengthen visibility, connect with the right audience and support brand growth.",
+    image: umamiSocial.url,
   },
 ];
 
@@ -267,7 +243,7 @@ export function PortfolioPreview() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-7">
+        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((proj, i) => {
             const on = i === active;
             return (
