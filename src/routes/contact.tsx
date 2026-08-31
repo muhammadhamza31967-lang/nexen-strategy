@@ -68,7 +68,7 @@ function ContactPage() {
   return (
     <>
       <Header transparentDefault />
-      <main>
+      <main className="overflow-x-hidden">
         {/* ================= HERO ================= */}
         <section className="relative isolate overflow-hidden pt-32 lg:pt-44">
           {/* subtle visual treatment — fine grid + flowing line */}
