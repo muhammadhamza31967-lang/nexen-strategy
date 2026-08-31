@@ -146,6 +146,28 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    number: "13",
+    category: "Software Solutions",
+    title: "Nexus Operations Platform",
+    description:
+      "A centralized business operations platform designed to connect teams, workflows and business information in one intelligent environment.",
+    capabilities: ["Business Platform", "Dashboard", "Workflow Management"],
+    images: [nexusMain, nexusWorkflow, nexusAnalytics],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "14",
+    category: "Software Solutions",
+    title: "Vertex Business Portal",
+    description:
+      "A secure digital portal designed to simplify communication, information access and everyday business processes for teams and stakeholders.",
+    capabilities: ["Business Portal", "Custom Software", "System Integration"],
+    images: [vertexMain, vertexComms, vertexSettings],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
     number: "05",
     category: "AI & Automation",
     title: "AI Chatbot Built for Smarter Customer Support",
@@ -153,6 +175,28 @@ const projects: Project[] = [
       "An intelligent AI chatbot designed to help businesses automate customer conversations, provide instant answers and guide users toward the right information or action.",
     capabilities: ["AI Chatbots", "Conversational AI", "Customer Support Automation"],
     images: [aiChatbotMain, aiChatbotConv, aiChatbotAnalytics],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "16",
+    category: "AI & Automation",
+    title: "FlowMind AI",
+    description:
+      "An AI-powered workflow system designed to automate repetitive business tasks, organize information and help teams work more efficiently.",
+    capabilities: ["AI Automation", "Workflow Automation", "AI Integration"],
+    images: [flowmindMain, flowmindAgents, flowmindBuilder],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "17",
+    category: "AI & Automation",
+    title: "AssistIQ",
+    description:
+      "An intelligent AI assistant solution designed to help teams access information, automate everyday tasks and improve operational efficiency.",
+    capabilities: ["AI Assistant", "AI Automation", "Business Intelligence"],
+    images: [assistiqMain, assistiqInsights, assistiqTasks],
     layout: "simple",
     href: "/contact",
   },
