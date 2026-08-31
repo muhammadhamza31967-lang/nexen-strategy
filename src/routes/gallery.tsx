@@ -65,8 +65,6 @@ const items: GalleryItem[] = [
 function GalleryPage() {
   const [filter, setFilter] = useState<Category>("ALL");
   const visible = items.filter((i) => filter === "ALL" || i.category === filter);
-  const featured = visible[0];
-  const supporting = visible.slice(1);
 
   return (
     <>
