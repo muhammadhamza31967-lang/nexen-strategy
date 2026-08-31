@@ -35,9 +35,6 @@ import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 import aiChatbotMain from "@/assets/pf-ai-chatbot-main.jpg";
 import aiChatbotConv from "@/assets/pf-ai-chatbot-conv.jpg";
 import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
-import aiWorkflowMain from "@/assets/pf-ai-workflow-main.jpg";
-import aiWorkflowBuilder from "@/assets/pf-ai-workflow-builder.jpg";
-import aiWorkflowAnalytics from "@/assets/pf-ai-workflow-analytics.jpg";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
