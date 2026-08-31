@@ -7,17 +7,17 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
 
-import swHeroMain from "@/assets/sw-hero-main.jpg";
-import swHeroPanel from "@/assets/sw-hero-panel.jpg";
-import swHeroMobile from "@/assets/sw-hero-mobile.jpg";
-import swCrm from "@/assets/sw-crm.jpg";
-import swCms from "@/assets/sw-cms.jpg";
-import swPortal from "@/assets/sw-portal.jpg";
-import swCustom from "@/assets/sw-custom.jpg";
-import swDashboards from "@/assets/sw-dashboards.jpg";
-import swIntegrations from "@/assets/sw-integrations.jpg";
-import swWorkflowAutomation from "@/assets/sw-workflow-automation.jpg";
-import swModular from "@/assets/sw-modular.jpg";
+import swHeroMain from "@/assets/sw-hero-main-v2.jpg";
+import swHeroPanel from "@/assets/sw-hero-panel-v2.jpg";
+import swHeroMobile from "@/assets/sw-hero-mobile-v2.jpg";
+import swCrm from "@/assets/sw-crm-v2.jpg";
+import swCms from "@/assets/sw-cms-v2.jpg";
+import swPortal from "@/assets/sw-portal-v2.jpg";
+import swCustom from "@/assets/sw-custom-v2.jpg";
+import swDashboards from "@/assets/sw-dashboards-v2.jpg";
+import swIntegrations from "@/assets/sw-integrations-v2.jpg";
+import swWorkflowAutomation from "@/assets/sw-workflow-automation-v2.jpg";
+import swModular from "@/assets/sw-modular-v2.jpg";
 
 /* ================================================================
    FINAL APPROVED CONTENT — do not alter wording
