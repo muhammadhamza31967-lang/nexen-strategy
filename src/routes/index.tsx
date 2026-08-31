@@ -48,7 +48,7 @@ function Home() {
       <Header overHero />
       <main>
         {/* 01 HERO */}
-        <section className="relative flex min-h-[88svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
+        <section className="relative flex min-h-[76svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
           <video
             className="absolute inset-0 h-full w-full object-cover [object-position:center]"
             autoPlay
@@ -81,8 +81,8 @@ function Home() {
           />
           <div aria-hidden className="grid-faint absolute inset-0 opacity-60" />
 
-          <div className="relative mx-auto flex min-h-[88svh] w-full max-w-[1400px] flex-1 flex-col px-6 pb-8 lg:min-h-[83svh] lg:px-12 lg:pb-8">
-            <div className="h-[19vh] min-h-[110px] shrink-0 lg:h-[21vh]" />
+          <div className="relative mx-auto flex min-h-[76svh] w-full max-w-[1400px] flex-1 flex-col px-6 pb-8 lg:min-h-[83svh] lg:px-12 lg:pb-8">
+            <div className="h-[13vh] min-h-[88px] shrink-0 lg:h-[21vh]" />
             <div>
               <Reveal>
                 <p className="eyebrow text-cyan">
