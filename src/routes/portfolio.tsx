@@ -38,6 +38,18 @@ import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
 import nexaflowMain from "@/assets/pf-nexaflow-main.jpg";
 import nexaflowCrm from "@/assets/pf-nexaflow-crm.jpg";
 import nexaflowWorkflow from "@/assets/pf-nexaflow-workflow.jpg";
+import nexusMain from "@/assets/pf-nexus-main.jpg";
+import nexusWorkflow from "@/assets/pf-nexus-workflow.jpg";
+import nexusAnalytics from "@/assets/pf-nexus-analytics.jpg";
+import vertexMain from "@/assets/pf-vertex-main.jpg";
+import vertexComms from "@/assets/pf-vertex-comms.jpg";
+import vertexSettings from "@/assets/pf-vertex-settings.jpg";
+import flowmindMain from "@/assets/pf-flowmind-main.jpg";
+import flowmindAgents from "@/assets/pf-flowmind-agents.jpg";
+import flowmindBuilder from "@/assets/pf-flowmind-builder.jpg";
+import assistiqMain from "@/assets/pf-assistiq-main.jpg";
+import assistiqInsights from "@/assets/pf-assistiq-insights.jpg";
+import assistiqTasks from "@/assets/pf-assistiq-tasks.jpg";
 import hitech1 from "@/assets/hitech-profile-1.jpg.asset.json";
 import roya1 from "@/assets/roya-profile-1.jpg.asset.json";
 import roya2 from "@/assets/roya-profile-2.jpg.asset.json";
@@ -134,6 +146,28 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    number: "13",
+    category: "Software Solutions",
+    title: "Nexus Operations Platform",
+    description:
+      "A centralized business operations platform designed to connect teams, workflows and business information in one intelligent environment.",
+    capabilities: ["Business Platform", "Dashboard", "Workflow Management"],
+    images: [nexusMain, nexusWorkflow, nexusAnalytics],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "14",
+    category: "Software Solutions",
+    title: "Vertex Business Portal",
+    description:
+      "A secure digital portal designed to simplify communication, information access and everyday business processes for teams and stakeholders.",
+    capabilities: ["Business Portal", "Custom Software", "System Integration"],
+    images: [vertexMain, vertexComms, vertexSettings],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
     number: "05",
     category: "AI & Automation",
     title: "AI Chatbot Built for Smarter Customer Support",
@@ -141,6 +175,28 @@ const projects: Project[] = [
       "An intelligent AI chatbot designed to help businesses automate customer conversations, provide instant answers and guide users toward the right information or action.",
     capabilities: ["AI Chatbots", "Conversational AI", "Customer Support Automation"],
     images: [aiChatbotMain, aiChatbotConv, aiChatbotAnalytics],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "16",
+    category: "AI & Automation",
+    title: "FlowMind AI",
+    description:
+      "An AI-powered workflow system designed to automate repetitive business tasks, organize information and help teams work more efficiently.",
+    capabilities: ["AI Automation", "Workflow Automation", "AI Integration"],
+    images: [flowmindMain, flowmindAgents, flowmindBuilder],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
+    number: "17",
+    category: "AI & Automation",
+    title: "AssistIQ",
+    description:
+      "An intelligent AI assistant solution designed to help teams access information, automate everyday tasks and improve operational efficiency.",
+    capabilities: ["AI Assistant", "AI Automation", "Business Intelligence"],
+    images: [assistiqMain, assistiqInsights, assistiqTasks],
     layout: "simple",
     href: "/contact",
   },
