@@ -7,6 +7,9 @@ import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
+import royaWeb from "@/assets/roya-laptop.png.asset.json";
+import hitechBrand from "@/assets/hitech-profile-1.jpg.asset.json";
+import drShahidSocial from "@/assets/Dr-Shahid-Posts-Mockup.jpg.asset.json";
 
 const projects = [
   {
