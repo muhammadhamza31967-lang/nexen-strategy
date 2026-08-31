@@ -65,8 +65,6 @@ const items: GalleryItem[] = [
 function GalleryPage() {
   const [filter, setFilter] = useState<Category>("ALL");
   const visible = items.filter((i) => filter === "ALL" || i.category === filter);
-  const featured = visible[0];
-  const supporting = visible.slice(1);
 
   return (
     <>
@@ -135,25 +133,13 @@ function GalleryPage() {
           ) : (
             <div
               key={filter}
-              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-8"
+              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-8"
             >
-              {/* Featured image */}
-              {featured && (
-                <Reveal className="sm:col-span-2 lg:col-span-7">
-                  <GalleryCard item={featured} featured />
+              {visible.map((item, i) => (
+                <Reveal key={item.src} delay={60 + i * 70}>
+                  <GalleryCard item={item} />
                 </Reveal>
-              )}
-
-              {/* Supporting images */}
-              {supporting.length > 0 && (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:gap-8">
-                  {supporting.map((item, i) => (
-                    <Reveal key={item.src} delay={90 + i * 80}>
-                      <GalleryCard item={item} />
-                    </Reveal>
-                  ))}
-                </div>
-              )}
+              ))}
             </div>
           )}
         </section>
@@ -163,16 +149,14 @@ function GalleryPage() {
   );
 }
 
-function GalleryCard({ item, featured = false }: { item: GalleryItem; featured?: boolean }) {
+function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <figure className="group relative isolate h-full cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
+    <figure className="group relative isolate aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
       <img
         src={item.src}
         alt={item.alt}
         loading="lazy"
-        className={`w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${
-          featured ? "aspect-[4/3] lg:h-full lg:aspect-auto" : "aspect-[4/3]"
-        }`}
+        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
       />
       {/* overlay */}
       <div
