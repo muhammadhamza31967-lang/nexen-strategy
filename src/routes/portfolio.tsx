@@ -7,12 +7,6 @@ import { CtaSection } from "@/components/site/CtaSection";
 import { Reveal } from "@/components/site/Reveal";
 import { MockupComposition } from "@/components/site/MockupComposition";
 import { cn } from "@/lib/utils";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
-import svcMarketing from "@/assets/svc-marketing.jpg";
-import svcMedia from "@/assets/svc-media.jpg";
 import gatdMobile from "@/assets/gatd-mobile-3.png.asset.json";
 import gatdLaptop from "@/assets/gatd-laptop-2.png.asset.json";
 import gatdThird from "@/assets/gatd-img3-3.png.asset.json";
@@ -62,6 +56,9 @@ import hitech3 from "@/assets/hitech-profile-3.jpg.asset.json";
 import umami1 from "@/assets/umami-1.jpg.asset.json";
 import umami2 from "@/assets/umami-2.jpg.asset.json";
 import umami3 from "@/assets/umami-3.jpg.asset.json";
+import mediaShoot1 from "@/assets/media-img1.png.asset.json";
+import mediaShoot2 from "@/assets/media-img2.png.asset.json";
+import mediaShoot3 from "@/assets/media-img4.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -214,11 +211,11 @@ const projects: Project[] = [
   {
     number: "07",
     category: "Media Production",
-    title: "Bringing Business Stories to Life Through Visual Content",
+    title: "Social Media Video Production for Dr Shoaib Ahmed",
     description:
-      "A visual content solution combining creative direction, photography, video and motion to communicate ideas clearly and create stronger audience engagement.",
-    capabilities: ["Creative Direction", "Photography", "Video", "Motion"],
-    images: [svcMedia, work4, work2],
+      "We produced professional video content for Dr Shoaib Ahmed, creating engaging visuals specifically designed for social media platforms. From production and shooting to creating content suited for digital audiences, the work was focused on building a stronger and more engaging social media presence.",
+    capabilities: ["Video Production", "Social Media Content", "Creative Direction"],
+    images: [mediaShoot1.url, mediaShoot2.url, mediaShoot3.url],
     layout: "simple",
     href: "/contact",
   },
