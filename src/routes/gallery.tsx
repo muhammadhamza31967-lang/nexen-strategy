@@ -71,7 +71,7 @@ function GalleryPage() {
       <Header />
       <main>
         {/* ================= HERO ================= */}
-        <section className="relative isolate overflow-hidden pt-32 lg:pt-44">
+        <section className="relative isolate overflow-hidden pt-[9.5rem] lg:pt-44">
           <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute inset-0 grid-faint opacity-50" />
             <div className="absolute inset-0 [background:radial-gradient(55%_60%_at_85%_10%,rgba(74,115,255,0.08),transparent_65%),radial-gradient(40%_45%_at_10%_90%,rgba(58,241,255,0.06),transparent_60%)]" />

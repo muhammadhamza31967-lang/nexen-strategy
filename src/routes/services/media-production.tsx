@@ -150,7 +150,7 @@ function MediaProductionPage() {
       <Header />
       <main className="bg-white">
         {/* ============ HERO ============ */}
-        <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
+        <section className="relative overflow-hidden pt-[8.75rem] pb-16 lg:pt-36 lg:pb-24">
           <div aria-hidden className="grid-faint-dark absolute inset-0 opacity-40" />
           <div
             aria-hidden

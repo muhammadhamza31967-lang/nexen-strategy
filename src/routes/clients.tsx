@@ -180,7 +180,7 @@ function ClientsPage() {
       <Header overHero />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-navy pt-32 pb-28 lg:pt-40 lg:pb-36">
+        <section className="relative overflow-hidden bg-navy pt-[9.5rem] pb-28 lg:pt-40 lg:pb-36">
           <video
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
             src={heroVideo.url}
