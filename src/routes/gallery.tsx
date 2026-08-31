@@ -151,16 +151,14 @@ function GalleryPage() {
   );
 }
 
-function GalleryCard({ item, featured = false }: { item: GalleryItem; featured?: boolean }) {
+function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <figure className="group relative isolate h-full cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
+    <figure className="group relative isolate aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
       <img
         src={item.src}
         alt={item.alt}
         loading="lazy"
-        className={`w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${
-          featured ? "aspect-[4/3] lg:h-full lg:aspect-auto" : "aspect-[4/3]"
-        }`}
+        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
       />
       {/* overlay */}
       <div
