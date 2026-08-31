@@ -35,6 +35,9 @@ import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 import aiChatbotMain from "@/assets/pf-ai-chatbot-main.jpg";
 import aiChatbotConv from "@/assets/pf-ai-chatbot-conv.jpg";
 import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
+import nexaflowMain from "@/assets/pf-nexaflow-main.jpg";
+import nexaflowCrm from "@/assets/pf-nexaflow-crm.jpg";
+import nexaflowWorkflow from "@/assets/pf-nexaflow-workflow.jpg";
 import hitech1 from "@/assets/hitech-profile-1.jpg.asset.json";
 import hitech2 from "@/assets/hitech-profile-2.jpg.asset.json";
 import hitech3 from "@/assets/hitech-profile-3.jpg.asset.json";
@@ -116,11 +119,11 @@ const projects: Project[] = [
   {
     number: "03",
     category: "Software Solutions",
-    title: "Technology Designed Around the Way Business Works",
+    title: "One Platform. Complete Control Over Your Operations.",
     description:
-      "A scalable software solution designed to simplify operations, connect information and give teams better tools to manage everyday business processes.",
-    capabilities: ["Business Strategy", "Product Design", "Software Development"],
-    images: [work3, work1, work2],
+      "A custom business management platform designed to centralise operations, customer information, workflows and reporting in one connected environment, giving teams better visibility and control over everyday business processes.",
+    capabilities: ["Custom Software", "Business Management", "Dashboards & Integrations"],
+    images: [nexaflowMain, nexaflowCrm, nexaflowWorkflow],
     layout: "simple",
     href: "/contact",
   },
