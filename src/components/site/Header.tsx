@@ -325,21 +325,21 @@ export function Header({
               <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:col-span-2 sm:py-1.5">
                 <Mail className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
                 <a
-                  href="mailto:hello@nexenstrategy.com"
+                  href="mailto:info@nexenstrategy.com"
                   className="truncate transition-colors hover:text-cyan"
                 >
-                  hello@nexenstrategy.com
+                  info@nexenstrategy.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:py-1.5">
                 <Phone className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
-                <a href="tel:+442080000000" className="transition-colors hover:text-cyan">
-                  +44 (0) 20 8000 0000
+                <a href="tel:+923358084973" className="transition-colors hover:text-cyan">
+                  +92 335 8084973
                 </a>
               </li>
               <li className="flex items-center gap-2.5 py-2 text-[0.9rem] text-white/70 sm:py-1.5">
                 <MapPin className="h-3.5 w-3.5 shrink-0 text-cyan/70" />
-                United Kingdom
+                UK / Islamabad
               </li>
              </ul>
            </div>
