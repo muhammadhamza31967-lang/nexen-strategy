@@ -72,7 +72,8 @@ export function PortfolioPreview() {
     el.style.setProperty("--pp-y", `${((e.clientY - r.top) / r.height) * 100}%`);
   };
 
-  const p = projects[active]!;
+  const safeActive = active < projects.length ? active : 0;
+  const p = projects[safeActive]!;
 
   return (
     <section
