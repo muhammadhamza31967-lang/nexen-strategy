@@ -151,7 +151,7 @@ function GalleryPage() {
 
 function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <figure className="group relative isolate aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
+    <figure className="group relative isolate h-[300px] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy sm:h-[320px] lg:h-[350px]">
       <img
         src={item.src}
         alt={item.alt}
@@ -168,13 +168,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
         <p className="text-[0.65rem] font-semibold tracking-[0.18em] text-[#FFA53C]">
           {item.category}
         </p>
-        <div className="mt-2 flex items-center justify-between gap-4">
-          <p className="text-lg font-semibold tracking-tight text-white lg:text-xl">{item.title}</p>
-          <span className="flex shrink-0 items-center gap-1.5 text-sm font-medium text-white/80">
-            Explore
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </span>
-        </div>
+        <p className="mt-2 text-lg font-semibold tracking-tight text-white lg:text-xl">{item.title}</p>
       </figcaption>
       {/* accent line */}
       <span
