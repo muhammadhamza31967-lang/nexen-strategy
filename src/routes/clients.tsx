@@ -46,16 +46,15 @@ type Client = { name: string; src: string };
 const industries: { num: string; title: string; note: string; clients: Client[] }[] = [
   {
     num: "01",
-    title: "Real Estate",
-    note: "We work with property brands, developers and real estate agencies to create digital experiences that build trust, strengthen their presence and support business growth.",
+    title: "Education & Training",
+    note: "From education providers to executive training organisations, we create digital solutions that make learning, communication and professional development more accessible and engaging.",
     clients: [
-      { name: "Adobe Property Advisor", src: adobeProperty.url },
-      { name: "DXB Real Estate", src: dxb.url },
-      { name: "May Fair", src: mayfair.url },
-      { name: "Muazzam Real Estate", src: muazzamEstate.url },
-      { name: "Mustafa Al Ansari Real Estate", src: mustafaAlAnsari.url },
-      { name: "Right Move", src: rightMove.url },
-      { name: "Roof Connect", src: roofConnect.url },
+      { name: "Comwave", src: comwave.url },
+      { name: "GATD", src: gatd.url },
+      { name: "PHR", src: phr.url },
+      { name: "Quran Reading", src: quranReading.url },
+      { name: "Torque", src: torque.url },
+      { name: "VIVD", src: vivd.url },
     ],
   },
   {
@@ -76,31 +75,20 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
   },
   {
     num: "03",
-    title: "Education & Training",
-    note: "From education providers to executive training organisations, we create digital solutions that make learning, communication and professional development more accessible and engaging.",
+    title: "Real Estate",
+    note: "We work with property brands, developers and real estate agencies to create digital experiences that build trust, strengthen their presence and support business growth.",
     clients: [
-      { name: "Comwave", src: comwave.url },
-      { name: "GATD", src: gatd.url },
-      { name: "PHR", src: phr.url },
-      { name: "Quran Reading", src: quranReading.url },
-      { name: "Torque", src: torque.url },
-      { name: "VIVD", src: vivd.url },
+      { name: "Adobe Property Advisor", src: adobeProperty.url },
+      { name: "DXB Real Estate", src: dxb.url },
+      { name: "May Fair", src: mayfair.url },
+      { name: "Muazzam Real Estate", src: muazzamEstate.url },
+      { name: "Mustafa Al Ansari Real Estate", src: mustafaAlAnsari.url },
+      { name: "Right Move", src: rightMove.url },
+      { name: "Roof Connect", src: roofConnect.url },
     ],
   },
   {
     num: "04",
-    title: "Fashion & Clothing",
-    note: "We help fashion, clothing and lifestyle brands build distinctive digital identities and experiences that showcase their products and connect with modern audiences.",
-    clients: [
-      { name: "Borsac", src: borsac.url },
-      { name: "NH Fusion", src: nhFusion.url },
-      { name: "Fly Shop", src: flyShop.url },
-      { name: "Glam by Noor", src: glamByNoor.url },
-      { name: "Minahil Khan", src: minahilKhan.url },
-    ],
-  },
-  {
-    num: "05",
     title: "Technology & Business Solutions",
     note: "We work with technology, infrastructure and business-focused organisations to create practical digital solutions that simplify complex challenges, strengthen operations and support growth.",
     clients: [
@@ -110,6 +98,18 @@ const industries: { num: string; title: string; note: string; clients: Client[] 
       { name: "Ocean of Shore", src: oceanOffshore.url },
       { name: "Mohsan & Co", src: mohsanCo.url },
       { name: "Roya Ventures", src: royaVenture.url },
+    ],
+  },
+  {
+    num: "05",
+    title: "Fashion & Clothing",
+    note: "We help fashion, clothing and lifestyle brands build distinctive digital identities and experiences that showcase their products and connect with modern audiences.",
+    clients: [
+      { name: "Borsac", src: borsac.url },
+      { name: "NH Fusion", src: nhFusion.url },
+      { name: "Fly Shop", src: flyShop.url },
+      { name: "Glam by Noor", src: glamByNoor.url },
+      { name: "Minahil Khan", src: minahilKhan.url },
     ],
   },
   {
@@ -283,28 +283,8 @@ function ClientsPage() {
             style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.6 }}
           />
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-            <Reveal className="mx-auto max-w-3xl text-center">
-              <p className="eyebrow text-azure">Our Clients</p>
-              <span aria-hidden className="mx-auto mt-4 block h-px w-12 bg-gradient-to-r from-azure to-cyan" />
-              <h2 className="display mt-5 text-[1.9rem] text-navy sm:text-4xl lg:text-[3rem]">
-                Businesses We Support Across Industries.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                We work with businesses across diverse industries, delivering digital solutions that solve real
-                challenges, strengthen operations and create opportunities for sustainable growth.
-              </p>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <div
-                aria-hidden
-                className="mx-auto mt-16 h-px w-full max-w-4xl lg:mt-20"
-                style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.3 }}
-              />
-            </Reveal>
-
             {industries.map((ind, idx) => (
-              <div key={ind.num} className={idx === 0 ? "mt-16 lg:mt-24" : "mt-24 lg:mt-32"}>
+              <div key={ind.num} className={idx === 0 ? "mt-0" : "mt-24 lg:mt-32"}>
 
                 <Reveal>
                   <div className="min-w-0 text-center">
