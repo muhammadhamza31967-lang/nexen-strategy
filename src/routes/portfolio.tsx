@@ -129,11 +129,11 @@ const projects: Project[] = [
   {
     number: "06",
     category: "Marketing & Growth",
-    title: "Building Digital Visibility That Creates Opportunity",
+    title: "Growing Digital Visibility Through Social Media",
     description:
-      "A growth-focused digital solution designed to strengthen online visibility, reach relevant audiences and turn digital engagement into meaningful business opportunities.",
-    capabilities: ["Digital Strategy", "Marketing", "Performance"],
-    images: [svcMarketing, work2, work1],
+      "We manage social media marketing for Dr Shahid Mahmud Child & Neuro Clinic, creating consistent, engaging content across multiple social media platforms to strengthen their digital presence, connect with the right audience and drive meaningful results.",
+    capabilities: ["Social Media Marketing", "Content Strategy", "Multi-Platform Growth"],
+    images: [smmPrimary.url, smmSupport1.url, smmSupport2.url],
     layout: "simple",
     href: "/contact",
   },
