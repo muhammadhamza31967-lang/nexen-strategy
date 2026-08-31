@@ -17,7 +17,13 @@ import logoWhite from "@/assets/nexen-logo-white.png.asset.json";
 import { services } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-export function Header({ overHero = false }: { overHero?: boolean }) {
+export function Header({
+  overHero = false,
+  transparentDefault = false,
+}: {
+  overHero?: boolean;
+  transparentDefault?: boolean;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -67,6 +73,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
   }, [open]);
 
   const light = overHero && !scrolled;
+  const transparentStatic = transparentDefault && !scrolled;
 
   const navLink = cn(
     "text-sm font-medium tracking-tight transition-colors",
@@ -77,7 +84,11 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,padding] duration-500",
-        light ? "py-6" : "bg-white/92 py-4 backdrop-blur-xl",
+        light
+          ? "py-6"
+          : transparentStatic
+            ? "py-4"
+            : "bg-white/92 py-4 backdrop-blur-xl",
       )}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">

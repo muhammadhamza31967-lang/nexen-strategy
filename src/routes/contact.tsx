@@ -67,7 +67,7 @@ function ContactPage() {
 
   return (
     <>
-      <Header />
+      <Header transparentDefault />
       <main>
         {/* ================= HERO ================= */}
         <section className="relative isolate overflow-hidden pt-32 lg:pt-44">
