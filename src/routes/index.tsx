@@ -12,12 +12,12 @@ import { ClientLogos } from "@/components/site/ClientLogos";
 import heroVideo from "@/assets/hero-bg.mp4.asset.json";
 import gatdLogo from "@/assets/gatd-logo.png.asset.json";
 import royaLogo from "@/assets/roya-ventures-logo.png.asset.json";
-import adanLogo from "@/assets/adan-graphics-logo.png.asset.json";
+import torqueLogo from "@/assets/client-torque.svg.asset.json";
 
 const partnerLogos = [
   { name: "GATD — Global Association for Training and Development", src: gatdLogo.url, cls: "max-h-14 lg:max-h-16" },
   { name: "Roya Ventures", src: royaLogo.url, cls: "max-h-16 lg:max-h-20" },
-  { name: "Adan Graphics", src: adanLogo.url, cls: "max-h-20 lg:max-h-24" },
+  { name: "Torque", src: torqueLogo.url, cls: "max-h-16 lg:max-h-20" },
 ];
 
 export const Route = createFileRoute("/")({
