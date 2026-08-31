@@ -267,7 +267,7 @@ export function PortfolioPreview() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-7">
           {projects.map((proj, i) => {
             const on = i === active;
             return (
