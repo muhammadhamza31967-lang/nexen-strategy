@@ -163,7 +163,7 @@ export function ClientLogos() {
                             loading="lazy"
                             onMouseEnter={() => setPaused(true)}
                             onMouseLeave={() => setPaused(false)}
-                            className={`w-auto max-w-[220px] object-contain lg:max-w-[280px] ${c.cls}`}
+                            className={`w-auto max-w-[150px] object-contain lg:max-w-[190px] ${c.cls}`}
                           />
                         </div>
                       )),
