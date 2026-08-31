@@ -13,9 +13,9 @@ import mpCorporate from "@/assets/mp-corporate-video.jpg";
 import mpPromotional from "@/assets/mp-promotional-video.jpg";
 import mpProduct from "@/assets/mp-product-video.jpg";
 import mpPhotography from "@/assets/mp-photography.jpg";
-import mpSocial from "@/assets/mp-social-content.jpg";
-import mpMotion from "@/assets/mp-motion-graphics.jpg";
-import mpAnimation from "@/assets/mp-animation.jpg";
+import mpSocial from "@/assets/mp-social-content-v2.jpg";
+import mpMotion from "@/assets/mp-motion-graphics-v4.jpg";
+import mpAnimation from "@/assets/mp-animation-v2.jpg";
 import mpEditing from "@/assets/mp-video-editing.jpg";
 import mpDetail from "@/assets/media-2.jpg";
 
