@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowRight, TrendingUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Eye, Magnet, MousePointerClick, TrendingUp, Users, type LucideIcon } from "lucide-react";
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -85,52 +85,215 @@ const approachParagraphs = [
   "Our focus is on the metrics that matter to your business — visibility, engagement, leads, customers and growth.",
 ];
 
-const growthStages = ["Visibility", "Engagement", "Leads", "Customers", "Growth"];
+const growthStages: { name: string; icon: LucideIcon }[] = [
+  { name: "Visibility", icon: Eye },
+  { name: "Engagement", icon: MousePointerClick },
+  { name: "Leads", icon: Magnet },
+  { name: "Customers", icon: Users },
+  { name: "Growth", icon: TrendingUp },
+];
 
 function GrowthJourney() {
+  const [activeStep, setActiveStep] = useState(0);
+  const [stepAutoPlay, setStepAutoPlay] = useState(true);
+  const stepTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!stepAutoPlay) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => setActiveStep((v) => (v + 1) % growthStages.length), 2400);
+    return () => window.clearInterval(id);
+  }, [stepAutoPlay]);
+
+  const selectStep = (i: number) => {
+    setStepAutoPlay(false);
+    setActiveStep(i);
+  };
+
+  const scrollStepTrack = (i: number) => {
+    selectStep(i);
+    const el = stepTrackRef.current;
+    const child = el?.children[i] as HTMLElement | undefined;
+    if (el && child) {
+      el.scrollTo({ left: child.offsetLeft - el.clientWidth * 0.12, behavior: "smooth" });
+    }
+  };
+
+  const onStepTrackScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const child = el.children[0] as HTMLElement | undefined;
+    if (!child) return;
+    const step = child.offsetWidth + 16;
+    const idx = Math.min(growthStages.length - 1, Math.max(0, Math.round(el.scrollLeft / step)));
+    if (idx !== activeStep) {
+      setStepAutoPlay(false);
+      setActiveStep(idx);
+    }
+  };
+
   return (
     <div className="relative">
-      <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-5 sm:gap-2">
-        {/* progression line — passes exactly through the centre of every dot */}
-        <span
+      {/* Desktop / tablet pipeline — mirrors Web & App Development "Our Approach" */}
+      <div className="relative hidden lg:block">
+        <div aria-hidden className="absolute left-[10%] right-[10%] top-7 h-px bg-navy/10" />
+        <div
           aria-hidden
-          className="absolute left-[9%] right-[9%] hidden h-[2px] rounded-full sm:block"
-          style={{
-            top: "7px",
-            marginTop: "-1px",
-            background: "#010C62",
-          }}
+          className="absolute left-[10%] top-7 h-px bg-gradient-to-r from-amber to-ember transition-[width] duration-700 ease-out"
+          style={{ width: `${(activeStep / (growthStages.length - 1)) * 80}%` }}
         />
-        {growthStages.map((stage, i) => {
-          
-          return (
-            <div
-              key={stage}
-              className="relative flex items-center gap-4 sm:flex-col sm:items-center sm:gap-0"
-              style={{ animation: `fade-in 0.5s ease-out both`, animationDelay: `${i * 140}ms` }}
+        <ol className="relative grid grid-cols-5">
+          {growthStages.map((s, i) => {
+            const on = i <= activeStep;
+            const current = i === activeStep;
+            const Icon = s.icon;
+            return (
+              <Reveal key={s.name} delay={i * 70} as="li">
+                <div
+                  onMouseEnter={() => selectStep(i)}
+                  onFocus={() => selectStep(i)}
+                  tabIndex={0}
+                  className="group flex flex-col items-center px-2 text-center outline-none"
+                >
+                  <span className="flex h-14 items-center">
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "block rounded-full border-2 transition-all duration-500",
+                        current
+                          ? "h-3.5 w-3.5 border-ember bg-ember shadow-[0_0_0_7px_rgba(255,72,63,0.14)]"
+                          : on
+                            ? "h-3 w-3 border-navy bg-navy"
+                            : "h-3 w-3 border-navy/20 bg-white group-hover:border-navy/40",
+                      )}
+                    />
+                  </span>
+                  <span
+                    className={cn(
+                      "font-mono text-[11px] tracking-[0.2em] transition-colors duration-500",
+                      current ? "text-ember" : "text-muted-foreground",
+                    )}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={cn(
+                      "relative mt-4 flex h-14 w-14 items-center justify-center rounded-2xl border transition-all duration-500",
+                      current
+                        ? "-translate-y-1 border-navy bg-navy text-white shadow-[0_20px_44px_-18px_rgba(1,12,98,0.55)]"
+                        : "border-navy/10 bg-white text-navy/45 group-hover:border-navy/25 group-hover:text-navy",
+                    )}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.5} />
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-amber to-ember transition-all duration-500",
+                        current ? "scale-100 opacity-100" : "scale-50 opacity-0",
+                      )}
+                    />
+                  </span>
+                  <h3
+                    className={cn(
+                      "mt-5 text-[15px] font-semibold tracking-tight transition-colors duration-500",
+                      current ? "text-navy" : "text-navy/40",
+                    )}
+                  >
+                    {s.name}
+                  </h3>
+                </div>
+              </Reveal>
+            );
+          })}
+        </ol>
+      </div>
+
+      {/* Mobile carousel — mirrors Web & App Development "Our Approach" */}
+      <div className="lg:hidden">
+        <div className="mb-6 flex items-center">
+          {growthStages.map((s, i) => (
+            <button
+              key={s.name}
+              type="button"
+              onClick={() => scrollStepTrack(i)}
+              aria-label={`Go to step ${i + 1}: ${s.name}`}
+              className="flex items-center"
             >
               <span
-                aria-hidden
-                className="relative z-10 block h-[15px] w-[15px] shrink-0 rounded-full border border-[#ffa53c] bg-white shadow-[0_0_0_5px_rgba(255,165,60,0.16)]"
+                className={cn(
+                  "flex h-7 w-7 items-center justify-center rounded-full border font-mono text-[10px] transition-all duration-300",
+                  i === activeStep
+                    ? "border-ember bg-ember text-white"
+                    : i < activeStep
+                      ? "border-navy bg-navy text-white"
+                      : "border-navy/15 bg-white text-muted-foreground",
+                )}
               >
-                <span className="absolute inset-[4px] rounded-full bg-[#ffa53c]" />
+                {String(i + 1).padStart(2, "0")}
               </span>
-
-              <div className="sm:mt-4 sm:text-center">
-                <p className="font-mono text-[11px] tracking-[0.2em] text-[#010C62]">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#010C62]">
-                  {stage}
-                </p>
-
-              </div>
-            </div>
-          );
-        })}
+              {i < growthStages.length - 1 && (
+                <span
+                  aria-hidden
+                  className={cn(
+                    "h-px w-3 transition-colors duration-300",
+                    i < activeStep ? "bg-ember" : "bg-navy/15",
+                  )}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+        <div
+          ref={stepTrackRef}
+          onScroll={onStepTrackScroll}
+          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {growthStages.map((s, i) => {
+            const current = i === activeStep;
+            const Icon = s.icon;
+            return (
+              <article
+                key={s.name}
+                className={cn(
+                  "w-[62%] shrink-0 snap-center rounded-2xl border bg-white p-6 transition-all duration-500",
+                  current ? "border-navy/20 shadow-[0_24px_50px_-30px_rgba(1,12,98,0.35)]" : "border-navy/10",
+                )}
+              >
+                <div className="flex items-center justify-between">
+                  <span
+                    className={cn(
+                      "font-mono text-xs tracking-[0.2em]",
+                      current ? "text-ember" : "text-muted-foreground",
+                    )}
+                  >
+                    {String(i + 1).padStart(2, "0")} / 05
+                  </span>
+                  <span
+                    className={cn(
+                      "relative flex h-11 w-11 items-center justify-center rounded-xl border transition-colors duration-300",
+                      current ? "border-navy bg-navy text-white" : "border-navy/10 text-navy/50",
+                    )}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.5} />
+                  </span>
+                </div>
+                <h3 className="mt-5 text-lg font-semibold tracking-tight text-navy">{s.name}</h3>
+              </article>
+            );
+          })}
+        </div>
+        <div aria-hidden className="mt-5 flex gap-1.5">
+          {growthStages.map((s, i) => (
+            <span
+              key={s.name}
+              className={cn(
+                "h-[3px] flex-1 rounded-full transition-colors duration-300",
+                i <= activeStep ? "bg-gradient-to-r from-amber to-ember" : "bg-navy/10",
+              )}
+            />
+          ))}
+        </div>
       </div>
     </div>
-
   );
 }
 
