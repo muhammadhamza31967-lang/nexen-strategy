@@ -282,7 +282,20 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+  {
+    number: "13",
+    category: "Brand & Design",
+    title: "Distinctive Logos Built to Be Remembered",
+    description:
+      "A collection of custom logo identities designed to give businesses a clear, distinctive and memorable visual presence.",
+    capabilities: ["Logo Design", "Visual Identity", "Brand Identity"],
+    images: [logoCst.url, logoHirex.url, logoRoya.url],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
     number: "15",
+
     category: "Marketing & Growth",
     title: "Building a Stronger Social Presence for Umami",
     description:
