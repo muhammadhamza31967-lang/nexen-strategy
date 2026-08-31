@@ -133,17 +133,6 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
-    number: "05b",
-    category: "AI & Automation",
-    title: "Intelligent Workflows That Work Smarter",
-    description:
-      "An AI-powered automation platform designed to connect business processes, reduce repetitive work and help teams complete everyday workflows with greater efficiency.",
-    capabilities: ["AI Automation", "Workflow Intelligence", "Business Process Automation"],
-    images: [aiWorkflowMain, aiWorkflowBuilder, aiWorkflowAnalytics],
-    layout: "simple",
-    href: "/contact",
-  },
-  {
     number: "06",
     category: "Marketing & Growth",
     title: "Growing Digital Visibility Through Social Media",
