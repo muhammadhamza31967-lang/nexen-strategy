@@ -73,6 +73,7 @@ export function Header({
   }, [open]);
 
   const light = overHero && !scrolled;
+  const transparentStatic = transparentDefault && !scrolled;
 
   const navLink = cn(
     "text-sm font-medium tracking-tight transition-colors",
