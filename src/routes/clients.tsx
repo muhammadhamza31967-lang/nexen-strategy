@@ -283,28 +283,8 @@ function ClientsPage() {
             style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.6 }}
           />
           <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-            <Reveal className="mx-auto max-w-3xl text-center">
-              <p className="eyebrow text-azure">Our Clients</p>
-              <span aria-hidden className="mx-auto mt-4 block h-px w-12 bg-gradient-to-r from-azure to-cyan" />
-              <h2 className="display mt-5 text-[1.9rem] text-navy sm:text-4xl lg:text-[3rem]">
-                Businesses We Support Across Industries.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                We work with businesses across diverse industries, delivering digital solutions that solve real
-                challenges, strengthen operations and create opportunities for sustainable growth.
-              </p>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <div
-                aria-hidden
-                className="mx-auto mt-16 h-px w-full max-w-4xl lg:mt-20"
-                style={{ backgroundImage: "var(--gradient-tech)", opacity: 0.3 }}
-              />
-            </Reveal>
-
             {industries.map((ind, idx) => (
-              <div key={ind.num} className={idx === 0 ? "mt-16 lg:mt-24" : "mt-24 lg:mt-32"}>
+              <div key={ind.num} className={idx === 0 ? "mt-0" : "mt-24 lg:mt-32"}>
 
                 <Reveal>
                   <div className="min-w-0 text-center">
