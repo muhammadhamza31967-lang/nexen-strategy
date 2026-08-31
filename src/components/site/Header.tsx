@@ -148,6 +148,9 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
           <Link to="/clients" className={navLink}>
             Clients
           </Link>
+          <Link to="/gallery" className={navLink}>
+            Gallery
+          </Link>
           <Link to="/contact" className={navLink}>
             Contact Us
           </Link>
