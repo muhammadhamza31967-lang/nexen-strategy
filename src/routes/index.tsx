@@ -48,7 +48,7 @@ function Home() {
       <Header overHero />
       <main>
         {/* 01 HERO */}
-        <section className="relative flex min-h-[88svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
+        <section className="relative flex min-h-[76svh] w-full flex-col overflow-hidden bg-navy lg:min-h-[83svh]">
           <video
             className="absolute inset-0 h-full w-full object-cover [object-position:center]"
             autoPlay
