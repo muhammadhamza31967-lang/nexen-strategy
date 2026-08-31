@@ -29,6 +29,9 @@ import royaThird from "@/assets/roya-img3.png.asset.json";
 import drsarfrazLaptop from "@/assets/drsarfraz-laptop.png.asset.json";
 import drsarfrazMobile from "@/assets/drsarfraz-mobile-2.png.asset.json";
 import drsarfrazThird from "@/assets/drsarfraz-img3-2.png.asset.json";
+import smmPrimary from "@/assets/Dr-Shahid-Posts-Mockup.jpg.asset.json";
+import smmSupport1 from "@/assets/Dr-Shahid-Posts-Mockup-2.jpg.asset.json";
+import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
