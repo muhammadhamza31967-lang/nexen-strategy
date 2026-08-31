@@ -148,6 +148,9 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
           <Link to="/clients" className={navLink}>
             Clients
           </Link>
+          <Link to="/gallery" className={navLink}>
+            Gallery
+          </Link>
           <Link to="/contact" className={navLink}>
             Contact Us
           </Link>
@@ -283,6 +286,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
           {[
             { to: "/portfolio", label: "Portfolio" },
             { to: "/clients", label: "Clients" },
+            { to: "/gallery", label: "Gallery" },
             { to: "/contact", label: "Contact Us" },
           ].map((l) => (
             <Link
