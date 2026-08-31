@@ -133,7 +133,7 @@ function GalleryPage() {
           ) : (
             <div
               key={filter}
-              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8"
+              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6"
             >
               {visible.map((item, i) => (
                 <Reveal key={item.src} delay={60 + i * 70}>
@@ -151,7 +151,7 @@ function GalleryPage() {
 
 function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <figure className="group relative isolate h-[300px] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy sm:h-[320px] lg:h-[350px]">
+    <figure className="group relative isolate aspect-[4/5] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
       <img
         src={item.src}
         alt={item.alt}
