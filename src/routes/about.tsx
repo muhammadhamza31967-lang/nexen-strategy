@@ -126,7 +126,7 @@ function AboutPage() {
       <main className="overflow-x-hidden">
         {/* 01 — HERO */}
         <section
-          className="relative isolate flex min-h-[70svh] items-center overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:min-h-[94svh] lg:pt-40 lg:pb-28"
+          className="relative isolate flex min-h-[70svh] items-center overflow-hidden pt-[8.75rem] pb-16 sm:pt-[9.5rem] sm:pb-20 lg:min-h-[94svh] lg:pt-40 lg:pb-28"
           style={{
             background: "linear-gradient(140deg, #02052D 0%, #010C62 38%, #0A146F 62%, #111B82 100%)",
           }}

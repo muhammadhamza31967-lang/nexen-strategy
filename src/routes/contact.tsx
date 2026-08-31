@@ -70,7 +70,7 @@ function ContactPage() {
       <Header transparentDefault />
       <main className="overflow-x-hidden">
         {/* ================= HERO ================= */}
-        <section className="relative isolate overflow-hidden pt-32 lg:pt-44">
+        <section className="relative isolate overflow-hidden pt-[9.5rem] lg:pt-44">
           {/* subtle visual treatment — fine grid + flowing line */}
           <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute inset-0 grid-faint opacity-50" />

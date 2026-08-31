@@ -77,7 +77,7 @@ function ServicePage() {
       <main>
         {/* HERO — layout varies per service */}
         {v.heroLayout === "backdrop" && (
-          <section className="relative overflow-hidden bg-navy pt-44 pb-28 lg:pt-60 lg:pb-40">
+          <section className="relative overflow-hidden bg-navy pt-[12.5rem] pb-28 lg:pt-60 lg:pb-40">
             <img
               src={v.detail}
               alt={v.detailAlt}
