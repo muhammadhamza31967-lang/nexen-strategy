@@ -286,6 +286,7 @@ export function Header({ overHero = false }: { overHero?: boolean }) {
           {[
             { to: "/portfolio", label: "Portfolio" },
             { to: "/clients", label: "Clients" },
+            { to: "/gallery", label: "Gallery" },
             { to: "/contact", label: "Contact Us" },
           ].map((l) => (
             <Link
