@@ -133,7 +133,7 @@ function GalleryPage() {
           ) : (
             <div
               key={filter}
-              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8"
+              className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6"
             >
               {visible.map((item, i) => (
                 <Reveal key={item.src} delay={60 + i * 70}>
