@@ -151,7 +151,7 @@ function GalleryPage() {
 
 function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <figure className="group relative isolate h-[300px] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy sm:h-[320px] lg:h-[350px]">
+    <figure className="group relative isolate aspect-[4/5] cursor-pointer overflow-hidden rounded-xl border border-border bg-navy">
       <img
         src={item.src}
         alt={item.alt}
