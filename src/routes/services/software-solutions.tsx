@@ -138,7 +138,7 @@ function SoftwareSolutionsPage() {
               <div className="relative z-10 lg:col-span-6">
                 <Reveal>
                   <div className="flex items-center gap-5">
-                    <p className="eyebrow text-azure">05 — Software Solutions</p>
+                    <p className="eyebrow text-azure">03 — Software Solutions</p>
                     <span aria-hidden className="h-px w-12 bg-gradient-to-r from-amber to-ember" />
                   </div>
                 </Reveal>
