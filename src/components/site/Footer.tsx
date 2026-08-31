@@ -11,9 +11,9 @@ const socials = [
 ];
 
 const contactItems = [
-  { Icon: Mail, label: "hello@nexenstrategy.com", href: "mailto:hello@nexenstrategy.com" },
-  { Icon: Phone, label: "+44 (0) 20 8000 0000", href: "tel:+442080000000" },
-  { Icon: MapPin, label: "United Kingdom", href: null as string | null },
+  { Icon: Mail, label: "info@nexenstrategy.com", href: "mailto:info@nexenstrategy.com" },
+  { Icon: Phone, label: "+92 335 8084973", href: "tel:+923358084973" },
+  { Icon: MapPin, label: "UK / Islamabad", href: null as string | null },
 ];
 
 export function Footer() {
