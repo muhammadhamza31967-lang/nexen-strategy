@@ -84,7 +84,11 @@ export function Header({
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,padding] duration-500",
-        light ? "py-6" : "bg-white/92 py-4 backdrop-blur-xl",
+        light
+          ? "py-6"
+          : transparentStatic
+            ? "py-4"
+            : "bg-white/92 py-4 backdrop-blur-xl",
       )}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
