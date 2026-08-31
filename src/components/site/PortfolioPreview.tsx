@@ -7,6 +7,9 @@ import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
+import royaWeb from "@/assets/roya-laptop.png.asset.json";
+import hitechBrand from "@/assets/hitech-profile-1.jpg.asset.json";
+import drShahidSocial from "@/assets/Dr-Shahid-Posts-Mockup.jpg.asset.json";
 
 const projects = [
   {
@@ -36,6 +39,27 @@ const projects = [
     category: "Software",
     summary: "A secure patient and practitioner portal replacing four disconnected systems.",
     image: work4,
+  },
+  {
+    title: "Roya Ventures",
+    sector: "Investment & Advisory",
+    category: "Web & App Development",
+    summary: "A responsive digital experience engineered end to end — clear communication, intuitive journeys and a scalable foundation built to support growth.",
+    image: royaWeb.url,
+  },
+  {
+    title: "Hightech",
+    sector: "Industrial Engineering",
+    category: "Brand & Design",
+    summary: "Brand identity and a professional company profile that brings Hightech's identity, services and capabilities together through a clear, cohesive visual system.",
+    image: hitechBrand.url,
+  },
+  {
+    title: "Dr Shahid Mahmud Clinic",
+    sector: "Healthcare",
+    category: "Social Media Marketing",
+    summary: "Social media marketing across multiple platforms — consistent content, increased visibility and strong engagement and audience growth for the clinic.",
+    image: drShahidSocial.url,
   },
 ];
 
@@ -243,7 +267,7 @@ export function PortfolioPreview() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-7">
           {projects.map((proj, i) => {
             const on = i === active;
             return (
