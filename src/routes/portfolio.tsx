@@ -49,6 +49,9 @@ import roya1 from "@/assets/roya-profile-1.jpg.asset.json";
 import roya2 from "@/assets/roya-profile-2.jpg.asset.json";
 import roya3 from "@/assets/roya-profile-3.jpg.asset.json";
 import shazia1 from "@/assets/shazia-profile-1.jpg.asset.json";
+import logoCst from "@/assets/logo-cst.jpg.asset.json";
+import logoHirex from "@/assets/logo-hirex.jpg.asset.json";
+import logoRoya from "@/assets/logo-roya.jpg.asset.json";
 import shazia2 from "@/assets/shazia-profile-2.jpg.asset.json";
 import shazia3 from "@/assets/shazia-profile-3.jpg.asset.json";
 import hitech2 from "@/assets/hitech-profile-2.jpg.asset.json";
@@ -279,7 +282,19 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    number: "13",
+    category: "Brand & Design",
+    title: "Distinctive Logos Built to Be Remembered",
+    description:
+      "A collection of custom logo identities designed to give businesses a clear, distinctive and memorable visual presence.",
+    capabilities: ["Logo Design", "Visual Identity", "Brand Identity"],
+    images: [logoCst.url, logoHirex.url, logoRoya.url],
+    layout: "simple",
+    href: "/contact",
+  },
+  {
     number: "15",
+
     category: "Marketing & Growth",
     title: "Building a Stronger Social Presence for Umami",
     description:
