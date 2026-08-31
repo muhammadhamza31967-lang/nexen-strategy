@@ -35,6 +35,9 @@ import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 import aiChatbotMain from "@/assets/pf-ai-chatbot-main.jpg";
 import aiChatbotConv from "@/assets/pf-ai-chatbot-conv.jpg";
 import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
+import hitech1 from "@/assets/hitech-profile-1.jpg.asset.json";
+import hitech2 from "@/assets/hitech-profile-2.jpg.asset.json";
+import hitech3 from "@/assets/hitech-profile-3.jpg.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
