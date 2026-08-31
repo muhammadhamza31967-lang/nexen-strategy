@@ -35,6 +35,9 @@ import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 import aiChatbotMain from "@/assets/pf-ai-chatbot-main.jpg";
 import aiChatbotConv from "@/assets/pf-ai-chatbot-conv.jpg";
 import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
+import hitech1 from "@/assets/hitech-profile-1.jpg.asset.json";
+import hitech2 from "@/assets/hitech-profile-2.jpg.asset.json";
+import hitech3 from "@/assets/hitech-profile-3.jpg.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -99,11 +102,11 @@ const projects: Project[] = [
   {
     number: "04",
     category: "Brand & Design",
-    title: "A Digital Identity Built for a Stronger Market Presence",
+    title: "Building a Stronger Brand Identity for Hightech",
     description:
-      "A cohesive brand and digital identity designed to create consistency, improve recognition and establish a stronger presence across digital touchpoints.",
-    capabilities: ["Brand Strategy", "Visual Identity", "Digital Design"],
-    images: [work2, svcMarketing, work4],
+      "We developed a distinctive brand identity for Hightech and designed a professional company profile that brings its brand, services and capabilities together into a clear and cohesive visual presentation.",
+    capabilities: ["Branding", "Visual Identity", "Company Profile"],
+    images: [hitech1.url, hitech2.url, hitech3.url],
     layout: "simple",
     href: "/contact",
   },
