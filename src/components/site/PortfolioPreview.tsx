@@ -186,11 +186,11 @@ export function PortfolioPreview() {
           <div className="lg:col-span-7">
             <div className="mb-4 flex items-center gap-4">
               <span className="eyebrow text-[0.62rem] text-white/50">
-                {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+                {String(safeActive + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
               </span>
               <span className="h-px flex-1 bg-white/10">
                 <span
-                  key={`${active}-${cycle}-${paused}`}
+                  key={`${safeActive}-${cycle}-${paused}`}
                   className={cn("block h-px", paused ? "pp-bar-paused" : "pp-bar")}
                   style={{ background: "linear-gradient(90deg,#4A73FF,#3AF1FF)" }}
                 />
@@ -226,9 +226,9 @@ export function PortfolioPreview() {
 
           {/* Info */}
           <div className="lg:col-span-5">
-            <div key={active} className="pp-rise">
+            <div key={safeActive} className="pp-rise">
               <p className="eyebrow text-[0.6rem] text-white/45">
-                {String(active + 1).padStart(2, "0")} / Selected Work
+                {String(safeActive + 1).padStart(2, "0")} / Selected Work
               </p>
               <p className="eyebrow mt-4 text-[0.64rem]" style={{ color: "#3AF1FF" }}>
                 {p.sector} · {p.category}
@@ -246,7 +246,7 @@ export function PortfolioPreview() {
         {/* Navigation */}
         <div className="mt-12 grid grid-cols-1 gap-px border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((proj, i) => {
-            const on = i === active;
+            const on = i === safeActive;
             return (
               <button
                 key={proj.title}
