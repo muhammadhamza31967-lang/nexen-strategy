@@ -238,6 +238,17 @@ const projects: Project[] = [
     layout: "simple",
     href: "/contact",
   },
+  {
+    number: "15",
+    category: "Marketing & Growth",
+    title: "Building a Stronger Social Presence for Umami",
+    description:
+      "We delivered social media marketing for Umami, creating engaging content and a consistent digital presence across social platforms to strengthen brand visibility, connect with the right audience and support ongoing growth.",
+    capabilities: ["Social Media Marketing", "Content Strategy", "Social Media Growth"],
+    images: [umami1.url, umami2.url, umami3.url],
+    layout: "simple",
+    href: "/contact",
+  },
 ];
 
 function ProjectSection({ p, index }: { p: Project; index: number }) {
