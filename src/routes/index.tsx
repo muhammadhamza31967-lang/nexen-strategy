@@ -42,9 +42,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-
 function Home() {
-
   return (
     <>
       <Header overHero />
@@ -158,7 +156,7 @@ function Home() {
                   {[
                     { k: "6", v: "Connected disciplines" },
                     { k: "10+", v: "Industries served" },
-                    { k: "UK", v: "Based and accountable" },
+                    { k: "GLOBAL", v: "Based and accountable" },
                   ].map((s) => (
                     <div key={s.v}>
                       <p className="display text-[1.7rem] text-navy sm:text-[2.3rem] lg:text-[3rem]">{s.k}</p>
@@ -266,9 +264,27 @@ function Home() {
                 }}
               />
             </div>
-            <svg className="absolute inset-0 hidden h-full w-full lg:block" preserveAspectRatio="none" viewBox="0 0 1440 500">
-              <path className="ptn-dash" d="M-100 380 C 340 340, 560 140, 900 130 S 1400 80, 1560 60" fill="none" stroke="#4A73FF" strokeOpacity="0.28" strokeWidth="1" />
-              <path className="ptn-dash2" d="M-100 140 C 360 200, 620 420, 1080 400 S 1440 340, 1560 320" fill="none" stroke="#3AF1FF" strokeOpacity="0.35" strokeWidth="1" />
+            <svg
+              className="absolute inset-0 hidden h-full w-full lg:block"
+              preserveAspectRatio="none"
+              viewBox="0 0 1440 500"
+            >
+              <path
+                className="ptn-dash"
+                d="M-100 380 C 340 340, 560 140, 900 130 S 1400 80, 1560 60"
+                fill="none"
+                stroke="#4A73FF"
+                strokeOpacity="0.28"
+                strokeWidth="1"
+              />
+              <path
+                className="ptn-dash2"
+                d="M-100 140 C 360 200, 620 420, 1080 400 S 1440 340, 1560 320"
+                fill="none"
+                stroke="#3AF1FF"
+                strokeOpacity="0.35"
+                strokeWidth="1"
+              />
             </svg>
           </div>
           <span
@@ -291,16 +307,12 @@ function Home() {
               <div aria-hidden className="h-px w-full bg-gradient-to-r from-transparent via-navy/12 to-transparent" />
               <div className="grid grid-cols-1 divide-y divide-navy/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                 {partnerLogos.map((p) => (
-                  <div
-                    key={p.name}
-                    className="group relative flex items-center justify-center px-6 py-12 lg:py-16"
-                  >
+                  <div key={p.name} className="group relative flex items-center justify-center px-6 py-12 lg:py-16">
                     <span
                       aria-hidden
                       className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                       style={{
-                        background:
-                          "radial-gradient(circle at 50% 50%, rgba(74,115,255,0.10) 0%, transparent 70%)",
+                        background: "radial-gradient(circle at 50% 50%, rgba(74,115,255,0.10) 0%, transparent 70%)",
                       }}
                     />
                     <img
