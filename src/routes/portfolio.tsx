@@ -35,9 +35,6 @@ import smmSupport2 from "@/assets/Dr-Shahid-Posts-Mockup-3.jpg.asset.json";
 import aiChatbotMain from "@/assets/pf-ai-chatbot-main.jpg";
 import aiChatbotConv from "@/assets/pf-ai-chatbot-conv.jpg";
 import aiChatbotAnalytics from "@/assets/pf-ai-chatbot-analytics.jpg";
-import aiWorkflowMain from "@/assets/pf-ai-workflow-main.jpg";
-import aiWorkflowBuilder from "@/assets/pf-ai-workflow-builder.jpg";
-import aiWorkflowAnalytics from "@/assets/pf-ai-workflow-analytics.jpg";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -129,17 +126,6 @@ const projects: Project[] = [
       "An intelligent AI chatbot designed to help businesses automate customer conversations, provide instant answers and guide users toward the right information or action.",
     capabilities: ["AI Chatbots", "Conversational AI", "Customer Support Automation"],
     images: [aiChatbotMain, aiChatbotConv, aiChatbotAnalytics],
-    layout: "simple",
-    href: "/contact",
-  },
-  {
-    number: "05b",
-    category: "AI & Automation",
-    title: "Intelligent Workflows That Work Smarter",
-    description:
-      "An AI-powered automation platform designed to connect business processes, reduce repetitive work and help teams complete everyday workflows with greater efficiency.",
-    capabilities: ["AI Automation", "Workflow Intelligence", "Business Process Automation"],
-    images: [aiWorkflowMain, aiWorkflowBuilder, aiWorkflowAnalytics],
     layout: "simple",
     href: "/contact",
   },
