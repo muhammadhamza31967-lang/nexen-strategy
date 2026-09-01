@@ -313,35 +313,8 @@ function AiAutomationPage() {
                     >
                       <Sparkles className="h-4 w-4 text-[#3AF1FF]" strokeWidth={1.6} />
                     </span>
-                  </div>
+                  </HeroScale>
 
-
-                  {/* ===== Mobile: clean stacked order ===== */}
-                  <div className="space-y-5 sm:hidden">
-                    <figure className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[0_30px_60px_-34px_rgba(1,12,98,0.45)]">
-                      <img
-                        src={aiHeroMain}
-                        alt="AI assistant working alongside a live business operations dashboard"
-                        className="aspect-[5/4] w-full object-cover"
-                      />
-                    </figure>
-                    <figure className="overflow-hidden rounded-xl border border-navy/10 bg-white shadow-[0_24px_50px_-32px_rgba(1,12,98,0.4)]">
-                      <img
-                        src={aiHeroPanel}
-                        alt="Automation workflow panel with connected trigger, AI agent, condition and action nodes"
-                        loading="lazy"
-                        className="aspect-[4/3] w-full object-cover"
-                      />
-                    </figure>
-                    <figure className="mx-auto w-[46%] overflow-hidden rounded-[1rem] border-[3px] border-white bg-white shadow-[0_24px_50px_-28px_rgba(1,12,98,0.45)]">
-                      <img
-                        src={aiHeroMobile}
-                        alt="Mobile AI assistant showing a conversation and an automation status card"
-                        loading="lazy"
-                        className="aspect-[9/16] w-full rounded-[0.8rem] object-cover object-center"
-                      />
-                    </figure>
-                  </div>
                 </div>
               </Reveal>
 
