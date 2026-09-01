@@ -306,11 +306,11 @@ const projects: Project[] = [
   },
 ];
 
-function ProjectSection({ p, index }: { p: Project; index: number }) {
+function ProjectSection({ p, index, first }: { p: Project; index: number; first?: boolean }) {
   const imageRight = index % 2 === 1;
 
   return (
-    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
+    <section className={cn("relative overflow-hidden bg-white pb-14 lg:pb-20", first ? "pt-8 lg:pt-12" : "pt-14 lg:pt-20")}>
       <div className="relative mx-auto w-full max-w-[1400px] min-w-0 px-6 lg:px-12">
         <div className="grid min-w-0 items-center gap-10 lg:grid-cols-12 lg:gap-x-16">
           {/* Category — shown above the visuals on mobile only */}
@@ -492,7 +492,7 @@ function PortfolioPage() {
         {/* Projects */}
         {visible.map((p, i) => (
           <div key={p.number} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
-            <ProjectSection p={p} index={i} />
+            <ProjectSection p={p} index={i} first={i === 0} />
             {i < visible.length - 1 && (
               <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
                 <span aria-hidden className="block h-px w-full bg-border" />
