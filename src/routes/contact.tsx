@@ -81,7 +81,7 @@ type FormDataState = {
   service: string;
   message: string;
 };
-type FieldErrors = Partial<Record<keyof FormDataState, string>>;
+type FieldErrors = Partial<Record<keyof FormDataState, string | undefined>>;
 
 function validateForm(data: FormDataState, country: CountryCode): FieldErrors {
   const errors: FieldErrors = {};
