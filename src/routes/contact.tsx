@@ -1,13 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState, type FormEvent } from "react";
-import { ArrowRight, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Mail, MapPin, Phone, Search } from "lucide-react";
 import { toast } from "sonner";
 import { AsYouType, getCountries, getCountryCallingCode, isValidPhoneNumber } from "libphonenumber-js";
 import type { CountryCode } from "libphonenumber-js";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { serviceOptions } from "@/lib/site-data";
+
 
 function countryFlag(code: string) {
   return String.fromCodePoint(...[...code].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
@@ -36,7 +45,11 @@ export const Route = createFileRoute("/contact")({
 });
 
 const fieldClass =
-  "w-full border-0 border-b border-border bg-transparent px-0 py-3.5 text-base text-navy outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-azure";
+  "peer h-[52px] w-full border-0 border-b border-border bg-transparent px-0 text-base text-navy outline-none transition-colors duration-300 placeholder:text-muted-foreground/55 hover:border-navy/30 focus:border-[#FFA53C] aria-[invalid=true]:border-[#FF483F]";
+
+const labelClass =
+  "block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-navy/70";
+
 
 const contactDetails = [
   {
@@ -112,6 +125,105 @@ function validateForm(data: FormDataState, country: CountryCode): FieldErrors {
 
   return errors;
 }
+
+function CountrySelect({
+  value,
+  onChange,
+  invalid,
+}: {
+  value: CountryCode;
+  onChange: (code: CountryCode) => void;
+  invalid?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const info = countryOptions.find((c) => c.code === value);
+  const list = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return countryOptions;
+    return countryOptions.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        c.dialCode.includes(q) ||
+        c.code.toLowerCase().includes(q),
+    );
+  }, [query]);
+
+  return (
+    <Popover
+      open={open}
+      onOpenChange={(o) => {
+        setOpen(o);
+        if (!o) setQuery("");
+      }}
+    >
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          aria-label="Country calling code"
+          className={`flex h-[52px] shrink-0 items-center gap-1.5 border-b pr-3 text-navy outline-none transition-colors duration-300 ${
+            invalid ? "border-[#FF483F]" : "border-border hover:border-navy/30"
+          } ${open ? "border-[#FFA53C]" : ""}`}
+        >
+          <span aria-hidden className="text-base leading-none">
+            {countryFlag(value)}
+          </span>
+          <span className="text-sm font-medium tabular-nums">{info?.dialCode}</span>
+          <ChevronDown
+            className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        sideOffset={10}
+        collisionPadding={16}
+        className="z-50 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-border bg-background p-0 shadow-xl"
+      >
+        <div className="flex items-center gap-2 border-b border-border px-3.5 py-2.5">
+          <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
+          <input
+            autoFocus
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search country"
+            className="h-8 w-full bg-transparent text-sm text-navy outline-none placeholder:text-muted-foreground/60"
+          />
+        </div>
+        <div className="max-h-64 overflow-y-auto py-1.5">
+          {list.length === 0 && (
+            <p className="px-4 py-6 text-center text-sm text-muted-foreground">No country found.</p>
+          )}
+          {list.map((c) => (
+            <button
+              key={c.code}
+              type="button"
+              onClick={() => {
+                onChange(c.code as CountryCode);
+                setOpen(false);
+                setQuery("");
+              }}
+              className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-muted ${
+                c.code === value ? "text-navy" : "text-navy/80"
+              }`}
+            >
+              <span aria-hidden className="text-base leading-none">
+                {countryFlag(c.code)}
+              </span>
+              <span className="min-w-0 flex-1 truncate">{c.name}</span>
+              <span className="shrink-0 tabular-nums text-muted-foreground">{c.dialCode}</span>
+              {c.code === value && <Check className="h-3.5 w-3.5 shrink-0 text-[#FFA53C]" />}
+            </button>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -306,10 +418,10 @@ function ContactPage() {
                 <h2 className="text-xl font-semibold tracking-tight text-navy">
                   Tell us about your project
                 </h2>
-                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-9">
-                  <div className="grid gap-9 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="name" className="eyebrow text-muted-foreground">
+                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-8 lg:space-y-10">
+                  <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-10 lg:gap-y-10">
+                    <div className="min-w-0">
+                      <label htmlFor="name" className={labelClass}>
                         Name
                       </label>
                       <input
@@ -323,8 +435,8 @@ function ContactPage() {
                       />
                       <FieldError field="name" />
                     </div>
-                    <div>
-                      <label htmlFor="company" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="company" className={labelClass}>
                         Company
                       </label>
                       <input
@@ -338,8 +450,8 @@ function ContactPage() {
                       />
                       <FieldError field="company" />
                     </div>
-                    <div>
-                      <label htmlFor="email" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="email" className={labelClass}>
                         Email
                       </label>
                       <input
@@ -354,34 +466,21 @@ function ContactPage() {
                       />
                       <FieldError field="email" />
                     </div>
-                    <div>
-                      <label htmlFor="phone" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="phone" className={labelClass}>
                         Phone
                       </label>
-                      <div className="flex items-end gap-3">
-                        <label className="relative shrink-0">
-                          <span className="pointer-events-none absolute left-0 top-1/2 flex w-[4.5rem] -translate-y-1/2 items-center gap-1.5 text-base text-navy">
-                            <span aria-hidden>{countryFlag(country)}</span>
-                            <span className="text-sm font-medium">{countryInfo?.dialCode}</span>
-                          </span>
-                          <select
-                            aria-label="Country code"
-                            value={country}
-                            onChange={(e) => {
-                              setCountry(e.target.value as CountryCode);
-                              setErrors((prev) =>
-                                prev.phone ? { ...prev, phone: undefined } : prev,
-                              );
-                            }}
-                            className="w-[4.5rem] cursor-pointer appearance-none border-0 border-b border-border bg-transparent py-3.5 text-transparent opacity-0 outline-none transition-colors focus:border-azure focus:opacity-100 focus:text-navy"
-                          >
-                            {countryOptions.map((c) => (
-                              <option key={c.code} value={c.code}>
-                                {c.name} ({c.dialCode})
-                              </option>
-                            ))}
-                          </select>
-                        </label>
+                      <div className="flex items-stretch gap-3">
+                        <CountrySelect
+                          value={country}
+                          invalid={!!errors.phone}
+                          onChange={(code) => {
+                            setCountry(code);
+                            setErrors((prev) =>
+                              prev.phone ? { ...prev, phone: undefined } : prev,
+                            );
+                          }}
+                        />
                         <input
                           id="phone"
                           name="phone"
@@ -389,7 +488,7 @@ function ContactPage() {
                           inputMode="tel"
                           value={formData.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
-                          className={fieldClass}
+                          className={`${fieldClass} min-w-0 flex-1`}
                           placeholder="335 8084973"
                           aria-invalid={!!errors.phone}
                         />
@@ -397,55 +496,74 @@ function ContactPage() {
                       <FieldError field="phone" />
                     </div>
                   </div>
-                  <div>
-                    <label htmlFor="service" className="eyebrow text-muted-foreground">
+
+                  <div className="min-w-0">
+                    <label htmlFor="service" className={labelClass}>
                       Service / Project Type
                     </label>
-                    <select
-                      id="service"
-                      name="service"
+                    <Select
                       value={formData.service}
-                      onChange={(e) => updateField("service", e.target.value)}
-                      className={fieldClass}
-                      aria-invalid={!!errors.service}
+                      onValueChange={(v) => updateField("service", v)}
                     >
-                      <option value="" disabled>
-                        Select a service
-                      </option>
-                      {serviceOptions.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
+                      <SelectTrigger
+                        id="service"
+                        aria-invalid={!!errors.service}
+                        className={`${fieldClass} justify-between rounded-none px-0 py-0 shadow-none focus:ring-0 focus-visible:ring-0 data-[state=open]:border-[#FFA53C] [&>svg]:opacity-60 ${
+                          formData.service ? "" : "text-muted-foreground/55"
+                        }`}
+                      >
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent
+                        position="popper"
+                        sideOffset={10}
+                        className="z-50 max-h-72 w-[var(--radix-select-trigger-width)] rounded-xl border border-border bg-background p-1.5 shadow-xl"
+                      >
+                        {serviceOptions.map((s) => (
+                          <SelectItem
+                            key={s}
+                            value={s}
+                            className="cursor-pointer rounded-lg px-3 py-2.5 text-sm text-navy focus:bg-muted"
+                          >
+                            {s}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FieldError field="service" />
                   </div>
-                  <div>
-                    <label htmlFor="message" className="eyebrow text-muted-foreground">
+
+                  <div className="min-w-0">
+                    <label htmlFor="message" className={labelClass}>
                       Message
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={(e) => updateField("message", e.target.value)}
-                      className={`${fieldClass} resize-none`}
+                      className={`${fieldClass} h-auto min-h-[9.5rem] resize-none py-3.5 leading-relaxed`}
                       placeholder="What are you looking to achieve?"
                       aria-invalid={!!errors.message}
                     />
                     <FieldError field="message" />
                   </div>
+
                   <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
-                    <button type="submit" className="btn-primary group">
+                    <button
+                      type="submit"
+                      className="group inline-flex h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#FFA53C] to-[#FF483F] px-8 text-sm font-semibold tracking-wide text-white shadow-[0_10px_30px_-12px_rgba(255,72,63,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:w-auto"
+                    >
                       Start a Conversation
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
                     <p aria-live="polite" className="text-sm text-muted-foreground">
                       {sent ? "Thank you — your enquiry has been received." : ""}
                     </p>
                   </div>
                 </form>
+
               </div>
             </Reveal>
           </div>
