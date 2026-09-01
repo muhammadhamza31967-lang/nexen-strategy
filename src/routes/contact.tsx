@@ -306,7 +306,7 @@ function ContactPage() {
                 <h2 className="text-xl font-semibold tracking-tight text-navy">
                   Tell us about your project
                 </h2>
-                <form onSubmit={handleSubmit} className="mt-10 space-y-9">
+                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-9">
                   <div className="grid gap-9 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="eyebrow text-muted-foreground">
@@ -315,12 +315,13 @@ function ContactPage() {
                       <input
                         id="name"
                         name="name"
-                        required
                         value={formData.name}
                         onChange={(e) => updateField("name", e.target.value)}
                         className={fieldClass}
                         placeholder="Your name"
+                        aria-invalid={!!errors.name}
                       />
+                      <FieldError field="name" />
                     </div>
                     <div>
                       <label htmlFor="company" className="eyebrow text-muted-foreground">
@@ -333,7 +334,9 @@ function ContactPage() {
                         onChange={(e) => updateField("company", e.target.value)}
                         className={fieldClass}
                         placeholder="Company name"
+                        aria-invalid={!!errors.company}
                       />
+                      <FieldError field="company" />
                     </div>
                     <div>
                       <label htmlFor="email" className="eyebrow text-muted-foreground">
@@ -343,26 +346,54 @@ function ContactPage() {
                         id="email"
                         name="email"
                         type="email"
-                        required
                         value={formData.email}
                         onChange={(e) => updateField("email", e.target.value)}
                         className={fieldClass}
                         placeholder="you@company.com"
+                        aria-invalid={!!errors.email}
                       />
+                      <FieldError field="email" />
                     </div>
                     <div>
                       <label htmlFor="phone" className="eyebrow text-muted-foreground">
                         Phone
                       </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => updateField("phone", e.target.value)}
-                        className={fieldClass}
-                        placeholder="+92"
-                      />
+                      <div className="flex items-end gap-3">
+                        <label className="relative shrink-0" aria-label="Country code">
+                          <span className="pointer-events-none absolute left-0 top-1/2 flex w-[4.5rem] -translate-y-1/2 items-center gap-1.5 text-base text-navy">
+                            <span aria-hidden>{countryFlag(country)}</span>
+                            <span className="text-sm font-medium">{countryInfo?.dialCode}</span>
+                          </span>
+                          <select
+                            value={country}
+                            onChange={(e) => {
+                              setCountry(e.target.value as CountryCode);
+                              setErrors((prev) =>
+                                prev.phone ? { ...prev, phone: undefined } : prev,
+                              );
+                            }}
+                            className="w-[4.5rem] cursor-pointer appearance-none border-0 border-b border-border bg-transparent py-3.5 text-transparent opacity-0 outline-none transition-colors focus:border-azure focus:opacity-100 focus:text-navy"
+                          >
+                            {countryOptions.map((c) => (
+                              <option key={c.code} value={c.code}>
+                                {c.name} ({c.dialCode})
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          inputMode="tel"
+                          value={formData.phone}
+                          onChange={(e) => updateField("phone", e.target.value)}
+                          className={fieldClass}
+                          placeholder="335 8084973"
+                          aria-invalid={!!errors.phone}
+                        />
+                      </div>
+                      <FieldError field="phone" />
                     </div>
                   </div>
                   <div>
@@ -372,10 +403,10 @@ function ContactPage() {
                     <select
                       id="service"
                       name="service"
-                      required
                       value={formData.service}
                       onChange={(e) => updateField("service", e.target.value)}
                       className={fieldClass}
+                      aria-invalid={!!errors.service}
                     >
                       <option value="" disabled>
                         Select a service
@@ -386,6 +417,7 @@ function ContactPage() {
                         </option>
                       ))}
                     </select>
+                    <FieldError field="service" />
                   </div>
                   <div>
                     <label htmlFor="message" className="eyebrow text-muted-foreground">
@@ -395,12 +427,13 @@ function ContactPage() {
                       id="message"
                       name="message"
                       rows={4}
-                      required
                       value={formData.message}
                       onChange={(e) => updateField("message", e.target.value)}
                       className={`${fieldClass} resize-none`}
                       placeholder="What are you looking to achieve?"
+                      aria-invalid={!!errors.message}
                     />
+                    <FieldError field="message" />
                   </div>
                   <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
                     <button type="submit" className="btn-primary group">
