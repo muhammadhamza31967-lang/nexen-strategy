@@ -315,7 +315,9 @@ function AiAutomationPage() {
                     >
                       <Sparkles className="h-4 w-4 text-[#3AF1FF]" strokeWidth={1.6} />
                     </span>
+                    </div>
                   </HeroScale>
+
 
                 </div>
               </Reveal>
