@@ -126,6 +126,105 @@ function validateForm(data: FormDataState, country: CountryCode): FieldErrors {
   return errors;
 }
 
+function CountrySelect({
+  value,
+  onChange,
+  invalid,
+}: {
+  value: CountryCode;
+  onChange: (code: CountryCode) => void;
+  invalid?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const info = countryOptions.find((c) => c.code === value);
+  const list = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return countryOptions;
+    return countryOptions.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        c.dialCode.includes(q) ||
+        c.code.toLowerCase().includes(q),
+    );
+  }, [query]);
+
+  return (
+    <Popover
+      open={open}
+      onOpenChange={(o) => {
+        setOpen(o);
+        if (!o) setQuery("");
+      }}
+    >
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          aria-label="Country calling code"
+          className={`flex h-[52px] shrink-0 items-center gap-1.5 border-b pr-3 text-navy outline-none transition-colors duration-300 ${
+            invalid ? "border-[#FF483F]" : "border-border hover:border-navy/30"
+          } ${open ? "border-[#FFA53C]" : ""}`}
+        >
+          <span aria-hidden className="text-base leading-none">
+            {countryFlag(value)}
+          </span>
+          <span className="text-sm font-medium tabular-nums">{info?.dialCode}</span>
+          <ChevronDown
+            className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        sideOffset={10}
+        collisionPadding={16}
+        className="z-50 w-[min(20rem,calc(100vw-2rem))] rounded-xl border border-border bg-background p-0 shadow-xl"
+      >
+        <div className="flex items-center gap-2 border-b border-border px-3.5 py-2.5">
+          <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
+          <input
+            autoFocus
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search country"
+            className="h-8 w-full bg-transparent text-sm text-navy outline-none placeholder:text-muted-foreground/60"
+          />
+        </div>
+        <div className="max-h-64 overflow-y-auto py-1.5">
+          {list.length === 0 && (
+            <p className="px-4 py-6 text-center text-sm text-muted-foreground">No country found.</p>
+          )}
+          {list.map((c) => (
+            <button
+              key={c.code}
+              type="button"
+              onClick={() => {
+                onChange(c.code as CountryCode);
+                setOpen(false);
+                setQuery("");
+              }}
+              className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-muted ${
+                c.code === value ? "text-navy" : "text-navy/80"
+              }`}
+            >
+              <span aria-hidden className="text-base leading-none">
+                {countryFlag(c.code)}
+              </span>
+              <span className="min-w-0 flex-1 truncate">{c.name}</span>
+              <span className="shrink-0 tabular-nums text-muted-foreground">{c.dialCode}</span>
+              {c.code === value && <Check className="h-3.5 w-3.5 shrink-0 text-[#FFA53C]" />}
+            </button>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
   const [country, setCountry] = useState<CountryCode>("PK");
