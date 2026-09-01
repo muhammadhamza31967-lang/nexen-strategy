@@ -15,6 +15,7 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroScale } from "@/components/site/HeroScale";
 import { cn } from "@/lib/utils";
 
 import wadHeroMain from "@/assets/wad-hero-main.jpg";
