@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
 const WHATSAPP_URL = "https://wa.link/u8asi4";
