@@ -5,6 +5,7 @@ import { ArrowRight, Play } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroScale } from "@/components/site/HeroScale";
 import { cn } from "@/lib/utils";
 
 import mpHeroMain from "@/assets/mp-hero-main.jpg";
@@ -192,7 +193,8 @@ function MediaProductionPage() {
 
               {/* RIGHT — cinematic composition */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[620px] pb-14 pl-3 pr-2 sm:pb-16 lg:pl-8">
+                <HeroScale designWidth={620} className="relative">
+                <div className="relative mx-auto w-full pb-16 pl-8 pr-2">
                   <span
                     aria-hidden
                     className="pointer-events-none absolute right-[-8%] top-[-10%] h-[80%] w-[80%] rounded-full opacity-[0.10] blur-[110px]"
@@ -201,11 +203,11 @@ function MediaProductionPage() {
                   {/* depth layers */}
                   <span
                     aria-hidden
-                    className="absolute right-0 top-3 hidden h-[72%] w-[88%] rounded-2xl border border-navy/10 bg-white/60 lg:block"
+                    className="absolute right-0 top-3 block h-[72%] w-[88%] rounded-2xl border border-navy/10 bg-white/60"
                   />
                   <span
                     aria-hidden
-                    className="absolute right-2 top-6 hidden h-[68%] w-[84%] rounded-2xl border border-navy/[0.07] lg:block"
+                    className="absolute right-2 top-6 block h-[68%] w-[84%] rounded-2xl border border-navy/[0.07]"
                   />
 
                   {/* 01 — dominant cinematic frame */}
@@ -241,7 +243,7 @@ function MediaProductionPage() {
                   </div>
 
                   {/* 02 — vertical social frame */}
-                  <div className="mp-float absolute bottom-4 left-0 w-[20%] overflow-hidden rounded-[0.9rem] border-[3px] border-white bg-navy shadow-[0_30px_60px_-28px_rgba(1,12,98,0.55)] sm:w-[18%]">
+                  <div className="mp-float absolute bottom-4 left-0 w-[18%] overflow-hidden rounded-[0.9rem] border-[3px] border-white bg-navy shadow-[0_30px_60px_-28px_rgba(1,12,98,0.55)]">
                     <img
                       src={mpHeroVertical}
                       alt="Vertical social video frame of a creator filmed in a studio"
@@ -254,7 +256,7 @@ function MediaProductionPage() {
                   </div>
 
                   {/* 03 — photography / edit preview */}
-                  <div className="absolute bottom-8 right-[6%] w-[34%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_28px_58px_-30px_rgba(1,12,98,0.45)] sm:w-[30%]">
+                  <div className="absolute bottom-8 right-[6%] w-[30%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_28px_58px_-30px_rgba(1,12,98,0.45)]">
                     <img
                       src={mpDetail}
                       alt="Photography studio lighting setup used during a commercial shoot"
@@ -271,13 +273,15 @@ function MediaProductionPage() {
                   {/* fine technical accents */}
                   <span
                     aria-hidden
-                    className="absolute left-[6%] top-[10%] hidden h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent lg:block"
+                    className="absolute left-[6%] top-[10%] block h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent"
                   />
                   <span
                     aria-hidden
-                    className="absolute right-[6%] top-[-10px] hidden h-px w-20 bg-gradient-to-r from-amber to-ember lg:block"
+                    className="absolute right-[6%] top-[-10px] block h-px w-20 bg-gradient-to-r from-amber to-ember"
                   />
                 </div>
+                </HeroScale>
+
               </Reveal>
             </div>
 

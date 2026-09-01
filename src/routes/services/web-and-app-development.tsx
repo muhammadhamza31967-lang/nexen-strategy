@@ -15,6 +15,7 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroScale } from "@/components/site/HeroScale";
 import { cn } from "@/lib/utils";
 
 import wadHeroMain from "@/assets/wad-hero-main.jpg";
@@ -227,11 +228,12 @@ function WebAppDevelopmentPage() {
 
               {/* ---- Digital product ecosystem showcase ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[560px] lg:max-w-[620px]">
+                <HeroScale designWidth={620} className="relative">
+                <div className="relative mx-auto w-full">
                   {/* atmospheric depth */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-[130px] sm:block"
+                    className="pointer-events-none absolute left-1/2 top-1/2 block h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-[130px]"
                     style={{ background: "radial-gradient(circle, #010C62 0%, transparent 70%)" }}
                   />
                   {/* dotted technical connectors + labels (desktop) */}
@@ -239,8 +241,9 @@ function WebAppDevelopmentPage() {
                     aria-hidden
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
-                    className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+                    className="pointer-events-none absolute inset-0 block h-full w-full"
                   >
+
                     <path
                       d="M56 8 L66 8 L66 15"
                       fill="none"
@@ -270,9 +273,9 @@ function WebAppDevelopmentPage() {
                     />
                   </svg>
 
-                  <div className="flex flex-col gap-8 sm:block sm:pb-[14%] sm:pl-[6%] sm:pr-[6%] sm:pt-[14%]">
+                  <div className="block pb-[14%] pl-[6%] pr-[6%] pt-[14%]">
                     {/* 01 — main web experience */}
-                    <figure className="relative sm:ml-auto sm:w-[86%]" style={{ perspective: "1600px" }}>
+                    <figure className="relative ml-auto w-[86%]" style={{ perspective: "1600px" }}>
                       <div
                         className="overflow-hidden rounded-2xl border border-navy/[0.08] bg-white shadow-[0_46px_90px_-46px_rgba(1,12,98,0.4)]"
                         style={{ transform: "rotateY(-7deg) rotateX(2deg) rotate(-1.5deg)" }}
@@ -294,7 +297,7 @@ function WebAppDevelopmentPage() {
                     </figure>
 
                     {/* 02 — application dashboard, upper-right overlap */}
-                    <figure className="relative sm:absolute sm:right-0 sm:top-[2%] sm:z-20 sm:w-[46%]">
+                    <figure className="absolute right-0 top-[2%] z-20 w-[46%]">
                       <div className="overflow-hidden rounded-xl border border-navy/[0.08] bg-white shadow-[0_28px_60px_-30px_rgba(1,12,98,0.35)]">
                         <img
                           src={wadHeroPanel}
@@ -308,7 +311,7 @@ function WebAppDevelopmentPage() {
                     </figure>
 
                     {/* 03 — mobile app, lower-left overlap */}
-                    <figure className="wad-float relative mx-auto w-[42%] sm:absolute sm:bottom-[8%] sm:left-0 sm:z-20 sm:mx-0 sm:w-[22%]">
+                    <figure className="wad-float absolute bottom-[8%] left-0 z-20 w-[22%]">
                       <div className="overflow-hidden rounded-[1.1rem] border border-navy/15 bg-navy shadow-[0_28px_58px_-26px_rgba(1,12,98,0.45)]">
                         <img
                           src={wadHeroMobile}
@@ -343,9 +346,11 @@ function WebAppDevelopmentPage() {
                   </span> */}
                   <span
                     aria-hidden
-                    className="absolute right-[3%] top-[46%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
+                    className="absolute right-[3%] top-[46%] block h-1.5 w-1.5 rounded-full bg-amber"
                   />
                 </div>
+                </HeroScale>
+
               </Reveal>
             </div>
           </div>

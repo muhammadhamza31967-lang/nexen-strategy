@@ -5,6 +5,7 @@ import { ArrowRight, Eye, Magnet, MousePointerClick, TrendingUp, Users, type Luc
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroScale } from "@/components/site/HeroScale";
 import { cn } from "@/lib/utils";
 
 import mktHeroMain from "@/assets/mkt-hero-main.jpg";
@@ -383,7 +384,8 @@ function MarketingGrowthPage() {
 
               {/* ---- Marketing intelligence composition ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[620px] pb-12 pl-4 pr-2 sm:pb-16 lg:pl-8">
+                <HeroScale designWidth={620} className="relative">
+                <div className="relative mx-auto w-full pb-16 pl-8 pr-2">
                   {/* soft background glow */}
                   <span
                     aria-hidden
@@ -393,11 +395,11 @@ function MarketingGrowthPage() {
                   {/* depth layers behind the dashboard */}
                   <span
                     aria-hidden
-                    className="absolute right-0 top-3 hidden h-[74%] w-[88%] rounded-2xl border border-navy/10 bg-white/60 lg:block"
+                    className="absolute right-0 top-3 block h-[74%] w-[88%] rounded-2xl border border-navy/10 bg-white/60"
                   />
                   <span
                     aria-hidden
-                    className="absolute right-2 top-6 hidden h-[70%] w-[84%] rounded-2xl border border-navy/[0.07] lg:block"
+                    className="absolute right-2 top-6 block h-[70%] w-[84%] rounded-2xl border border-navy/[0.07]"
                   />
 
                   {/* 1 — main dashboard, biased right */}
@@ -412,7 +414,7 @@ function MarketingGrowthPage() {
                   </div>
 
                   {/* 2 — growth / conversion insight panel, docked to the dashboard */}
-                  <div className="absolute bottom-2 right-[6%] w-[46%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_28px_58px_-30px_rgba(1,12,98,0.4)] sm:bottom-4 sm:w-[42%]">
+                  <div className="absolute bottom-4 right-[6%] w-[42%] overflow-hidden rounded-xl border border-navy/10 bg-white p-1 shadow-[0_28px_58px_-30px_rgba(1,12,98,0.4)]">
                     <img
                       src={mktHeroPanel}
                       alt="Growth journey panel linking attention, engagement, leads, customers and growth"
@@ -424,7 +426,7 @@ function MarketingGrowthPage() {
                   </div>
 
                   {/* 3 — supporting mobile preview, lower-left with controlled overlap */}
-                  <div className="mkt-float absolute bottom-6 left-0 w-[17%] overflow-hidden rounded-[0.9rem] border-[4px] border-white bg-white shadow-[0_30px_60px_-28px_rgba(1,12,98,0.45)] sm:w-[15%]">
+                  <div className="mkt-float absolute bottom-6 left-0 w-[15%] overflow-hidden rounded-[0.9rem] border-[4px] border-white bg-white shadow-[0_30px_60px_-28px_rgba(1,12,98,0.45)]">
                     <img
                       src={mktHeroMobile}
                       alt="Mobile marketing app showing campaign performance and new lead volume"
@@ -438,13 +440,15 @@ function MarketingGrowthPage() {
                   {/* refined accents */}
                   <span
                     aria-hidden
-                    className="absolute left-[6%] top-[10%] hidden h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent lg:block"
+                    className="absolute left-[6%] top-[10%] block h-14 w-px bg-gradient-to-b from-cyan/70 to-transparent"
                   />
                   <span
                     aria-hidden
-                    className="absolute right-[6%] top-[-10px] hidden h-px w-20 bg-gradient-to-r from-amber to-ember lg:block"
+                    className="absolute right-[6%] top-[-10px] block h-px w-20 bg-gradient-to-r from-amber to-ember"
                   />
                 </div>
+                </HeroScale>
+
               </Reveal>
 
             </div>
