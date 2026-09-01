@@ -492,7 +492,7 @@ function PortfolioPage() {
         {/* Projects */}
         {visible.map((p, i) => (
           <div key={p.number} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
-            <ProjectSection p={p} index={i} />
+            <ProjectSection p={p} index={i} first={i === 0} />
             {i < visible.length - 1 && (
               <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
                 <span aria-hidden className="block h-px w-full bg-border" />
