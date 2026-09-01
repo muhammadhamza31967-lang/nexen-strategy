@@ -44,14 +44,19 @@ export function HeroScale({
   }, [designWidth]);
 
   return (
-    <div ref={outerRef} className={cn("w-full", className)} style={height ? { height } : undefined}>
+    <div
+      ref={outerRef}
+      className={cn("relative w-full", className)}
+      style={{ height: height ?? undefined }}
+    >
       <div
         ref={innerRef}
-        className="origin-top-left"
+        className="absolute left-0 top-0 origin-top-left"
         style={{ width: designWidth, transform: `scale(${scale})` }}
       >
         {children}
       </div>
     </div>
   );
+
 }
