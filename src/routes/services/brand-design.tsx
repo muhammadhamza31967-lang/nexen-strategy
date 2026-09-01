@@ -298,8 +298,8 @@ function BrandDesignPage() {
                     />
                   </div>
                   </div>
+                </HeroScale>
 
-                </div>
               </Reveal>
             </div>
           </div>
