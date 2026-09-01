@@ -447,6 +447,8 @@ function MarketingGrowthPage() {
                     className="absolute right-[6%] top-[-10px] block h-px w-20 bg-gradient-to-r from-amber to-ember"
                   />
                 </div>
+                </HeroScale>
+
               </Reveal>
 
             </div>
