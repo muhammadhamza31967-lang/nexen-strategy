@@ -86,8 +86,9 @@ export const Route = createFileRoute("/portfolio")({
 });
 
 type Project = {
+  id: string;
   number: string;
-  category: string;
+  category: (typeof filters)[number];
   title: string;
   description: string;
   capabilities: string[];
@@ -101,6 +102,7 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: "gatd-web-experience",
     number: "01",
     category: "Web & App Development",
     title: "Digital Experiences Built Around Business Goals",
@@ -112,6 +114,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "roya-web-experience",
     number: "02",
     category: "Web & App Development",
     title: "A Responsive Digital Experience Engineered End to End",
@@ -124,6 +127,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "hightech-brand-profile",
     number: "04",
     category: "Brand & Design",
     title: "Building a Stronger Brand Identity for Hightech",
@@ -135,6 +139,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "nexaflow-platform",
     number: "03",
     category: "Software Solutions",
     title: "One Platform. Complete Control Over Your Operations.",
@@ -146,6 +151,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "business-operations-platform",
     number: "13",
     category: "Software Solutions",
     title: "Business Operations Platform",
@@ -157,6 +163,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "customer-management-system",
     number: "14",
     category: "Software Solutions",
     title: "Customer Management System",
@@ -168,6 +175,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "ai-customer-support-chatbot",
     number: "05",
     category: "AI & Automation",
     title: "AI Chatbot Built for Smarter Customer Support",
@@ -179,6 +187,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "intelligent-workflow-automation",
     number: "16",
     category: "AI & Automation",
     title: "Intelligent Workflow Automation",
@@ -190,6 +199,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "ai-business-assistant",
     number: "17",
     category: "AI & Automation",
     title: "AI Business Assistant",
@@ -201,6 +211,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "dr-shahid-social-growth",
     number: "06",
     category: "Marketing & Growth",
     title: "Growing Digital Visibility Through Social Media",
@@ -212,6 +223,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "dr-shoaib-video-production",
     number: "07",
     category: "Media Production",
     title: "Social Media Video Production for Dr Shoaib Ahmed",
@@ -223,6 +235,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "mohsan-web-experience",
     number: "08",
     category: "Web & App Development",
     title: "Digital Experiences Built for Modern Businesses",
@@ -235,6 +248,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "dr-shahid-web-experience",
     number: "09",
     category: "Web & App Development",
     title: "Digital Experiences Built for Modern Businesses",
@@ -248,6 +262,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "dr-sarfraz-web-experience",
     number: "10",
     category: "Web & App Development",
     title: "Digital Experiences Built for Modern Businesses",
@@ -260,6 +275,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "roya-brand-profile",
     number: "11",
     category: "Brand & Design",
     title: "A Professional Company Profile for RoyaVentures",
@@ -271,6 +287,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "shazia-brand-profile",
     number: "12",
     category: "Brand & Design",
     title: "Creating a Distinctive Company Profile for Shazia Boutique",
@@ -282,6 +299,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "logo-identity-collection",
     number: "13",
     category: "Brand & Design",
     title: "Distinctive Logos Built to Be Remembered",
@@ -293,6 +311,7 @@ const projects: Project[] = [
     href: "/contact",
   },
   {
+    id: "umami-social-growth",
     number: "15",
 
     category: "Marketing & Growth",
@@ -366,11 +385,17 @@ const filters = [
   "AI & Automation",
   "Marketing & Growth",
   "Media Production",
-];
+] as const;
+
+type PortfolioCategory = Exclude<(typeof filters)[number], "All">;
+
+function isPortfolioCategory(category: (typeof filters)[number]): category is PortfolioCategory {
+  return category !== "All";
+}
 
 function PortfolioPage() {
-  const [active, setActive] = useState("All");
-  const visible = projects.filter((p) => active === "All" || p.category === active);
+  const [active, setActive] = useState<(typeof filters)[number]>("All");
+  const visible = active === "All" ? projects : projects.filter((project) => project.category === active);
 
   return (
     <>
@@ -489,23 +514,25 @@ function PortfolioPage() {
           </div>
         </section>
 
-        {/* Projects */}
-        {visible.map((p, i) => (
-          <div key={p.number} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
-            <ProjectSection p={p} index={i} first={i === 0} />
-            {i < visible.length - 1 && (
-              <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-                <span aria-hidden className="block h-px w-full bg-border" />
-              </div>
-            )}
-          </div>
-        ))}
+        {/* Only the active category is mounted, so filtered projects never reserve layout space. */}
+        <div key={active}>
+          {visible.map((p, i) => (
+            <div key={p.id} className="pf-item" style={{ animationDelay: `${i * 70}ms` }}>
+              <ProjectSection p={p} index={i} first={i === 0} />
+              {i < visible.length - 1 && (
+                <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+                  <span aria-hidden className="block h-px w-full bg-border" />
+                </div>
+              )}
+            </div>
+          ))}
 
-        {visible.length === 0 && (
-          <div className="mx-auto max-w-[1400px] px-6 py-24 text-center lg:px-12 lg:py-32">
-            <p className="text-lg text-muted-foreground">More projects coming soon.</p>
-          </div>
-        )}
+          {visible.length === 0 && (
+            <div className="mx-auto max-w-[1400px] px-6 py-24 text-center lg:px-12 lg:py-32">
+              <p className="text-lg text-muted-foreground">More projects coming soon.</p>
+            </div>
+          )}
+        </div>
 
         <div className="pt-10 lg:pt-16" />
 
