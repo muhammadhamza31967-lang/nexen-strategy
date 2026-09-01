@@ -55,14 +55,49 @@ const contactDetails = [
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  function updateField(field: keyof typeof formData, value: string) {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const requiredFields: (keyof typeof formData)[] = ["name", "email", "service", "message"];
+    const missing = requiredFields.some((field) => !formData[field].trim());
+    if (missing) {
+      toast.error("Please complete all required fields.");
+      return;
+    }
+
+    const whatsappMessage = [
+      "New Website Enquiry",
+      "",
+      `Name: ${formData.name.trim()}`,
+      `Company: ${formData.company.trim() || "N/A"}`,
+      `Email: ${formData.email.trim()}`,
+      `Phone: ${formData.phone.trim() || "N/A"}`,
+      `Service / Project Type: ${formData.service}`,
+      `Message: ${formData.message.trim()}`,
+    ].join("\n");
+
+    const encoded = encodeURIComponent(whatsappMessage);
+    window.location.href = `https://wa.link/u8asi4?text=${encoded}`;
+
     setSent(true);
     toast.success("Enquiry received", {
       description: "Thank you. A member of the team will be in touch shortly.",
     });
     e.currentTarget.reset();
+    setFormData({ name: "", company: "", email: "", phone: "", service: "", message: "" });
   }
 
   return (
