@@ -349,6 +349,8 @@ function WebAppDevelopmentPage() {
                     className="absolute right-[3%] top-[46%] block h-1.5 w-1.5 rounded-full bg-amber"
                   />
                 </div>
+                </HeroScale>
+
               </Reveal>
             </div>
           </div>
