@@ -240,6 +240,8 @@ function ContactPage() {
                         id="name"
                         name="name"
                         required
+                        value={formData.name}
+                        onChange={(e) => updateField("name", e.target.value)}
                         className={fieldClass}
                         placeholder="Your name"
                       />
@@ -251,6 +253,8 @@ function ContactPage() {
                       <input
                         id="company"
                         name="company"
+                        value={formData.company}
+                        onChange={(e) => updateField("company", e.target.value)}
                         className={fieldClass}
                         placeholder="Company name"
                       />
@@ -264,6 +268,8 @@ function ContactPage() {
                         name="email"
                         type="email"
                         required
+                        value={formData.email}
+                        onChange={(e) => updateField("email", e.target.value)}
                         className={fieldClass}
                         placeholder="you@company.com"
                       />
@@ -276,6 +282,8 @@ function ContactPage() {
                         id="phone"
                         name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={(e) => updateField("phone", e.target.value)}
                         className={fieldClass}
                         placeholder="+92"
                       />
@@ -289,7 +297,8 @@ function ContactPage() {
                       id="service"
                       name="service"
                       required
-                      defaultValue=""
+                      value={formData.service}
+                      onChange={(e) => updateField("service", e.target.value)}
                       className={fieldClass}
                     >
                       <option value="" disabled>
@@ -311,6 +320,8 @@ function ContactPage() {
                       name="message"
                       rows={4}
                       required
+                      value={formData.message}
+                      onChange={(e) => updateField("message", e.target.value)}
                       className={`${fieldClass} resize-none`}
                       placeholder="What are you looking to achieve?"
                     />
