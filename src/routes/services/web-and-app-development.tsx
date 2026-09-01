@@ -273,9 +273,9 @@ function WebAppDevelopmentPage() {
                     />
                   </svg>
 
-                  <div className="flex flex-col gap-8 sm:block sm:pb-[14%] sm:pl-[6%] sm:pr-[6%] sm:pt-[14%]">
+                  <div className="block pb-[14%] pl-[6%] pr-[6%] pt-[14%]">
                     {/* 01 — main web experience */}
-                    <figure className="relative sm:ml-auto sm:w-[86%]" style={{ perspective: "1600px" }}>
+                    <figure className="relative ml-auto w-[86%]" style={{ perspective: "1600px" }}>
                       <div
                         className="overflow-hidden rounded-2xl border border-navy/[0.08] bg-white shadow-[0_46px_90px_-46px_rgba(1,12,98,0.4)]"
                         style={{ transform: "rotateY(-7deg) rotateX(2deg) rotate(-1.5deg)" }}
@@ -297,7 +297,7 @@ function WebAppDevelopmentPage() {
                     </figure>
 
                     {/* 02 — application dashboard, upper-right overlap */}
-                    <figure className="relative sm:absolute sm:right-0 sm:top-[2%] sm:z-20 sm:w-[46%]">
+                    <figure className="absolute right-0 top-[2%] z-20 w-[46%]">
                       <div className="overflow-hidden rounded-xl border border-navy/[0.08] bg-white shadow-[0_28px_60px_-30px_rgba(1,12,98,0.35)]">
                         <img
                           src={wadHeroPanel}
@@ -311,7 +311,7 @@ function WebAppDevelopmentPage() {
                     </figure>
 
                     {/* 03 — mobile app, lower-left overlap */}
-                    <figure className="wad-float relative mx-auto w-[42%] sm:absolute sm:bottom-[8%] sm:left-0 sm:z-20 sm:mx-0 sm:w-[22%]">
+                    <figure className="wad-float absolute bottom-[8%] left-0 z-20 w-[22%]">
                       <div className="overflow-hidden rounded-[1.1rem] border border-navy/15 bg-navy shadow-[0_28px_58px_-26px_rgba(1,12,98,0.45)]">
                         <img
                           src={wadHeroMobile}
@@ -346,7 +346,7 @@ function WebAppDevelopmentPage() {
                   </span> */}
                   <span
                     aria-hidden
-                    className="absolute right-[3%] top-[46%] hidden h-1.5 w-1.5 rounded-full bg-amber sm:block"
+                    className="absolute right-[3%] top-[46%] block h-1.5 w-1.5 rounded-full bg-amber"
                   />
                 </div>
               </Reveal>
