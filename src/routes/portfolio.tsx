@@ -487,7 +487,7 @@ function PortfolioPage() {
               .pf-item{animation:pf-in 460ms cubic-bezier(.22,.61,.36,1) both}
               @media (prefers-reduced-motion: reduce){.pf-item{animation:none !important}}
             `}</style>
-            <div className="flex flex-wrap justify-center gap-2 lg:w-full lg:flex-nowrap lg:justify-center lg:gap-1.5 xl:gap-3">
+            <div className="grid grid-cols-2 gap-2 place-items-center sm:grid-cols-3 lg:flex lg:flex-nowrap lg:justify-center lg:gap-1.5 xl:gap-3">
               {filters.map((f) => {
                 const on = f === active;
                 return (
@@ -497,7 +497,7 @@ function PortfolioPage() {
                     onClick={() => setActive(f)}
                     aria-pressed={on}
                     className={cn(
-                      "rounded-full border px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300 lg:px-3 lg:text-[0.62rem] lg:tracking-[0.08em] xl:px-5 xl:text-[0.75rem] xl:tracking-[0.12em]",
+                      "w-full rounded-full border px-4 py-2.5 text-center text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300 lg:w-auto lg:px-3 lg:text-[0.62rem] lg:tracking-[0.08em] xl:px-5 xl:text-[0.75rem] xl:tracking-[0.12em]",
                       on
                         ? "border-transparent text-white shadow-[0_12px_30px_-14px_rgba(255,72,63,0.85)]"
                         : "border-border bg-transparent text-muted-foreground hover:border-azure/40 hover:text-navy",
