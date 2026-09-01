@@ -85,10 +85,18 @@ export const Route = createFileRoute("/portfolio")({
   component: PortfolioPage,
 });
 
+type PortfolioCategory =
+  | "Brand & Design"
+  | "Web & App Development"
+  | "Software Solutions"
+  | "AI & Automation"
+  | "Marketing & Growth"
+  | "Media Production";
+
 type Project = {
   id: string;
   number: string;
-  category: (typeof filters)[number];
+  category: PortfolioCategory;
   title: string;
   description: string;
   capabilities: string[];
@@ -386,12 +394,6 @@ const filters = [
   "Marketing & Growth",
   "Media Production",
 ] as const;
-
-type PortfolioCategory = Exclude<(typeof filters)[number], "All">;
-
-function isPortfolioCategory(category: (typeof filters)[number]): category is PortfolioCategory {
-  return category !== "All";
-}
 
 function PortfolioPage() {
   const [active, setActive] = useState<(typeof filters)[number]>("All");
