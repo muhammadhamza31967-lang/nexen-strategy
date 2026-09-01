@@ -359,12 +359,13 @@ function ContactPage() {
                         Phone
                       </label>
                       <div className="flex items-end gap-3">
-                        <label className="relative shrink-0" aria-label="Country code">
+                        <label className="relative shrink-0">
                           <span className="pointer-events-none absolute left-0 top-1/2 flex w-[4.5rem] -translate-y-1/2 items-center gap-1.5 text-base text-navy">
                             <span aria-hidden>{countryFlag(country)}</span>
                             <span className="text-sm font-medium">{countryInfo?.dialCode}</span>
                           </span>
                           <select
+                            aria-label="Country code"
                             value={country}
                             onChange={(e) => {
                               setCountry(e.target.value as CountryCode);
