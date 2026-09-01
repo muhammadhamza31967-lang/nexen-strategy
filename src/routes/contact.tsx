@@ -1,11 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import { ArrowRight, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
+import { AsYouType, getCountries, getCountryCallingCode, isValidPhoneNumber } from "libphonenumber-js";
+import type { CountryCode } from "libphonenumber-js";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { serviceOptions } from "@/lib/site-data";
+
+function countryFlag(code: string) {
+  return String.fromCodePoint(...[...code].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
+}
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -53,9 +59,65 @@ const contactDetails = [
   },
 ];
 
+const countryOptions = (() => {
+  const display =
+    typeof Intl !== "undefined" && "DisplayNames" in Intl
+      ? new Intl.DisplayNames(["en"], { type: "region" })
+      : null;
+  return getCountries()
+    .map((code) => ({
+      code,
+      name: display?.of(code) ?? code,
+      dialCode: `+${getCountryCallingCode(code)}`,
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+})();
+
+type FormDataState = {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+};
+type FieldErrors = Partial<Record<keyof FormDataState, string | undefined>>;
+
+function validateForm(data: FormDataState, country: CountryCode): FieldErrors {
+  const errors: FieldErrors = {};
+  const name = data.name.trim();
+  if (!name) errors.name = "Name is required.";
+  else if (name.length < 2) errors.name = "Name must be at least 2 characters.";
+  else if (!/\p{L}/u.test(name)) errors.name = "Please enter a valid name.";
+
+  const company = data.company.trim();
+  if (!company) errors.company = "Company is required.";
+  else if (company.length < 2) errors.company = "Company must be at least 2 characters.";
+
+  const email = data.email.trim();
+  if (!email) errors.email = "Email is required.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))
+    errors.email = "Please enter a valid email address.";
+
+  const phone = data.phone.trim();
+  if (!phone) errors.phone = "Phone number is required.";
+  else if (!/^[\d\s\-()]+$/.test(phone) || !isValidPhoneNumber(phone, country))
+    errors.phone = "Please enter a valid phone number.";
+
+  if (!data.service) errors.service = "Please select a service.";
+
+  const message = data.message.trim();
+  if (!message) errors.message = "Message is required.";
+  else if (message.length < 10) errors.message = "Message must be at least 10 characters.";
+
+  return errors;
+}
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
-  const [formData, setFormData] = useState({
+  const [country, setCountry] = useState<CountryCode>("PK");
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [formData, setFormData] = useState<FormDataState>({
     name: "",
     company: "",
     email: "",
@@ -64,27 +126,36 @@ function ContactPage() {
     message: "",
   });
 
-  function updateField(field: keyof typeof formData, value: string) {
+  const countryInfo = useMemo(
+    () => countryOptions.find((c) => c.code === country),
+    [country],
+  );
+
+  function updateField(field: keyof FormDataState, value: string) {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const requiredFields: (keyof typeof formData)[] = ["name", "email", "service", "message"];
-    const missing = requiredFields.some((field) => !formData[field].trim());
-    if (missing) {
-      toast.error("Please complete all required fields.");
+    const nextErrors = validateForm(formData, country);
+    setErrors(nextErrors);
+    if (Object.values(nextErrors).some(Boolean)) {
+      toast.error("Please correct the highlighted fields.");
       return;
     }
+
+    const formattedPhone = new AsYouType(country).input(formData.phone.trim());
+    const fullPhone = `${countryInfo?.dialCode ?? ""} ${formattedPhone}`.trim();
 
     const whatsappMessage = [
       "New Website Enquiry",
       "",
       `Name: ${formData.name.trim()}`,
-      `Company: ${formData.company.trim() || "N/A"}`,
+      `Company: ${formData.company.trim()}`,
       `Email: ${formData.email.trim()}`,
-      `Phone: ${formData.phone.trim() || "N/A"}`,
+      `Phone: ${fullPhone}`,
       `Service / Project Type: ${formData.service}`,
       `Message: ${formData.message.trim()}`,
     ].join("\n");
@@ -96,8 +167,13 @@ function ContactPage() {
     toast.success("Enquiry received", {
       description: "Thank you. A member of the team will be in touch shortly.",
     });
-    e.currentTarget.reset();
     setFormData({ name: "", company: "", email: "", phone: "", service: "", message: "" });
+    setErrors({});
+  }
+
+  function FieldError({ field }: { field: keyof FormDataState }) {
+    if (!errors[field]) return null;
+    return <p className="mt-2 text-xs font-medium text-[#FF483F]">{errors[field]}</p>;
   }
 
   return (
@@ -230,7 +306,7 @@ function ContactPage() {
                 <h2 className="text-xl font-semibold tracking-tight text-navy">
                   Tell us about your project
                 </h2>
-                <form onSubmit={handleSubmit} className="mt-10 space-y-9">
+                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-9">
                   <div className="grid gap-9 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="eyebrow text-muted-foreground">
@@ -239,12 +315,13 @@ function ContactPage() {
                       <input
                         id="name"
                         name="name"
-                        required
                         value={formData.name}
                         onChange={(e) => updateField("name", e.target.value)}
                         className={fieldClass}
                         placeholder="Your name"
+                        aria-invalid={!!errors.name}
                       />
+                      <FieldError field="name" />
                     </div>
                     <div>
                       <label htmlFor="company" className="eyebrow text-muted-foreground">
@@ -257,7 +334,9 @@ function ContactPage() {
                         onChange={(e) => updateField("company", e.target.value)}
                         className={fieldClass}
                         placeholder="Company name"
+                        aria-invalid={!!errors.company}
                       />
+                      <FieldError field="company" />
                     </div>
                     <div>
                       <label htmlFor="email" className="eyebrow text-muted-foreground">
@@ -267,26 +346,55 @@ function ContactPage() {
                         id="email"
                         name="email"
                         type="email"
-                        required
                         value={formData.email}
                         onChange={(e) => updateField("email", e.target.value)}
                         className={fieldClass}
                         placeholder="you@company.com"
+                        aria-invalid={!!errors.email}
                       />
+                      <FieldError field="email" />
                     </div>
                     <div>
                       <label htmlFor="phone" className="eyebrow text-muted-foreground">
                         Phone
                       </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => updateField("phone", e.target.value)}
-                        className={fieldClass}
-                        placeholder="+92"
-                      />
+                      <div className="flex items-end gap-3">
+                        <label className="relative shrink-0">
+                          <span className="pointer-events-none absolute left-0 top-1/2 flex w-[4.5rem] -translate-y-1/2 items-center gap-1.5 text-base text-navy">
+                            <span aria-hidden>{countryFlag(country)}</span>
+                            <span className="text-sm font-medium">{countryInfo?.dialCode}</span>
+                          </span>
+                          <select
+                            aria-label="Country code"
+                            value={country}
+                            onChange={(e) => {
+                              setCountry(e.target.value as CountryCode);
+                              setErrors((prev) =>
+                                prev.phone ? { ...prev, phone: undefined } : prev,
+                              );
+                            }}
+                            className="w-[4.5rem] cursor-pointer appearance-none border-0 border-b border-border bg-transparent py-3.5 text-transparent opacity-0 outline-none transition-colors focus:border-azure focus:opacity-100 focus:text-navy"
+                          >
+                            {countryOptions.map((c) => (
+                              <option key={c.code} value={c.code}>
+                                {c.name} ({c.dialCode})
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          inputMode="tel"
+                          value={formData.phone}
+                          onChange={(e) => updateField("phone", e.target.value)}
+                          className={fieldClass}
+                          placeholder="335 8084973"
+                          aria-invalid={!!errors.phone}
+                        />
+                      </div>
+                      <FieldError field="phone" />
                     </div>
                   </div>
                   <div>
@@ -296,10 +404,10 @@ function ContactPage() {
                     <select
                       id="service"
                       name="service"
-                      required
                       value={formData.service}
                       onChange={(e) => updateField("service", e.target.value)}
                       className={fieldClass}
+                      aria-invalid={!!errors.service}
                     >
                       <option value="" disabled>
                         Select a service
@@ -310,6 +418,7 @@ function ContactPage() {
                         </option>
                       ))}
                     </select>
+                    <FieldError field="service" />
                   </div>
                   <div>
                     <label htmlFor="message" className="eyebrow text-muted-foreground">
@@ -319,12 +428,13 @@ function ContactPage() {
                       id="message"
                       name="message"
                       rows={4}
-                      required
                       value={formData.message}
                       onChange={(e) => updateField("message", e.target.value)}
                       className={`${fieldClass} resize-none`}
                       placeholder="What are you looking to achieve?"
+                      aria-invalid={!!errors.message}
                     />
+                    <FieldError field="message" />
                   </div>
                   <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
                     <button type="submit" className="btn-primary group">
