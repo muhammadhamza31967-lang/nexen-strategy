@@ -418,10 +418,10 @@ function ContactPage() {
                 <h2 className="text-xl font-semibold tracking-tight text-navy">
                   Tell us about your project
                 </h2>
-                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-9">
-                  <div className="grid gap-9 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="name" className="eyebrow text-muted-foreground">
+                <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-8 lg:space-y-10">
+                  <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-10 lg:gap-y-10">
+                    <div className="min-w-0">
+                      <label htmlFor="name" className={labelClass}>
                         Name
                       </label>
                       <input
@@ -435,8 +435,8 @@ function ContactPage() {
                       />
                       <FieldError field="name" />
                     </div>
-                    <div>
-                      <label htmlFor="company" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="company" className={labelClass}>
                         Company
                       </label>
                       <input
@@ -450,8 +450,8 @@ function ContactPage() {
                       />
                       <FieldError field="company" />
                     </div>
-                    <div>
-                      <label htmlFor="email" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="email" className={labelClass}>
                         Email
                       </label>
                       <input
@@ -466,34 +466,21 @@ function ContactPage() {
                       />
                       <FieldError field="email" />
                     </div>
-                    <div>
-                      <label htmlFor="phone" className="eyebrow text-muted-foreground">
+                    <div className="min-w-0">
+                      <label htmlFor="phone" className={labelClass}>
                         Phone
                       </label>
-                      <div className="flex items-end gap-3">
-                        <label className="relative shrink-0">
-                          <span className="pointer-events-none absolute left-0 top-1/2 flex w-[4.5rem] -translate-y-1/2 items-center gap-1.5 text-base text-navy">
-                            <span aria-hidden>{countryFlag(country)}</span>
-                            <span className="text-sm font-medium">{countryInfo?.dialCode}</span>
-                          </span>
-                          <select
-                            aria-label="Country code"
-                            value={country}
-                            onChange={(e) => {
-                              setCountry(e.target.value as CountryCode);
-                              setErrors((prev) =>
-                                prev.phone ? { ...prev, phone: undefined } : prev,
-                              );
-                            }}
-                            className="w-[4.5rem] cursor-pointer appearance-none border-0 border-b border-border bg-transparent py-3.5 text-transparent opacity-0 outline-none transition-colors focus:border-azure focus:opacity-100 focus:text-navy"
-                          >
-                            {countryOptions.map((c) => (
-                              <option key={c.code} value={c.code}>
-                                {c.name} ({c.dialCode})
-                              </option>
-                            ))}
-                          </select>
-                        </label>
+                      <div className="flex items-stretch gap-3">
+                        <CountrySelect
+                          value={country}
+                          invalid={!!errors.phone}
+                          onChange={(code) => {
+                            setCountry(code);
+                            setErrors((prev) =>
+                              prev.phone ? { ...prev, phone: undefined } : prev,
+                            );
+                          }}
+                        />
                         <input
                           id="phone"
                           name="phone"
@@ -501,7 +488,7 @@ function ContactPage() {
                           inputMode="tel"
                           value={formData.phone}
                           onChange={(e) => updateField("phone", e.target.value)}
-                          className={fieldClass}
+                          className={`${fieldClass} min-w-0 flex-1`}
                           placeholder="335 8084973"
                           aria-invalid={!!errors.phone}
                         />
@@ -509,55 +496,74 @@ function ContactPage() {
                       <FieldError field="phone" />
                     </div>
                   </div>
-                  <div>
-                    <label htmlFor="service" className="eyebrow text-muted-foreground">
+
+                  <div className="min-w-0">
+                    <label htmlFor="service" className={labelClass}>
                       Service / Project Type
                     </label>
-                    <select
-                      id="service"
-                      name="service"
+                    <Select
                       value={formData.service}
-                      onChange={(e) => updateField("service", e.target.value)}
-                      className={fieldClass}
-                      aria-invalid={!!errors.service}
+                      onValueChange={(v) => updateField("service", v)}
                     >
-                      <option value="" disabled>
-                        Select a service
-                      </option>
-                      {serviceOptions.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
+                      <SelectTrigger
+                        id="service"
+                        aria-invalid={!!errors.service}
+                        className={`${fieldClass} justify-between rounded-none px-0 py-0 shadow-none focus:ring-0 focus-visible:ring-0 data-[state=open]:border-[#FFA53C] [&>svg]:opacity-60 ${
+                          formData.service ? "" : "text-muted-foreground/55"
+                        }`}
+                      >
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent
+                        position="popper"
+                        sideOffset={10}
+                        className="z-50 max-h-72 w-[var(--radix-select-trigger-width)] rounded-xl border border-border bg-background p-1.5 shadow-xl"
+                      >
+                        {serviceOptions.map((s) => (
+                          <SelectItem
+                            key={s}
+                            value={s}
+                            className="cursor-pointer rounded-lg px-3 py-2.5 text-sm text-navy focus:bg-muted"
+                          >
+                            {s}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FieldError field="service" />
                   </div>
-                  <div>
-                    <label htmlFor="message" className="eyebrow text-muted-foreground">
+
+                  <div className="min-w-0">
+                    <label htmlFor="message" className={labelClass}>
                       Message
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={(e) => updateField("message", e.target.value)}
-                      className={`${fieldClass} resize-none`}
+                      className={`${fieldClass} h-auto min-h-[9.5rem] resize-none py-3.5 leading-relaxed`}
                       placeholder="What are you looking to achieve?"
                       aria-invalid={!!errors.message}
                     />
                     <FieldError field="message" />
                   </div>
+
                   <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
-                    <button type="submit" className="btn-primary group">
+                    <button
+                      type="submit"
+                      className="group inline-flex h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#FFA53C] to-[#FF483F] px-8 text-sm font-semibold tracking-wide text-white shadow-[0_10px_30px_-12px_rgba(255,72,63,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:w-auto"
+                    >
                       Start a Conversation
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
                     <p aria-live="polite" className="text-sm text-muted-foreground">
                       {sent ? "Thank you — your enquiry has been received." : ""}
                     </p>
                   </div>
                 </form>
+
               </div>
             </Reveal>
           </div>
