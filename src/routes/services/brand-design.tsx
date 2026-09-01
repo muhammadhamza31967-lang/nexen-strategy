@@ -251,14 +251,15 @@ function BrandDesignPage() {
 
               {/* ---- Art-directed visual composition ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative flex items-center justify-center">
+                <HeroScale designWidth={600} className="relative">
+                  <div className="relative flex items-center justify-center px-12 py-10">
                   {/* inner composition container: reduced & rebalanced */}
                   <div className="relative w-[85%]">
 
                     {/* thin offset framing line */}
                     <span
                       aria-hidden
-                      className="absolute -top-6 -right-6 hidden h-full w-full rounded-xl border border-navy/12 lg:block"
+                      className="absolute -top-6 -right-6 block h-full w-full rounded-xl border border-navy/12"
                     />
                     {/* primary brand visual */}
                     <div className="relative overflow-hidden rounded-xl bg-secondary/40 shadow-[0_50px_90px_-40px_rgba(1,12,98,0.4)]">
@@ -271,7 +272,7 @@ function BrandDesignPage() {
                       />
                     </div>
                     {/* small cropped brand detail — overlapping bottom-left */}
-                    <div className="absolute -bottom-8 -left-10 hidden w-36 overflow-hidden rounded-lg border-[5px] border-white shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)] lg:block">
+                    <div className="absolute -bottom-8 -left-10 block w-36 overflow-hidden rounded-lg border-[5px] border-white shadow-[0_30px_60px_-25px_rgba(1,12,98,0.45)]">
                       <img
                         src={brandTouchpoints}
                         alt="Brand identity applied across digital and print touchpoints"
@@ -284,7 +285,7 @@ function BrandDesignPage() {
                     {/* colour swatch detail — overlapping top-left edge */}
                     <div
                       aria-hidden
-                      className="absolute -left-5 top-10 hidden flex-col gap-2.5 lg:flex"
+                      className="absolute -left-5 top-10 flex flex-col gap-2.5"
                     >
                       <span className="h-9 w-9 rounded-[4px] bg-navy shadow-[0_14px_28px_-12px_rgba(1,12,98,0.5)]" />
                       <span className="h-9 w-9 rounded-[4px] bg-gradient-to-br from-amber to-ember shadow-[0_14px_28px_-12px_rgba(255,72,63,0.5)]" />
@@ -293,9 +294,11 @@ function BrandDesignPage() {
                     {/* fine orange accent marker */}
                     <span
                       aria-hidden
-                      className="absolute -bottom-5 right-12 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
+                      className="absolute -bottom-5 right-12 block h-px w-24 bg-gradient-to-r from-amber to-ember"
                     />
                   </div>
+                  </div>
+
                 </div>
               </Reveal>
             </div>
