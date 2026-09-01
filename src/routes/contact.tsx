@@ -36,7 +36,11 @@ export const Route = createFileRoute("/contact")({
 });
 
 const fieldClass =
-  "w-full border-0 border-b border-border bg-transparent px-0 py-3.5 text-base text-navy outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-azure";
+  "peer h-[52px] w-full border-0 border-b border-border bg-transparent px-0 text-base text-navy outline-none transition-colors duration-300 placeholder:text-muted-foreground/55 hover:border-navy/30 focus:border-[#FFA53C] aria-[invalid=true]:border-[#FF483F]";
+
+const labelClass =
+  "block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-navy/70";
+
 
 const contactDetails = [
   {
