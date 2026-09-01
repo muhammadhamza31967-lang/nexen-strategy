@@ -55,14 +55,49 @@ const contactDetails = [
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  function updateField(field: keyof typeof formData, value: string) {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const requiredFields: (keyof typeof formData)[] = ["name", "email", "service", "message"];
+    const missing = requiredFields.some((field) => !formData[field].trim());
+    if (missing) {
+      toast.error("Please complete all required fields.");
+      return;
+    }
+
+    const whatsappMessage = [
+      "New Website Enquiry",
+      "",
+      `Name: ${formData.name.trim()}`,
+      `Company: ${formData.company.trim() || "N/A"}`,
+      `Email: ${formData.email.trim()}`,
+      `Phone: ${formData.phone.trim() || "N/A"}`,
+      `Service / Project Type: ${formData.service}`,
+      `Message: ${formData.message.trim()}`,
+    ].join("\n");
+
+    const encoded = encodeURIComponent(whatsappMessage);
+    window.location.href = `https://wa.link/u8asi4?text=${encoded}`;
+
     setSent(true);
     toast.success("Enquiry received", {
       description: "Thank you. A member of the team will be in touch shortly.",
     });
     e.currentTarget.reset();
+    setFormData({ name: "", company: "", email: "", phone: "", service: "", message: "" });
   }
 
   return (
@@ -205,6 +240,8 @@ function ContactPage() {
                         id="name"
                         name="name"
                         required
+                        value={formData.name}
+                        onChange={(e) => updateField("name", e.target.value)}
                         className={fieldClass}
                         placeholder="Your name"
                       />
@@ -216,6 +253,8 @@ function ContactPage() {
                       <input
                         id="company"
                         name="company"
+                        value={formData.company}
+                        onChange={(e) => updateField("company", e.target.value)}
                         className={fieldClass}
                         placeholder="Company name"
                       />
@@ -229,6 +268,8 @@ function ContactPage() {
                         name="email"
                         type="email"
                         required
+                        value={formData.email}
+                        onChange={(e) => updateField("email", e.target.value)}
                         className={fieldClass}
                         placeholder="you@company.com"
                       />
@@ -241,6 +282,8 @@ function ContactPage() {
                         id="phone"
                         name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={(e) => updateField("phone", e.target.value)}
                         className={fieldClass}
                         placeholder="+92"
                       />
@@ -254,7 +297,8 @@ function ContactPage() {
                       id="service"
                       name="service"
                       required
-                      defaultValue=""
+                      value={formData.service}
+                      onChange={(e) => updateField("service", e.target.value)}
                       className={fieldClass}
                     >
                       <option value="" disabled>
@@ -276,6 +320,8 @@ function ContactPage() {
                       name="message"
                       rows={4}
                       required
+                      value={formData.message}
+                      onChange={(e) => updateField("message", e.target.value)}
                       className={`${fieldClass} resize-none`}
                       placeholder="What are you looking to achieve?"
                     />
