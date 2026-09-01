@@ -172,11 +172,12 @@ function SoftwareSolutionsPage() {
 
               {/* ---- One platform → multiple business functions ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative flex items-center justify-center">
-                  <div className="relative w-[92%] lg:w-[88%]">
+                <HeroScale designWidth={600} className="relative">
+                  <div className="relative flex items-center justify-center px-10 py-10">
+                  <div className="relative w-[88%]">
                     <span
                       aria-hidden
-                      className="absolute -top-6 -right-6 hidden h-full w-full rounded-2xl border border-navy/12 lg:block"
+                      className="absolute -top-6 -right-6 block h-full w-full rounded-2xl border border-navy/12"
                     />
                     <div className="relative overflow-hidden rounded-2xl bg-secondary/40 shadow-[0_50px_90px_-40px_rgba(1,12,98,0.4)]">
                       <img
@@ -187,7 +188,7 @@ function SoftwareSolutionsPage() {
                         className="aspect-[5/4] w-full object-cover"
                       />
                     </div>
-                    <div className="sw-float absolute -bottom-10 -left-8 hidden w-[26%] overflow-hidden rounded-[1.1rem] border-[5px] border-white shadow-[0_36px_70px_-28px_rgba(1,12,98,0.5)] sm:block">
+                    <div className="sw-float absolute -bottom-10 -left-8 block w-[26%] overflow-hidden rounded-[1.1rem] border-[5px] border-white shadow-[0_36px_70px_-28px_rgba(1,12,98,0.5)]">
                       <img
                         src={swHeroMobile}
                         alt="Mobile business application showing customer records and metrics"
@@ -197,7 +198,7 @@ function SoftwareSolutionsPage() {
                         className="aspect-[9/16] w-full object-cover object-top"
                       />
                     </div>
-                    <div className="absolute -right-6 top-[12%] hidden w-[42%] overflow-hidden rounded-xl border-[5px] border-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.45)] lg:block">
+                    <div className="absolute -right-6 top-[12%] block w-[42%] overflow-hidden rounded-xl border-[5px] border-white shadow-[0_34px_66px_-28px_rgba(1,12,98,0.45)]">
                       <img
                         src={swHeroPanel}
                         alt="Connected workflow module showing process status and performance"
@@ -209,14 +210,16 @@ function SoftwareSolutionsPage() {
                     </div>
                     <span
                       aria-hidden
-                      className="absolute -bottom-5 right-14 hidden h-px w-24 bg-gradient-to-r from-amber to-ember lg:block"
+                      className="absolute -bottom-5 right-14 block h-px w-24 bg-gradient-to-r from-amber to-ember"
                     />
                     <span
                       aria-hidden
-                      className="absolute -left-4 top-8 hidden h-16 w-px bg-gradient-to-b from-azure to-transparent lg:block"
+                      className="absolute -left-4 top-8 block h-16 w-px bg-gradient-to-b from-azure to-transparent"
                     />
                   </div>
-                </div>
+                  </div>
+                </HeroScale>
+
               </Reveal>
             </div>
 
