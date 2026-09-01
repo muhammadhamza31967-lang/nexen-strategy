@@ -55,12 +55,12 @@ export function FloatingActions() {
         onClick={scrollToTop}
         aria-label="Scroll to top"
         className={[
-          "pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-[#010C62]/10 text-[#010C62] transition-all duration-300 ease-out will-change-transform md:h-14 md:w-14",
+          "flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-[#010C62]/10 text-[#010C62] transition-all duration-300 ease-out will-change-transform md:h-14 md:w-14",
           "hover:bg-[#010C62] hover:text-white hover:shadow-xl hover:ring-[#FFA53C]/40 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFA53C]",
           "motion-reduce:transition-none",
           visible
-            ? "translate-y-0 opacity-100"
-            : "translate-y-4 opacity-0 motion-reduce:translate-y-0",
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0 motion-reduce:translate-y-0",
         ].join(" ")}
       >
         <ArrowUp className="h-5 w-5 md:h-6 md:w-6" strokeWidth={1.5} />
