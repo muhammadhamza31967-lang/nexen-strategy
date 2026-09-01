@@ -187,8 +187,10 @@ function AiAutomationPage() {
                     style={{ background: "radial-gradient(circle, #3AF1FF 0%, transparent 70%)" }}
                   />
 
-                  {/* ===== Desktop / tablet: reference composition ===== */}
-                  <div className="relative hidden aspect-[10/9] w-full sm:block">
+                  {/* ===== One proportionally scaled composition at every breakpoint ===== */}
+                  <HeroScale designWidth={560} className="relative">
+                    <div className="relative aspect-[10/9] w-full">
+
                     <svg
                       aria-hidden
                       className="pointer-events-none absolute inset-0 h-full w-full"
