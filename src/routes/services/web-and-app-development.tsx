@@ -228,11 +228,12 @@ function WebAppDevelopmentPage() {
 
               {/* ---- Digital product ecosystem showcase ---- */}
               <Reveal delay={180} className="lg:col-span-6">
-                <div className="relative mx-auto w-full max-w-[560px] lg:max-w-[620px]">
+                <HeroScale designWidth={620} className="relative">
+                <div className="relative mx-auto w-full">
                   {/* atmospheric depth */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-[130px] sm:block"
+                    className="pointer-events-none absolute left-1/2 top-1/2 block h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.08] blur-[130px]"
                     style={{ background: "radial-gradient(circle, #010C62 0%, transparent 70%)" }}
                   />
                   {/* dotted technical connectors + labels (desktop) */}
@@ -240,8 +241,9 @@ function WebAppDevelopmentPage() {
                     aria-hidden
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
-                    className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
+                    className="pointer-events-none absolute inset-0 block h-full w-full"
                   >
+
                     <path
                       d="M56 8 L66 8 L66 15"
                       fill="none"
